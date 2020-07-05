@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ce3973b7e4ca4396bfd81ab2fc7a3f60" Name="Diagram1">
+        <EntityTypeShape EntityType="EmpleadosModel.Afp" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmpleadosModel.Carg_Familiar" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmpleadosModel.Cargas_Familiares" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmpleadosModel.Cargos" Width="1.5" PointX="3.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmpleadosModel.Comuna" Width="1.5" PointX="0.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmpleadosModel.Departamento" Width="1.5" PointX="3.75" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmpleadosModel.Empleados" Width="1.5" PointX="6" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmpleadosModel.Empresa" Width="1.5" PointX="3.75" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmpleadosModel.Liquidacion_Sueldo" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmpleadosModel.Login" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmpleadosModel.Nacionalidad" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmpleadosModel.Provincia" Width="1.5" PointX="1.5" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmpleadosModel.Region" Width="1.5" PointX="1.5" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmpleadosModel.Salud" Width="1.5" PointX="3.75" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmpleadosModel.Sexo" Width="1.5" PointX="3.75" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmpleadosModel.TablImpDiario" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmpleadosModel.TablImpMensual" Width="1.5" PointX="8.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmpleadosModel.TablImpQuincenal" Width="1.5" PointX="8.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmpleadosModel.TablImpSemanal" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="EmpleadosModel.FK_Empleados_Afp" ManuallyRouted="false" />
+        <AssociationConnector Association="EmpleadosModel.FK_Carg_Familiar_Comuna" ManuallyRouted="false" />
+        <AssociationConnector Association="EmpleadosModel.FK_Carg_Familiar_Empleados" ManuallyRouted="false" />
+        <AssociationConnector Association="EmpleadosModel.FK_Carg_Familiar_Nacionalidad" ManuallyRouted="false" />
+        <AssociationConnector Association="EmpleadosModel.FK_Carg_Familiar_Sexo" ManuallyRouted="false" />
+        <AssociationConnector Association="EmpleadosModel.FK_Empleados_Cargos" ManuallyRouted="false" />
+        <AssociationConnector Association="EmpleadosModel.FK_Comuna_provincia" ManuallyRouted="false" />
+        <AssociationConnector Association="EmpleadosModel.FK_Empleados_Comuna" ManuallyRouted="false" />
+        <AssociationConnector Association="EmpleadosModel.FK_Empleados_Departamento" ManuallyRouted="false" />
+        <AssociationConnector Association="EmpleadosModel.FK__Empleados__Id_Se__13BCEBC1" ManuallyRouted="false" />
+        <AssociationConnector Association="EmpleadosModel.FK_Empleados_Empresa" ManuallyRouted="false" />
+        <AssociationConnector Association="EmpleadosModel.FK_Empleados_Nacionalidad" ManuallyRouted="false" />
+        <AssociationConnector Association="EmpleadosModel.FK_Empleados_Salud" ManuallyRouted="false" />
+        <AssociationConnector Association="EmpleadosModel.FK_Rg" ManuallyRouted="false" />
+        <AssociationConnector Association="EmpleadosModel.FK_provincia_region" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

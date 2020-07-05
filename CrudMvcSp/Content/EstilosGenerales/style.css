@@ -1,0 +1,21 @@
+
+#IngDep tr td {
+    color: black;
+    text-decoration: solid;
+    background-color: yellowgreen;
+    padding: 10px;
+}
+
+/*establece el formato del boton Nuevo dentro de las Paginas*/
+.BtnNuevo { margin-bottom: 10px;  border-radius: 15px; }
+
+.modal-header {
+    margin-bottom: 10px;
+    background-color: limegreen;
+}
+
+#ComuSelec #CiuSelec {
+    min-width: 100px !important;
+    min-height: 100px !important;    
+}
+

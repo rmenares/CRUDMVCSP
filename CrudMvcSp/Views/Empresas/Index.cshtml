@@ -1,0 +1,229 @@
+﻿@model  IEnumerable<CrudMvcSp.Models.Sp_Mues_Empresas_Result>
+
+@{
+    ViewBag.Title = "Index";
+
+    WebGrid grid = new WebGrid(Model, defaultSort: "Nombre_Empresa",
+                                        selectionFieldName: "Rut_Empresa",
+                                        rowsPerPage: 10,
+                                        sortDirectionFieldName: "Nombre_Empresa");
+}
+<br />
+<br />
+<h2>Mantención de Empresas</h2>
+<br />
+<br />
+
+@Scripts.Render("~/bundles/jquery")
+
+@Scripts.Render("~/bundles/bootstrap")
+
+@Styles.Render("~/Content/fontawesome")
+
+<table class="table table-responsive table-striped table-condensed" id="NueEmp">
+    <tr>
+        <td>
+            <button id="BtnNueEmp" value="Agregar Empresa" class="btn btn-group-lg btn-success BtnNuevo"> <i class="fa fa-plus-circle"></i> Agregar Empresa </button>
+        </td>
+    </tr>
+</table>
+<br />
+<br />
+<form id="formMuesEmpresas" method="post">
+    @if (Model.Count() != 0)
+    {
+        <div class="table table-responsive table-striped table-bordered table-condensed" id="gridDeptos">
+
+            @grid.GetHtml(
+                alternatingRowStyle: "webgrid-alternating-row",
+                htmlAttributes: new { @id = "TablaEmpresas", width = "50px", @class = "Grid" },
+                tableStyle: "webgrid-table table table-responsive table-bordered",
+                headerStyle: "webgrid-header",
+                footerStyle: "webgrid-footer",
+                selectedRowStyle: "webgrid-selected-row",
+                rowStyle: "webgrid-row-style",
+                mode: WebGridPagerModes.All,
+                firstText: "Primera Pagina",
+                previousText: "Pagina Anterior",
+                nextText: "Pagina Siguiente",
+                lastText: "Ultima Pagina",
+                displayHeader: true,
+                columns:
+                new[] {
+                      grid.Column("Rut_Empresa"      , "Rut"),
+                      grid.Column("Nombre_Empresa"   , "Nombre"),
+                      grid.Column("Calle_Pje_Avda"   , "Dirección"),
+                      grid.Column("Numero"           , "Número"),
+                      grid.Column("Vill_Pobl"        , "Vill/Pobl"),
+                      grid.Column("Comuna"           , "Comuna"),
+                      grid.Column("Provincia_Nombre" , "Ciudad"),
+                      grid.Column("fono"             , "Fono Contacto"),
+                      grid.Column("emailemp"         , "Correo Electrónico"),
+                      grid.Column(header: "Acciones", style: "col-sm-2", format:@<text>
+    <a href='#' class="btn btn-warning glyphicon glyphicon-pencil display edit-btn"> Editar</a> </text> )
+                                                                                                                                    })
+        </div>
+
+        <div id="TablExport">
+            <table align="center">
+                <tr>
+                    <td>@Html.ActionLink(" Export A Pdf", "GetPdf", "Empresas", new { @class = "btn btn-primary fa fa-file-pdf-o" }) | </td>
+                    <td> </td>
+                    <td>@Html.ActionLink(" Export A Excel", "GetXls", "Empresas", new { @class = "btn btn-primary fa fa-file-excel-o" }) | </td>
+                    <td> </td>
+                    <td>@Html.ActionLink(" Export A CSV", "GetCsv", "Empresas", new { @class = "btn btn-primary fa fa-file-excel-o" }) | </td>
+                    <td> </td>
+                    <td>@Html.ActionLink(" Export A DOC", "GetDocx", "Empresas", new { @class = "btn btn-primary fa fa-file-word-o" }) </td>
+                </tr>
+            </table>
+        </div>
+    }
+    else
+    {
+        <div>
+            <table align="center">
+                <tr>
+                    <td>
+                        <h4> <i class="fa fa-folder-open"></i> No Hay Datos Disponibles, Haga Click en <b>Agregar Empresa</b> <i class="fa fa-folder-open"></i> </h4>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    }
+</form>
+
+<!-- Modal Agrega Empresas-->
+<div class="modal" id="AgrEmp">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header text-center">
+                <h2 class="modal-title">Nueva Empresa</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form id="IngEmpr" method="post">
+                    <table>
+                        <tr>
+                            <td>Rut</td>
+                            <td><input type="text" id="RutEmp" required /></td>
+                        </tr>
+                        <tr>
+                            <td>Nombre Empresa</td>
+                            <td><input type="text" id="NomEmp" /></td>
+                        </tr>
+                        <tr>
+                            <td>Calle_Pje</td>
+                            <td><input type="text" id="CallPjeEmp" /></td>
+                        </tr>
+                        <tr>
+                            <td>Número</td>
+                            <td><input type="text" id="NumEmp" /></td>
+                        </tr>
+                        <tr>
+                            <td>Villa/Población</td>
+                            <td><input type="text" id="VilpobEmp" /></td>
+                        </tr>
+                        <tr>
+                            <td>Comuna</td>
+                            <td>
+                                @Html.DropDownList("ComuSelec", ViewBag.ListComu as SelectList, "Seleccione Comuna", new { @class = "form-control", style = "width:175px" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Ciudad</td>
+                            <td><input type="text" id="NomCiu" /></td>
+                        </tr>
+                        <tr>
+                            <td>Fomo</td>
+                            <td><input type="text" id="FonoEmp" /></td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td><input type="text" id="EmaEmp" /></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button class="btn btn-success" id="BtnGrabEmp" value="Grabar"><i class="fa fa-download"></i> Grabar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Modal Para Modificar Empresas-->
+<div class="modal" id="ModEmp">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header text-center">
+                <h4 class="modal-title">Editar Datos Empresas </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="modal-body">
+                    <form id="ModEmpr" method="post">
+                        <table>
+                            <tr>
+                                <td>Nombre</td>
+                                <td><input type="text" id="MODNomEmp" /></td>
+                            </tr>
+                            <tr>
+                                <td>Calle_Pje</td>
+                                <td><input type="text" id="MODCallPjeEmp" /></td>
+                            </tr>
+                            <tr>
+                                <td>Número</td>
+                                <td><input type="text" id="MODNumEmp" /></td>
+                            </tr>
+                            <tr>
+                                <td>Villa/Población</td>
+                                <td><input type="text" id="MODVilpobEmp" /></td>
+                            </tr>
+                            <tr>
+                                <td>Comuna</td>
+                                <td>
+                                    @Html.DropDownList("ComuSelec2", ViewBag.ListComu as SelectList, "Seleccione Comuna", new { @class = "form-control", style = "width:175px" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Ciudad</td>
+                                <td><input type="text" id="MODNomCiu" /></td>
+                            </tr>
+                            <tr>
+                                <td>Fomo</td>
+                                <td><input type="text" id="MODFonoEmp" /></td>
+                            </tr>
+                            <tr>
+                                <td>Email</td>
+                                <td><input type="text" id="MODEmaEmp" /></td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button class="btn btn-success" id="BtnModEmp" value="Modificar"><i class="fa fa-archive"></i> Modificar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <link href="~/Content/toastr.css" rel="stylesheet" />
+    <script src="~/Scripts/toastr.js"></script>
+    <link href="~/Content/WebGrid/WebGrid.css" rel="stylesheet" />
+    <link href="~/Content/EstilosGenerales/style.css" rel="stylesheet" />
+    <script src="~/Scripts/Aplicacion/Empresas/ManEmpresas.js"></script>
+}

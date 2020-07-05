@@ -1,0 +1,149 @@
+﻿@model IEnumerable<CrudMvcSp.Models.Cargos>
+
+@{
+    ViewBag.Title = "Index";
+
+    WebGrid grid = new WebGrid(Model, defaultSort: "Descr_Cargo",
+                             selectionFieldName: "Id_Carg",
+                             rowsPerPage: 10,
+                             sortDirectionFieldName: "Descr_Cargo");
+
+}
+<br />
+<br />
+<h2>Mantención Cargos</h2>
+<br />
+<br />
+
+@Scripts.Render("~/bundles/jquery")
+
+@Scripts.Render("~/bundles/bootstrap")
+
+@Styles.Render("~/Content/fontawesome")
+
+<table class="table table-responsive table-striped table-condensed" id="NueCarg">
+    <tr>
+        <td>
+            <button id="BtnNueCarg" value="Agregar Cargo" class="btn btn-group-lg btn-success BtnNuevo"> <i class="fa fa-plus-circle"></i> Agregar Cargo </button>
+        </td>
+    </tr>
+</table>
+<br />
+<br />
+<form id="formMuesCarg" method="post">
+    @if (Model.Count() != 0)
+    {
+        <div class="table table-responsive table-striped table-bordered table-condensed" id="gridDeptos">
+
+            @grid.GetHtml(
+                alternatingRowStyle: "webgrid-alternating-row",
+                htmlAttributes: new { @id = "TablaCargos", width = "50px", @class = "Grid" },
+                tableStyle: "webgrid-table table table-responsive table-bordered",
+                headerStyle: "webgrid-header",
+                footerStyle: "webgrid-footer",
+                selectedRowStyle: "webgrid-selected-row",
+                rowStyle: "webgrid-row-style",
+                mode: WebGridPagerModes.All,
+                firstText: "Primera Pagina",
+                previousText: "Pagina Anterior",
+                nextText: "Pagina Siguiente",
+                lastText: "Ultima Pagina",
+                displayHeader: true,
+                columns:
+                new[] {
+                      grid.Column("Id_Carg" , "Codigo"),
+                      grid.Column("Descr_Cargo" , "Descripción"),
+                      grid.Column(header: "Acciones", style: "col-sm-2", format:@<text>
+    <a href='#' class="btn btn-warning glyphicon glyphicon-pencil display edit-btn"> Editar</a> </text> )
+                                                                                                                                    })
+        </div>
+
+        <div id="TablExport">
+            <table align="center">
+                <tr>
+                    <td>@Html.ActionLink(" Export A Pdf", "GetPdf", "Deptos", new { @class = "btn btn-primary fa fa-file-pdf-o" }) | </td>
+                    <td> </td>
+                    <td>@Html.ActionLink(" Export A Excel", "GetXls", "Deptos", new { @class = "btn btn-primary fa fa-file-excel-o" }) | </td>
+                    <td> </td>
+                    <td>@Html.ActionLink(" Export A CSV", "GetCsv", "Deptos", new { @class = "btn btn-primary fa fa-file-excel-o" }) | </td>
+                    <td> </td>
+                    <td>@Html.ActionLink(" Export A DOC", "GetDocx", "Deptos", new { @class = "btn btn-primary fa fa-file-word-o" }) </td>
+                </tr>
+            </table>
+        </div>
+    }
+    else
+    {
+        <div>
+            <table align="center">
+                <tr>
+                    <td>
+                        <h4> <i class="fa fa-folder-open"></i> No Hay Datos Disponibles, Haga Click en <b>Agregar Cargos</b> <i class="fa fa-folder-open"></i> </h4>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    }
+</form>
+
+<!-- Modal Agrega Cargos-->
+<div class="modal" id="AgrCarg">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header text-center">
+                <h2 class="modal-title">Nuevo Cargo</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form id="IngCarg" method="post">
+                    Nombre Cargo
+                    <input type="text" id="NomCarg" required />
+                </form>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button class="btn btn-success" id="BtnGrabCarg" value="Grabar"><i class="fa fa-download"></i> Grabar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Modal Para Modificar Cargos-->
+<div class="modal" id="ModCarg">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header text-center">
+                <h4 class="modal-title">Editar Cargos </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form id="ModCarg" method="post">
+                    Descripción del Cargo
+                    <input type="text" id="ModNomCarg" required />
+                </form>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button class="btn btn-success" id="BtnModCarg" value="Modificar"><i class="fa fa-archive"></i> Modificar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <link href="~/Content/toastr.css" rel="stylesheet" />
+    <script src="~/Scripts/toastr.js"></script>
+    <link href="~/Content/WebGrid/WebGrid.css" rel="stylesheet" />
+    <link href="~/Content/EstilosGenerales/style.css" rel="stylesheet" />
+    <script src="~/Scripts/Aplicacion/Cargos/ManCargos.js"></script>
+}

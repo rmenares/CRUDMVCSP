@@ -1,0 +1,168 @@
+﻿@model IEnumerable<CrudMvcSp.Models.Salud>
+
+@{
+    ViewBag.Title = "Index";
+
+    WebGrid grid = new WebGrid(Model, defaultSort: "Nombre_Salud",
+                                        selectionFieldName: "Cod_Salud",
+                                        rowsPerPage: 10,
+                                        sortDirectionFieldName: "Nombre_Salud");
+}
+<br />
+<br />
+<h2>Mantención Organizaciones de Salud</h2>
+<br />
+<br />
+
+@Scripts.Render("~/bundles/jquery")
+
+@Scripts.Render("~/bundles/bootstrap")
+
+@Styles.Render("~/Content/fontawesome")
+
+<table class="table table-responsive table-striped table-condensed" id="NueSistSalud">
+    <tr>
+        <td>
+            <button id="BtnNueSistSalud" value="Agregar Sistema Salud" class="btn btn-group-lg btn-success BtnNuevo"> <i class="fa fa-plus-circle"></i> Agregar Sistema Salud</button>
+        </td>
+    </tr>
+</table>
+<br />
+<br />
+<form id="formMuesSistSalud" method="post">
+    @if (Model.Count() != 0)
+    {
+        <div class="table table-responsive table-striped table-bordered table-condensed" id="gridSistSalud">
+
+            @grid.GetHtml(
+                alternatingRowStyle: "webgrid-alternating-row",
+                htmlAttributes: new { @id = "TablaSistSalud", width = "50px", @class = "Grid" },
+                tableStyle: "webgrid-table table table-responsive table-bordered",
+                headerStyle: "webgrid-header",
+                footerStyle: "webgrid-footer",
+                selectedRowStyle: "webgrid-selected-row",
+                rowStyle: "webgrid-row-style",
+                mode: WebGridPagerModes.All,
+                firstText: "Primera Pagina",
+                previousText: "Pagina Anterior",
+                nextText: "Pagina Siguiente",
+                lastText: "Ultima Pagina",
+                displayHeader: true,
+                columns:
+                new[] {
+                      grid.Column("Cod_Salud" , "Codigo"),
+                      grid.Column("Nombre_Salud" , "Descripción"),
+                      grid.Column("Porc_Cotiz" , "% Cotización"),
+                      grid.Column(header: "Acciones", style: "col-sm-2", format:@<text>
+    <a href='#' class="btn btn-warning glyphicon glyphicon-pencil display edit-btn"> Editar</a> </text> )
+                                                                                                        })
+        </div>
+
+        <div id="TablExport">
+            <table align="center">
+                <tr>
+                    <td>@Html.ActionLink(" Export A Pdf", "GetPdf", "Deptos", new { @class = "btn btn-primary fa fa-file-pdf-o" }) | </td>
+                    <td> </td>
+                    <td>@Html.ActionLink(" Export A Excel", "GetXls", "Deptos", new { @class = "btn btn-primary fa fa-file-excel-o" }) | </td>
+                    <td> </td>
+                    <td>@Html.ActionLink(" Export A CSV", "GetCsv", "Deptos", new { @class = "btn btn-primary fa fa-file-excel-o" }) | </td>
+                    <td> </td>
+                    <td>@Html.ActionLink(" Export A DOC", "GetDocx", "Deptos", new { @class = "btn btn-primary fa fa-file-word-o" }) </td>
+                </tr>
+            </table>
+        </div>
+    }
+    else
+    {
+        <div>
+            <table align="center">
+                <tr>
+                    <td>
+                        <h4> <i class="fa fa-folder-open"></i> No Hay Datos Disponibles, Haga Click en <b>Agregar Sistema Salud</b> <i class="fa fa-folder-open"></i> </h4>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    }
+</form>
+
+<!-- Modal Agrega Isapres / Fonasa-->
+<div class="modal" id="ModAgrSistSalud">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header text-center">
+                <h4 class="modal-title">Agregar Sistema Salud</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form id="IngSistSalud" method="post">
+                    <table>
+                        <tr>
+                            <td>Nombre Isapre</td>
+                            <td><input type="text" id="NomIsap" required /></td>
+                        </tr>
+                        <tr></tr>
+                        <tr>
+                            <td>Porcentaje Cotización</td>
+                            <td><input type="text" id="PorcCotiz" /></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button class="btn btn-success" id="BtnGrab" value="Grabar"><i class="fa fa-download"></i> Grabar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--Modal Para Modificar Isapres / Fonasa-->
+<div class="modal" id="ModModSistSalud">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header text-center">
+                <h4 class="modal-title">Editar Sistemas de Salud </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form id="ModSistSalud" method="post">
+                    <table>
+                        <tr>
+                            <td>Nombre Isapre</td>
+                            <td><input type="text" id="ModNomIsap" required /></td>
+                        </tr>
+                        <tr></tr>
+                        <tr>
+                            <td>Porcentaje Cotización</td>
+                            <td><input type="text" id="ModPorcIsap" /></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button class="btn btn-success" id="BtnModSistSalud" value="Modificar"><i class="fa fa-archive"></i> Modificar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <link href="~/Content/toastr.css" rel="stylesheet" />
+    <script src="~/Scripts/toastr.js"></script>
+    <link href="~/Content/WebGrid/WebGrid.css" rel="stylesheet" />
+    <link href="~/Content/EstilosGenerales/style.css" rel="stylesheet" />
+    <script src="~/Scripts/Aplicacion/Salud/ManSalud.js"></script>
+}

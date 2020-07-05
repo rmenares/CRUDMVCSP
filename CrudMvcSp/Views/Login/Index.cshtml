@@ -1,0 +1,54 @@
+﻿@model CrudMvcSp.Models.Login
+
+@{
+    Layout = null;
+}
+
+@Scripts.Render("~/bundles/jquery")
+
+@Scripts.Render("~/bundles/bootstrap")
+
+@Styles.Render("~/Content/fontawesome")
+
+<link href="~/Content/toastr.css" rel="stylesheet" />
+<script src="~/Scripts/toastr.js"></script>
+
+<link href="~/Content/Aplicacion/Login/Login.css" rel="stylesheet" />
+
+<script src="~/Scripts/Aplicacion/Login/Login.js"></script>
+
+<!DOCTYPE html>
+
+<body>
+    <div class="container">
+        <div class="form-container container-fluid">
+            <h2 class="Titulo">Login Usuario</h2>
+            <br />
+            <form id="formLogin" method="post">
+                <table align="center" id="Formulario" border="0">
+                    <tr>
+                        <td>@*@Html.LabelFor(Model => Model.User_Id, new { @class = "form-group" })*@</td>
+                        <td><i class="fa fa-user"></i>@Html.EditorFor(Model => Model.User_Id, new { @class = "form-input", htmlAttributes = new { placeholder = "Nombre de Usuario" } })</td>
+                    </tr>
+                    @*<tr>
+                        <td>@Html.ValidationMessageFor(Model => Model.User_Id, null, new { @class = "form-group" })</td>
+                    </tr>*@
+                    <tr>
+                        <td>@*@Html.LabelFor(Model => Model.PassWord, new { @class = "form-group" })*@</td>
+                        <td><i class="fa fa-unlock-alt"></i>@Html.EditorFor(Model => Model.PassWord, new { @class = "form-input", htmlAttributes = new { placeholder = "Key" } })</td>
+                    </tr>
+                    @*<tr>
+                        <td>@Html.ValidationMessageFor(Model => Model.PassWord, null, new { @class = "form-group" })</td>
+                    </tr>*@
+                    <tr></tr>
+                    <tr></tr>
+                    <tr>
+                        <td colspan="2" align="center">
+                            <input class="login-button btn btn-lg" type="submit" value="Enviar" id="Enviar" />
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</body>

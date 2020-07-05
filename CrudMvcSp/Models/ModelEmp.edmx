@@ -1,0 +1,2432 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="EmpleadosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Afp">
+          <Key>
+            <PropertyRef Name="Cod_Afp" />
+          </Key>
+          <Property Name="Cod_Afp" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom_Afp" Type="varchar" MaxLength="50" />
+          <Property Name="Porc_Desc" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Carg_Familiar">
+          <Key>
+            <PropertyRef Name="Rut_Benef" />
+          </Key>
+          <Property Name="Rut_Benef" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="ApPat" Type="varchar" MaxLength="50" />
+          <Property Name="ApMat" Type="varchar" MaxLength="50" />
+          <Property Name="Telefono1" Type="varchar" MaxLength="50" />
+          <Property Name="Telefono2" Type="varchar" MaxLength="50" />
+          <Property Name="Fecha_Nac" Type="datetime" />
+          <Property Name="Cod_Sexo" Type="int" />
+          <Property Name="Calle_Pje" Type="varchar" MaxLength="50" />
+          <Property Name="Num_Casa" Type="varchar" MaxLength="50" />
+          <Property Name="Villa_Pobl" Type="varchar" MaxLength="50" />
+          <Property Name="Comuna_Id" Type="int" />
+          <Property Name="Provincia_Id" Type="int" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="Rut_Empleado" Type="varchar" MaxLength="10" />
+          <Property Name="Id_Nac" Type="int" />
+          <Property Name="Descripcion" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Cargas_Familiares">
+          <Key>
+            <PropertyRef Name="Id_Tram_Carg" />
+          </Key>
+          <Property Name="Id_Tram_Carg" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tramo" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="Desde" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Hasta" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ValorPagarCarg" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cargos">
+          <Key>
+            <PropertyRef Name="Id_Carg" />
+          </Key>
+          <Property Name="Id_Carg" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descr_Cargo" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Comuna">
+          <Key>
+            <PropertyRef Name="Comuna_Id" />
+          </Key>
+          <Property Name="Comuna_Id" Type="int" Nullable="false" />
+          <Property Name="Comuna" Type="varchar" MaxLength="50" />
+          <Property Name="Provincia_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Departamento">
+          <Key>
+            <PropertyRef Name="Id_Depto" />
+          </Key>
+          <Property Name="Id_Depto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NomDepto" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Empleados">
+          <Key>
+            <PropertyRef Name="Rut_Empleado" />
+          </Key>
+          <Property Name="Rut_Empleado" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ApePat" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ApeMat" Type="varchar" MaxLength="50" />
+          <Property Name="Id_Depto" Type="int" Nullable="false" />
+          <Property Name="Id_Carg" Type="int" Nullable="false" />
+          <Property Name="Anexo" Type="varchar" MaxLength="50" />
+          <Property Name="EmailEmp" Type="varchar" MaxLength="50" />
+          <Property Name="Fecha_Incorporacion" Type="varchar" MaxLength="50" />
+          <Property Name="Rut_Empresa" Type="varchar" MaxLength="10" />
+          <Property Name="Id_Sexo" Type="int" Nullable="false" />
+          <Property Name="Id_Nac" Type="int" Nullable="false" />
+          <Property Name="Cod_Afp" Type="int" Nullable="false" />
+          <Property Name="Cod_Salud" Type="int" Nullable="false" />
+          <Property Name="Calle_Pje" Type="varchar" MaxLength="50" />
+          <Property Name="NumCasa" Type="varchar" MaxLength="50" />
+          <Property Name="Vill_Pobl" Type="varchar" MaxLength="50" />
+          <Property Name="Comuna_Id" Type="int" Nullable="false" />
+          <Property Name="Provincia_Id" Type="int" Nullable="false" />
+          <Property Name="Fono" Type="varchar" MaxLength="50" />
+          <Property Name="Persona_Emergencia" Type="varchar" MaxLength="50" />
+          <Property Name="Fono_Emergencia" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Fecha_Nacimiento" Type="datetime" />
+          <Property Name="Foto_Usuario" Type="varbinary(max)" />
+          <Property Name="Fecha_Despido" Type="varchar" MaxLength="50" />
+          <Property Name="Retirado" Type="varchar" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Empresa">
+          <Key>
+            <PropertyRef Name="Rut_Empresa" />
+          </Key>
+          <Property Name="Id_Empresa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Rut_Empresa" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Nombre_Empresa" Type="varchar" MaxLength="50" />
+          <Property Name="Calle_Pje_Avda" Type="varchar" MaxLength="50" />
+          <Property Name="Numero" Type="varchar" MaxLength="50" />
+          <Property Name="Vill_Pobl" Type="varchar" MaxLength="50" />
+          <Property Name="Comuna_Id" Type="int" Nullable="false" />
+          <Property Name="Provincia_Id" Type="int" Nullable="false" />
+          <Property Name="fono" Type="varchar" MaxLength="50" />
+          <Property Name="emailemp" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Liquidacion_Sueldo">
+          <Key>
+            <PropertyRef Name="Rut_Empleado" />
+          </Key>
+          <Property Name="Id_Liq" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tipo_Renumeracion" Type="int" />
+          <Property Name="Rut_Empleado" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Fecha_Liquidacion" Type="datetime" />
+          <Property Name="Sueldo_Base" Type="varchar" MaxLength="50" />
+          <Property Name="Remuneracion_Imponible" Type="varchar" MaxLength="50" />
+          <Property Name="Cant_Carg_Fam" Type="varchar" MaxLength="50" />
+          <Property Name="PagoTot_Carg_Fam" Type="varchar" MaxLength="50" />
+          <Property Name="Movilizacion" Type="varchar" MaxLength="50" />
+          <Property Name="Colacion" Type="varchar" MaxLength="50" />
+          <Property Name="Cod_Afp" Type="int" />
+          <Property Name="Cotizacion_Previsional" Type="varchar" MaxLength="50" />
+          <Property Name="Adicional_Prevision" Type="varchar" MaxLength="50" />
+          <Property Name="Cod_Salud" Type="int" />
+          <Property Name="Cotizacion_Salud" Type="varchar" MaxLength="50" />
+          <Property Name="Adicional_Salud" Type="varchar" MaxLength="50" />
+          <Property Name="Otros_Descuentos" Type="varchar" MaxLength="50" />
+          <Property Name="Alcance_Liquido" Type="varchar" MaxLength="50" />
+          <Property Name="Vales_Anticipos" Type="varchar" MaxLength="50" />
+          <Property Name="Sueldo_Liquido" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="User_Id" />
+          </Key>
+          <Property Name="User_Id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PassWord" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Nacionalidad">
+          <Key>
+            <PropertyRef Name="Id_Nac" />
+          </Key>
+          <Property Name="Id_Nac" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Provincia">
+          <Key>
+            <PropertyRef Name="Provincia_Id" />
+          </Key>
+          <Property Name="Provincia_Id" Type="int" Nullable="false" />
+          <Property Name="Provincia_Nombre" Type="varchar" MaxLength="23" />
+          <Property Name="Region_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="Region">
+          <Key>
+            <PropertyRef Name="Region_Id" />
+          </Key>
+          <Property Name="Region_Id" Type="int" Nullable="false" />
+          <Property Name="REGION_NOMBRE" Type="varchar" MaxLength="50" />
+          <Property Name="Provincia_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="Salud">
+          <Key>
+            <PropertyRef Name="Cod_Salud" />
+          </Key>
+          <Property Name="Cod_Salud" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre_Salud" Type="varchar" MaxLength="50" />
+          <Property Name="Porc_Cotiz" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Sexo">
+          <Key>
+            <PropertyRef Name="Id_Sexo" />
+          </Key>
+          <Property Name="Id_Sexo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TablImpDiario">
+          <Key>
+            <PropertyRef Name="Id_Factor_Diario" />
+          </Key>
+          <Property Name="Id_Factor_Diario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Desde" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="Hasta" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="Factor" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="CantAReb" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="TasaImpEfec" Type="decimal" Precision="18" Scale="3" />
+        </EntityType>
+        <EntityType Name="TablImpMensual">
+          <Key>
+            <PropertyRef Name="Id_Factor_Mensual" />
+          </Key>
+          <Property Name="Id_Factor_Mensual" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Desde" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="Hasta" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="Factor" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="CantAReb" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="TasaImpEfec" Type="decimal" Precision="18" Scale="3" />
+        </EntityType>
+        <EntityType Name="TablImpQuincenal">
+          <Key>
+            <PropertyRef Name="Id_Factor_Quincenal" />
+          </Key>
+          <Property Name="Id_Factor_Quincenal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Desde" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="Hasta" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="Factor" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="CantAReb" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="TasaImpEfec" Type="decimal" Precision="18" Scale="3" />
+        </EntityType>
+        <EntityType Name="TablImpSemanal">
+          <Key>
+            <PropertyRef Name="Id_Factor_Semanal" />
+          </Key>
+          <Property Name="Id_Factor_Semanal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Desde" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="Hasta" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="Factor" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="CantAReb" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="TasaImpEfec" Type="decimal" Precision="18" Scale="3" />
+        </EntityType>
+        <Association Name="FK__Empleados__Id_Se__13BCEBC1">
+          <End Role="Sexo" Type="Self.Sexo" Multiplicity="1" />
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sexo">
+              <PropertyRef Name="Id_Sexo" />
+            </Principal>
+            <Dependent Role="Empleados">
+              <PropertyRef Name="Id_Sexo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Carg_Familiar_Comuna">
+          <End Role="Comuna" Type="Self.Comuna" Multiplicity="0..1" />
+          <End Role="Carg_Familiar" Type="Self.Carg_Familiar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comuna">
+              <PropertyRef Name="Comuna_Id" />
+            </Principal>
+            <Dependent Role="Carg_Familiar">
+              <PropertyRef Name="Comuna_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Carg_Familiar_Empleados">
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="0..1" />
+          <End Role="Carg_Familiar" Type="Self.Carg_Familiar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleados">
+              <PropertyRef Name="Rut_Empleado" />
+            </Principal>
+            <Dependent Role="Carg_Familiar">
+              <PropertyRef Name="Rut_Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Carg_Familiar_Nacionalidad">
+          <End Role="Nacionalidad" Type="Self.Nacionalidad" Multiplicity="0..1" />
+          <End Role="Carg_Familiar" Type="Self.Carg_Familiar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nacionalidad">
+              <PropertyRef Name="Id_Nac" />
+            </Principal>
+            <Dependent Role="Carg_Familiar">
+              <PropertyRef Name="Id_Nac" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Carg_Familiar_Sexo">
+          <End Role="Sexo" Type="Self.Sexo" Multiplicity="0..1" />
+          <End Role="Carg_Familiar" Type="Self.Carg_Familiar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sexo">
+              <PropertyRef Name="Id_Sexo" />
+            </Principal>
+            <Dependent Role="Carg_Familiar">
+              <PropertyRef Name="Cod_Sexo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comuna_provincia">
+          <End Role="Provincia" Type="Self.Provincia" Multiplicity="1" />
+          <End Role="Comuna" Type="Self.Comuna" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provincia">
+              <PropertyRef Name="Provincia_Id" />
+            </Principal>
+            <Dependent Role="Comuna">
+              <PropertyRef Name="Provincia_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empleados_Afp">
+          <End Role="Afp" Type="Self.Afp" Multiplicity="1" />
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Afp">
+              <PropertyRef Name="Cod_Afp" />
+            </Principal>
+            <Dependent Role="Empleados">
+              <PropertyRef Name="Cod_Afp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empleados_Cargos">
+          <End Role="Cargos" Type="Self.Cargos" Multiplicity="1" />
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cargos">
+              <PropertyRef Name="Id_Carg" />
+            </Principal>
+            <Dependent Role="Empleados">
+              <PropertyRef Name="Id_Carg" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empleados_Comuna">
+          <End Role="Comuna" Type="Self.Comuna" Multiplicity="1" />
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comuna">
+              <PropertyRef Name="Comuna_Id" />
+            </Principal>
+            <Dependent Role="Empleados">
+              <PropertyRef Name="Comuna_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empleados_Departamento">
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="1" />
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="Id_Depto" />
+            </Principal>
+            <Dependent Role="Empleados">
+              <PropertyRef Name="Id_Depto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empleados_Empresa">
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="0..1" />
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="Rut_Empresa" />
+            </Principal>
+            <Dependent Role="Empleados">
+              <PropertyRef Name="Rut_Empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empleados_Nacionalidad">
+          <End Role="Nacionalidad" Type="Self.Nacionalidad" Multiplicity="1" />
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nacionalidad">
+              <PropertyRef Name="Id_Nac" />
+            </Principal>
+            <Dependent Role="Empleados">
+              <PropertyRef Name="Id_Nac" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empleados_Salud">
+          <End Role="Salud" Type="Self.Salud" Multiplicity="1" />
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Salud">
+              <PropertyRef Name="Cod_Salud" />
+            </Principal>
+            <Dependent Role="Empleados">
+              <PropertyRef Name="Cod_Salud" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_provincia_region">
+          <End Role="Region" Type="Self.Region" Multiplicity="0..1" />
+          <End Role="Provincia" Type="Self.Provincia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Region">
+              <PropertyRef Name="Region_Id" />
+            </Principal>
+            <Dependent Role="Provincia">
+              <PropertyRef Name="Region_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rg">
+          <End Role="Provincia" Type="Self.Provincia" Multiplicity="1" />
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provincia">
+              <PropertyRef Name="Provincia_Id" />
+            </Principal>
+            <Dependent Role="Empleados">
+              <PropertyRef Name="Provincia_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="SP_Autoriza" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="User_Id" Type="varchar" Mode="In" />
+          <Parameter Name="clave" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="Sp_Del_Carga_Familiar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="rut_benf" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Sp_Del_Empleados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Rut_Empl" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Sp_Ins_Afp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nomb_Afp" Type="varchar" Mode="In" />
+          <Parameter Name="PorcDesc" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="Sp_Ins_Carg_Familiar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Rut_Benef" Type="varchar" Mode="In" />
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="ApPat" Type="varchar" Mode="In" />
+          <Parameter Name="ApMat" Type="varchar" Mode="In" />
+          <Parameter Name="Telefono1" Type="varchar" Mode="In" />
+          <Parameter Name="Telefono2" Type="varchar" Mode="In" />
+          <Parameter Name="Fecha_Nac" Type="datetime" Mode="In" />
+          <Parameter Name="Cod_Sexo" Type="int" Mode="In" />
+          <Parameter Name="Calle_Pje" Type="varchar" Mode="In" />
+          <Parameter Name="Num_Casa" Type="varchar" Mode="In" />
+          <Parameter Name="Villa_Pobl" Type="varchar" Mode="In" />
+          <Parameter Name="Comuna_Id" Type="int" Mode="In" />
+          <Parameter Name="Provincia_Id" Type="int" Mode="In" />
+          <Parameter Name="email" Type="varchar" Mode="In" />
+          <Parameter Name="Rut_Empleado" Type="varchar" Mode="In" />
+          <Parameter Name="Id_Nac" Type="int" Mode="In" />
+          <Parameter Name="Desc" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Sp_Ins_Cargos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Descr" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Sp_Ins_Depto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NomDepto" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Sp_Ins_Empleados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Rut_Empleado" Type="varchar" Mode="In" />
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="ApePat" Type="varchar" Mode="In" />
+          <Parameter Name="ApeMat" Type="varchar" Mode="In" />
+          <Parameter Name="Id_Depto" Type="int" Mode="In" />
+          <Parameter Name="Id_Carg" Type="int" Mode="In" />
+          <Parameter Name="Anexo" Type="varchar" Mode="In" />
+          <Parameter Name="EmailEmp" Type="varchar" Mode="In" />
+          <Parameter Name="Fecha_Incorporacion" Type="varchar" Mode="In" />
+          <Parameter Name="Rut_Empresa" Type="varchar" Mode="In" />
+          <Parameter Name="Id_Sexo" Type="int" Mode="In" />
+          <Parameter Name="Id_Nac" Type="int" Mode="In" />
+          <Parameter Name="Foto_Usuario" Type="varbinary(max)" Mode="In" />
+          <Parameter Name="Fecha_Despido" Type="varchar" Mode="In" />
+          <Parameter Name="Retirado" Type="varchar" Mode="In" />
+          <Parameter Name="Cod_Afp" Type="int" Mode="In" />
+          <Parameter Name="Cod_Salud" Type="int" Mode="In" />
+          <Parameter Name="Calle_Pje" Type="varchar" Mode="In" />
+          <Parameter Name="NumCasa" Type="varchar" Mode="In" />
+          <Parameter Name="Vill_Pobl" Type="varchar" Mode="In" />
+          <Parameter Name="Comuna_Id" Type="int" Mode="In" />
+          <Parameter Name="Provincia_Id" Type="int" Mode="In" />
+          <Parameter Name="Fono" Type="varchar" Mode="In" />
+          <Parameter Name="Persona_Emergencia" Type="varchar" Mode="In" />
+          <Parameter Name="Fono_Emergencia" Type="varchar" Mode="In" />
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="Fecha_Nacimiento" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="Sp_Ins_Empresas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="rut_emp" Type="varchar" Mode="In" />
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Direccion" Type="varchar" Mode="In" />
+          <Parameter Name="num" Type="varchar" Mode="In" />
+          <Parameter Name="vilpob" Type="varchar" Mode="In" />
+          <Parameter Name="comu" Type="varchar" Mode="In" />
+          <Parameter Name="Ciudad" Type="varchar" Mode="In" />
+          <Parameter Name="fono" Type="varchar" Mode="In" />
+          <Parameter Name="emailemp" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Sp_Ins_LiqSueldo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Rut_Empleado" Type="varchar" Mode="In" />
+          <Parameter Name="Fecha_Liquidacion" Type="datetime" Mode="In" />
+          <Parameter Name="Sueldo_Base" Type="varchar" Mode="In" />
+          <Parameter Name="Remuneracion_Imponible" Type="varchar" Mode="In" />
+          <Parameter Name="Cant_Carg_Fam" Type="varchar" Mode="In" />
+          <Parameter Name="PagoTot_Carg_Fam" Type="varchar" Mode="In" />
+          <Parameter Name="Movilizacion" Type="varchar" Mode="In" />
+          <Parameter Name="Colacion" Type="varchar" Mode="In" />
+          <Parameter Name="Cod_Afp" Type="int" Mode="In" />
+          <Parameter Name="Cotizacion_Previsional" Type="varchar" Mode="In" />
+          <Parameter Name="Adicional_Prevision" Type="varchar" Mode="In" />
+          <Parameter Name="Cod_Salud" Type="int" Mode="In" />
+          <Parameter Name="Cotizacion_Salud" Type="varchar" Mode="In" />
+          <Parameter Name="Adicional_Salud" Type="varchar" Mode="In" />
+          <Parameter Name="Otros_Descuentos" Type="varchar" Mode="In" />
+          <Parameter Name="Alcance_Liquido" Type="varchar" Mode="In" />
+          <Parameter Name="Vales_Anticipos" Type="varchar" Mode="In" />
+          <Parameter Name="Sueldo_Liquido" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Sp_Ins_Nacionalidad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Descr" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Sp_Ins_Salud" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nomb_Salud" Type="varchar" Mode="In" />
+          <Parameter Name="Porc_Cotiz" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="Sp_Mues_Afp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Sp_Mues_CargFam" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Sp_Mues_Comunas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Sp_Mues_Cuidades" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_Mues_Empleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_Mues_Empleado_PDF" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Rut_Emp" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Sp_Mues_Empresas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Sp_Mues_LiqSueldo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Rut_Emp" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Sp_Mues_Nacionalidad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Sp_Mues_Salud" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Sp_Sel_Afp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Cod_Afp" Type="int" Mode="In" />
+          <Parameter Name="Nomb_Afp" Type="varchar" Mode="In" />
+          <Parameter Name="PorcDesc" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="Sp_Sel_Carg_FamXRutEmpl" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Rut_Empl" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Sp_Sel_CargFamxRut" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Rut_Benef" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Sp_Sel_Cargos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_Tipo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Sp_Sel_CiudadesxComu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Cod_Comu" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_Sel_Depto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idd" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Sp_Sel_Empleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Rut_Emp" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Sp_Sel_Empresas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Rut_Empresa" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Sp_Sel_LiqSueldo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_Liq" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Sp_Sel_Nacionalidad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_Nac" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Sp_Sel_Salud" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Cod_Salud" Type="int" Mode="In" />
+          <Parameter Name="Nombre_Salud" Type="varchar" Mode="In" />
+          <Parameter Name="Porc_Cotiz" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="Sp_UPD_Afp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Cod_Afp" Type="int" Mode="In" />
+          <Parameter Name="Nomb_Afp" Type="varchar" Mode="In" />
+          <Parameter Name="PorcDesc" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="Sp_UPD_Carg_Familiar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Rut_benef" Type="varchar" Mode="In" />
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="ApPat" Type="varchar" Mode="In" />
+          <Parameter Name="ApMat" Type="varchar" Mode="In" />
+          <Parameter Name="fono1" Type="varchar" Mode="In" />
+          <Parameter Name="fono2" Type="varchar" Mode="In" />
+          <Parameter Name="fech_Nac" Type="date" Mode="In" />
+          <Parameter Name="Id_Sex" Type="int" Mode="In" />
+          <Parameter Name="Calle_Pje" Type="varchar" Mode="In" />
+          <Parameter Name="numcasa" Type="varchar" Mode="In" />
+          <Parameter Name="vilpob" Type="varchar" Mode="In" />
+          <Parameter Name="comu" Type="int" Mode="In" />
+          <Parameter Name="Provincia_Id" Type="int" Mode="In" />
+          <Parameter Name="email" Type="varchar" Mode="In" />
+          <Parameter Name="Id_Nac" Type="int" Mode="In" />
+          <Parameter Name="Desc" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Sp_UPD_Cargos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_Tipo" Type="int" Mode="In" />
+          <Parameter Name="Descr" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Sp_UPD_Depto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_depto" Type="int" Mode="In" />
+          <Parameter Name="NomDept" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Sp_UPD_Empleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Rut_Empl" Type="varchar" Mode="In" />
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="ApePat" Type="varchar" Mode="In" />
+          <Parameter Name="ApeMat" Type="varchar" Mode="In" />
+          <Parameter Name="Id_Depto" Type="int" Mode="In" />
+          <Parameter Name="Id_Carg" Type="int" Mode="In" />
+          <Parameter Name="Anexo" Type="varchar" Mode="In" />
+          <Parameter Name="EmailEmp" Type="varchar" Mode="In" />
+          <Parameter Name="Fecha_Incorporacion" Type="varchar" Mode="In" />
+          <Parameter Name="Rut_Empresa" Type="varchar" Mode="In" />
+          <Parameter Name="Id_Sexo" Type="int" Mode="In" />
+          <Parameter Name="Id_Nac" Type="int" Mode="In" />
+          <Parameter Name="Foto_Usuario" Type="varbinary(max)" Mode="In" />
+          <Parameter Name="Cod_Afp" Type="int" Mode="In" />
+          <Parameter Name="Cod_Salud" Type="int" Mode="In" />
+          <Parameter Name="Calle_Pje" Type="varchar" Mode="In" />
+          <Parameter Name="NumCasa" Type="varchar" Mode="In" />
+          <Parameter Name="Vill_Pobl" Type="varchar" Mode="In" />
+          <Parameter Name="Comuna_Id" Type="int" Mode="In" />
+          <Parameter Name="Provincia_Id" Type="int" Mode="In" />
+          <Parameter Name="Fono" Type="varchar" Mode="In" />
+          <Parameter Name="Persona_Emergencia" Type="varchar" Mode="In" />
+          <Parameter Name="Fono_Emergencia" Type="varchar" Mode="In" />
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="Fecha_Nacimiento" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="Sp_UPD_Empresas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="rut_emp" Type="varchar" Mode="In" />
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Direccion" Type="varchar" Mode="In" />
+          <Parameter Name="num" Type="varchar" Mode="In" />
+          <Parameter Name="vilpob" Type="varchar" Mode="In" />
+          <Parameter Name="comu" Type="varchar" Mode="In" />
+          <Parameter Name="Ciudad" Type="varchar" Mode="In" />
+          <Parameter Name="fono" Type="varchar" Mode="In" />
+          <Parameter Name="email" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Sp_UPD_LiqSueldo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_Liq" Type="int" Mode="In" />
+          <Parameter Name="Rut_Emp" Type="varchar" Mode="In" />
+          <Parameter Name="FechLiq" Type="date" Mode="In" />
+          <Parameter Name="SueBase" Type="varchar" Mode="In" />
+          <Parameter Name="RemImp" Type="varchar" Mode="In" />
+          <Parameter Name="Cant_Carg" Type="varchar" Mode="In" />
+          <Parameter Name="Pag_Tot_Car" Type="varchar" Mode="In" />
+          <Parameter Name="Movi" Type="varchar" Mode="In" />
+          <Parameter Name="Colac" Type="varchar" Mode="In" />
+          <Parameter Name="Cod_Afp" Type="int" Mode="In" />
+          <Parameter Name="Cotiz" Type="varchar" Mode="In" />
+          <Parameter Name="AdicPrev" Type="varchar" Mode="In" />
+          <Parameter Name="Cod_Salud" Type="int" Mode="In" />
+          <Parameter Name="CotizSa" Type="varchar" Mode="In" />
+          <Parameter Name="Adic_Salud" Type="varchar" Mode="In" />
+          <Parameter Name="OtrDesc" Type="varchar" Mode="In" />
+          <Parameter Name="AlcLiq" Type="varchar" Mode="In" />
+          <Parameter Name="ValAntic" Type="varchar" Mode="In" />
+          <Parameter Name="SueldLiq" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Sp_UPD_Nacionalidad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_Nac" Type="int" Mode="In" />
+          <Parameter Name="Descr" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Sp_UPD_Salud" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Cod_Salud" Type="int" Mode="In" />
+          <Parameter Name="Nombre_Salud" Type="varchar" Mode="In" />
+          <Parameter Name="Porc_Cotiz" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="EmpleadosModelStoreContainer">
+          <EntitySet Name="Afp" EntityType="Self.Afp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Carg_Familiar" EntityType="Self.Carg_Familiar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cargas_Familiares" EntityType="Self.Cargas_Familiares" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cargos" EntityType="Self.Cargos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Comuna" EntityType="Self.Comuna" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Departamento" EntityType="Self.Departamento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empleados" EntityType="Self.Empleados" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empresa" EntityType="Self.Empresa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Liquidacion_Sueldo" EntityType="Self.Liquidacion_Sueldo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Nacionalidad" EntityType="Self.Nacionalidad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Provincia" EntityType="Self.Provincia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Region" EntityType="Self.Region" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Salud" EntityType="Self.Salud" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sexo" EntityType="Self.Sexo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TablImpDiario" EntityType="Self.TablImpDiario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TablImpMensual" EntityType="Self.TablImpMensual" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TablImpQuincenal" EntityType="Self.TablImpQuincenal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TablImpSemanal" EntityType="Self.TablImpSemanal" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Empleados__Id_Se__13BCEBC1" Association="Self.FK__Empleados__Id_Se__13BCEBC1">
+            <End Role="Sexo" EntitySet="Sexo" />
+            <End Role="Empleados" EntitySet="Empleados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Carg_Familiar_Comuna" Association="Self.FK_Carg_Familiar_Comuna">
+            <End Role="Comuna" EntitySet="Comuna" />
+            <End Role="Carg_Familiar" EntitySet="Carg_Familiar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Carg_Familiar_Empleados" Association="Self.FK_Carg_Familiar_Empleados">
+            <End Role="Empleados" EntitySet="Empleados" />
+            <End Role="Carg_Familiar" EntitySet="Carg_Familiar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Carg_Familiar_Nacionalidad" Association="Self.FK_Carg_Familiar_Nacionalidad">
+            <End Role="Nacionalidad" EntitySet="Nacionalidad" />
+            <End Role="Carg_Familiar" EntitySet="Carg_Familiar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Carg_Familiar_Sexo" Association="Self.FK_Carg_Familiar_Sexo">
+            <End Role="Sexo" EntitySet="Sexo" />
+            <End Role="Carg_Familiar" EntitySet="Carg_Familiar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comuna_provincia" Association="Self.FK_Comuna_provincia">
+            <End Role="Provincia" EntitySet="Provincia" />
+            <End Role="Comuna" EntitySet="Comuna" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empleados_Afp" Association="Self.FK_Empleados_Afp">
+            <End Role="Afp" EntitySet="Afp" />
+            <End Role="Empleados" EntitySet="Empleados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empleados_Cargos" Association="Self.FK_Empleados_Cargos">
+            <End Role="Cargos" EntitySet="Cargos" />
+            <End Role="Empleados" EntitySet="Empleados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empleados_Comuna" Association="Self.FK_Empleados_Comuna">
+            <End Role="Comuna" EntitySet="Comuna" />
+            <End Role="Empleados" EntitySet="Empleados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empleados_Departamento" Association="Self.FK_Empleados_Departamento">
+            <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="Empleados" EntitySet="Empleados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empleados_Empresa" Association="Self.FK_Empleados_Empresa">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="Empleados" EntitySet="Empleados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empleados_Nacionalidad" Association="Self.FK_Empleados_Nacionalidad">
+            <End Role="Nacionalidad" EntitySet="Nacionalidad" />
+            <End Role="Empleados" EntitySet="Empleados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empleados_Salud" Association="Self.FK_Empleados_Salud">
+            <End Role="Salud" EntitySet="Salud" />
+            <End Role="Empleados" EntitySet="Empleados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_provincia_region" Association="Self.FK_provincia_region">
+            <End Role="Region" EntitySet="Region" />
+            <End Role="Provincia" EntitySet="Provincia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rg" Association="Self.FK_Rg">
+            <End Role="Provincia" EntitySet="Provincia" />
+            <End Role="Empleados" EntitySet="Empleados" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EmpleadosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Afp">
+          <Key>
+            <PropertyRef Name="Cod_Afp" />
+          </Key>
+          <Property Name="Cod_Afp" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom_Afp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Porc_Desc" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="Empleados" Relationship="Self.FK_Empleados_Afp" FromRole="Afp" ToRole="Empleados" />
+        </EntityType>
+        <EntityType Name="Carg_Familiar">
+          <Key>
+            <PropertyRef Name="Rut_Benef" />
+          </Key>
+          <Property Name="Rut_Benef" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ApPat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ApMat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_Nac" Type="DateTime" Precision="3" />
+          <Property Name="Cod_Sexo" Type="Int32" />
+          <Property Name="Calle_Pje" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Num_Casa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Villa_Pobl" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Comuna_Id" Type="Int32" />
+          <Property Name="Provincia_Id" Type="Int32" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Rut_Empleado" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Nac" Type="Int32" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Comuna" Relationship="Self.FK_Carg_Familiar_Comuna" FromRole="Carg_Familiar" ToRole="Comuna" />
+          <NavigationProperty Name="Empleados" Relationship="Self.FK_Carg_Familiar_Empleados" FromRole="Carg_Familiar" ToRole="Empleados" />
+          <NavigationProperty Name="Nacionalidad" Relationship="Self.FK_Carg_Familiar_Nacionalidad" FromRole="Carg_Familiar" ToRole="Nacionalidad" />
+          <NavigationProperty Name="Sexo" Relationship="Self.FK_Carg_Familiar_Sexo" FromRole="Carg_Familiar" ToRole="Sexo" />
+        </EntityType>
+        <EntityType Name="Cargas_Familiares">
+          <Key>
+            <PropertyRef Name="Id_Tram_Carg" />
+          </Key>
+          <Property Name="Id_Tram_Carg" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tramo" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Desde" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Hasta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ValorPagarCarg" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cargos">
+          <Key>
+            <PropertyRef Name="Id_Carg" />
+          </Key>
+          <Property Name="Id_Carg" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descr_Cargo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Empleados" Relationship="Self.FK_Empleados_Cargos" FromRole="Cargos" ToRole="Empleados" />
+        </EntityType>
+        <EntityType Name="Comuna">
+          <Key>
+            <PropertyRef Name="Comuna_Id" />
+          </Key>
+          <Property Name="Comuna_Id" Type="Int32" Nullable="false" />
+          <Property Name="Comuna1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Provincia_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Carg_Familiar" Relationship="Self.FK_Carg_Familiar_Comuna" FromRole="Comuna" ToRole="Carg_Familiar" />
+          <NavigationProperty Name="Provincia" Relationship="Self.FK_Comuna_provincia" FromRole="Comuna" ToRole="Provincia" />
+          <NavigationProperty Name="Empleados" Relationship="Self.FK_Empleados_Comuna" FromRole="Comuna" ToRole="Empleados" />
+        </EntityType>
+        <EntityType Name="Departamento">
+          <Key>
+            <PropertyRef Name="Id_Depto" />
+          </Key>
+          <Property Name="Id_Depto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NomDepto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Empleados" Relationship="Self.FK_Empleados_Departamento" FromRole="Departamento" ToRole="Empleados" />
+        </EntityType>
+        <EntityType Name="Empleados">
+          <Key>
+            <PropertyRef Name="Rut_Empleado" />
+          </Key>
+          <Property Name="Rut_Empleado" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ApePat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ApeMat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Depto" Type="Int32" Nullable="false" />
+          <Property Name="Id_Carg" Type="Int32" Nullable="false" />
+          <Property Name="Anexo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmailEmp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_Incorporacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Rut_Empresa" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Sexo" Type="Int32" Nullable="false" />
+          <Property Name="Id_Nac" Type="Int32" Nullable="false" />
+          <Property Name="Cod_Afp" Type="Int32" Nullable="false" />
+          <Property Name="Cod_Salud" Type="Int32" Nullable="false" />
+          <Property Name="Calle_Pje" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NumCasa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Vill_Pobl" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Comuna_Id" Type="Int32" Nullable="false" />
+          <Property Name="Provincia_Id" Type="Int32" Nullable="false" />
+          <Property Name="Fono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Persona_Emergencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Fono_Emergencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_Nacimiento" Type="DateTime" Precision="3" />
+          <Property Name="Foto_Usuario" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Fecha_Despido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Retirado" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Afp" Relationship="Self.FK_Empleados_Afp" FromRole="Empleados" ToRole="Afp" />
+          <NavigationProperty Name="Carg_Familiar" Relationship="Self.FK_Carg_Familiar_Empleados" FromRole="Empleados" ToRole="Carg_Familiar" />
+          <NavigationProperty Name="Cargos" Relationship="Self.FK_Empleados_Cargos" FromRole="Empleados" ToRole="Cargos" />
+          <NavigationProperty Name="Comuna" Relationship="Self.FK_Empleados_Comuna" FromRole="Empleados" ToRole="Comuna" />
+          <NavigationProperty Name="Departamento" Relationship="Self.FK_Empleados_Departamento" FromRole="Empleados" ToRole="Departamento" />
+          <NavigationProperty Name="Sexo" Relationship="Self.FK__Empleados__Id_Se__13BCEBC1" FromRole="Empleados" ToRole="Sexo" />
+          <NavigationProperty Name="Empresa" Relationship="Self.FK_Empleados_Empresa" FromRole="Empleados" ToRole="Empresa" />
+          <NavigationProperty Name="Nacionalidad" Relationship="Self.FK_Empleados_Nacionalidad" FromRole="Empleados" ToRole="Nacionalidad" />
+          <NavigationProperty Name="Salud" Relationship="Self.FK_Empleados_Salud" FromRole="Empleados" ToRole="Salud" />
+          <NavigationProperty Name="Provincia" Relationship="Self.FK_Rg" FromRole="Empleados" ToRole="Provincia" />
+        </EntityType>
+        <EntityType Name="Empresa">
+          <Key>
+            <PropertyRef Name="Rut_Empresa" />
+          </Key>
+          <Property Name="Id_Empresa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Rut_Empresa" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre_Empresa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Calle_Pje_Avda" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Numero" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Vill_Pobl" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Comuna_Id" Type="Int32" Nullable="false" />
+          <Property Name="Provincia_Id" Type="Int32" Nullable="false" />
+          <Property Name="fono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="emailemp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Empleados" Relationship="Self.FK_Empleados_Empresa" FromRole="Empresa" ToRole="Empleados" />
+        </EntityType>
+        <EntityType Name="Liquidacion_Sueldo">
+          <Key>
+            <PropertyRef Name="Rut_Empleado" />
+          </Key>
+          <Property Name="Id_Liq" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tipo_Renumeracion" Type="Int32" />
+          <Property Name="Rut_Empleado" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fecha_Liquidacion" Type="DateTime" Precision="3" />
+          <Property Name="Sueldo_Base" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Remuneracion_Imponible" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Cant_Carg_Fam" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PagoTot_Carg_Fam" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Movilizacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Colacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Cod_Afp" Type="Int32" />
+          <Property Name="Cotizacion_Previsional" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Adicional_Prevision" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Cod_Salud" Type="Int32" />
+          <Property Name="Cotizacion_Salud" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Adicional_Salud" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Otros_Descuentos" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Alcance_Liquido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Vales_Anticipos" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Sueldo_Liquido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="User_Id" />
+          </Key>
+          <Property Name="User_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PassWord" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Nacionalidad">
+          <Key>
+            <PropertyRef Name="Id_Nac" />
+          </Key>
+          <Property Name="Id_Nac" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Carg_Familiar" Relationship="Self.FK_Carg_Familiar_Nacionalidad" FromRole="Nacionalidad" ToRole="Carg_Familiar" />
+          <NavigationProperty Name="Empleados" Relationship="Self.FK_Empleados_Nacionalidad" FromRole="Nacionalidad" ToRole="Empleados" />
+        </EntityType>
+        <EntityType Name="Provincia">
+          <Key>
+            <PropertyRef Name="Provincia_Id" />
+          </Key>
+          <Property Name="Provincia_Id" Type="Int32" Nullable="false" />
+          <Property Name="Provincia_Nombre" Type="String" MaxLength="23" FixedLength="false" Unicode="false" />
+          <Property Name="Region_Id" Type="Int32" />
+          <NavigationProperty Name="Comuna" Relationship="Self.FK_Comuna_provincia" FromRole="Provincia" ToRole="Comuna" />
+          <NavigationProperty Name="Empleados" Relationship="Self.FK_Rg" FromRole="Provincia" ToRole="Empleados" />
+          <NavigationProperty Name="Region" Relationship="Self.FK_provincia_region" FromRole="Provincia" ToRole="Region" />
+        </EntityType>
+        <EntityType Name="Region">
+          <Key>
+            <PropertyRef Name="Region_Id" />
+          </Key>
+          <Property Name="Region_Id" Type="Int32" Nullable="false" />
+          <Property Name="REGION_NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Provincia_Id" Type="Int32" />
+          <NavigationProperty Name="Provincia" Relationship="Self.FK_provincia_region" FromRole="Region" ToRole="Provincia" />
+        </EntityType>
+        <EntityType Name="Salud">
+          <Key>
+            <PropertyRef Name="Cod_Salud" />
+          </Key>
+          <Property Name="Cod_Salud" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre_Salud" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Porc_Cotiz" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="Empleados" Relationship="Self.FK_Empleados_Salud" FromRole="Salud" ToRole="Empleados" />
+        </EntityType>
+        <EntityType Name="Sexo">
+          <Key>
+            <PropertyRef Name="Id_Sexo" />
+          </Key>
+          <Property Name="Id_Sexo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Carg_Familiar" Relationship="Self.FK_Carg_Familiar_Sexo" FromRole="Sexo" ToRole="Carg_Familiar" />
+          <NavigationProperty Name="Empleados" Relationship="Self.FK__Empleados__Id_Se__13BCEBC1" FromRole="Sexo" ToRole="Empleados" />
+        </EntityType>
+        <EntityType Name="TablImpDiario">
+          <Key>
+            <PropertyRef Name="Id_Factor_Diario" />
+          </Key>
+          <Property Name="Id_Factor_Diario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Desde" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="Hasta" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="Factor" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="CantAReb" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="TasaImpEfec" Type="Decimal" Precision="18" Scale="3" />
+        </EntityType>
+        <EntityType Name="TablImpMensual">
+          <Key>
+            <PropertyRef Name="Id_Factor_Mensual" />
+          </Key>
+          <Property Name="Id_Factor_Mensual" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Desde" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="Hasta" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="Factor" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="CantAReb" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="TasaImpEfec" Type="Decimal" Precision="18" Scale="3" />
+        </EntityType>
+        <EntityType Name="TablImpQuincenal">
+          <Key>
+            <PropertyRef Name="Id_Factor_Quincenal" />
+          </Key>
+          <Property Name="Id_Factor_Quincenal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Desde" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="Hasta" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="Factor" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="CantAReb" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="TasaImpEfec" Type="Decimal" Precision="18" Scale="3" />
+        </EntityType>
+        <EntityType Name="TablImpSemanal">
+          <Key>
+            <PropertyRef Name="Id_Factor_Semanal" />
+          </Key>
+          <Property Name="Id_Factor_Semanal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Desde" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="Hasta" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="Factor" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="CantAReb" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="TasaImpEfec" Type="Decimal" Precision="18" Scale="3" />
+        </EntityType>
+        <Association Name="FK_Empleados_Afp">
+          <End Role="Afp" Type="Self.Afp" Multiplicity="1" />
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Afp">
+              <PropertyRef Name="Cod_Afp" />
+            </Principal>
+            <Dependent Role="Empleados">
+              <PropertyRef Name="Cod_Afp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Carg_Familiar_Comuna">
+          <End Role="Comuna" Type="Self.Comuna" Multiplicity="0..1" />
+          <End Role="Carg_Familiar" Type="Self.Carg_Familiar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comuna">
+              <PropertyRef Name="Comuna_Id" />
+            </Principal>
+            <Dependent Role="Carg_Familiar">
+              <PropertyRef Name="Comuna_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Carg_Familiar_Empleados">
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="0..1" />
+          <End Role="Carg_Familiar" Type="Self.Carg_Familiar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleados">
+              <PropertyRef Name="Rut_Empleado" />
+            </Principal>
+            <Dependent Role="Carg_Familiar">
+              <PropertyRef Name="Rut_Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Carg_Familiar_Nacionalidad">
+          <End Role="Nacionalidad" Type="Self.Nacionalidad" Multiplicity="0..1" />
+          <End Role="Carg_Familiar" Type="Self.Carg_Familiar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nacionalidad">
+              <PropertyRef Name="Id_Nac" />
+            </Principal>
+            <Dependent Role="Carg_Familiar">
+              <PropertyRef Name="Id_Nac" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Carg_Familiar_Sexo">
+          <End Role="Sexo" Type="Self.Sexo" Multiplicity="0..1" />
+          <End Role="Carg_Familiar" Type="Self.Carg_Familiar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sexo">
+              <PropertyRef Name="Id_Sexo" />
+            </Principal>
+            <Dependent Role="Carg_Familiar">
+              <PropertyRef Name="Cod_Sexo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empleados_Cargos">
+          <End Role="Cargos" Type="Self.Cargos" Multiplicity="1" />
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cargos">
+              <PropertyRef Name="Id_Carg" />
+            </Principal>
+            <Dependent Role="Empleados">
+              <PropertyRef Name="Id_Carg" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comuna_provincia">
+          <End Role="Provincia" Type="Self.Provincia" Multiplicity="1" />
+          <End Role="Comuna" Type="Self.Comuna" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provincia">
+              <PropertyRef Name="Provincia_Id" />
+            </Principal>
+            <Dependent Role="Comuna">
+              <PropertyRef Name="Provincia_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empleados_Comuna">
+          <End Role="Comuna" Type="Self.Comuna" Multiplicity="1" />
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comuna">
+              <PropertyRef Name="Comuna_Id" />
+            </Principal>
+            <Dependent Role="Empleados">
+              <PropertyRef Name="Comuna_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empleados_Departamento">
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="1" />
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="Id_Depto" />
+            </Principal>
+            <Dependent Role="Empleados">
+              <PropertyRef Name="Id_Depto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empleados__Id_Se__13BCEBC1">
+          <End Role="Sexo" Type="Self.Sexo" Multiplicity="1" />
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sexo">
+              <PropertyRef Name="Id_Sexo" />
+            </Principal>
+            <Dependent Role="Empleados">
+              <PropertyRef Name="Id_Sexo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empleados_Empresa">
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="0..1" />
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="Rut_Empresa" />
+            </Principal>
+            <Dependent Role="Empleados">
+              <PropertyRef Name="Rut_Empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empleados_Nacionalidad">
+          <End Role="Nacionalidad" Type="Self.Nacionalidad" Multiplicity="1" />
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nacionalidad">
+              <PropertyRef Name="Id_Nac" />
+            </Principal>
+            <Dependent Role="Empleados">
+              <PropertyRef Name="Id_Nac" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empleados_Salud">
+          <End Role="Salud" Type="Self.Salud" Multiplicity="1" />
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Salud">
+              <PropertyRef Name="Cod_Salud" />
+            </Principal>
+            <Dependent Role="Empleados">
+              <PropertyRef Name="Cod_Salud" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rg">
+          <End Role="Provincia" Type="Self.Provincia" Multiplicity="1" />
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provincia">
+              <PropertyRef Name="Provincia_Id" />
+            </Principal>
+            <Dependent Role="Empleados">
+              <PropertyRef Name="Provincia_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_provincia_region">
+          <End Role="Region" Type="Self.Region" Multiplicity="0..1" />
+          <End Role="Provincia" Type="Self.Provincia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Region">
+              <PropertyRef Name="Region_Id" />
+            </Principal>
+            <Dependent Role="Provincia">
+              <PropertyRef Name="Region_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EmpleadosEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Afp" EntityType="Self.Afp" />
+          <EntitySet Name="Carg_Familiar" EntityType="Self.Carg_Familiar" />
+          <EntitySet Name="Cargas_Familiares" EntityType="Self.Cargas_Familiares" />
+          <EntitySet Name="Cargos" EntityType="Self.Cargos" />
+          <EntitySet Name="Comuna" EntityType="Self.Comuna" />
+          <EntitySet Name="Departamento" EntityType="Self.Departamento" />
+          <EntitySet Name="Empleados" EntityType="Self.Empleados" />
+          <EntitySet Name="Empresa" EntityType="Self.Empresa" />
+          <EntitySet Name="Liquidacion_Sueldo" EntityType="Self.Liquidacion_Sueldo" />
+          <EntitySet Name="Login" EntityType="Self.Login" />
+          <EntitySet Name="Nacionalidad" EntityType="Self.Nacionalidad" />
+          <EntitySet Name="Provincia" EntityType="Self.Provincia" />
+          <EntitySet Name="Region" EntityType="Self.Region" />
+          <EntitySet Name="Salud" EntityType="Self.Salud" />
+          <EntitySet Name="Sexo" EntityType="Self.Sexo" />
+          <EntitySet Name="TablImpDiario" EntityType="Self.TablImpDiario" />
+          <EntitySet Name="TablImpMensual" EntityType="Self.TablImpMensual" />
+          <EntitySet Name="TablImpQuincenal" EntityType="Self.TablImpQuincenal" />
+          <EntitySet Name="TablImpSemanal" EntityType="Self.TablImpSemanal" />
+          <AssociationSet Name="FK_Empleados_Afp" Association="Self.FK_Empleados_Afp">
+            <End Role="Afp" EntitySet="Afp" />
+            <End Role="Empleados" EntitySet="Empleados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Carg_Familiar_Comuna" Association="Self.FK_Carg_Familiar_Comuna">
+            <End Role="Comuna" EntitySet="Comuna" />
+            <End Role="Carg_Familiar" EntitySet="Carg_Familiar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Carg_Familiar_Empleados" Association="Self.FK_Carg_Familiar_Empleados">
+            <End Role="Empleados" EntitySet="Empleados" />
+            <End Role="Carg_Familiar" EntitySet="Carg_Familiar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Carg_Familiar_Nacionalidad" Association="Self.FK_Carg_Familiar_Nacionalidad">
+            <End Role="Nacionalidad" EntitySet="Nacionalidad" />
+            <End Role="Carg_Familiar" EntitySet="Carg_Familiar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Carg_Familiar_Sexo" Association="Self.FK_Carg_Familiar_Sexo">
+            <End Role="Sexo" EntitySet="Sexo" />
+            <End Role="Carg_Familiar" EntitySet="Carg_Familiar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empleados_Cargos" Association="Self.FK_Empleados_Cargos">
+            <End Role="Cargos" EntitySet="Cargos" />
+            <End Role="Empleados" EntitySet="Empleados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comuna_provincia" Association="Self.FK_Comuna_provincia">
+            <End Role="Provincia" EntitySet="Provincia" />
+            <End Role="Comuna" EntitySet="Comuna" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empleados_Comuna" Association="Self.FK_Empleados_Comuna">
+            <End Role="Comuna" EntitySet="Comuna" />
+            <End Role="Empleados" EntitySet="Empleados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empleados_Departamento" Association="Self.FK_Empleados_Departamento">
+            <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="Empleados" EntitySet="Empleados" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empleados__Id_Se__13BCEBC1" Association="Self.FK__Empleados__Id_Se__13BCEBC1">
+            <End Role="Sexo" EntitySet="Sexo" />
+            <End Role="Empleados" EntitySet="Empleados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empleados_Empresa" Association="Self.FK_Empleados_Empresa">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="Empleados" EntitySet="Empleados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empleados_Nacionalidad" Association="Self.FK_Empleados_Nacionalidad">
+            <End Role="Nacionalidad" EntitySet="Nacionalidad" />
+            <End Role="Empleados" EntitySet="Empleados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empleados_Salud" Association="Self.FK_Empleados_Salud">
+            <End Role="Salud" EntitySet="Salud" />
+            <End Role="Empleados" EntitySet="Empleados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rg" Association="Self.FK_Rg">
+            <End Role="Provincia" EntitySet="Provincia" />
+            <End Role="Empleados" EntitySet="Empleados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_provincia_region" Association="Self.FK_provincia_region">
+            <End Role="Region" EntitySet="Region" />
+            <End Role="Provincia" EntitySet="Provincia" />
+          </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="SP_Autoriza" ReturnType="Collection(EmpleadosModel.SP_Autoriza_Result)">
+            <Parameter Name="User_Id" Mode="In" Type="String" />
+            <Parameter Name="clave" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_Del_Carga_Familiar">
+          <Parameter Name="rut_benf" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_Del_Empleados">
+          <Parameter Name="Rut_Empl" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(EmpleadosModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(EmpleadosModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_Ins_Afp">
+            <Parameter Name="Nomb_Afp" Mode="In" Type="String" />
+            <Parameter Name="PorcDesc" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_Ins_Carg_Familiar">
+            <Parameter Name="Rut_Benef" Mode="In" Type="String" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="ApPat" Mode="In" Type="String" />
+            <Parameter Name="ApMat" Mode="In" Type="String" />
+            <Parameter Name="Telefono1" Mode="In" Type="String" />
+            <Parameter Name="Telefono2" Mode="In" Type="String" />
+            <Parameter Name="Fecha_Nac" Mode="In" Type="DateTime" />
+            <Parameter Name="Cod_Sexo" Mode="In" Type="Int32" />
+            <Parameter Name="Calle_Pje" Mode="In" Type="String" />
+            <Parameter Name="Num_Casa" Mode="In" Type="String" />
+            <Parameter Name="Villa_Pobl" Mode="In" Type="String" />
+            <Parameter Name="Comuna_Id" Mode="In" Type="Int32" />
+            <Parameter Name="Provincia_Id" Mode="In" Type="Int32" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="Rut_Empleado" Mode="In" Type="String" />
+            <Parameter Name="Id_Nac" Mode="In" Type="Int32" />
+            <Parameter Name="Desc" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_Ins_Cargos">
+          <Parameter Name="Descr" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_Ins_Depto">
+          <Parameter Name="NomDepto" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_Ins_Empleados">
+            <Parameter Name="Rut_Empleado" Mode="In" Type="String" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="ApePat" Mode="In" Type="String" />
+            <Parameter Name="ApeMat" Mode="In" Type="String" />
+            <Parameter Name="Id_Depto" Mode="In" Type="Int32" />
+            <Parameter Name="Id_Carg" Mode="In" Type="Int32" />
+            <Parameter Name="Anexo" Mode="In" Type="String" />
+            <Parameter Name="EmailEmp" Mode="In" Type="String" />
+            <Parameter Name="Fecha_Incorporacion" Mode="In" Type="String" />
+            <Parameter Name="Rut_Empresa" Mode="In" Type="String" />
+            <Parameter Name="Id_Sexo" Mode="In" Type="Int32" />
+            <Parameter Name="Id_Nac" Mode="In" Type="Int32" />
+            <Parameter Name="Foto_Usuario" Mode="In" Type="Binary" />
+            <Parameter Name="Fecha_Despido" Mode="In" Type="String" />
+            <Parameter Name="Retirado" Mode="In" Type="String" />
+            <Parameter Name="Cod_Afp" Mode="In" Type="Int32" />
+            <Parameter Name="Cod_Salud" Mode="In" Type="Int32" />
+            <Parameter Name="Calle_Pje" Mode="In" Type="String" />
+            <Parameter Name="NumCasa" Mode="In" Type="String" />
+            <Parameter Name="Vill_Pobl" Mode="In" Type="String" />
+            <Parameter Name="Comuna_Id" Mode="In" Type="Int32" />
+            <Parameter Name="Provincia_Id" Mode="In" Type="Int32" />
+            <Parameter Name="Fono" Mode="In" Type="String" />
+            <Parameter Name="Persona_Emergencia" Mode="In" Type="String" />
+            <Parameter Name="Fono_Emergencia" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Fecha_Nacimiento" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_Ins_Empresas">
+            <Parameter Name="rut_emp" Mode="In" Type="String" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Direccion" Mode="In" Type="String" />
+            <Parameter Name="num" Mode="In" Type="String" />
+            <Parameter Name="vilpob" Mode="In" Type="String" />
+            <Parameter Name="comu" Mode="In" Type="String" />
+            <Parameter Name="Ciudad" Mode="In" Type="String" />
+            <Parameter Name="fono" Mode="In" Type="String" />
+            <Parameter Name="emailemp" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_Ins_LiqSueldo">
+            <Parameter Name="Rut_Empleado" Mode="In" Type="String" />
+            <Parameter Name="Fecha_Liquidacion" Mode="In" Type="DateTime" />
+            <Parameter Name="Sueldo_Base" Mode="In" Type="String" />
+            <Parameter Name="Remuneracion_Imponible" Mode="In" Type="String" />
+            <Parameter Name="Cant_Carg_Fam" Mode="In" Type="String" />
+            <Parameter Name="PagoTot_Carg_Fam" Mode="In" Type="String" />
+            <Parameter Name="Movilizacion" Mode="In" Type="String" />
+            <Parameter Name="Colacion" Mode="In" Type="String" />
+            <Parameter Name="Cod_Afp" Mode="In" Type="Int32" />
+            <Parameter Name="Cotizacion_Previsional" Mode="In" Type="String" />
+            <Parameter Name="Adicional_Prevision" Mode="In" Type="String" />
+            <Parameter Name="Cod_Salud" Mode="In" Type="Int32" />
+            <Parameter Name="Cotizacion_Salud" Mode="In" Type="String" />
+            <Parameter Name="Adicional_Salud" Mode="In" Type="String" />
+            <Parameter Name="Otros_Descuentos" Mode="In" Type="String" />
+            <Parameter Name="Alcance_Liquido" Mode="In" Type="String" />
+            <Parameter Name="Vales_Anticipos" Mode="In" Type="String" />
+            <Parameter Name="Sueldo_Liquido" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_Ins_Nacionalidad">
+          <Parameter Name="Descr" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_Ins_Salud">
+            <Parameter Name="Nomb_Salud" Mode="In" Type="String" />
+            <Parameter Name="Porc_Cotiz" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_Mues_Afp" ReturnType="Collection(EmpleadosModel.Sp_Mues_Afp_Result)" />
+          <FunctionImport Name="Sp_Mues_CargFam" ReturnType="Collection(EmpleadosModel.Sp_Mues_CargFam_Result)" />
+          <FunctionImport Name="Sp_Mues_Comunas" ReturnType="Collection(EmpleadosModel.Sp_Mues_Comunas_Result)" />
+          <FunctionImport Name="Sp_Mues_Cuidades" ReturnType="Collection(EmpleadosModel.Sp_Mues_Cuidades_Result)" />
+          <FunctionImport Name="SP_Mues_Empleado" ReturnType="Collection(EmpleadosModel.SP_Mues_Empleado_Result)" />
+          <FunctionImport Name="SP_Mues_Empleado_PDF" ReturnType="Collection(EmpleadosModel.SP_Mues_Empleado_PDF_Result)">
+          <Parameter Name="Rut_Emp" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_Mues_Empresas" ReturnType="Collection(EmpleadosModel.Sp_Mues_Empresas_Result)" />
+          <FunctionImport Name="Sp_Mues_LiqSueldo" ReturnType="Collection(EmpleadosModel.Sp_Mues_LiqSueldo_Result)">
+          <Parameter Name="Rut_Emp" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_Mues_Nacionalidad" ReturnType="Collection(EmpleadosModel.Sp_Mues_Nacionalidad_Result)" />
+          <FunctionImport Name="Sp_Mues_Salud" ReturnType="Collection(EmpleadosModel.Sp_Mues_Salud_Result)" />
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_Sel_Afp" ReturnType="Collection(EmpleadosModel.Sp_Sel_Afp_Result)">
+            <Parameter Name="Cod_Afp" Mode="In" Type="Int32" />
+            <Parameter Name="Nomb_Afp" Mode="In" Type="String" />
+            <Parameter Name="PorcDesc" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_Sel_Carg_FamXRutEmpl" ReturnType="Collection(EmpleadosModel.Sp_Sel_Carg_FamXRutEmpl_Result)">
+          <Parameter Name="Rut_Empl" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_Sel_CargFamxRut" ReturnType="Collection(EmpleadosModel.Sp_Sel_CargFamxRut_Result)">
+          <Parameter Name="Rut_Benef" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_Sel_Cargos" ReturnType="Collection(EmpleadosModel.Sp_Sel_Cargos_Result)">
+          <Parameter Name="Id_Tipo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_Sel_CiudadesxComu" ReturnType="Collection(EmpleadosModel.Sp_Sel_CiudadesxComu_Result)">
+          <Parameter Name="Cod_Comu" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_Sel_Depto" ReturnType="Collection(String)">
+          <Parameter Name="idd" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_Sel_Empleado" ReturnType="Collection(EmpleadosModel.Sp_Sel_Empleado_Result)">
+          <Parameter Name="Rut_Emp" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_Sel_Empresas" ReturnType="Collection(EmpleadosModel.Sp_Sel_Empresas_Result)">
+          <Parameter Name="Rut_Empresa" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_Sel_LiqSueldo" ReturnType="Collection(EmpleadosModel.Sp_Sel_LiqSueldo_Result)">
+          <Parameter Name="Id_Liq" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_Sel_Nacionalidad" ReturnType="Collection(EmpleadosModel.Sp_Sel_Nacionalidad_Result)">
+          <Parameter Name="id_Nac" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_Sel_Salud" ReturnType="Collection(EmpleadosModel.Sp_Sel_Salud_Result)">
+            <Parameter Name="Cod_Salud" Mode="In" Type="Int32" />
+            <Parameter Name="Nombre_Salud" Mode="In" Type="String" />
+            <Parameter Name="Porc_Cotiz" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_UPD_Afp">
+            <Parameter Name="Cod_Afp" Mode="In" Type="Int32" />
+            <Parameter Name="Nomb_Afp" Mode="In" Type="String" />
+            <Parameter Name="PorcDesc" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_UPD_Carg_Familiar">
+            <Parameter Name="Rut_benef" Mode="In" Type="String" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="ApPat" Mode="In" Type="String" />
+            <Parameter Name="ApMat" Mode="In" Type="String" />
+            <Parameter Name="fono1" Mode="In" Type="String" />
+            <Parameter Name="fono2" Mode="In" Type="String" />
+            <Parameter Name="fech_Nac" Mode="In" Type="DateTime" />
+            <Parameter Name="Id_Sex" Mode="In" Type="Int32" />
+            <Parameter Name="Calle_Pje" Mode="In" Type="String" />
+            <Parameter Name="numcasa" Mode="In" Type="String" />
+            <Parameter Name="vilpob" Mode="In" Type="String" />
+            <Parameter Name="comu" Mode="In" Type="Int32" />
+            <Parameter Name="Provincia_Id" Mode="In" Type="Int32" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="Id_Nac" Mode="In" Type="Int32" />
+            <Parameter Name="Desc" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_UPD_Cargos">
+            <Parameter Name="Id_Tipo" Mode="In" Type="Int32" />
+            <Parameter Name="Descr" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_UPD_Depto">
+            <Parameter Name="Id_depto" Mode="In" Type="Int32" />
+            <Parameter Name="NomDept" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_UPD_Empleado">
+            <Parameter Name="Rut_Empl" Mode="In" Type="String" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="ApePat" Mode="In" Type="String" />
+            <Parameter Name="ApeMat" Mode="In" Type="String" />
+            <Parameter Name="Id_Depto" Mode="In" Type="Int32" />
+            <Parameter Name="Id_Carg" Mode="In" Type="Int32" />
+            <Parameter Name="Anexo" Mode="In" Type="String" />
+            <Parameter Name="EmailEmp" Mode="In" Type="String" />
+            <Parameter Name="Fecha_Incorporacion" Mode="In" Type="String" />
+            <Parameter Name="Rut_Empresa" Mode="In" Type="String" />
+            <Parameter Name="Id_Sexo" Mode="In" Type="Int32" />
+            <Parameter Name="Id_Nac" Mode="In" Type="Int32" />
+            <Parameter Name="Foto_Usuario" Mode="In" Type="Binary" />
+            <Parameter Name="Cod_Afp" Mode="In" Type="Int32" />
+            <Parameter Name="Cod_Salud" Mode="In" Type="Int32" />
+            <Parameter Name="Calle_Pje" Mode="In" Type="String" />
+            <Parameter Name="NumCasa" Mode="In" Type="String" />
+            <Parameter Name="Vill_Pobl" Mode="In" Type="String" />
+            <Parameter Name="Comuna_Id" Mode="In" Type="Int32" />
+            <Parameter Name="Provincia_Id" Mode="In" Type="Int32" />
+            <Parameter Name="Fono" Mode="In" Type="String" />
+            <Parameter Name="Persona_Emergencia" Mode="In" Type="String" />
+            <Parameter Name="Fono_Emergencia" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Fecha_Nacimiento" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_UPD_Empresas">
+            <Parameter Name="rut_emp" Mode="In" Type="String" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Direccion" Mode="In" Type="String" />
+            <Parameter Name="num" Mode="In" Type="String" />
+            <Parameter Name="vilpob" Mode="In" Type="String" />
+            <Parameter Name="comu" Mode="In" Type="String" />
+            <Parameter Name="Ciudad" Mode="In" Type="String" />
+            <Parameter Name="fono" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_UPD_LiqSueldo">
+            <Parameter Name="Id_Liq" Mode="In" Type="Int32" />
+            <Parameter Name="Rut_Emp" Mode="In" Type="String" />
+            <Parameter Name="FechLiq" Mode="In" Type="DateTime" />
+            <Parameter Name="SueBase" Mode="In" Type="String" />
+            <Parameter Name="RemImp" Mode="In" Type="String" />
+            <Parameter Name="Cant_Carg" Mode="In" Type="String" />
+            <Parameter Name="Pag_Tot_Car" Mode="In" Type="String" />
+            <Parameter Name="Movi" Mode="In" Type="String" />
+            <Parameter Name="Colac" Mode="In" Type="String" />
+            <Parameter Name="Cod_Afp" Mode="In" Type="Int32" />
+            <Parameter Name="Cotiz" Mode="In" Type="String" />
+            <Parameter Name="AdicPrev" Mode="In" Type="String" />
+            <Parameter Name="Cod_Salud" Mode="In" Type="Int32" />
+            <Parameter Name="CotizSa" Mode="In" Type="String" />
+            <Parameter Name="Adic_Salud" Mode="In" Type="String" />
+            <Parameter Name="OtrDesc" Mode="In" Type="String" />
+            <Parameter Name="AlcLiq" Mode="In" Type="String" />
+            <Parameter Name="ValAntic" Mode="In" Type="String" />
+            <Parameter Name="SueldLiq" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_UPD_Nacionalidad">
+            <Parameter Name="Id_Nac" Mode="In" Type="Int32" />
+            <Parameter Name="Descr" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_UPD_Salud">
+            <Parameter Name="Cod_Salud" Mode="In" Type="Int32" />
+            <Parameter Name="Nombre_Salud" Mode="In" Type="String" />
+            <Parameter Name="Porc_Cotiz" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+        </EntityContainer>
+        <ComplexType Name="SP_Autoriza_Result">
+          <Property Type="String" Name="User_Id" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PassWord" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Sp_Mues_Afp_Result">
+          <Property Type="Int32" Name="Cod_Afp" Nullable="false" />
+          <Property Type="String" Name="Nom_Afp" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Porc_Desc" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="Sp_Mues_CargFam_Result">
+          <Property Type="String" Name="Rut_Carga" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Paterno" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Materno" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Fono_Movil" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Fono_Fijo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Fecha_Nacimiento" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Sexo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Direccion" Nullable="true" MaxLength="101" />
+          <Property Type="String" Name="Villa" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Comuna" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Ciudad" Nullable="true" MaxLength="23" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Rut_Empleado" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Nombre_Empleado" Nullable="false" MaxLength="101" />
+          <Property Type="String" Name="Nacionalidad" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Comentarios" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Sp_Mues_Comunas_Result">
+          <Property Type="Int32" Name="Comuna_Id" Nullable="false" />
+          <Property Type="String" Name="Comuna" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Sp_Mues_Cuidades_Result">
+          <Property Type="Int32" Name="PROVINCIA_ID" Nullable="false" />
+          <Property Type="String" Name="PROVINCIA_NOMBRE" Nullable="true" MaxLength="23" />
+          <Property Type="Int32" Name="REGION_ID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_Mues_Empleado_Result">
+          <Property Type="String" Name="Rut" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Apellido" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Departamento" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Cargo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Direccion" Nullable="true" MaxLength="101" />
+          <Property Type="String" Name="Comuna" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Ciudad" Nullable="true" MaxLength="23" />
+          <Property Type="String" Name="Fono" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Correo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Nacionalidad" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Sexo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Nombre_AFP" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SALUD" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SP_Mues_Empleado_PDF_Result">
+          <Property Type="String" Name="Rut" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Apellido" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Departamento" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Cargo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Direccion" Nullable="true" MaxLength="101" />
+          <Property Type="String" Name="Comuna" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Ciudad" Nullable="true" MaxLength="23" />
+          <Property Type="String" Name="Fono" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Correo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Nacionalidad" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Sexo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Nombre_AFP" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SALUD" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Sp_Mues_Empresas_Result">
+          <Property Type="String" Name="Rut_Empresa" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Nombre_Empresa" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Calle_Pje_Avda" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Numero" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Vill_Pobl" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Comuna" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Provincia_Nombre" Nullable="true" MaxLength="23" />
+          <Property Type="String" Name="fono" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="emailemp" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Sp_Mues_LiqSueldo_Result">
+          <Property Type="DateTime" Name="Fecha_Liquidacion" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Sueldo_Base" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Remuneracion_Imponible" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Colacion" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Movilizacion" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Cod_Afp" Nullable="true" />
+          <Property Type="String" Name="Cotizacion_Previsional" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Adicional_Prevision" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Cod_Salud" Nullable="true" />
+          <Property Type="String" Name="Cotizacion_Salud" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Adicional_Salud" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Otros_Descuentos" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Alcance_Liquido" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Vales_Anticipos" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Sueldo_Liquido" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Sp_Mues_Nacionalidad_Result">
+          <Property Type="Int32" Name="Id_Nac" Nullable="false" />
+          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Sp_Mues_Salud_Result">
+          <Property Type="Int32" Name="Cod_Salud" Nullable="false" />
+          <Property Type="String" Name="Nombre_Salud" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Porc_Cotiz" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="Sp_Sel_Afp_Result">
+          <Property Type="Int32" Name="Cod_Afp" Nullable="false" />
+          <Property Type="String" Name="Nom_Afp" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Porc_Desc" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="Sp_Sel_Carg_FamXRutEmpl_Result">
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Paterno" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Materno" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Fono_Movil" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Fono_Fijo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Fecha_Nacimiento" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Sexo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Direccion" Nullable="true" MaxLength="101" />
+          <Property Type="String" Name="Villa" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Comuna" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Ciudad" Nullable="true" MaxLength="23" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Rut_Empleado" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Nombre_Empleado" Nullable="false" MaxLength="101" />
+          <Property Type="String" Name="Nacionalidad" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Comentarios" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Sp_Sel_CargFamxRut_Result">
+          <Property Type="String" Name="Rut_Benef" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ApPat" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ApMat" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Telefono1" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Telefono2" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Fecha_Nacimiento" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="Cod_Sexo" Nullable="true" />
+          <Property Type="String" Name="Calle_Pje" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Num_Casa" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Villa_Pobl" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Comuna_Id" Nullable="true" />
+          <Property Type="Int32" Name="Provincia_Id" Nullable="true" />
+          <Property Type="String" Name="email" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Rut_Empleado" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="Id_Nac" Nullable="true" />
+          <Property Type="String" Name="Descripcion" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Sp_Sel_Cargos_Result">
+          <Property Type="Int32" Name="Id_Carg" Nullable="false" />
+          <Property Type="String" Name="Descr_Cargo" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Sp_Sel_CiudadesxComu_Result">
+          <Property Type="Int32" Name="Provincia_Id" Nullable="false" />
+          <Property Type="String" Name="Provincia_Nombre" Nullable="true" MaxLength="23" />
+        </ComplexType>
+        <ComplexType Name="Sp_Sel_Empleado_Result">
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ApePat" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ApeMat" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Id_Depto" Nullable="false" />
+          <Property Type="Int32" Name="Id_Carg" Nullable="false" />
+          <Property Type="String" Name="Anexo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EmailEmp" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Fecha_Incorporacion" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Rut_Empresa" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="Id_Sexo" Nullable="false" />
+          <Property Type="Int32" Name="Id_Nac" Nullable="false" />
+          <Property Type="Binary" Name="Foto_Usuario" Nullable="true" />
+          <Property Type="Int32" Name="Cod_Afp" Nullable="false" />
+          <Property Type="Int32" Name="Cod_Salud" Nullable="false" />
+          <Property Type="String" Name="Calle_Pje" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="NumCasa" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Vill_Pobl" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Comuna_Id" Nullable="false" />
+          <Property Type="Int32" Name="Provincia_Id" Nullable="false" />
+          <Property Type="String" Name="Fono" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Persona_Emergencia" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Fono_Emergencia" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Fecha_Nacimiento" Nullable="true" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="Sp_Sel_Empresas_Result">
+          <Property Type="String" Name="Rut_Empresa" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Nombre_Empresa" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Calle_Pje_Avda" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Numero" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Vill_Pobl" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Comuna" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PROVINCIA_NOMBRE" Nullable="true" MaxLength="23" />
+          <Property Type="String" Name="fono" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="emailemp" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Sp_Sel_LiqSueldo_Result">
+          <Property Type="DateTime" Name="Fecha_Liquidacion" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Sueldo_Base" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Remuneracion_Imponible" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Colacion" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Movilizacion" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Cod_Afp" Nullable="true" />
+          <Property Type="String" Name="Cotizacion_Previsional" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Adicional_Prevision" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Cod_Salud" Nullable="true" />
+          <Property Type="String" Name="Cotizacion_Salud" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Adicional_Salud" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Otros_Descuentos" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Alcance_Liquido" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Vales_Anticipos" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Sueldo_Liquido" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Sp_Sel_Nacionalidad_Result">
+          <Property Type="Int32" Name="Id_Nac" Nullable="false" />
+          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Sp_Sel_Salud_Result">
+          <Property Type="Int32" Name="Cod_Salud" Nullable="false" />
+          <Property Type="String" Name="Nombre_Salud" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Porc_Cotiz" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EmpleadosModelStoreContainer" CdmEntityContainer="EmpleadosEntities">
+          <EntitySetMapping Name="Afp">
+            <EntityTypeMapping TypeName="EmpleadosModel.Afp">
+              <MappingFragment StoreEntitySet="Afp">
+                <ScalarProperty Name="Cod_Afp" ColumnName="Cod_Afp" />
+                <ScalarProperty Name="Nom_Afp" ColumnName="Nom_Afp" />
+                <ScalarProperty Name="Porc_Desc" ColumnName="Porc_Desc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Carg_Familiar">
+            <EntityTypeMapping TypeName="EmpleadosModel.Carg_Familiar">
+              <MappingFragment StoreEntitySet="Carg_Familiar">
+                <ScalarProperty Name="Rut_Benef" ColumnName="Rut_Benef" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ApPat" ColumnName="ApPat" />
+                <ScalarProperty Name="ApMat" ColumnName="ApMat" />
+                <ScalarProperty Name="Telefono1" ColumnName="Telefono1" />
+                <ScalarProperty Name="Telefono2" ColumnName="Telefono2" />
+                <ScalarProperty Name="Fecha_Nac" ColumnName="Fecha_Nac" />
+                <ScalarProperty Name="Cod_Sexo" ColumnName="Cod_Sexo" />
+                <ScalarProperty Name="Calle_Pje" ColumnName="Calle_Pje" />
+                <ScalarProperty Name="Num_Casa" ColumnName="Num_Casa" />
+                <ScalarProperty Name="Villa_Pobl" ColumnName="Villa_Pobl" />
+                <ScalarProperty Name="Comuna_Id" ColumnName="Comuna_Id" />
+                <ScalarProperty Name="Provincia_Id" ColumnName="Provincia_Id" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="Rut_Empleado" ColumnName="Rut_Empleado" />
+                <ScalarProperty Name="Id_Nac" ColumnName="Id_Nac" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cargas_Familiares">
+            <EntityTypeMapping TypeName="EmpleadosModel.Cargas_Familiares">
+              <MappingFragment StoreEntitySet="Cargas_Familiares">
+                <ScalarProperty Name="Id_Tram_Carg" ColumnName="Id_Tram_Carg" />
+                <ScalarProperty Name="Tramo" ColumnName="Tramo" />
+                <ScalarProperty Name="Desde" ColumnName="Desde" />
+                <ScalarProperty Name="Hasta" ColumnName="Hasta" />
+                <ScalarProperty Name="ValorPagarCarg" ColumnName="ValorPagarCarg" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cargos">
+            <EntityTypeMapping TypeName="EmpleadosModel.Cargos">
+              <MappingFragment StoreEntitySet="Cargos">
+                <ScalarProperty Name="Id_Carg" ColumnName="Id_Carg" />
+                <ScalarProperty Name="Descr_Cargo" ColumnName="Descr_Cargo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comuna">
+            <EntityTypeMapping TypeName="EmpleadosModel.Comuna">
+              <MappingFragment StoreEntitySet="Comuna">
+                <ScalarProperty Name="Comuna_Id" ColumnName="Comuna_Id" />
+                <ScalarProperty Name="Comuna1" ColumnName="Comuna" />
+                <ScalarProperty Name="Provincia_Id" ColumnName="Provincia_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departamento">
+            <EntityTypeMapping TypeName="EmpleadosModel.Departamento">
+              <MappingFragment StoreEntitySet="Departamento">
+                <ScalarProperty Name="Id_Depto" ColumnName="Id_Depto" />
+                <ScalarProperty Name="NomDepto" ColumnName="NomDepto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empleados">
+            <EntityTypeMapping TypeName="EmpleadosModel.Empleados">
+              <MappingFragment StoreEntitySet="Empleados">
+                <ScalarProperty Name="Rut_Empleado" ColumnName="Rut_Empleado" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ApePat" ColumnName="ApePat" />
+                <ScalarProperty Name="ApeMat" ColumnName="ApeMat" />
+                <ScalarProperty Name="Id_Depto" ColumnName="Id_Depto" />
+                <ScalarProperty Name="Id_Carg" ColumnName="Id_Carg" />
+                <ScalarProperty Name="Anexo" ColumnName="Anexo" />
+                <ScalarProperty Name="EmailEmp" ColumnName="EmailEmp" />
+                <ScalarProperty Name="Fecha_Incorporacion" ColumnName="Fecha_Incorporacion" />
+                <ScalarProperty Name="Rut_Empresa" ColumnName="Rut_Empresa" />
+                <ScalarProperty Name="Id_Sexo" ColumnName="Id_Sexo" />
+                <ScalarProperty Name="Id_Nac" ColumnName="Id_Nac" />
+                <ScalarProperty Name="Cod_Afp" ColumnName="Cod_Afp" />
+                <ScalarProperty Name="Cod_Salud" ColumnName="Cod_Salud" />
+                <ScalarProperty Name="Calle_Pje" ColumnName="Calle_Pje" />
+                <ScalarProperty Name="NumCasa" ColumnName="NumCasa" />
+                <ScalarProperty Name="Vill_Pobl" ColumnName="Vill_Pobl" />
+                <ScalarProperty Name="Comuna_Id" ColumnName="Comuna_Id" />
+                <ScalarProperty Name="Provincia_Id" ColumnName="Provincia_Id" />
+                <ScalarProperty Name="Fono" ColumnName="Fono" />
+                <ScalarProperty Name="Persona_Emergencia" ColumnName="Persona_Emergencia" />
+                <ScalarProperty Name="Fono_Emergencia" ColumnName="Fono_Emergencia" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Fecha_Nacimiento" ColumnName="Fecha_Nacimiento" />
+                <ScalarProperty Name="Foto_Usuario" ColumnName="Foto_Usuario" />
+                <ScalarProperty Name="Fecha_Despido" ColumnName="Fecha_Despido" />
+                <ScalarProperty Name="Retirado" ColumnName="Retirado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empresa">
+            <EntityTypeMapping TypeName="EmpleadosModel.Empresa">
+              <MappingFragment StoreEntitySet="Empresa">
+                <ScalarProperty Name="Id_Empresa" ColumnName="Id_Empresa" />
+                <ScalarProperty Name="Rut_Empresa" ColumnName="Rut_Empresa" />
+                <ScalarProperty Name="Nombre_Empresa" ColumnName="Nombre_Empresa" />
+                <ScalarProperty Name="Calle_Pje_Avda" ColumnName="Calle_Pje_Avda" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="Vill_Pobl" ColumnName="Vill_Pobl" />
+                <ScalarProperty Name="Comuna_Id" ColumnName="Comuna_Id" />
+                <ScalarProperty Name="Provincia_Id" ColumnName="Provincia_Id" />
+                <ScalarProperty Name="fono" ColumnName="fono" />
+                <ScalarProperty Name="emailemp" ColumnName="emailemp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Liquidacion_Sueldo">
+            <EntityTypeMapping TypeName="EmpleadosModel.Liquidacion_Sueldo">
+              <MappingFragment StoreEntitySet="Liquidacion_Sueldo">
+                <ScalarProperty Name="Id_Liq" ColumnName="Id_Liq" />
+                <ScalarProperty Name="Tipo_Renumeracion" ColumnName="Tipo_Renumeracion" />
+                <ScalarProperty Name="Rut_Empleado" ColumnName="Rut_Empleado" />
+                <ScalarProperty Name="Fecha_Liquidacion" ColumnName="Fecha_Liquidacion" />
+                <ScalarProperty Name="Sueldo_Base" ColumnName="Sueldo_Base" />
+                <ScalarProperty Name="Remuneracion_Imponible" ColumnName="Remuneracion_Imponible" />
+                <ScalarProperty Name="Cant_Carg_Fam" ColumnName="Cant_Carg_Fam" />
+                <ScalarProperty Name="PagoTot_Carg_Fam" ColumnName="PagoTot_Carg_Fam" />
+                <ScalarProperty Name="Movilizacion" ColumnName="Movilizacion" />
+                <ScalarProperty Name="Colacion" ColumnName="Colacion" />
+                <ScalarProperty Name="Cod_Afp" ColumnName="Cod_Afp" />
+                <ScalarProperty Name="Cotizacion_Previsional" ColumnName="Cotizacion_Previsional" />
+                <ScalarProperty Name="Adicional_Prevision" ColumnName="Adicional_Prevision" />
+                <ScalarProperty Name="Cod_Salud" ColumnName="Cod_Salud" />
+                <ScalarProperty Name="Cotizacion_Salud" ColumnName="Cotizacion_Salud" />
+                <ScalarProperty Name="Adicional_Salud" ColumnName="Adicional_Salud" />
+                <ScalarProperty Name="Otros_Descuentos" ColumnName="Otros_Descuentos" />
+                <ScalarProperty Name="Alcance_Liquido" ColumnName="Alcance_Liquido" />
+                <ScalarProperty Name="Vales_Anticipos" ColumnName="Vales_Anticipos" />
+                <ScalarProperty Name="Sueldo_Liquido" ColumnName="Sueldo_Liquido" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Login">
+            <EntityTypeMapping TypeName="EmpleadosModel.Login">
+              <MappingFragment StoreEntitySet="Login">
+                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+                <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nacionalidad">
+            <EntityTypeMapping TypeName="EmpleadosModel.Nacionalidad">
+              <MappingFragment StoreEntitySet="Nacionalidad">
+                <ScalarProperty Name="Id_Nac" ColumnName="Id_Nac" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Provincia">
+            <EntityTypeMapping TypeName="EmpleadosModel.Provincia">
+              <MappingFragment StoreEntitySet="Provincia">
+                <ScalarProperty Name="Provincia_Id" ColumnName="Provincia_Id" />
+                <ScalarProperty Name="Provincia_Nombre" ColumnName="Provincia_Nombre" />
+                <ScalarProperty Name="Region_Id" ColumnName="Region_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Region">
+            <EntityTypeMapping TypeName="EmpleadosModel.Region">
+              <MappingFragment StoreEntitySet="Region">
+                <ScalarProperty Name="Region_Id" ColumnName="Region_Id" />
+                <ScalarProperty Name="REGION_NOMBRE" ColumnName="REGION_NOMBRE" />
+                <ScalarProperty Name="Provincia_Id" ColumnName="Provincia_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Salud">
+            <EntityTypeMapping TypeName="EmpleadosModel.Salud">
+              <MappingFragment StoreEntitySet="Salud">
+                <ScalarProperty Name="Cod_Salud" ColumnName="Cod_Salud" />
+                <ScalarProperty Name="Nombre_Salud" ColumnName="Nombre_Salud" />
+                <ScalarProperty Name="Porc_Cotiz" ColumnName="Porc_Cotiz" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sexo">
+            <EntityTypeMapping TypeName="EmpleadosModel.Sexo">
+              <MappingFragment StoreEntitySet="Sexo">
+                <ScalarProperty Name="Id_Sexo" ColumnName="Id_Sexo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TablImpDiario">
+            <EntityTypeMapping TypeName="EmpleadosModel.TablImpDiario">
+              <MappingFragment StoreEntitySet="TablImpDiario">
+                <ScalarProperty Name="Id_Factor_Diario" ColumnName="Id_Factor_Diario" />
+                <ScalarProperty Name="Desde" ColumnName="Desde" />
+                <ScalarProperty Name="Hasta" ColumnName="Hasta" />
+                <ScalarProperty Name="Factor" ColumnName="Factor" />
+                <ScalarProperty Name="CantAReb" ColumnName="CantAReb" />
+                <ScalarProperty Name="TasaImpEfec" ColumnName="TasaImpEfec" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TablImpMensual">
+            <EntityTypeMapping TypeName="EmpleadosModel.TablImpMensual">
+              <MappingFragment StoreEntitySet="TablImpMensual">
+                <ScalarProperty Name="Id_Factor_Mensual" ColumnName="Id_Factor_Mensual" />
+                <ScalarProperty Name="Desde" ColumnName="Desde" />
+                <ScalarProperty Name="Hasta" ColumnName="Hasta" />
+                <ScalarProperty Name="Factor" ColumnName="Factor" />
+                <ScalarProperty Name="CantAReb" ColumnName="CantAReb" />
+                <ScalarProperty Name="TasaImpEfec" ColumnName="TasaImpEfec" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TablImpQuincenal">
+            <EntityTypeMapping TypeName="EmpleadosModel.TablImpQuincenal">
+              <MappingFragment StoreEntitySet="TablImpQuincenal">
+                <ScalarProperty Name="Id_Factor_Quincenal" ColumnName="Id_Factor_Quincenal" />
+                <ScalarProperty Name="Desde" ColumnName="Desde" />
+                <ScalarProperty Name="Hasta" ColumnName="Hasta" />
+                <ScalarProperty Name="Factor" ColumnName="Factor" />
+                <ScalarProperty Name="CantAReb" ColumnName="CantAReb" />
+                <ScalarProperty Name="TasaImpEfec" ColumnName="TasaImpEfec" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TablImpSemanal">
+            <EntityTypeMapping TypeName="EmpleadosModel.TablImpSemanal">
+              <MappingFragment StoreEntitySet="TablImpSemanal">
+                <ScalarProperty Name="Id_Factor_Semanal" ColumnName="Id_Factor_Semanal" />
+                <ScalarProperty Name="Desde" ColumnName="Desde" />
+                <ScalarProperty Name="Hasta" ColumnName="Hasta" />
+                <ScalarProperty Name="Factor" ColumnName="Factor" />
+                <ScalarProperty Name="CantAReb" ColumnName="CantAReb" />
+                <ScalarProperty Name="TasaImpEfec" ColumnName="TasaImpEfec" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="EmpleadosModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="SP_Autoriza" FunctionName="EmpleadosModel.Store.SP_Autoriza">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EmpleadosModel.SP_Autoriza_Result">
+                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+                <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="EmpleadosModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="Sp_Del_Carga_Familiar" FunctionName="EmpleadosModel.Store.Sp_Del_Carga_Familiar" />
+          <FunctionImportMapping FunctionImportName="Sp_Del_Empleados" FunctionName="EmpleadosModel.Store.Sp_Del_Empleados" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="EmpleadosModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="EmpleadosModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EmpleadosModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="EmpleadosModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EmpleadosModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_Ins_Afp" FunctionName="EmpleadosModel.Store.Sp_Ins_Afp" />
+          <FunctionImportMapping FunctionImportName="Sp_Ins_Carg_Familiar" FunctionName="EmpleadosModel.Store.Sp_Ins_Carg_Familiar" />
+          <FunctionImportMapping FunctionImportName="Sp_Ins_Cargos" FunctionName="EmpleadosModel.Store.Sp_Ins_Cargos" />
+          <FunctionImportMapping FunctionImportName="Sp_Ins_Depto" FunctionName="EmpleadosModel.Store.Sp_Ins_Depto" />
+          <FunctionImportMapping FunctionImportName="Sp_Ins_Empleados" FunctionName="EmpleadosModel.Store.Sp_Ins_Empleados" />
+          <FunctionImportMapping FunctionImportName="Sp_Ins_Empresas" FunctionName="EmpleadosModel.Store.Sp_Ins_Empresas" />
+          <FunctionImportMapping FunctionImportName="Sp_Ins_LiqSueldo" FunctionName="EmpleadosModel.Store.Sp_Ins_LiqSueldo" />
+          <FunctionImportMapping FunctionImportName="Sp_Ins_Nacionalidad" FunctionName="EmpleadosModel.Store.Sp_Ins_Nacionalidad" />
+          <FunctionImportMapping FunctionImportName="Sp_Ins_Salud" FunctionName="EmpleadosModel.Store.Sp_Ins_Salud" />
+          <FunctionImportMapping FunctionImportName="Sp_Mues_Afp" FunctionName="EmpleadosModel.Store.Sp_Mues_Afp">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EmpleadosModel.Sp_Mues_Afp_Result">
+                <ScalarProperty Name="Cod_Afp" ColumnName="Cod_Afp" />
+                <ScalarProperty Name="Nom_Afp" ColumnName="Nom_Afp" />
+                <ScalarProperty Name="Porc_Desc" ColumnName="Porc_Desc" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_Mues_CargFam" FunctionName="EmpleadosModel.Store.Sp_Mues_CargFam">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EmpleadosModel.Sp_Mues_CargFam_Result">
+                <ScalarProperty Name="Rut_Carga" ColumnName="Rut_Carga" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Paterno" ColumnName="Paterno" />
+                <ScalarProperty Name="Materno" ColumnName="Materno" />
+                <ScalarProperty Name="Fono_Movil" ColumnName="Fono Movil" />
+                <ScalarProperty Name="Fono_Fijo" ColumnName="Fono Fijo" />
+                <ScalarProperty Name="Fecha_Nacimiento" ColumnName="Fecha Nacimiento" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Villa" ColumnName="Villa" />
+                <ScalarProperty Name="Comuna" ColumnName="Comuna" />
+                <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Rut_Empleado" ColumnName="Rut_Empleado" />
+                <ScalarProperty Name="Nombre_Empleado" ColumnName="Nombre Empleado" />
+                <ScalarProperty Name="Nacionalidad" ColumnName="Nacionalidad" />
+                <ScalarProperty Name="Comentarios" ColumnName="Comentarios" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_Mues_Comunas" FunctionName="EmpleadosModel.Store.Sp_Mues_Comunas">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EmpleadosModel.Sp_Mues_Comunas_Result">
+                <ScalarProperty Name="Comuna_Id" ColumnName="Comuna_Id" />
+                <ScalarProperty Name="Comuna" ColumnName="Comuna" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_Mues_Cuidades" FunctionName="EmpleadosModel.Store.Sp_Mues_Cuidades">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EmpleadosModel.Sp_Mues_Cuidades_Result">
+                <ScalarProperty Name="PROVINCIA_ID" ColumnName="PROVINCIA_ID" />
+                <ScalarProperty Name="PROVINCIA_NOMBRE" ColumnName="PROVINCIA_NOMBRE" />
+                <ScalarProperty Name="REGION_ID" ColumnName="REGION_ID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_Mues_Empleado" FunctionName="EmpleadosModel.Store.SP_Mues_Empleado">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EmpleadosModel.SP_Mues_Empleado_Result">
+                <ScalarProperty Name="Rut" ColumnName="Rut" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Comuna" ColumnName="Comuna" />
+                <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+                <ScalarProperty Name="Fono" ColumnName="Fono" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Nacionalidad" ColumnName="Nacionalidad" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="Nombre_AFP" ColumnName="Nombre AFP" />
+                <ScalarProperty Name="SALUD" ColumnName="SALUD" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_Mues_Empleado_PDF" FunctionName="EmpleadosModel.Store.SP_Mues_Empleado_PDF">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EmpleadosModel.SP_Mues_Empleado_PDF_Result">
+                <ScalarProperty Name="Rut" ColumnName="Rut" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Comuna" ColumnName="Comuna" />
+                <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+                <ScalarProperty Name="Fono" ColumnName="Fono" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Nacionalidad" ColumnName="Nacionalidad" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="Nombre_AFP" ColumnName="Nombre AFP" />
+                <ScalarProperty Name="SALUD" ColumnName="SALUD" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_Mues_Empresas" FunctionName="EmpleadosModel.Store.Sp_Mues_Empresas">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EmpleadosModel.Sp_Mues_Empresas_Result">
+                <ScalarProperty Name="Rut_Empresa" ColumnName="Rut_Empresa" />
+                <ScalarProperty Name="Nombre_Empresa" ColumnName="Nombre_Empresa" />
+                <ScalarProperty Name="Calle_Pje_Avda" ColumnName="Calle_Pje_Avda" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="Vill_Pobl" ColumnName="Vill_Pobl" />
+                <ScalarProperty Name="Comuna" ColumnName="Comuna" />
+                <ScalarProperty Name="Provincia_Nombre" ColumnName="Provincia_Nombre" />
+                <ScalarProperty Name="fono" ColumnName="fono" />
+                <ScalarProperty Name="emailemp" ColumnName="emailemp" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_Mues_LiqSueldo" FunctionName="EmpleadosModel.Store.Sp_Mues_LiqSueldo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EmpleadosModel.Sp_Mues_LiqSueldo_Result">
+                <ScalarProperty Name="Fecha_Liquidacion" ColumnName="Fecha_Liquidacion" />
+                <ScalarProperty Name="Sueldo_Base" ColumnName="Sueldo_Base" />
+                <ScalarProperty Name="Remuneracion_Imponible" ColumnName="Remuneracion_Imponible" />
+                <ScalarProperty Name="Colacion" ColumnName="Colacion" />
+                <ScalarProperty Name="Movilizacion" ColumnName="Movilizacion" />
+                <ScalarProperty Name="Cod_Afp" ColumnName="Cod_Afp" />
+                <ScalarProperty Name="Cotizacion_Previsional" ColumnName="Cotizacion_Previsional" />
+                <ScalarProperty Name="Adicional_Prevision" ColumnName="Adicional_Prevision" />
+                <ScalarProperty Name="Cod_Salud" ColumnName="Cod_Salud" />
+                <ScalarProperty Name="Cotizacion_Salud" ColumnName="Cotizacion_Salud" />
+                <ScalarProperty Name="Adicional_Salud" ColumnName="Adicional_Salud" />
+                <ScalarProperty Name="Otros_Descuentos" ColumnName="Otros_Descuentos" />
+                <ScalarProperty Name="Alcance_Liquido" ColumnName="Alcance_Liquido" />
+                <ScalarProperty Name="Vales_Anticipos" ColumnName="Vales_Anticipos" />
+                <ScalarProperty Name="Sueldo_Liquido" ColumnName="Sueldo_Liquido" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_Mues_Nacionalidad" FunctionName="EmpleadosModel.Store.Sp_Mues_Nacionalidad">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EmpleadosModel.Sp_Mues_Nacionalidad_Result">
+                <ScalarProperty Name="Id_Nac" ColumnName="Id_Nac" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_Mues_Salud" FunctionName="EmpleadosModel.Store.Sp_Mues_Salud">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EmpleadosModel.Sp_Mues_Salud_Result">
+                <ScalarProperty Name="Cod_Salud" ColumnName="Cod_Salud" />
+                <ScalarProperty Name="Nombre_Salud" ColumnName="Nombre_Salud" />
+                <ScalarProperty Name="Porc_Cotiz" ColumnName="Porc_Cotiz" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="EmpleadosModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="Sp_Sel_Afp" FunctionName="EmpleadosModel.Store.Sp_Sel_Afp">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EmpleadosModel.Sp_Sel_Afp_Result">
+                <ScalarProperty Name="Cod_Afp" ColumnName="Cod_Afp" />
+                <ScalarProperty Name="Nom_Afp" ColumnName="Nom_Afp" />
+                <ScalarProperty Name="Porc_Desc" ColumnName="Porc_Desc" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_Sel_Carg_FamXRutEmpl" FunctionName="EmpleadosModel.Store.Sp_Sel_Carg_FamXRutEmpl">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EmpleadosModel.Sp_Sel_Carg_FamXRutEmpl_Result">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Paterno" ColumnName="Paterno" />
+                <ScalarProperty Name="Materno" ColumnName="Materno" />
+                <ScalarProperty Name="Fono_Movil" ColumnName="Fono Movil" />
+                <ScalarProperty Name="Fono_Fijo" ColumnName="Fono Fijo" />
+                <ScalarProperty Name="Fecha_Nacimiento" ColumnName="Fecha Nacimiento" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Villa" ColumnName="Villa" />
+                <ScalarProperty Name="Comuna" ColumnName="Comuna" />
+                <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Rut_Empleado" ColumnName="Rut_Empleado" />
+                <ScalarProperty Name="Nombre_Empleado" ColumnName="Nombre Empleado" />
+                <ScalarProperty Name="Nacionalidad" ColumnName="Nacionalidad" />
+                <ScalarProperty Name="Comentarios" ColumnName="Comentarios" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_Sel_CargFamxRut" FunctionName="EmpleadosModel.Store.Sp_Sel_CargFamxRut">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EmpleadosModel.Sp_Sel_CargFamxRut_Result">
+                <ScalarProperty Name="Rut_Benef" ColumnName="Rut_Benef" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ApPat" ColumnName="ApPat" />
+                <ScalarProperty Name="ApMat" ColumnName="ApMat" />
+                <ScalarProperty Name="Telefono1" ColumnName="Telefono1" />
+                <ScalarProperty Name="Telefono2" ColumnName="Telefono2" />
+                <ScalarProperty Name="Fecha_Nacimiento" ColumnName="Fecha Nacimiento" />
+                <ScalarProperty Name="Cod_Sexo" ColumnName="Cod_Sexo" />
+                <ScalarProperty Name="Calle_Pje" ColumnName="Calle_Pje" />
+                <ScalarProperty Name="Num_Casa" ColumnName="Num_Casa" />
+                <ScalarProperty Name="Villa_Pobl" ColumnName="Villa_Pobl" />
+                <ScalarProperty Name="Comuna_Id" ColumnName="Comuna_Id" />
+                <ScalarProperty Name="Provincia_Id" ColumnName="Provincia_Id" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="Rut_Empleado" ColumnName="Rut_Empleado" />
+                <ScalarProperty Name="Id_Nac" ColumnName="Id_Nac" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_Sel_Cargos" FunctionName="EmpleadosModel.Store.Sp_Sel_Cargos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EmpleadosModel.Sp_Sel_Cargos_Result">
+                <ScalarProperty Name="Id_Carg" ColumnName="Id_Carg" />
+                <ScalarProperty Name="Descr_Cargo" ColumnName="Descr_Cargo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_Sel_CiudadesxComu" FunctionName="EmpleadosModel.Store.Sp_Sel_CiudadesxComu">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EmpleadosModel.Sp_Sel_CiudadesxComu_Result">
+                <ScalarProperty Name="Provincia_Id" ColumnName="Provincia_Id" />
+                <ScalarProperty Name="Provincia_Nombre" ColumnName="Provincia_Nombre" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_Sel_Depto" FunctionName="EmpleadosModel.Store.SP_Sel_Depto" />
+          <FunctionImportMapping FunctionImportName="Sp_Sel_Empleado" FunctionName="EmpleadosModel.Store.Sp_Sel_Empleado">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EmpleadosModel.Sp_Sel_Empleado_Result">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ApePat" ColumnName="ApePat" />
+                <ScalarProperty Name="ApeMat" ColumnName="ApeMat" />
+                <ScalarProperty Name="Id_Depto" ColumnName="Id_Depto" />
+                <ScalarProperty Name="Id_Carg" ColumnName="Id_Carg" />
+                <ScalarProperty Name="Anexo" ColumnName="Anexo" />
+                <ScalarProperty Name="EmailEmp" ColumnName="EmailEmp" />
+                <ScalarProperty Name="Fecha_Incorporacion" ColumnName="Fecha_Incorporacion" />
+                <ScalarProperty Name="Rut_Empresa" ColumnName="Rut_Empresa" />
+                <ScalarProperty Name="Id_Sexo" ColumnName="Id_Sexo" />
+                <ScalarProperty Name="Id_Nac" ColumnName="Id_Nac" />
+                <ScalarProperty Name="Foto_Usuario" ColumnName="Foto_Usuario" />
+                <ScalarProperty Name="Cod_Afp" ColumnName="Cod_Afp" />
+                <ScalarProperty Name="Cod_Salud" ColumnName="Cod_Salud" />
+                <ScalarProperty Name="Calle_Pje" ColumnName="Calle_Pje" />
+                <ScalarProperty Name="NumCasa" ColumnName="NumCasa" />
+                <ScalarProperty Name="Vill_Pobl" ColumnName="Vill_Pobl" />
+                <ScalarProperty Name="Comuna_Id" ColumnName="Comuna_Id" />
+                <ScalarProperty Name="Provincia_Id" ColumnName="Provincia_Id" />
+                <ScalarProperty Name="Fono" ColumnName="Fono" />
+                <ScalarProperty Name="Persona_Emergencia" ColumnName="Persona_Emergencia" />
+                <ScalarProperty Name="Fono_Emergencia" ColumnName="Fono_Emergencia" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Fecha_Nacimiento" ColumnName="Fecha Nacimiento" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_Sel_Empresas" FunctionName="EmpleadosModel.Store.Sp_Sel_Empresas">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EmpleadosModel.Sp_Sel_Empresas_Result">
+                <ScalarProperty Name="Rut_Empresa" ColumnName="Rut_Empresa" />
+                <ScalarProperty Name="Nombre_Empresa" ColumnName="Nombre_Empresa" />
+                <ScalarProperty Name="Calle_Pje_Avda" ColumnName="Calle_Pje_Avda" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="Vill_Pobl" ColumnName="Vill_Pobl" />
+                <ScalarProperty Name="Comuna" ColumnName="Comuna" />
+                <ScalarProperty Name="PROVINCIA_NOMBRE" ColumnName="PROVINCIA_NOMBRE" />
+                <ScalarProperty Name="fono" ColumnName="fono" />
+                <ScalarProperty Name="emailemp" ColumnName="emailemp" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_Sel_LiqSueldo" FunctionName="EmpleadosModel.Store.Sp_Sel_LiqSueldo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EmpleadosModel.Sp_Sel_LiqSueldo_Result">
+                <ScalarProperty Name="Fecha_Liquidacion" ColumnName="Fecha_Liquidacion" />
+                <ScalarProperty Name="Sueldo_Base" ColumnName="Sueldo_Base" />
+                <ScalarProperty Name="Remuneracion_Imponible" ColumnName="Remuneracion_Imponible" />
+                <ScalarProperty Name="Colacion" ColumnName="Colacion" />
+                <ScalarProperty Name="Movilizacion" ColumnName="Movilizacion" />
+                <ScalarProperty Name="Cod_Afp" ColumnName="Cod_Afp" />
+                <ScalarProperty Name="Cotizacion_Previsional" ColumnName="Cotizacion_Previsional" />
+                <ScalarProperty Name="Adicional_Prevision" ColumnName="Adicional_Prevision" />
+                <ScalarProperty Name="Cod_Salud" ColumnName="Cod_Salud" />
+                <ScalarProperty Name="Cotizacion_Salud" ColumnName="Cotizacion_Salud" />
+                <ScalarProperty Name="Adicional_Salud" ColumnName="Adicional_Salud" />
+                <ScalarProperty Name="Otros_Descuentos" ColumnName="Otros_Descuentos" />
+                <ScalarProperty Name="Alcance_Liquido" ColumnName="Alcance_Liquido" />
+                <ScalarProperty Name="Vales_Anticipos" ColumnName="Vales_Anticipos" />
+                <ScalarProperty Name="Sueldo_Liquido" ColumnName="Sueldo_Liquido" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_Sel_Nacionalidad" FunctionName="EmpleadosModel.Store.Sp_Sel_Nacionalidad">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EmpleadosModel.Sp_Sel_Nacionalidad_Result">
+                <ScalarProperty Name="Id_Nac" ColumnName="Id_Nac" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_Sel_Salud" FunctionName="EmpleadosModel.Store.Sp_Sel_Salud">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EmpleadosModel.Sp_Sel_Salud_Result">
+                <ScalarProperty Name="Cod_Salud" ColumnName="Cod_Salud" />
+                <ScalarProperty Name="Nombre_Salud" ColumnName="Nombre_Salud" />
+                <ScalarProperty Name="Porc_Cotiz" ColumnName="Porc_Cotiz" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_UPD_Afp" FunctionName="EmpleadosModel.Store.Sp_UPD_Afp" />
+          <FunctionImportMapping FunctionImportName="Sp_UPD_Carg_Familiar" FunctionName="EmpleadosModel.Store.Sp_UPD_Carg_Familiar" />
+          <FunctionImportMapping FunctionImportName="Sp_UPD_Cargos" FunctionName="EmpleadosModel.Store.Sp_UPD_Cargos" />
+          <FunctionImportMapping FunctionImportName="Sp_UPD_Depto" FunctionName="EmpleadosModel.Store.Sp_UPD_Depto" />
+          <FunctionImportMapping FunctionImportName="Sp_UPD_Empleado" FunctionName="EmpleadosModel.Store.Sp_UPD_Empleado" />
+          <FunctionImportMapping FunctionImportName="Sp_UPD_Empresas" FunctionName="EmpleadosModel.Store.Sp_UPD_Empresas" />
+          <FunctionImportMapping FunctionImportName="Sp_UPD_LiqSueldo" FunctionName="EmpleadosModel.Store.Sp_UPD_LiqSueldo" />
+          <FunctionImportMapping FunctionImportName="Sp_UPD_Nacionalidad" FunctionName="EmpleadosModel.Store.Sp_UPD_Nacionalidad" />
+          <FunctionImportMapping FunctionImportName="Sp_UPD_Salud" FunctionName="EmpleadosModel.Store.Sp_UPD_Salud" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="EmpleadosModel.Store.sp_upgraddiagrams" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

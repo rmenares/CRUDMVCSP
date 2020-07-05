@@ -1,0 +1,148 @@
+﻿@model  IEnumerable<CrudMvcSp.Models.Nacionalidad>
+
+@{
+    ViewBag.Title = "Index";
+
+    WebGrid grid = new WebGrid(Model, defaultSort: "Descripcion",
+                                    selectionFieldName: "Id_Nac",
+                                    rowsPerPage: 10,
+                                    sortDirectionFieldName: "Descripcion");
+}
+
+<br />
+<br />
+<h2>Mantención de Nacionalidades</h2>
+<br />
+<br />
+
+@Scripts.Render("~/bundles/jquery")
+
+@Scripts.Render("~/bundles/bootstrap")
+
+@Styles.Render("~/Content/fontawesome")
+
+<table class="table table-responsive table-striped table-condensed" id="NueNac">
+    <tr>
+        <td>
+            <button id="BtnNueNac" value="Agregar Nacionalidad" class="btn btn-group-lg btn-success BtnNuevo"> <i class="fa fa-plus-circle"></i> Agregar Nacionalidad </button>
+        </td>
+    </tr>
+</table>
+<br />
+<form id="formMuesCarg" method="post">
+    @if (Model.Count() != 0)
+    {
+        <div class="table table-responsive table-striped table-bordered table-condensed" id="gridDeptos">
+
+            @grid.GetHtml(
+                alternatingRowStyle: "webgrid-alternating-row",
+                htmlAttributes: new { @id = "TablaNacionalidad", width = "50px", @class = "Grid" },
+                tableStyle: "webgrid-table table table-responsive table-bordered",
+                headerStyle: "webgrid-header",
+                footerStyle: "webgrid-footer",
+                selectedRowStyle: "webgrid-selected-row",
+                rowStyle: "webgrid-row-style",
+                mode: WebGridPagerModes.All,
+                firstText: "Primera Pagina",
+                previousText: "Pagina Anterior",
+                nextText: "Pagina Siguiente",
+                lastText: "Ultima Pagina",
+                displayHeader: true,
+                columns:
+                new[] {
+                      grid.Column("Id_Nac" , "Codigo"),
+                      grid.Column("Descripcion" , "Descripción"),
+                      grid.Column(header: "Acciones", style: "col-sm-2", format:@<text>
+    <a href='#' class="btn btn-warning glyphicon glyphicon-pencil display edit-btn"> Editar</a> </text> )
+                                                                                                                                                                  })
+        </div>
+
+        <div id="TablExport">
+            <table align="center">
+                <tr>
+                    <td>@Html.ActionLink(" Export A Pdf", "GetPdf", "Deptos", new { @class = "btn btn-primary fa fa-file-pdf-o" }) | </td>
+                    <td> </td>
+                    <td>@Html.ActionLink(" Export A Excel", "GetXls", "Deptos", new { @class = "btn btn-primary fa fa-file-excel-o" }) | </td>
+                    <td> </td>
+                    <td>@Html.ActionLink(" Export A CSV", "GetCsv", "Deptos", new { @class = "btn btn-primary fa fa-file-excel-o" }) | </td>
+                    <td> </td>
+                    <td>@Html.ActionLink(" Export A DOC", "GetDocx", "Deptos", new { @class = "btn btn-primary fa fa-file-word-o" }) </td>
+                </tr>
+            </table>
+        </div>
+    }
+    else
+    {
+        <div>
+            <table align="center">
+                <tr>
+                    <td>
+                        <h4> <i class="fa fa-folder-open"></i> No Hay Datos Disponibles, Haga Click en <b>Agregar Nacionalidad</b> <i class="fa fa-folder-open"></i> </h4>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    }
+</form>
+
+<!-- Modal Agrega Nacionalidades-->
+<div class="modal" id="AgrNac">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header text-center">
+                <h2 class="modal-title">Nuevo Nacionalidad</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form id="IngNac" method="post">
+                    Nombre Nacionalidad
+                    <input type="text" id="NomNacion" required />
+                </form>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button class="btn btn-success" id="BtnGrabNac" value="Grabar"><i class="fa fa-save"></i> Grabar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Modal Para Modificar Nacionalidades -->
+<div class="modal" id="ModNac">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header text-center">
+                <h4 class="modal-title">Editar Nacionalidad </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form id="ModNacion" method="post">
+                    Descripción de la nacionalidad
+                    <input type="text" id="ModNomNac" required />
+                </form>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button class="btn btn-success" id="BtnModNac" value="Modificar"><i class="fa fa-save"></i> Modificar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <link href="~/Content/toastr.css" rel="stylesheet" />
+    <script src="~/Scripts/toastr.js"></script>
+    <link href="~/Content/WebGrid/WebGrid.css" rel="stylesheet" />
+    <link href="~/Content/EstilosGenerales/style.css" rel="stylesheet" />
+    <script src="~/Scripts/Aplicacion/Nacionalidad/Nacionalidad.js"></script>
+}

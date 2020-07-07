@@ -576,7 +576,7 @@ namespace CrudMvcSp.Controllers
                 paragraphTitle.Alignment = Alignment.center;
 
                 //define las dimensiones de la tabla (tbl(f,c))
-                Table tbl = doc.AddTable(ListCargFam.Count + 1, 15);
+                Table tbl = doc.AddTable(ListCargFam.Count + 1, 11);
 
                 //hace que la tabla este al centro de la pagina
                 tbl.Alignment = Alignment.center;
@@ -587,18 +587,14 @@ namespace CrudMvcSp.Controllers
                 tbl.Rows[0].Cells[0].Paragraphs.First().Append("Rut").FontSize(8D).Alignment = Alignment.center;
                 tbl.Rows[0].Cells[1].Paragraphs.First().Append("Nombre").FontSize(8D).Alignment = Alignment.center;
                 tbl.Rows[0].Cells[2].Paragraphs.First().Append("Ap. Paterno").FontSize(8D).Alignment = Alignment.center;
-                tbl.Rows[0].Cells[3].Paragraphs.First().Append("Ap. Materno").FontSize(8D).Alignment = Alignment.center;
-                tbl.Rows[0].Cells[4].Paragraphs.First().Append("Fono Movil").FontSize(8D).Alignment = Alignment.center;
-                tbl.Rows[0].Cells[5].Paragraphs.First().Append("Fono Fijo").FontSize(8D).Alignment = Alignment.center;
-                tbl.Rows[0].Cells[6].Paragraphs.First().Append("Fecha Nacimiento").FontSize(8D).Alignment = Alignment.center;
-                tbl.Rows[0].Cells[7].Paragraphs.First().Append("Sexo").FontSize(8D).Alignment = Alignment.center;
-                tbl.Rows[0].Cells[8].Paragraphs.First().Append("Dirección").FontSize(8D).Alignment = Alignment.center;
-                tbl.Rows[0].Cells[9].Paragraphs.First().Append("Villa").FontSize(8D).Alignment = Alignment.center;
-                tbl.Rows[0].Cells[10].Paragraphs.First().Append("Comuna").FontSize(8D).Alignment = Alignment.center;
-                tbl.Rows[0].Cells[11].Paragraphs.First().Append("Ciudad").FontSize(8D).Alignment = Alignment.center;
-                tbl.Rows[0].Cells[12].Paragraphs.First().Append("Correo").FontSize(8D).Alignment = Alignment.center;
-                tbl.Rows[0].Cells[13].Paragraphs.First().Append("Nombre Empleado").FontSize(8D).Alignment = Alignment.center;
-                tbl.Rows[0].Cells[14].Paragraphs.First().Append("Comentarios").FontSize(8D).Alignment = Alignment.center;
+                tbl.Rows[0].Cells[3].Paragraphs.First().Append("Fono Movil").FontSize(8D).Alignment = Alignment.center;
+                tbl.Rows[0].Cells[4].Paragraphs.First().Append("Fecha Nacimiento").FontSize(8D).Alignment = Alignment.center;
+                tbl.Rows[0].Cells[5].Paragraphs.First().Append("Sexo").FontSize(8D).Alignment = Alignment.center;
+                tbl.Rows[0].Cells[6].Paragraphs.First().Append("Dirección").FontSize(8D).Alignment = Alignment.center;
+                tbl.Rows[0].Cells[7].Paragraphs.First().Append("Comuna").FontSize(8D).Alignment = Alignment.center;
+                tbl.Rows[0].Cells[8].Paragraphs.First().Append("Correo").FontSize(8D).Alignment = Alignment.center;
+                tbl.Rows[0].Cells[9].Paragraphs.First().Append("Nombre Empleado").FontSize(8D).Alignment = Alignment.center;
+                tbl.Rows[0].Cells[10].Paragraphs.First().Append("Comentarios").FontSize(8D).Alignment = Alignment.center;
                 //llena las celdas con los datos 
                 int fila = 1;
                 int columna = 0;
@@ -610,11 +606,7 @@ namespace CrudMvcSp.Controllers
                     columna++;
                     tbl.Rows[fila].Cells[columna].Paragraphs.First().Append(Convert.ToString(item.Paterno)).FontSize(8D).Alignment = Alignment.left;
                     columna++;
-                    tbl.Rows[fila].Cells[columna].Paragraphs.First().Append(Convert.ToString(item.Materno)).FontSize(8D).Alignment = Alignment.left;
-                    columna++;
                     tbl.Rows[fila].Cells[columna].Paragraphs.First().Append(Convert.ToString(item.Fono_Movil)).FontSize(8D).Alignment = Alignment.left;
-                    columna++;
-                    tbl.Rows[fila].Cells[columna].Paragraphs.First().Append(Convert.ToString(item.Fono_Fijo)).FontSize(8D).Alignment = Alignment.left;
                     columna++;
                     tbl.Rows[fila].Cells[columna].Paragraphs.First().Append(Convert.ToString(item.Fecha_Nacimiento)).FontSize(8D).Alignment = Alignment.left;
                     columna++;
@@ -622,11 +614,7 @@ namespace CrudMvcSp.Controllers
                     columna++;
                     tbl.Rows[fila].Cells[columna].Paragraphs.First().Append(Convert.ToString(item.Direccion)).FontSize(8D).Alignment = Alignment.left;
                     columna++;
-                    tbl.Rows[fila].Cells[columna].Paragraphs.First().Append(Convert.ToString(item.Villa)).FontSize(8D).Alignment = Alignment.left;
-                    columna++;
                     tbl.Rows[fila].Cells[columna].Paragraphs.First().Append(Convert.ToString(item.Comuna)).FontSize(8D).Alignment = Alignment.left;
-                    columna++;
-                    tbl.Rows[fila].Cells[columna].Paragraphs.First().Append(Convert.ToString(item.Ciudad)).FontSize(8D).Alignment = Alignment.left;
                     columna++;
                     tbl.Rows[fila].Cells[columna].Paragraphs.First().Append(Convert.ToString(item.Email)).FontSize(8D).Alignment = Alignment.left;
                     columna++;
@@ -636,7 +624,6 @@ namespace CrudMvcSp.Controllers
                     fila++;
                     columna = 0;
                 }
-
                 //inserta la tabla dentro del documento
                 doc.InsertTable(tbl);
 
@@ -663,6 +650,5 @@ namespace CrudMvcSp.Controllers
             }
         }
         #endregion
-
     }
 }

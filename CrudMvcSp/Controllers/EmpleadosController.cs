@@ -192,12 +192,11 @@ namespace CrudMvcSp.Controllers
 
                 //define las dimensiones de la tabla (tbl(f,c))
                 Table tbl = doc.AddTable(FichEmpleado.Count + 1, 14);
-
-                //hace que la tabla este al centro de la pagina
-                tbl.Alignment = Alignment.center;
+    
+                //hace que la tabla este al centro de la pagina           
                 tbl.Design = TableDesign.ColorfulList;
                 tbl.AutoFit = AutoFit.Contents;
-
+                
                 //agrega los titulos de la tabla
                 tbl.Rows[0].Cells[0].Paragraphs.First().Append("Rut").FontSize(10D).Alignment = Alignment.center;
                 tbl.Rows[0].Cells[1].Paragraphs.First().Append("Nombre").FontSize(10D).Alignment = Alignment.center;

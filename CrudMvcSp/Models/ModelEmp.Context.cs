@@ -46,6 +46,7 @@ namespace CrudMvcSp.Models
         public virtual DbSet<TablImpMensual> TablImpMensual { get; set; }
         public virtual DbSet<TablImpQuincenal> TablImpQuincenal { get; set; }
         public virtual DbSet<TablImpSemanal> TablImpSemanal { get; set; }
+        public virtual DbSet<Tipo_Remuneracion> Tipo_Remuneracion { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {
@@ -417,11 +418,19 @@ namespace CrudMvcSp.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Sp_Ins_Empresas", rut_empParameter, nombreParameter, direccionParameter, numParameter, vilpobParameter, comuParameter, ciudadParameter, fonoParameter, emailempParameter);
         }
     
-        public virtual int Sp_Ins_LiqSueldo(string rut_Empleado, Nullable<System.DateTime> fecha_Liquidacion, string sueldo_Base, string remuneracion_Imponible, string cant_Carg_Fam, string pagoTot_Carg_Fam, string movilizacion, string colacion, Nullable<int> cod_Afp, string cotizacion_Previsional, string adicional_Prevision, Nullable<int> cod_Salud, string cotizacion_Salud, string adicional_Salud, string otros_Descuentos, string alcance_Liquido, string vales_Anticipos, string sueldo_Liquido)
+        public virtual int Sp_Ins_LiqSueldo(string rut_Empleado, Nullable<int> id_Tipo_Renumeracion, string plazo_Contrato, Nullable<System.DateTime> fecha_Liquidacion, string sueldo_Base, string dias_Trabajados, string gratificacion, Nullable<decimal> valor_Grat, Nullable<decimal> cant_Horas_Extras, Nullable<decimal> valor_Horas_Extras, Nullable<decimal> comisiones, Nullable<decimal> bonos, Nullable<decimal> colacion, Nullable<decimal> movilizacion, Nullable<int> codAfp, Nullable<decimal> valor_Afp, Nullable<int> cod_Salud, Nullable<decimal> valor_Salud, Nullable<decimal> valor_Seg_Cesantia, Nullable<decimal> valor_Impuesto, Nullable<decimal> apv, Nullable<decimal> otrs_Descuentos, Nullable<decimal> total_Pagar)
         {
             var rut_EmpleadoParameter = rut_Empleado != null ?
                 new ObjectParameter("Rut_Empleado", rut_Empleado) :
                 new ObjectParameter("Rut_Empleado", typeof(string));
+    
+            var id_Tipo_RenumeracionParameter = id_Tipo_Renumeracion.HasValue ?
+                new ObjectParameter("Id_Tipo_Renumeracion", id_Tipo_Renumeracion) :
+                new ObjectParameter("Id_Tipo_Renumeracion", typeof(int));
+    
+            var plazo_ContratoParameter = plazo_Contrato != null ?
+                new ObjectParameter("Plazo_Contrato", plazo_Contrato) :
+                new ObjectParameter("Plazo_Contrato", typeof(string));
     
             var fecha_LiquidacionParameter = fecha_Liquidacion.HasValue ?
                 new ObjectParameter("Fecha_Liquidacion", fecha_Liquidacion) :
@@ -431,67 +440,79 @@ namespace CrudMvcSp.Models
                 new ObjectParameter("Sueldo_Base", sueldo_Base) :
                 new ObjectParameter("Sueldo_Base", typeof(string));
     
-            var remuneracion_ImponibleParameter = remuneracion_Imponible != null ?
-                new ObjectParameter("Remuneracion_Imponible", remuneracion_Imponible) :
-                new ObjectParameter("Remuneracion_Imponible", typeof(string));
+            var dias_TrabajadosParameter = dias_Trabajados != null ?
+                new ObjectParameter("Dias_Trabajados", dias_Trabajados) :
+                new ObjectParameter("Dias_Trabajados", typeof(string));
     
-            var cant_Carg_FamParameter = cant_Carg_Fam != null ?
-                new ObjectParameter("Cant_Carg_Fam", cant_Carg_Fam) :
-                new ObjectParameter("Cant_Carg_Fam", typeof(string));
+            var gratificacionParameter = gratificacion != null ?
+                new ObjectParameter("Gratificacion", gratificacion) :
+                new ObjectParameter("Gratificacion", typeof(string));
     
-            var pagoTot_Carg_FamParameter = pagoTot_Carg_Fam != null ?
-                new ObjectParameter("PagoTot_Carg_Fam", pagoTot_Carg_Fam) :
-                new ObjectParameter("PagoTot_Carg_Fam", typeof(string));
+            var valor_GratParameter = valor_Grat.HasValue ?
+                new ObjectParameter("Valor_Grat", valor_Grat) :
+                new ObjectParameter("Valor_Grat", typeof(decimal));
     
-            var movilizacionParameter = movilizacion != null ?
-                new ObjectParameter("Movilizacion", movilizacion) :
-                new ObjectParameter("Movilizacion", typeof(string));
+            var cant_Horas_ExtrasParameter = cant_Horas_Extras.HasValue ?
+                new ObjectParameter("Cant_Horas_Extras", cant_Horas_Extras) :
+                new ObjectParameter("Cant_Horas_Extras", typeof(decimal));
     
-            var colacionParameter = colacion != null ?
+            var valor_Horas_ExtrasParameter = valor_Horas_Extras.HasValue ?
+                new ObjectParameter("Valor_Horas_Extras", valor_Horas_Extras) :
+                new ObjectParameter("Valor_Horas_Extras", typeof(decimal));
+    
+            var comisionesParameter = comisiones.HasValue ?
+                new ObjectParameter("Comisiones", comisiones) :
+                new ObjectParameter("Comisiones", typeof(decimal));
+    
+            var bonosParameter = bonos.HasValue ?
+                new ObjectParameter("Bonos", bonos) :
+                new ObjectParameter("Bonos", typeof(decimal));
+    
+            var colacionParameter = colacion.HasValue ?
                 new ObjectParameter("Colacion", colacion) :
-                new ObjectParameter("Colacion", typeof(string));
+                new ObjectParameter("Colacion", typeof(decimal));
     
-            var cod_AfpParameter = cod_Afp.HasValue ?
-                new ObjectParameter("Cod_Afp", cod_Afp) :
-                new ObjectParameter("Cod_Afp", typeof(int));
+            var movilizacionParameter = movilizacion.HasValue ?
+                new ObjectParameter("Movilizacion", movilizacion) :
+                new ObjectParameter("Movilizacion", typeof(decimal));
     
-            var cotizacion_PrevisionalParameter = cotizacion_Previsional != null ?
-                new ObjectParameter("Cotizacion_Previsional", cotizacion_Previsional) :
-                new ObjectParameter("Cotizacion_Previsional", typeof(string));
+            var codAfpParameter = codAfp.HasValue ?
+                new ObjectParameter("CodAfp", codAfp) :
+                new ObjectParameter("CodAfp", typeof(int));
     
-            var adicional_PrevisionParameter = adicional_Prevision != null ?
-                new ObjectParameter("Adicional_Prevision", adicional_Prevision) :
-                new ObjectParameter("Adicional_Prevision", typeof(string));
+            var valor_AfpParameter = valor_Afp.HasValue ?
+                new ObjectParameter("Valor_Afp", valor_Afp) :
+                new ObjectParameter("Valor_Afp", typeof(decimal));
     
             var cod_SaludParameter = cod_Salud.HasValue ?
                 new ObjectParameter("Cod_Salud", cod_Salud) :
                 new ObjectParameter("Cod_Salud", typeof(int));
     
-            var cotizacion_SaludParameter = cotizacion_Salud != null ?
-                new ObjectParameter("Cotizacion_Salud", cotizacion_Salud) :
-                new ObjectParameter("Cotizacion_Salud", typeof(string));
+            var valor_SaludParameter = valor_Salud.HasValue ?
+                new ObjectParameter("Valor_Salud", valor_Salud) :
+                new ObjectParameter("Valor_Salud", typeof(decimal));
     
-            var adicional_SaludParameter = adicional_Salud != null ?
-                new ObjectParameter("Adicional_Salud", adicional_Salud) :
-                new ObjectParameter("Adicional_Salud", typeof(string));
+            var valor_Seg_CesantiaParameter = valor_Seg_Cesantia.HasValue ?
+                new ObjectParameter("Valor_Seg_Cesantia", valor_Seg_Cesantia) :
+                new ObjectParameter("Valor_Seg_Cesantia", typeof(decimal));
     
-            var otros_DescuentosParameter = otros_Descuentos != null ?
-                new ObjectParameter("Otros_Descuentos", otros_Descuentos) :
-                new ObjectParameter("Otros_Descuentos", typeof(string));
+            var valor_ImpuestoParameter = valor_Impuesto.HasValue ?
+                new ObjectParameter("Valor_Impuesto", valor_Impuesto) :
+                new ObjectParameter("Valor_Impuesto", typeof(decimal));
     
-            var alcance_LiquidoParameter = alcance_Liquido != null ?
-                new ObjectParameter("Alcance_Liquido", alcance_Liquido) :
-                new ObjectParameter("Alcance_Liquido", typeof(string));
+            var apvParameter = apv.HasValue ?
+                new ObjectParameter("Apv", apv) :
+                new ObjectParameter("Apv", typeof(decimal));
     
-            var vales_AnticiposParameter = vales_Anticipos != null ?
-                new ObjectParameter("Vales_Anticipos", vales_Anticipos) :
-                new ObjectParameter("Vales_Anticipos", typeof(string));
+            var otrs_DescuentosParameter = otrs_Descuentos.HasValue ?
+                new ObjectParameter("Otrs_Descuentos", otrs_Descuentos) :
+                new ObjectParameter("Otrs_Descuentos", typeof(decimal));
     
-            var sueldo_LiquidoParameter = sueldo_Liquido != null ?
-                new ObjectParameter("Sueldo_Liquido", sueldo_Liquido) :
-                new ObjectParameter("Sueldo_Liquido", typeof(string));
+            var total_PagarParameter = total_Pagar.HasValue ?
+                new ObjectParameter("Total_Pagar", total_Pagar) :
+                new ObjectParameter("Total_Pagar", typeof(decimal));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Sp_Ins_LiqSueldo", rut_EmpleadoParameter, fecha_LiquidacionParameter, sueldo_BaseParameter, remuneracion_ImponibleParameter, cant_Carg_FamParameter, pagoTot_Carg_FamParameter, movilizacionParameter, colacionParameter, cod_AfpParameter, cotizacion_PrevisionalParameter, adicional_PrevisionParameter, cod_SaludParameter, cotizacion_SaludParameter, adicional_SaludParameter, otros_DescuentosParameter, alcance_LiquidoParameter, vales_AnticiposParameter, sueldo_LiquidoParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Sp_Ins_LiqSueldo", rut_EmpleadoParameter, id_Tipo_RenumeracionParameter, plazo_ContratoParameter, fecha_LiquidacionParameter, sueldo_BaseParameter, dias_TrabajadosParameter, gratificacionParameter, valor_GratParameter, cant_Horas_ExtrasParameter, valor_Horas_ExtrasParameter, comisionesParameter, bonosParameter, colacionParameter, movilizacionParameter, codAfpParameter, valor_AfpParameter, cod_SaludParameter, valor_SaludParameter, valor_Seg_CesantiaParameter, valor_ImpuestoParameter, apvParameter, otrs_DescuentosParameter, total_PagarParameter);
         }
     
         public virtual int Sp_Ins_Nacionalidad(string descr)
@@ -555,13 +576,9 @@ namespace CrudMvcSp.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Sp_Mues_Empresas_Result>("Sp_Mues_Empresas");
         }
     
-        public virtual ObjectResult<Sp_Mues_LiqSueldo_Result> Sp_Mues_LiqSueldo(string rut_Emp)
+        public virtual ObjectResult<SP_Mues_liqSueldo_Result> SP_Mues_liqSueldo()
         {
-            var rut_EmpParameter = rut_Emp != null ?
-                new ObjectParameter("Rut_Emp", rut_Emp) :
-                new ObjectParameter("Rut_Emp", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Sp_Mues_LiqSueldo_Result>("Sp_Mues_LiqSueldo", rut_EmpParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_Mues_liqSueldo_Result>("SP_Mues_liqSueldo");
         }
     
         public virtual ObjectResult<Sp_Mues_Nacionalidad_Result> Sp_Mues_Nacionalidad()
@@ -671,13 +688,17 @@ namespace CrudMvcSp.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Sp_Sel_Empresas_Result>("Sp_Sel_Empresas", rut_EmpresaParameter);
         }
     
-        public virtual ObjectResult<Sp_Sel_LiqSueldo_Result> Sp_Sel_LiqSueldo(Nullable<int> id_Liq)
+        public virtual ObjectResult<SP_Sel_liqSueldoXRutMes_Result> SP_Sel_liqSueldoXRutMes(string fechLiq, string rut_Emp)
         {
-            var id_LiqParameter = id_Liq.HasValue ?
-                new ObjectParameter("Id_Liq", id_Liq) :
-                new ObjectParameter("Id_Liq", typeof(int));
+            var fechLiqParameter = fechLiq != null ?
+                new ObjectParameter("FechLiq", fechLiq) :
+                new ObjectParameter("FechLiq", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Sp_Sel_LiqSueldo_Result>("Sp_Sel_LiqSueldo", id_LiqParameter);
+            var rut_EmpParameter = rut_Emp != null ?
+                new ObjectParameter("Rut_Emp", rut_Emp) :
+                new ObjectParameter("Rut_Emp", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_Sel_liqSueldoXRutMes_Result>("SP_Sel_liqSueldoXRutMes", fechLiqParameter, rut_EmpParameter);
         }
     
         public virtual ObjectResult<Sp_Sel_Nacionalidad_Result> Sp_Sel_Nacionalidad(Nullable<int> id_Nac)
@@ -964,85 +985,105 @@ namespace CrudMvcSp.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Sp_UPD_Empresas", rut_empParameter, nombreParameter, direccionParameter, numParameter, vilpobParameter, comuParameter, ciudadParameter, fonoParameter, emailParameter);
         }
     
-        public virtual int Sp_UPD_LiqSueldo(Nullable<int> id_Liq, string rut_Emp, Nullable<System.DateTime> fechLiq, string sueBase, string remImp, string cant_Carg, string pag_Tot_Car, string movi, string colac, Nullable<int> cod_Afp, string cotiz, string adicPrev, Nullable<int> cod_Salud, string cotizSa, string adic_Salud, string otrDesc, string alcLiq, string valAntic, string sueldLiq)
+        public virtual int Sp_UPD_LiqSueldoXRutMes(Nullable<int> id_liq, string rut_Empleado, Nullable<int> id_Tipo_Renumeracion, string plazo_Contrato, Nullable<System.DateTime> fecha_Liquidacion, string sueldo_Base, string dias_Trabajados, string gratificacion, Nullable<decimal> valor_Grat, Nullable<decimal> cant_Horas_Extras, Nullable<decimal> valor_Horas_Extras, Nullable<decimal> comisiones, Nullable<decimal> bonos, Nullable<decimal> colacion, Nullable<decimal> movilizacion, Nullable<int> codAfp, Nullable<decimal> valor_Afp, Nullable<int> cod_Salud, Nullable<decimal> valor_Salud, Nullable<decimal> valor_Seg_Cesantia, Nullable<decimal> valor_Impuesto, Nullable<decimal> apv, Nullable<decimal> otrs_Descuentos, Nullable<decimal> tot_Pagar)
         {
-            var id_LiqParameter = id_Liq.HasValue ?
-                new ObjectParameter("Id_Liq", id_Liq) :
-                new ObjectParameter("Id_Liq", typeof(int));
+            var id_liqParameter = id_liq.HasValue ?
+                new ObjectParameter("Id_liq", id_liq) :
+                new ObjectParameter("Id_liq", typeof(int));
     
-            var rut_EmpParameter = rut_Emp != null ?
-                new ObjectParameter("Rut_Emp", rut_Emp) :
-                new ObjectParameter("Rut_Emp", typeof(string));
+            var rut_EmpleadoParameter = rut_Empleado != null ?
+                new ObjectParameter("Rut_Empleado", rut_Empleado) :
+                new ObjectParameter("Rut_Empleado", typeof(string));
     
-            var fechLiqParameter = fechLiq.HasValue ?
-                new ObjectParameter("FechLiq", fechLiq) :
-                new ObjectParameter("FechLiq", typeof(System.DateTime));
+            var id_Tipo_RenumeracionParameter = id_Tipo_Renumeracion.HasValue ?
+                new ObjectParameter("Id_Tipo_Renumeracion", id_Tipo_Renumeracion) :
+                new ObjectParameter("Id_Tipo_Renumeracion", typeof(int));
     
-            var sueBaseParameter = sueBase != null ?
-                new ObjectParameter("SueBase", sueBase) :
-                new ObjectParameter("SueBase", typeof(string));
+            var plazo_ContratoParameter = plazo_Contrato != null ?
+                new ObjectParameter("Plazo_Contrato", plazo_Contrato) :
+                new ObjectParameter("Plazo_Contrato", typeof(string));
     
-            var remImpParameter = remImp != null ?
-                new ObjectParameter("RemImp", remImp) :
-                new ObjectParameter("RemImp", typeof(string));
+            var fecha_LiquidacionParameter = fecha_Liquidacion.HasValue ?
+                new ObjectParameter("Fecha_Liquidacion", fecha_Liquidacion) :
+                new ObjectParameter("Fecha_Liquidacion", typeof(System.DateTime));
     
-            var cant_CargParameter = cant_Carg != null ?
-                new ObjectParameter("Cant_Carg", cant_Carg) :
-                new ObjectParameter("Cant_Carg", typeof(string));
+            var sueldo_BaseParameter = sueldo_Base != null ?
+                new ObjectParameter("Sueldo_Base", sueldo_Base) :
+                new ObjectParameter("Sueldo_Base", typeof(string));
     
-            var pag_Tot_CarParameter = pag_Tot_Car != null ?
-                new ObjectParameter("Pag_Tot_Car", pag_Tot_Car) :
-                new ObjectParameter("Pag_Tot_Car", typeof(string));
+            var dias_TrabajadosParameter = dias_Trabajados != null ?
+                new ObjectParameter("Dias_Trabajados", dias_Trabajados) :
+                new ObjectParameter("Dias_Trabajados", typeof(string));
     
-            var moviParameter = movi != null ?
-                new ObjectParameter("Movi", movi) :
-                new ObjectParameter("Movi", typeof(string));
+            var gratificacionParameter = gratificacion != null ?
+                new ObjectParameter("Gratificacion", gratificacion) :
+                new ObjectParameter("Gratificacion", typeof(string));
     
-            var colacParameter = colac != null ?
-                new ObjectParameter("Colac", colac) :
-                new ObjectParameter("Colac", typeof(string));
+            var valor_GratParameter = valor_Grat.HasValue ?
+                new ObjectParameter("Valor_Grat", valor_Grat) :
+                new ObjectParameter("Valor_Grat", typeof(decimal));
     
-            var cod_AfpParameter = cod_Afp.HasValue ?
-                new ObjectParameter("Cod_Afp", cod_Afp) :
-                new ObjectParameter("Cod_Afp", typeof(int));
+            var cant_Horas_ExtrasParameter = cant_Horas_Extras.HasValue ?
+                new ObjectParameter("Cant_Horas_Extras", cant_Horas_Extras) :
+                new ObjectParameter("Cant_Horas_Extras", typeof(decimal));
     
-            var cotizParameter = cotiz != null ?
-                new ObjectParameter("Cotiz", cotiz) :
-                new ObjectParameter("Cotiz", typeof(string));
+            var valor_Horas_ExtrasParameter = valor_Horas_Extras.HasValue ?
+                new ObjectParameter("Valor_Horas_Extras", valor_Horas_Extras) :
+                new ObjectParameter("Valor_Horas_Extras", typeof(decimal));
     
-            var adicPrevParameter = adicPrev != null ?
-                new ObjectParameter("AdicPrev", adicPrev) :
-                new ObjectParameter("AdicPrev", typeof(string));
+            var comisionesParameter = comisiones.HasValue ?
+                new ObjectParameter("Comisiones", comisiones) :
+                new ObjectParameter("Comisiones", typeof(decimal));
+    
+            var bonosParameter = bonos.HasValue ?
+                new ObjectParameter("Bonos", bonos) :
+                new ObjectParameter("Bonos", typeof(decimal));
+    
+            var colacionParameter = colacion.HasValue ?
+                new ObjectParameter("Colacion", colacion) :
+                new ObjectParameter("Colacion", typeof(decimal));
+    
+            var movilizacionParameter = movilizacion.HasValue ?
+                new ObjectParameter("Movilizacion", movilizacion) :
+                new ObjectParameter("Movilizacion", typeof(decimal));
+    
+            var codAfpParameter = codAfp.HasValue ?
+                new ObjectParameter("CodAfp", codAfp) :
+                new ObjectParameter("CodAfp", typeof(int));
+    
+            var valor_AfpParameter = valor_Afp.HasValue ?
+                new ObjectParameter("Valor_Afp", valor_Afp) :
+                new ObjectParameter("Valor_Afp", typeof(decimal));
     
             var cod_SaludParameter = cod_Salud.HasValue ?
                 new ObjectParameter("Cod_Salud", cod_Salud) :
                 new ObjectParameter("Cod_Salud", typeof(int));
     
-            var cotizSaParameter = cotizSa != null ?
-                new ObjectParameter("CotizSa", cotizSa) :
-                new ObjectParameter("CotizSa", typeof(string));
+            var valor_SaludParameter = valor_Salud.HasValue ?
+                new ObjectParameter("Valor_Salud", valor_Salud) :
+                new ObjectParameter("Valor_Salud", typeof(decimal));
     
-            var adic_SaludParameter = adic_Salud != null ?
-                new ObjectParameter("Adic_Salud", adic_Salud) :
-                new ObjectParameter("Adic_Salud", typeof(string));
+            var valor_Seg_CesantiaParameter = valor_Seg_Cesantia.HasValue ?
+                new ObjectParameter("Valor_Seg_Cesantia", valor_Seg_Cesantia) :
+                new ObjectParameter("Valor_Seg_Cesantia", typeof(decimal));
     
-            var otrDescParameter = otrDesc != null ?
-                new ObjectParameter("OtrDesc", otrDesc) :
-                new ObjectParameter("OtrDesc", typeof(string));
+            var valor_ImpuestoParameter = valor_Impuesto.HasValue ?
+                new ObjectParameter("Valor_Impuesto", valor_Impuesto) :
+                new ObjectParameter("Valor_Impuesto", typeof(decimal));
     
-            var alcLiqParameter = alcLiq != null ?
-                new ObjectParameter("AlcLiq", alcLiq) :
-                new ObjectParameter("AlcLiq", typeof(string));
+            var apvParameter = apv.HasValue ?
+                new ObjectParameter("Apv", apv) :
+                new ObjectParameter("Apv", typeof(decimal));
     
-            var valAnticParameter = valAntic != null ?
-                new ObjectParameter("ValAntic", valAntic) :
-                new ObjectParameter("ValAntic", typeof(string));
+            var otrs_DescuentosParameter = otrs_Descuentos.HasValue ?
+                new ObjectParameter("Otrs_Descuentos", otrs_Descuentos) :
+                new ObjectParameter("Otrs_Descuentos", typeof(decimal));
     
-            var sueldLiqParameter = sueldLiq != null ?
-                new ObjectParameter("SueldLiq", sueldLiq) :
-                new ObjectParameter("SueldLiq", typeof(string));
+            var tot_PagarParameter = tot_Pagar.HasValue ?
+                new ObjectParameter("Tot_Pagar", tot_Pagar) :
+                new ObjectParameter("Tot_Pagar", typeof(decimal));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Sp_UPD_LiqSueldo", id_LiqParameter, rut_EmpParameter, fechLiqParameter, sueBaseParameter, remImpParameter, cant_CargParameter, pag_Tot_CarParameter, moviParameter, colacParameter, cod_AfpParameter, cotizParameter, adicPrevParameter, cod_SaludParameter, cotizSaParameter, adic_SaludParameter, otrDescParameter, alcLiqParameter, valAnticParameter, sueldLiqParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Sp_UPD_LiqSueldoXRutMes", id_liqParameter, rut_EmpleadoParameter, id_Tipo_RenumeracionParameter, plazo_ContratoParameter, fecha_LiquidacionParameter, sueldo_BaseParameter, dias_TrabajadosParameter, gratificacionParameter, valor_GratParameter, cant_Horas_ExtrasParameter, valor_Horas_ExtrasParameter, comisionesParameter, bonosParameter, colacionParameter, movilizacionParameter, codAfpParameter, valor_AfpParameter, cod_SaludParameter, valor_SaludParameter, valor_Seg_CesantiaParameter, valor_ImpuestoParameter, apvParameter, otrs_DescuentosParameter, tot_PagarParameter);
         }
     
         public virtual int Sp_UPD_Nacionalidad(Nullable<int> id_Nac, string descr)

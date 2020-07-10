@@ -252,7 +252,7 @@
     <Compile Include="Models\Sp_Mues_Empresas_Result.cs">
       <DependentUpon>ModelEmp.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Sp_Mues_LiqSueldo_Result.cs">
+    <Compile Include="Models\SP_Mues_liqSueldo_Result.cs">
       <DependentUpon>ModelEmp.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sp_Mues_Nacionalidad_Result.cs">
@@ -282,7 +282,7 @@
     <Compile Include="Models\Sp_Sel_Empresas_Result.cs">
       <DependentUpon>ModelEmp.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Sp_Sel_LiqSueldo_Result.cs">
+    <Compile Include="Models\SP_Sel_liqSueldoXRutMes_Result.cs">
       <DependentUpon>ModelEmp.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sp_Sel_Nacionalidad_Result.cs">
@@ -301,6 +301,9 @@
       <DependentUpon>ModelEmp.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TablImpSemanal.cs">
+      <DependentUpon>ModelEmp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tipo_Remuneracion.cs">
       <DependentUpon>ModelEmp.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

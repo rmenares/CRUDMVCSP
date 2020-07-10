@@ -10,13 +10,13 @@
 namespace CrudMvcSp.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Liquidacion_Sueldo
+    public partial class SP_Sel_liqSueldoXRutMes_Result
     {
-        public int Id_Liq { get; set; }
         public string Rut_Empleado { get; set; }
+        public string Nombre { get; set; }
         public int Id_Tipo_Renumeracion { get; set; }
+        public string Descr_Tipo { get; set; }
         public string Plazo_Contrato { get; set; }
         public System.DateTime Fecha_Liquidacion { get; set; }
         public string Sueldo_Base { get; set; }
@@ -29,16 +29,16 @@ namespace CrudMvcSp.Models
         public decimal Bonos { get; set; }
         public decimal Colacion { get; set; }
         public decimal Movilizacion { get; set; }
-        public int CodAfp { get; set; }
+        public string Nom_Afp { get; set; }
+        public Nullable<decimal> Porc_Desc { get; set; }
         public decimal Valor_Afp { get; set; }
-        public int Cod_Salud { get; set; }
+        public string Nombre_Salud { get; set; }
+        public Nullable<decimal> Porc_Cotiz { get; set; }
         public decimal Valor_Salud { get; set; }
         public decimal Valor_Seg_Cesantia { get; set; }
         public decimal Valor_Impuesto { get; set; }
         public decimal Apv { get; set; }
         public decimal Otrs_Descuentos { get; set; }
         public decimal Total_Pagar { get; set; }
-    
-        public virtual Tipo_Remuneracion Tipo_Remuneracion { get; set; }
     }
 }

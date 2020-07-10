@@ -11,22 +11,34 @@ namespace CrudMvcSp.Models
 {
     using System;
     
-    public partial class Sp_Mues_LiqSueldo_Result
+    public partial class SP_Mues_liqSueldo_Result
     {
-        public Nullable<System.DateTime> Fecha_Liquidacion { get; set; }
+        public string Rut_Empleado { get; set; }
+        public string Nombre { get; set; }
+        public int Id_Tipo_Renumeracion { get; set; }
+        public string Descr_Tipo { get; set; }
+        public string Plazo_Contrato { get; set; }
+        public System.DateTime Fecha_Liquidacion { get; set; }
         public string Sueldo_Base { get; set; }
-        public string Remuneracion_Imponible { get; set; }
-        public string Colacion { get; set; }
-        public string Movilizacion { get; set; }
-        public Nullable<int> Cod_Afp { get; set; }
-        public string Cotizacion_Previsional { get; set; }
-        public string Adicional_Prevision { get; set; }
-        public Nullable<int> Cod_Salud { get; set; }
-        public string Cotizacion_Salud { get; set; }
-        public string Adicional_Salud { get; set; }
-        public string Otros_Descuentos { get; set; }
-        public string Alcance_Liquido { get; set; }
-        public string Vales_Anticipos { get; set; }
-        public string Sueldo_Liquido { get; set; }
+        public string Dias_Trabajados { get; set; }
+        public string Gratificacion { get; set; }
+        public decimal Valor_Grat { get; set; }
+        public decimal Cant_Horas_Extras { get; set; }
+        public decimal Valor_Horas_Extras { get; set; }
+        public decimal Comisiones { get; set; }
+        public decimal Bonos { get; set; }
+        public decimal Colacion { get; set; }
+        public decimal Movilizacion { get; set; }
+        public string Nom_Afp { get; set; }
+        public Nullable<decimal> Porc_Desc { get; set; }
+        public decimal Valor_Afp { get; set; }
+        public string Nombre_Salud { get; set; }
+        public Nullable<decimal> Porc_Cotiz { get; set; }
+        public decimal Valor_Salud { get; set; }
+        public decimal Valor_Seg_Cesantia { get; set; }
+        public decimal Valor_Impuesto { get; set; }
+        public decimal Apv { get; set; }
+        public decimal Otrs_Descuentos { get; set; }
+        public decimal Total_Pagar { get; set; }
     }
 }

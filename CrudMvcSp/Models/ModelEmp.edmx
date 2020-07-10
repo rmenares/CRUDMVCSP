@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="EmpleadosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="EmpleadosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Afp">
           <Key>
             <PropertyRef Name="Cod_Afp" />
@@ -39,7 +39,7 @@
           <Key>
             <PropertyRef Name="Id_Tram_Carg" />
           </Key>
-          <Property Name="Id_Tram_Carg" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Tram_Carg" Type="int" Nullable="false" />
           <Property Name="Tramo" Type="varchar" MaxLength="2" Nullable="false" />
           <Property Name="Desde" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Hasta" Type="varchar" MaxLength="50" Nullable="false" />
@@ -116,28 +116,32 @@
         </EntityType>
         <EntityType Name="Liquidacion_Sueldo">
           <Key>
-            <PropertyRef Name="Rut_Empleado" />
+            <PropertyRef Name="Id_Liq" />
           </Key>
           <Property Name="Id_Liq" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Tipo_Renumeracion" Type="int" />
           <Property Name="Rut_Empleado" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="Fecha_Liquidacion" Type="datetime" />
-          <Property Name="Sueldo_Base" Type="varchar" MaxLength="50" />
-          <Property Name="Remuneracion_Imponible" Type="varchar" MaxLength="50" />
-          <Property Name="Cant_Carg_Fam" Type="varchar" MaxLength="50" />
-          <Property Name="PagoTot_Carg_Fam" Type="varchar" MaxLength="50" />
-          <Property Name="Movilizacion" Type="varchar" MaxLength="50" />
-          <Property Name="Colacion" Type="varchar" MaxLength="50" />
-          <Property Name="Cod_Afp" Type="int" />
-          <Property Name="Cotizacion_Previsional" Type="varchar" MaxLength="50" />
-          <Property Name="Adicional_Prevision" Type="varchar" MaxLength="50" />
-          <Property Name="Cod_Salud" Type="int" />
-          <Property Name="Cotizacion_Salud" Type="varchar" MaxLength="50" />
-          <Property Name="Adicional_Salud" Type="varchar" MaxLength="50" />
-          <Property Name="Otros_Descuentos" Type="varchar" MaxLength="50" />
-          <Property Name="Alcance_Liquido" Type="varchar" MaxLength="50" />
-          <Property Name="Vales_Anticipos" Type="varchar" MaxLength="50" />
-          <Property Name="Sueldo_Liquido" Type="varchar" MaxLength="50" />
+          <Property Name="Id_Tipo_Renumeracion" Type="int" Nullable="false" />
+          <Property Name="Plazo_Contrato" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Fecha_Liquidacion" Type="datetime" Nullable="false" />
+          <Property Name="Sueldo_Base" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Dias_Trabajados" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="Gratificacion" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="Valor_Grat" Type="numeric" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="Cant_Horas_Extras" Type="numeric" Precision="9" Scale="0" Nullable="false" />
+          <Property Name="Valor_Horas_Extras" Type="numeric" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="Comisiones" Type="numeric" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="Bonos" Type="numeric" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="Colacion" Type="numeric" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="Movilizacion" Type="numeric" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="CodAfp" Type="int" Nullable="false" />
+          <Property Name="Valor_Afp" Type="numeric" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="Cod_Salud" Type="int" Nullable="false" />
+          <Property Name="Valor_Salud" Type="numeric" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="Valor_Seg_Cesantia" Type="numeric" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="Valor_Impuesto" Type="numeric" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="Apv" Type="numeric" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="Otrs_Descuentos" Type="numeric" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="Total_Pagar" Type="numeric" Precision="9" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="Login">
           <Key>
@@ -227,6 +231,13 @@
           <Property Name="Factor" Type="decimal" Precision="18" Scale="3" />
           <Property Name="CantAReb" Type="decimal" Precision="18" Scale="3" />
           <Property Name="TasaImpEfec" Type="decimal" Precision="18" Scale="3" />
+        </EntityType>
+        <EntityType Name="Tipo_Remuneracion">
+          <Key>
+            <PropertyRef Name="Id_Tipo" />
+          </Key>
+          <Property Name="Id_Tipo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descr_Tipo" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <Association Name="FK__Empleados__Id_Se__13BCEBC1">
           <End Role="Sexo" Type="Self.Sexo" Multiplicity="1" />
@@ -372,7 +383,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Empleados_Salud">
+        <Association Name="FK_Empleados_Salud1">
           <End Role="Salud" Type="Self.Salud" Multiplicity="1" />
           <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
           <ReferentialConstraint>
@@ -384,7 +395,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_provincia_region">
+        <Association Name="FK_Liquidacion_Sueldo_Tipo_Remuneracion">
+          <End Role="Tipo_Remuneracion" Type="Self.Tipo_Remuneracion" Multiplicity="1" />
+          <End Role="Liquidacion_Sueldo" Type="Self.Liquidacion_Sueldo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_Remuneracion">
+              <PropertyRef Name="Id_Tipo" />
+            </Principal>
+            <Dependent Role="Liquidacion_Sueldo">
+              <PropertyRef Name="Id_Tipo_Renumeracion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Provincia_Region1">
           <End Role="Region" Type="Self.Region" Multiplicity="0..1" />
           <End Role="Provincia" Type="Self.Provincia" Multiplicity="*" />
           <ReferentialConstraint>
@@ -514,23 +537,28 @@
         </Function>
         <Function Name="Sp_Ins_LiqSueldo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Rut_Empleado" Type="varchar" Mode="In" />
+          <Parameter Name="Id_Tipo_Renumeracion" Type="int" Mode="In" />
+          <Parameter Name="Plazo_Contrato" Type="varchar" Mode="In" />
           <Parameter Name="Fecha_Liquidacion" Type="datetime" Mode="In" />
           <Parameter Name="Sueldo_Base" Type="varchar" Mode="In" />
-          <Parameter Name="Remuneracion_Imponible" Type="varchar" Mode="In" />
-          <Parameter Name="Cant_Carg_Fam" Type="varchar" Mode="In" />
-          <Parameter Name="PagoTot_Carg_Fam" Type="varchar" Mode="In" />
-          <Parameter Name="Movilizacion" Type="varchar" Mode="In" />
-          <Parameter Name="Colacion" Type="varchar" Mode="In" />
-          <Parameter Name="Cod_Afp" Type="int" Mode="In" />
-          <Parameter Name="Cotizacion_Previsional" Type="varchar" Mode="In" />
-          <Parameter Name="Adicional_Prevision" Type="varchar" Mode="In" />
+          <Parameter Name="Dias_Trabajados" Type="varchar" Mode="In" />
+          <Parameter Name="Gratificacion" Type="varchar" Mode="In" />
+          <Parameter Name="Valor_Grat" Type="numeric" Mode="In" />
+          <Parameter Name="Cant_Horas_Extras" Type="numeric" Mode="In" />
+          <Parameter Name="Valor_Horas_Extras" Type="numeric" Mode="In" />
+          <Parameter Name="Comisiones" Type="numeric" Mode="In" />
+          <Parameter Name="Bonos" Type="numeric" Mode="In" />
+          <Parameter Name="Colacion" Type="numeric" Mode="In" />
+          <Parameter Name="Movilizacion" Type="numeric" Mode="In" />
+          <Parameter Name="CodAfp" Type="int" Mode="In" />
+          <Parameter Name="Valor_Afp" Type="numeric" Mode="In" />
           <Parameter Name="Cod_Salud" Type="int" Mode="In" />
-          <Parameter Name="Cotizacion_Salud" Type="varchar" Mode="In" />
-          <Parameter Name="Adicional_Salud" Type="varchar" Mode="In" />
-          <Parameter Name="Otros_Descuentos" Type="varchar" Mode="In" />
-          <Parameter Name="Alcance_Liquido" Type="varchar" Mode="In" />
-          <Parameter Name="Vales_Anticipos" Type="varchar" Mode="In" />
-          <Parameter Name="Sueldo_Liquido" Type="varchar" Mode="In" />
+          <Parameter Name="Valor_Salud" Type="numeric" Mode="In" />
+          <Parameter Name="Valor_Seg_Cesantia" Type="numeric" Mode="In" />
+          <Parameter Name="Valor_Impuesto" Type="numeric" Mode="In" />
+          <Parameter Name="Apv" Type="numeric" Mode="In" />
+          <Parameter Name="Otrs_Descuentos" Type="numeric" Mode="In" />
+          <Parameter Name="Total_Pagar" Type="numeric" Mode="In" />
         </Function>
         <Function Name="Sp_Ins_Nacionalidad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Descr" Type="varchar" Mode="In" />
@@ -548,9 +576,7 @@
           <Parameter Name="Rut_Emp" Type="varchar" Mode="In" />
         </Function>
         <Function Name="Sp_Mues_Empresas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="Sp_Mues_LiqSueldo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Rut_Emp" Type="varchar" Mode="In" />
-        </Function>
+        <Function Name="SP_Mues_liqSueldo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Sp_Mues_Nacionalidad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Sp_Mues_Salud" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -584,8 +610,9 @@
         <Function Name="Sp_Sel_Empresas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Rut_Empresa" Type="varchar" Mode="In" />
         </Function>
-        <Function Name="Sp_Sel_LiqSueldo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Id_Liq" Type="int" Mode="In" />
+        <Function Name="SP_Sel_liqSueldoXRutMes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FechLiq" Type="varchar" Mode="In" />
+          <Parameter Name="Rut_Emp" Type="varchar" Mode="In" />
         </Function>
         <Function Name="Sp_Sel_Nacionalidad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id_Nac" Type="int" Mode="In" />
@@ -664,26 +691,31 @@
           <Parameter Name="fono" Type="varchar" Mode="In" />
           <Parameter Name="email" Type="varchar" Mode="In" />
         </Function>
-        <Function Name="Sp_UPD_LiqSueldo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Id_Liq" Type="int" Mode="In" />
-          <Parameter Name="Rut_Emp" Type="varchar" Mode="In" />
-          <Parameter Name="FechLiq" Type="date" Mode="In" />
-          <Parameter Name="SueBase" Type="varchar" Mode="In" />
-          <Parameter Name="RemImp" Type="varchar" Mode="In" />
-          <Parameter Name="Cant_Carg" Type="varchar" Mode="In" />
-          <Parameter Name="Pag_Tot_Car" Type="varchar" Mode="In" />
-          <Parameter Name="Movi" Type="varchar" Mode="In" />
-          <Parameter Name="Colac" Type="varchar" Mode="In" />
-          <Parameter Name="Cod_Afp" Type="int" Mode="In" />
-          <Parameter Name="Cotiz" Type="varchar" Mode="In" />
-          <Parameter Name="AdicPrev" Type="varchar" Mode="In" />
+        <Function Name="Sp_UPD_LiqSueldoXRutMes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_liq" Type="int" Mode="In" />
+          <Parameter Name="Rut_Empleado" Type="varchar" Mode="In" />
+          <Parameter Name="Id_Tipo_Renumeracion" Type="int" Mode="In" />
+          <Parameter Name="Plazo_Contrato" Type="varchar" Mode="In" />
+          <Parameter Name="Fecha_Liquidacion" Type="datetime" Mode="In" />
+          <Parameter Name="Sueldo_Base" Type="varchar" Mode="In" />
+          <Parameter Name="Dias_Trabajados" Type="varchar" Mode="In" />
+          <Parameter Name="Gratificacion" Type="varchar" Mode="In" />
+          <Parameter Name="Valor_Grat" Type="numeric" Mode="In" />
+          <Parameter Name="Cant_Horas_Extras" Type="numeric" Mode="In" />
+          <Parameter Name="Valor_Horas_Extras" Type="numeric" Mode="In" />
+          <Parameter Name="Comisiones" Type="numeric" Mode="In" />
+          <Parameter Name="Bonos" Type="numeric" Mode="In" />
+          <Parameter Name="Colacion" Type="numeric" Mode="In" />
+          <Parameter Name="Movilizacion" Type="numeric" Mode="In" />
+          <Parameter Name="CodAfp" Type="int" Mode="In" />
+          <Parameter Name="Valor_Afp" Type="numeric" Mode="In" />
           <Parameter Name="Cod_Salud" Type="int" Mode="In" />
-          <Parameter Name="CotizSa" Type="varchar" Mode="In" />
-          <Parameter Name="Adic_Salud" Type="varchar" Mode="In" />
-          <Parameter Name="OtrDesc" Type="varchar" Mode="In" />
-          <Parameter Name="AlcLiq" Type="varchar" Mode="In" />
-          <Parameter Name="ValAntic" Type="varchar" Mode="In" />
-          <Parameter Name="SueldLiq" Type="varchar" Mode="In" />
+          <Parameter Name="Valor_Salud" Type="numeric" Mode="In" />
+          <Parameter Name="Valor_Seg_Cesantia" Type="numeric" Mode="In" />
+          <Parameter Name="Valor_Impuesto" Type="numeric" Mode="In" />
+          <Parameter Name="Apv" Type="numeric" Mode="In" />
+          <Parameter Name="Otrs_Descuentos" Type="numeric" Mode="In" />
+          <Parameter Name="Tot_Pagar" Type="numeric" Mode="In" />
         </Function>
         <Function Name="Sp_UPD_Nacionalidad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Id_Nac" Type="int" Mode="In" />
@@ -715,6 +747,7 @@
           <EntitySet Name="TablImpMensual" EntityType="Self.TablImpMensual" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TablImpQuincenal" EntityType="Self.TablImpQuincenal" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TablImpSemanal" EntityType="Self.TablImpSemanal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tipo_Remuneracion" EntityType="Self.Tipo_Remuneracion" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Empleados__Id_Se__13BCEBC1" Association="Self.FK__Empleados__Id_Se__13BCEBC1">
             <End Role="Sexo" EntitySet="Sexo" />
             <End Role="Empleados" EntitySet="Empleados" />
@@ -763,11 +796,15 @@
             <End Role="Nacionalidad" EntitySet="Nacionalidad" />
             <End Role="Empleados" EntitySet="Empleados" />
           </AssociationSet>
-          <AssociationSet Name="FK_Empleados_Salud" Association="Self.FK_Empleados_Salud">
+          <AssociationSet Name="FK_Empleados_Salud1" Association="Self.FK_Empleados_Salud1">
             <End Role="Salud" EntitySet="Salud" />
             <End Role="Empleados" EntitySet="Empleados" />
           </AssociationSet>
-          <AssociationSet Name="FK_provincia_region" Association="Self.FK_provincia_region">
+          <AssociationSet Name="FK_Liquidacion_Sueldo_Tipo_Remuneracion" Association="Self.FK_Liquidacion_Sueldo_Tipo_Remuneracion">
+            <End Role="Tipo_Remuneracion" EntitySet="Tipo_Remuneracion" />
+            <End Role="Liquidacion_Sueldo" EntitySet="Liquidacion_Sueldo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Provincia_Region1" Association="Self.FK_Provincia_Region1">
             <End Role="Region" EntitySet="Region" />
             <End Role="Provincia" EntitySet="Provincia" />
           </AssociationSet>
@@ -776,7 +813,8 @@
             <End Role="Empleados" EntitySet="Empleados" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="EmpleadosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -819,7 +857,7 @@
           <Key>
             <PropertyRef Name="Id_Tram_Carg" />
           </Key>
-          <Property Name="Id_Tram_Carg" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Tram_Carg" Type="Int32" Nullable="false" />
           <Property Name="Tramo" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Desde" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Hasta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
@@ -891,7 +929,7 @@
           <NavigationProperty Name="Sexo" Relationship="Self.FK__Empleados__Id_Se__13BCEBC1" FromRole="Empleados" ToRole="Sexo" />
           <NavigationProperty Name="Empresa" Relationship="Self.FK_Empleados_Empresa" FromRole="Empleados" ToRole="Empresa" />
           <NavigationProperty Name="Nacionalidad" Relationship="Self.FK_Empleados_Nacionalidad" FromRole="Empleados" ToRole="Nacionalidad" />
-          <NavigationProperty Name="Salud" Relationship="Self.FK_Empleados_Salud" FromRole="Empleados" ToRole="Salud" />
+          <NavigationProperty Name="Salud" Relationship="Self.FK_Empleados_Salud1" FromRole="Empleados" ToRole="Salud" />
           <NavigationProperty Name="Provincia" Relationship="Self.FK_Rg" FromRole="Empleados" ToRole="Provincia" />
         </EntityType>
         <EntityType Name="Empresa">
@@ -912,28 +950,33 @@
         </EntityType>
         <EntityType Name="Liquidacion_Sueldo">
           <Key>
-            <PropertyRef Name="Rut_Empleado" />
+            <PropertyRef Name="Id_Liq" />
           </Key>
           <Property Name="Id_Liq" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Tipo_Renumeracion" Type="Int32" />
           <Property Name="Rut_Empleado" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Fecha_Liquidacion" Type="DateTime" Precision="3" />
-          <Property Name="Sueldo_Base" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Remuneracion_Imponible" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Cant_Carg_Fam" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PagoTot_Carg_Fam" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Movilizacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Colacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Cod_Afp" Type="Int32" />
-          <Property Name="Cotizacion_Previsional" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Adicional_Prevision" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Cod_Salud" Type="Int32" />
-          <Property Name="Cotizacion_Salud" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Adicional_Salud" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Otros_Descuentos" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Alcance_Liquido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Vales_Anticipos" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Sueldo_Liquido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Tipo_Renumeracion" Type="Int32" Nullable="false" />
+          <Property Name="Plazo_Contrato" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fecha_Liquidacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Sueldo_Base" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Dias_Trabajados" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Gratificacion" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Valor_Grat" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="Cant_Horas_Extras" Type="Decimal" Precision="9" Scale="0" Nullable="false" />
+          <Property Name="Valor_Horas_Extras" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="Comisiones" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="Bonos" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="Colacion" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="Movilizacion" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="CodAfp" Type="Int32" Nullable="false" />
+          <Property Name="Valor_Afp" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="Cod_Salud" Type="Int32" Nullable="false" />
+          <Property Name="Valor_Salud" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="Valor_Seg_Cesantia" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="Valor_Impuesto" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="Apv" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="Otrs_Descuentos" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="Total_Pagar" Type="Decimal" Precision="9" Scale="0" Nullable="false" />
+          <NavigationProperty Name="Tipo_Remuneracion" Relationship="Self.FK_Liquidacion_Sueldo_Tipo_Remuneracion" FromRole="Liquidacion_Sueldo" ToRole="Tipo_Remuneracion" />
         </EntityType>
         <EntityType Name="Login">
           <Key>
@@ -960,7 +1003,7 @@
           <Property Name="Region_Id" Type="Int32" />
           <NavigationProperty Name="Comuna" Relationship="Self.FK_Comuna_provincia" FromRole="Provincia" ToRole="Comuna" />
           <NavigationProperty Name="Empleados" Relationship="Self.FK_Rg" FromRole="Provincia" ToRole="Empleados" />
-          <NavigationProperty Name="Region" Relationship="Self.FK_provincia_region" FromRole="Provincia" ToRole="Region" />
+          <NavigationProperty Name="Region" Relationship="Self.FK_Provincia_Region1" FromRole="Provincia" ToRole="Region" />
         </EntityType>
         <EntityType Name="Region">
           <Key>
@@ -969,7 +1012,7 @@
           <Property Name="Region_Id" Type="Int32" Nullable="false" />
           <Property Name="REGION_NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Provincia_Id" Type="Int32" />
-          <NavigationProperty Name="Provincia" Relationship="Self.FK_provincia_region" FromRole="Region" ToRole="Provincia" />
+          <NavigationProperty Name="Provincia" Relationship="Self.FK_Provincia_Region1" FromRole="Region" ToRole="Provincia" />
         </EntityType>
         <EntityType Name="Salud">
           <Key>
@@ -978,7 +1021,7 @@
           <Property Name="Cod_Salud" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre_Salud" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Porc_Cotiz" Type="Decimal" Precision="18" Scale="2" />
-          <NavigationProperty Name="Empleados" Relationship="Self.FK_Empleados_Salud" FromRole="Salud" ToRole="Empleados" />
+          <NavigationProperty Name="Empleados" Relationship="Self.FK_Empleados_Salud1" FromRole="Salud" ToRole="Empleados" />
         </EntityType>
         <EntityType Name="Sexo">
           <Key>
@@ -1032,6 +1075,14 @@
           <Property Name="Factor" Type="Decimal" Precision="18" Scale="3" />
           <Property Name="CantAReb" Type="Decimal" Precision="18" Scale="3" />
           <Property Name="TasaImpEfec" Type="Decimal" Precision="18" Scale="3" />
+        </EntityType>
+        <EntityType Name="Tipo_Remuneracion">
+          <Key>
+            <PropertyRef Name="Id_Tipo" />
+          </Key>
+          <Property Name="Id_Tipo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descr_Tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Liquidacion_Sueldo" Relationship="Self.FK_Liquidacion_Sueldo_Tipo_Remuneracion" FromRole="Tipo_Remuneracion" ToRole="Liquidacion_Sueldo" />
         </EntityType>
         <Association Name="FK_Empleados_Afp">
           <End Role="Afp" Type="Self.Afp" Multiplicity="1" />
@@ -1177,7 +1228,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Empleados_Salud">
+        <Association Name="FK_Empleados_Salud1">
           <End Role="Salud" Type="Self.Salud" Multiplicity="1" />
           <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1201,7 +1252,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_provincia_region">
+        <Association Name="FK_Liquidacion_Sueldo_Tipo_Remuneracion">
+          <End Role="Tipo_Remuneracion" Type="Self.Tipo_Remuneracion" Multiplicity="1" />
+          <End Role="Liquidacion_Sueldo" Type="Self.Liquidacion_Sueldo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_Remuneracion">
+              <PropertyRef Name="Id_Tipo" />
+            </Principal>
+            <Dependent Role="Liquidacion_Sueldo">
+              <PropertyRef Name="Id_Tipo_Renumeracion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Provincia_Region1">
           <End Role="Region" Type="Self.Region" Multiplicity="0..1" />
           <End Role="Provincia" Type="Self.Provincia" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1233,6 +1296,7 @@
           <EntitySet Name="TablImpMensual" EntityType="Self.TablImpMensual" />
           <EntitySet Name="TablImpQuincenal" EntityType="Self.TablImpQuincenal" />
           <EntitySet Name="TablImpSemanal" EntityType="Self.TablImpSemanal" />
+          <EntitySet Name="Tipo_Remuneracion" EntityType="Self.Tipo_Remuneracion" />
           <AssociationSet Name="FK_Empleados_Afp" Association="Self.FK_Empleados_Afp">
             <End Role="Afp" EntitySet="Afp" />
             <End Role="Empleados" EntitySet="Empleados" />
@@ -1281,7 +1345,7 @@
             <End Role="Nacionalidad" EntitySet="Nacionalidad" />
             <End Role="Empleados" EntitySet="Empleados" />
           </AssociationSet>
-          <AssociationSet Name="FK_Empleados_Salud" Association="Self.FK_Empleados_Salud">
+          <AssociationSet Name="FK_Empleados_Salud1" Association="Self.FK_Empleados_Salud1">
             <End Role="Salud" EntitySet="Salud" />
             <End Role="Empleados" EntitySet="Empleados" />
           </AssociationSet>
@@ -1289,7 +1353,11 @@
             <End Role="Provincia" EntitySet="Provincia" />
             <End Role="Empleados" EntitySet="Empleados" />
           </AssociationSet>
-          <AssociationSet Name="FK_provincia_region" Association="Self.FK_provincia_region">
+          <AssociationSet Name="FK_Liquidacion_Sueldo_Tipo_Remuneracion" Association="Self.FK_Liquidacion_Sueldo_Tipo_Remuneracion">
+            <End Role="Tipo_Remuneracion" EntitySet="Tipo_Remuneracion" />
+            <End Role="Liquidacion_Sueldo" EntitySet="Liquidacion_Sueldo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Provincia_Region1" Association="Self.FK_Provincia_Region1">
             <End Role="Region" EntitySet="Region" />
             <End Role="Provincia" EntitySet="Provincia" />
           </AssociationSet>
@@ -1310,10 +1378,10 @@
             <Parameter Name="definition" Mode="In" Type="Binary" />
           </FunctionImport>
           <FunctionImport Name="Sp_Del_Carga_Familiar">
-          <Parameter Name="rut_benf" Mode="In" Type="String" />
+            <Parameter Name="rut_benf" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Sp_Del_Empleados">
-          <Parameter Name="Rut_Empl" Mode="In" Type="String" />
+            <Parameter Name="Rut_Empl" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_dropdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
@@ -1351,10 +1419,10 @@
             <Parameter Name="Desc" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Sp_Ins_Cargos">
-          <Parameter Name="Descr" Mode="In" Type="String" />
+            <Parameter Name="Descr" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Sp_Ins_Depto">
-          <Parameter Name="NomDepto" Mode="In" Type="String" />
+            <Parameter Name="NomDepto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Sp_Ins_Empleados">
             <Parameter Name="Rut_Empleado" Mode="In" Type="String" />
@@ -1398,26 +1466,31 @@
           </FunctionImport>
           <FunctionImport Name="Sp_Ins_LiqSueldo">
             <Parameter Name="Rut_Empleado" Mode="In" Type="String" />
+            <Parameter Name="Id_Tipo_Renumeracion" Mode="In" Type="Int32" />
+            <Parameter Name="Plazo_Contrato" Mode="In" Type="String" />
             <Parameter Name="Fecha_Liquidacion" Mode="In" Type="DateTime" />
             <Parameter Name="Sueldo_Base" Mode="In" Type="String" />
-            <Parameter Name="Remuneracion_Imponible" Mode="In" Type="String" />
-            <Parameter Name="Cant_Carg_Fam" Mode="In" Type="String" />
-            <Parameter Name="PagoTot_Carg_Fam" Mode="In" Type="String" />
-            <Parameter Name="Movilizacion" Mode="In" Type="String" />
-            <Parameter Name="Colacion" Mode="In" Type="String" />
-            <Parameter Name="Cod_Afp" Mode="In" Type="Int32" />
-            <Parameter Name="Cotizacion_Previsional" Mode="In" Type="String" />
-            <Parameter Name="Adicional_Prevision" Mode="In" Type="String" />
+            <Parameter Name="Dias_Trabajados" Mode="In" Type="String" />
+            <Parameter Name="Gratificacion" Mode="In" Type="String" />
+            <Parameter Name="Valor_Grat" Mode="In" Type="Decimal" />
+            <Parameter Name="Cant_Horas_Extras" Mode="In" Type="Decimal" />
+            <Parameter Name="Valor_Horas_Extras" Mode="In" Type="Decimal" />
+            <Parameter Name="Comisiones" Mode="In" Type="Decimal" />
+            <Parameter Name="Bonos" Mode="In" Type="Decimal" />
+            <Parameter Name="Colacion" Mode="In" Type="Decimal" />
+            <Parameter Name="Movilizacion" Mode="In" Type="Decimal" />
+            <Parameter Name="CodAfp" Mode="In" Type="Int32" />
+            <Parameter Name="Valor_Afp" Mode="In" Type="Decimal" />
             <Parameter Name="Cod_Salud" Mode="In" Type="Int32" />
-            <Parameter Name="Cotizacion_Salud" Mode="In" Type="String" />
-            <Parameter Name="Adicional_Salud" Mode="In" Type="String" />
-            <Parameter Name="Otros_Descuentos" Mode="In" Type="String" />
-            <Parameter Name="Alcance_Liquido" Mode="In" Type="String" />
-            <Parameter Name="Vales_Anticipos" Mode="In" Type="String" />
-            <Parameter Name="Sueldo_Liquido" Mode="In" Type="String" />
+            <Parameter Name="Valor_Salud" Mode="In" Type="Decimal" />
+            <Parameter Name="Valor_Seg_Cesantia" Mode="In" Type="Decimal" />
+            <Parameter Name="Valor_Impuesto" Mode="In" Type="Decimal" />
+            <Parameter Name="Apv" Mode="In" Type="Decimal" />
+            <Parameter Name="Otrs_Descuentos" Mode="In" Type="Decimal" />
+            <Parameter Name="Total_Pagar" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="Sp_Ins_Nacionalidad">
-          <Parameter Name="Descr" Mode="In" Type="String" />
+            <Parameter Name="Descr" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Sp_Ins_Salud">
             <Parameter Name="Nomb_Salud" Mode="In" Type="String" />
@@ -1429,12 +1502,10 @@
           <FunctionImport Name="Sp_Mues_Cuidades" ReturnType="Collection(EmpleadosModel.Sp_Mues_Cuidades_Result)" />
           <FunctionImport Name="SP_Mues_Empleado" ReturnType="Collection(EmpleadosModel.SP_Mues_Empleado_Result)" />
           <FunctionImport Name="SP_Mues_Empleado_PDF" ReturnType="Collection(EmpleadosModel.SP_Mues_Empleado_PDF_Result)">
-          <Parameter Name="Rut_Emp" Mode="In" Type="String" />
+            <Parameter Name="Rut_Emp" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Sp_Mues_Empresas" ReturnType="Collection(EmpleadosModel.Sp_Mues_Empresas_Result)" />
-          <FunctionImport Name="Sp_Mues_LiqSueldo" ReturnType="Collection(EmpleadosModel.Sp_Mues_LiqSueldo_Result)">
-          <Parameter Name="Rut_Emp" Mode="In" Type="String" />
-          </FunctionImport>
+          <FunctionImport Name="SP_Mues_liqSueldo" ReturnType="Collection(EmpleadosModel.SP_Mues_liqSueldo_Result)" />
           <FunctionImport Name="Sp_Mues_Nacionalidad" ReturnType="Collection(EmpleadosModel.Sp_Mues_Nacionalidad_Result)" />
           <FunctionImport Name="Sp_Mues_Salud" ReturnType="Collection(EmpleadosModel.Sp_Mues_Salud_Result)" />
           <FunctionImport Name="sp_renamediagram">
@@ -1448,31 +1519,32 @@
             <Parameter Name="PorcDesc" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="Sp_Sel_Carg_FamXRutEmpl" ReturnType="Collection(EmpleadosModel.Sp_Sel_Carg_FamXRutEmpl_Result)">
-          <Parameter Name="Rut_Empl" Mode="In" Type="String" />
+            <Parameter Name="Rut_Empl" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Sp_Sel_CargFamxRut" ReturnType="Collection(EmpleadosModel.Sp_Sel_CargFamxRut_Result)">
-          <Parameter Name="Rut_Benef" Mode="In" Type="String" />
+            <Parameter Name="Rut_Benef" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Sp_Sel_Cargos" ReturnType="Collection(EmpleadosModel.Sp_Sel_Cargos_Result)">
-          <Parameter Name="Id_Tipo" Mode="In" Type="Int32" />
+            <Parameter Name="Id_Tipo" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Sp_Sel_CiudadesxComu" ReturnType="Collection(EmpleadosModel.Sp_Sel_CiudadesxComu_Result)">
-          <Parameter Name="Cod_Comu" Mode="In" Type="Int32" />
+            <Parameter Name="Cod_Comu" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_Sel_Depto" ReturnType="Collection(String)">
-          <Parameter Name="idd" Mode="In" Type="Int32" />
+            <Parameter Name="idd" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Sp_Sel_Empleado" ReturnType="Collection(EmpleadosModel.Sp_Sel_Empleado_Result)">
-          <Parameter Name="Rut_Emp" Mode="In" Type="String" />
+            <Parameter Name="Rut_Emp" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Sp_Sel_Empresas" ReturnType="Collection(EmpleadosModel.Sp_Sel_Empresas_Result)">
-          <Parameter Name="Rut_Empresa" Mode="In" Type="String" />
+            <Parameter Name="Rut_Empresa" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="Sp_Sel_LiqSueldo" ReturnType="Collection(EmpleadosModel.Sp_Sel_LiqSueldo_Result)">
-          <Parameter Name="Id_Liq" Mode="In" Type="Int32" />
+          <FunctionImport Name="SP_Sel_liqSueldoXRutMes" ReturnType="Collection(EmpleadosModel.SP_Sel_liqSueldoXRutMes_Result)">
+            <Parameter Name="FechLiq" Mode="In" Type="String" />
+            <Parameter Name="Rut_Emp" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Sp_Sel_Nacionalidad" ReturnType="Collection(EmpleadosModel.Sp_Sel_Nacionalidad_Result)">
-          <Parameter Name="id_Nac" Mode="In" Type="Int32" />
+            <Parameter Name="id_Nac" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Sp_Sel_Salud" ReturnType="Collection(EmpleadosModel.Sp_Sel_Salud_Result)">
             <Parameter Name="Cod_Salud" Mode="In" Type="Int32" />
@@ -1548,26 +1620,31 @@
             <Parameter Name="fono" Mode="In" Type="String" />
             <Parameter Name="email" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="Sp_UPD_LiqSueldo">
-            <Parameter Name="Id_Liq" Mode="In" Type="Int32" />
-            <Parameter Name="Rut_Emp" Mode="In" Type="String" />
-            <Parameter Name="FechLiq" Mode="In" Type="DateTime" />
-            <Parameter Name="SueBase" Mode="In" Type="String" />
-            <Parameter Name="RemImp" Mode="In" Type="String" />
-            <Parameter Name="Cant_Carg" Mode="In" Type="String" />
-            <Parameter Name="Pag_Tot_Car" Mode="In" Type="String" />
-            <Parameter Name="Movi" Mode="In" Type="String" />
-            <Parameter Name="Colac" Mode="In" Type="String" />
-            <Parameter Name="Cod_Afp" Mode="In" Type="Int32" />
-            <Parameter Name="Cotiz" Mode="In" Type="String" />
-            <Parameter Name="AdicPrev" Mode="In" Type="String" />
+          <FunctionImport Name="Sp_UPD_LiqSueldoXRutMes">
+            <Parameter Name="Id_liq" Mode="In" Type="Int32" />
+            <Parameter Name="Rut_Empleado" Mode="In" Type="String" />
+            <Parameter Name="Id_Tipo_Renumeracion" Mode="In" Type="Int32" />
+            <Parameter Name="Plazo_Contrato" Mode="In" Type="String" />
+            <Parameter Name="Fecha_Liquidacion" Mode="In" Type="DateTime" />
+            <Parameter Name="Sueldo_Base" Mode="In" Type="String" />
+            <Parameter Name="Dias_Trabajados" Mode="In" Type="String" />
+            <Parameter Name="Gratificacion" Mode="In" Type="String" />
+            <Parameter Name="Valor_Grat" Mode="In" Type="Decimal" />
+            <Parameter Name="Cant_Horas_Extras" Mode="In" Type="Decimal" />
+            <Parameter Name="Valor_Horas_Extras" Mode="In" Type="Decimal" />
+            <Parameter Name="Comisiones" Mode="In" Type="Decimal" />
+            <Parameter Name="Bonos" Mode="In" Type="Decimal" />
+            <Parameter Name="Colacion" Mode="In" Type="Decimal" />
+            <Parameter Name="Movilizacion" Mode="In" Type="Decimal" />
+            <Parameter Name="CodAfp" Mode="In" Type="Int32" />
+            <Parameter Name="Valor_Afp" Mode="In" Type="Decimal" />
             <Parameter Name="Cod_Salud" Mode="In" Type="Int32" />
-            <Parameter Name="CotizSa" Mode="In" Type="String" />
-            <Parameter Name="Adic_Salud" Mode="In" Type="String" />
-            <Parameter Name="OtrDesc" Mode="In" Type="String" />
-            <Parameter Name="AlcLiq" Mode="In" Type="String" />
-            <Parameter Name="ValAntic" Mode="In" Type="String" />
-            <Parameter Name="SueldLiq" Mode="In" Type="String" />
+            <Parameter Name="Valor_Salud" Mode="In" Type="Decimal" />
+            <Parameter Name="Valor_Seg_Cesantia" Mode="In" Type="Decimal" />
+            <Parameter Name="Valor_Impuesto" Mode="In" Type="Decimal" />
+            <Parameter Name="Apv" Mode="In" Type="Decimal" />
+            <Parameter Name="Otrs_Descuentos" Mode="In" Type="Decimal" />
+            <Parameter Name="Tot_Pagar" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="Sp_UPD_Nacionalidad">
             <Parameter Name="Id_Nac" Mode="In" Type="Int32" />
@@ -1671,22 +1748,34 @@
           <Property Type="String" Name="fono" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="emailemp" Nullable="true" MaxLength="50" />
         </ComplexType>
-        <ComplexType Name="Sp_Mues_LiqSueldo_Result">
-          <Property Type="DateTime" Name="Fecha_Liquidacion" Nullable="true" Precision="23" />
-          <Property Type="String" Name="Sueldo_Base" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Remuneracion_Imponible" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Colacion" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Movilizacion" Nullable="true" MaxLength="50" />
-          <Property Type="Int32" Name="Cod_Afp" Nullable="true" />
-          <Property Type="String" Name="Cotizacion_Previsional" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Adicional_Prevision" Nullable="true" MaxLength="50" />
-          <Property Type="Int32" Name="Cod_Salud" Nullable="true" />
-          <Property Type="String" Name="Cotizacion_Salud" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Adicional_Salud" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Otros_Descuentos" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Alcance_Liquido" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Vales_Anticipos" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Sueldo_Liquido" Nullable="true" MaxLength="50" />
+        <ComplexType Name="SP_Mues_liqSueldo_Result">
+          <Property Type="String" Name="Rut_Empleado" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Id_Tipo_Renumeracion" Nullable="false" />
+          <Property Type="String" Name="Descr_Tipo" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Plazo_Contrato" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="Fecha_Liquidacion" Nullable="false" Precision="23" />
+          <Property Type="String" Name="Sueldo_Base" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Dias_Trabajados" Nullable="false" MaxLength="2" />
+          <Property Type="String" Name="Gratificacion" Nullable="false" MaxLength="2" />
+          <Property Type="Decimal" Name="Valor_Grat" Nullable="false" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="Cant_Horas_Extras" Nullable="false" Precision="9" Scale="0" />
+          <Property Type="Decimal" Name="Valor_Horas_Extras" Nullable="false" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="Comisiones" Nullable="false" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="Bonos" Nullable="false" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="Colacion" Nullable="false" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="Movilizacion" Nullable="false" Precision="9" Scale="2" />
+          <Property Type="String" Name="Nom_Afp" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Porc_Desc" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Valor_Afp" Nullable="false" Precision="9" Scale="2" />
+          <Property Type="String" Name="Nombre_Salud" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Porc_Cotiz" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Valor_Salud" Nullable="false" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="Valor_Seg_Cesantia" Nullable="false" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="Valor_Impuesto" Nullable="false" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="Apv" Nullable="false" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="Otrs_Descuentos" Nullable="false" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="Total_Pagar" Nullable="false" Precision="9" Scale="0" />
         </ComplexType>
         <ComplexType Name="Sp_Mues_Nacionalidad_Result">
           <Property Type="Int32" Name="Id_Nac" Nullable="false" />
@@ -1784,22 +1873,34 @@
           <Property Type="String" Name="fono" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="emailemp" Nullable="true" MaxLength="50" />
         </ComplexType>
-        <ComplexType Name="Sp_Sel_LiqSueldo_Result">
-          <Property Type="DateTime" Name="Fecha_Liquidacion" Nullable="true" Precision="23" />
-          <Property Type="String" Name="Sueldo_Base" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Remuneracion_Imponible" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Colacion" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Movilizacion" Nullable="true" MaxLength="50" />
-          <Property Type="Int32" Name="Cod_Afp" Nullable="true" />
-          <Property Type="String" Name="Cotizacion_Previsional" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Adicional_Prevision" Nullable="true" MaxLength="50" />
-          <Property Type="Int32" Name="Cod_Salud" Nullable="true" />
-          <Property Type="String" Name="Cotizacion_Salud" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Adicional_Salud" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Otros_Descuentos" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Alcance_Liquido" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Vales_Anticipos" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Sueldo_Liquido" Nullable="true" MaxLength="50" />
+        <ComplexType Name="SP_Sel_liqSueldoXRutMes_Result">
+          <Property Type="String" Name="Rut_Empleado" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Id_Tipo_Renumeracion" Nullable="false" />
+          <Property Type="String" Name="Descr_Tipo" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Plazo_Contrato" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="Fecha_Liquidacion" Nullable="false" Precision="23" />
+          <Property Type="String" Name="Sueldo_Base" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Dias_Trabajados" Nullable="false" MaxLength="2" />
+          <Property Type="String" Name="Gratificacion" Nullable="false" MaxLength="2" />
+          <Property Type="Decimal" Name="Valor_Grat" Nullable="false" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="Cant_Horas_Extras" Nullable="false" Precision="9" Scale="0" />
+          <Property Type="Decimal" Name="Valor_Horas_Extras" Nullable="false" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="Comisiones" Nullable="false" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="Bonos" Nullable="false" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="Colacion" Nullable="false" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="Movilizacion" Nullable="false" Precision="9" Scale="2" />
+          <Property Type="String" Name="Nom_Afp" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Porc_Desc" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Valor_Afp" Nullable="false" Precision="9" Scale="2" />
+          <Property Type="String" Name="Nombre_Salud" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Porc_Cotiz" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Valor_Salud" Nullable="false" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="Valor_Seg_Cesantia" Nullable="false" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="Valor_Impuesto" Nullable="false" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="Apv" Nullable="false" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="Otrs_Descuentos" Nullable="false" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="Total_Pagar" Nullable="false" Precision="9" Scale="0" />
         </ComplexType>
         <ComplexType Name="Sp_Sel_Nacionalidad_Result">
           <Property Type="Int32" Name="Id_Nac" Nullable="false" />
@@ -1937,25 +2038,29 @@
             <EntityTypeMapping TypeName="EmpleadosModel.Liquidacion_Sueldo">
               <MappingFragment StoreEntitySet="Liquidacion_Sueldo">
                 <ScalarProperty Name="Id_Liq" ColumnName="Id_Liq" />
-                <ScalarProperty Name="Tipo_Renumeracion" ColumnName="Tipo_Renumeracion" />
                 <ScalarProperty Name="Rut_Empleado" ColumnName="Rut_Empleado" />
+                <ScalarProperty Name="Id_Tipo_Renumeracion" ColumnName="Id_Tipo_Renumeracion" />
+                <ScalarProperty Name="Plazo_Contrato" ColumnName="Plazo_Contrato" />
                 <ScalarProperty Name="Fecha_Liquidacion" ColumnName="Fecha_Liquidacion" />
                 <ScalarProperty Name="Sueldo_Base" ColumnName="Sueldo_Base" />
-                <ScalarProperty Name="Remuneracion_Imponible" ColumnName="Remuneracion_Imponible" />
-                <ScalarProperty Name="Cant_Carg_Fam" ColumnName="Cant_Carg_Fam" />
-                <ScalarProperty Name="PagoTot_Carg_Fam" ColumnName="PagoTot_Carg_Fam" />
-                <ScalarProperty Name="Movilizacion" ColumnName="Movilizacion" />
+                <ScalarProperty Name="Dias_Trabajados" ColumnName="Dias_Trabajados" />
+                <ScalarProperty Name="Gratificacion" ColumnName="Gratificacion" />
+                <ScalarProperty Name="Valor_Grat" ColumnName="Valor_Grat" />
+                <ScalarProperty Name="Cant_Horas_Extras" ColumnName="Cant_Horas_Extras" />
+                <ScalarProperty Name="Valor_Horas_Extras" ColumnName="Valor_Horas_Extras" />
+                <ScalarProperty Name="Comisiones" ColumnName="Comisiones" />
+                <ScalarProperty Name="Bonos" ColumnName="Bonos" />
                 <ScalarProperty Name="Colacion" ColumnName="Colacion" />
-                <ScalarProperty Name="Cod_Afp" ColumnName="Cod_Afp" />
-                <ScalarProperty Name="Cotizacion_Previsional" ColumnName="Cotizacion_Previsional" />
-                <ScalarProperty Name="Adicional_Prevision" ColumnName="Adicional_Prevision" />
+                <ScalarProperty Name="Movilizacion" ColumnName="Movilizacion" />
+                <ScalarProperty Name="CodAfp" ColumnName="CodAfp" />
+                <ScalarProperty Name="Valor_Afp" ColumnName="Valor_Afp" />
                 <ScalarProperty Name="Cod_Salud" ColumnName="Cod_Salud" />
-                <ScalarProperty Name="Cotizacion_Salud" ColumnName="Cotizacion_Salud" />
-                <ScalarProperty Name="Adicional_Salud" ColumnName="Adicional_Salud" />
-                <ScalarProperty Name="Otros_Descuentos" ColumnName="Otros_Descuentos" />
-                <ScalarProperty Name="Alcance_Liquido" ColumnName="Alcance_Liquido" />
-                <ScalarProperty Name="Vales_Anticipos" ColumnName="Vales_Anticipos" />
-                <ScalarProperty Name="Sueldo_Liquido" ColumnName="Sueldo_Liquido" />
+                <ScalarProperty Name="Valor_Salud" ColumnName="Valor_Salud" />
+                <ScalarProperty Name="Valor_Seg_Cesantia" ColumnName="Valor_Seg_Cesantia" />
+                <ScalarProperty Name="Valor_Impuesto" ColumnName="Valor_Impuesto" />
+                <ScalarProperty Name="Apv" ColumnName="Apv" />
+                <ScalarProperty Name="Otrs_Descuentos" ColumnName="Otrs_Descuentos" />
+                <ScalarProperty Name="Total_Pagar" ColumnName="Total_Pagar" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2055,6 +2160,14 @@
                 <ScalarProperty Name="Factor" ColumnName="Factor" />
                 <ScalarProperty Name="CantAReb" ColumnName="CantAReb" />
                 <ScalarProperty Name="TasaImpEfec" ColumnName="TasaImpEfec" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tipo_Remuneracion">
+            <EntityTypeMapping TypeName="EmpleadosModel.Tipo_Remuneracion">
+              <MappingFragment StoreEntitySet="Tipo_Remuneracion">
+                <ScalarProperty Name="Id_Tipo" ColumnName="Id_Tipo" />
+                <ScalarProperty Name="Descr_Tipo" ColumnName="Descr_Tipo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2203,24 +2316,36 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="Sp_Mues_LiqSueldo" FunctionName="EmpleadosModel.Store.Sp_Mues_LiqSueldo">
+          <FunctionImportMapping FunctionImportName="SP_Mues_liqSueldo" FunctionName="EmpleadosModel.Store.SP_Mues_liqSueldo">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="EmpleadosModel.Sp_Mues_LiqSueldo_Result">
+              <ComplexTypeMapping TypeName="EmpleadosModel.SP_Mues_liqSueldo_Result">
+                <ScalarProperty Name="Rut_Empleado" ColumnName="Rut_Empleado" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id_Tipo_Renumeracion" ColumnName="Id_Tipo_Renumeracion" />
+                <ScalarProperty Name="Descr_Tipo" ColumnName="Descr_Tipo" />
+                <ScalarProperty Name="Plazo_Contrato" ColumnName="Plazo_Contrato" />
                 <ScalarProperty Name="Fecha_Liquidacion" ColumnName="Fecha_Liquidacion" />
                 <ScalarProperty Name="Sueldo_Base" ColumnName="Sueldo_Base" />
-                <ScalarProperty Name="Remuneracion_Imponible" ColumnName="Remuneracion_Imponible" />
+                <ScalarProperty Name="Dias_Trabajados" ColumnName="Dias_Trabajados" />
+                <ScalarProperty Name="Gratificacion" ColumnName="Gratificacion" />
+                <ScalarProperty Name="Valor_Grat" ColumnName="Valor_Grat" />
+                <ScalarProperty Name="Cant_Horas_Extras" ColumnName="Cant_Horas_Extras" />
+                <ScalarProperty Name="Valor_Horas_Extras" ColumnName="Valor_Horas_Extras" />
+                <ScalarProperty Name="Comisiones" ColumnName="Comisiones" />
+                <ScalarProperty Name="Bonos" ColumnName="Bonos" />
                 <ScalarProperty Name="Colacion" ColumnName="Colacion" />
                 <ScalarProperty Name="Movilizacion" ColumnName="Movilizacion" />
-                <ScalarProperty Name="Cod_Afp" ColumnName="Cod_Afp" />
-                <ScalarProperty Name="Cotizacion_Previsional" ColumnName="Cotizacion_Previsional" />
-                <ScalarProperty Name="Adicional_Prevision" ColumnName="Adicional_Prevision" />
-                <ScalarProperty Name="Cod_Salud" ColumnName="Cod_Salud" />
-                <ScalarProperty Name="Cotizacion_Salud" ColumnName="Cotizacion_Salud" />
-                <ScalarProperty Name="Adicional_Salud" ColumnName="Adicional_Salud" />
-                <ScalarProperty Name="Otros_Descuentos" ColumnName="Otros_Descuentos" />
-                <ScalarProperty Name="Alcance_Liquido" ColumnName="Alcance_Liquido" />
-                <ScalarProperty Name="Vales_Anticipos" ColumnName="Vales_Anticipos" />
-                <ScalarProperty Name="Sueldo_Liquido" ColumnName="Sueldo_Liquido" />
+                <ScalarProperty Name="Nom_Afp" ColumnName="Nom_Afp" />
+                <ScalarProperty Name="Porc_Desc" ColumnName="Porc_Desc" />
+                <ScalarProperty Name="Valor_Afp" ColumnName="Valor_Afp" />
+                <ScalarProperty Name="Nombre_Salud" ColumnName="Nombre_Salud" />
+                <ScalarProperty Name="Porc_Cotiz" ColumnName="Porc_Cotiz" />
+                <ScalarProperty Name="Valor_Salud" ColumnName="Valor_Salud" />
+                <ScalarProperty Name="Valor_Seg_Cesantia" ColumnName="Valor_Seg_Cesantia" />
+                <ScalarProperty Name="Valor_Impuesto" ColumnName="Valor_Impuesto" />
+                <ScalarProperty Name="Apv" ColumnName="Apv" />
+                <ScalarProperty Name="Otrs_Descuentos" ColumnName="Otrs_Descuentos" />
+                <ScalarProperty Name="Total_Pagar" ColumnName="Total_Pagar" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -2358,24 +2483,36 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="Sp_Sel_LiqSueldo" FunctionName="EmpleadosModel.Store.Sp_Sel_LiqSueldo">
+          <FunctionImportMapping FunctionImportName="SP_Sel_liqSueldoXRutMes" FunctionName="EmpleadosModel.Store.SP_Sel_liqSueldoXRutMes">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="EmpleadosModel.Sp_Sel_LiqSueldo_Result">
+              <ComplexTypeMapping TypeName="EmpleadosModel.SP_Sel_liqSueldoXRutMes_Result">
+                <ScalarProperty Name="Rut_Empleado" ColumnName="Rut_Empleado" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id_Tipo_Renumeracion" ColumnName="Id_Tipo_Renumeracion" />
+                <ScalarProperty Name="Descr_Tipo" ColumnName="Descr_Tipo" />
+                <ScalarProperty Name="Plazo_Contrato" ColumnName="Plazo_Contrato" />
                 <ScalarProperty Name="Fecha_Liquidacion" ColumnName="Fecha_Liquidacion" />
                 <ScalarProperty Name="Sueldo_Base" ColumnName="Sueldo_Base" />
-                <ScalarProperty Name="Remuneracion_Imponible" ColumnName="Remuneracion_Imponible" />
+                <ScalarProperty Name="Dias_Trabajados" ColumnName="Dias_Trabajados" />
+                <ScalarProperty Name="Gratificacion" ColumnName="Gratificacion" />
+                <ScalarProperty Name="Valor_Grat" ColumnName="Valor_Grat" />
+                <ScalarProperty Name="Cant_Horas_Extras" ColumnName="Cant_Horas_Extras" />
+                <ScalarProperty Name="Valor_Horas_Extras" ColumnName="Valor_Horas_Extras" />
+                <ScalarProperty Name="Comisiones" ColumnName="Comisiones" />
+                <ScalarProperty Name="Bonos" ColumnName="Bonos" />
                 <ScalarProperty Name="Colacion" ColumnName="Colacion" />
                 <ScalarProperty Name="Movilizacion" ColumnName="Movilizacion" />
-                <ScalarProperty Name="Cod_Afp" ColumnName="Cod_Afp" />
-                <ScalarProperty Name="Cotizacion_Previsional" ColumnName="Cotizacion_Previsional" />
-                <ScalarProperty Name="Adicional_Prevision" ColumnName="Adicional_Prevision" />
-                <ScalarProperty Name="Cod_Salud" ColumnName="Cod_Salud" />
-                <ScalarProperty Name="Cotizacion_Salud" ColumnName="Cotizacion_Salud" />
-                <ScalarProperty Name="Adicional_Salud" ColumnName="Adicional_Salud" />
-                <ScalarProperty Name="Otros_Descuentos" ColumnName="Otros_Descuentos" />
-                <ScalarProperty Name="Alcance_Liquido" ColumnName="Alcance_Liquido" />
-                <ScalarProperty Name="Vales_Anticipos" ColumnName="Vales_Anticipos" />
-                <ScalarProperty Name="Sueldo_Liquido" ColumnName="Sueldo_Liquido" />
+                <ScalarProperty Name="Nom_Afp" ColumnName="Nom_Afp" />
+                <ScalarProperty Name="Porc_Desc" ColumnName="Porc_Desc" />
+                <ScalarProperty Name="Valor_Afp" ColumnName="Valor_Afp" />
+                <ScalarProperty Name="Nombre_Salud" ColumnName="Nombre_Salud" />
+                <ScalarProperty Name="Porc_Cotiz" ColumnName="Porc_Cotiz" />
+                <ScalarProperty Name="Valor_Salud" ColumnName="Valor_Salud" />
+                <ScalarProperty Name="Valor_Seg_Cesantia" ColumnName="Valor_Seg_Cesantia" />
+                <ScalarProperty Name="Valor_Impuesto" ColumnName="Valor_Impuesto" />
+                <ScalarProperty Name="Apv" ColumnName="Apv" />
+                <ScalarProperty Name="Otrs_Descuentos" ColumnName="Otrs_Descuentos" />
+                <ScalarProperty Name="Total_Pagar" ColumnName="Total_Pagar" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -2402,7 +2539,7 @@
           <FunctionImportMapping FunctionImportName="Sp_UPD_Depto" FunctionName="EmpleadosModel.Store.Sp_UPD_Depto" />
           <FunctionImportMapping FunctionImportName="Sp_UPD_Empleado" FunctionName="EmpleadosModel.Store.Sp_UPD_Empleado" />
           <FunctionImportMapping FunctionImportName="Sp_UPD_Empresas" FunctionName="EmpleadosModel.Store.Sp_UPD_Empresas" />
-          <FunctionImportMapping FunctionImportName="Sp_UPD_LiqSueldo" FunctionName="EmpleadosModel.Store.Sp_UPD_LiqSueldo" />
+          <FunctionImportMapping FunctionImportName="Sp_UPD_LiqSueldoXRutMes" FunctionName="EmpleadosModel.Store.Sp_UPD_LiqSueldoXRutMes" />
           <FunctionImportMapping FunctionImportName="Sp_UPD_Nacionalidad" FunctionName="EmpleadosModel.Store.Sp_UPD_Nacionalidad" />
           <FunctionImportMapping FunctionImportName="Sp_UPD_Salud" FunctionName="EmpleadosModel.Store.Sp_UPD_Salud" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="EmpleadosModel.Store.sp_upgraddiagrams" />

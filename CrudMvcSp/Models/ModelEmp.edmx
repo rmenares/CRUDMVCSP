@@ -1751,14 +1751,9 @@
         <ComplexType Name="SP_Mues_liqSueldo_Result">
           <Property Type="String" Name="Rut_Empleado" Nullable="false" MaxLength="10" />
           <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
-          <Property Type="Int32" Name="Id_Tipo_Renumeracion" Nullable="false" />
           <Property Type="String" Name="Descr_Tipo" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="Plazo_Contrato" Nullable="false" MaxLength="50" />
-          <Property Type="DateTime" Name="Fecha_Liquidacion" Nullable="false" Precision="23" />
           <Property Type="String" Name="Sueldo_Base" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Dias_Trabajados" Nullable="false" MaxLength="2" />
-          <Property Type="String" Name="Gratificacion" Nullable="false" MaxLength="2" />
-          <Property Type="Decimal" Name="Valor_Grat" Nullable="false" Precision="9" Scale="2" />
           <Property Type="Decimal" Name="Cant_Horas_Extras" Nullable="false" Precision="9" Scale="0" />
           <Property Type="Decimal" Name="Valor_Horas_Extras" Nullable="false" Precision="9" Scale="2" />
           <Property Type="Decimal" Name="Comisiones" Nullable="false" Precision="9" Scale="2" />
@@ -1766,14 +1761,9 @@
           <Property Type="Decimal" Name="Colacion" Nullable="false" Precision="9" Scale="2" />
           <Property Type="Decimal" Name="Movilizacion" Nullable="false" Precision="9" Scale="2" />
           <Property Type="String" Name="Nom_Afp" Nullable="true" MaxLength="50" />
-          <Property Type="Decimal" Name="Porc_Desc" Nullable="true" Precision="18" Scale="2" />
           <Property Type="Decimal" Name="Valor_Afp" Nullable="false" Precision="9" Scale="2" />
           <Property Type="String" Name="Nombre_Salud" Nullable="true" MaxLength="50" />
-          <Property Type="Decimal" Name="Porc_Cotiz" Nullable="true" Precision="18" Scale="2" />
           <Property Type="Decimal" Name="Valor_Salud" Nullable="false" Precision="9" Scale="2" />
-          <Property Type="Decimal" Name="Valor_Seg_Cesantia" Nullable="false" Precision="9" Scale="2" />
-          <Property Type="Decimal" Name="Valor_Impuesto" Nullable="false" Precision="9" Scale="2" />
-          <Property Type="Decimal" Name="Apv" Nullable="false" Precision="9" Scale="2" />
           <Property Type="Decimal" Name="Otrs_Descuentos" Nullable="false" Precision="9" Scale="2" />
           <Property Type="Decimal" Name="Total_Pagar" Nullable="false" Precision="9" Scale="0" />
         </ComplexType>
@@ -1876,7 +1866,6 @@
         <ComplexType Name="SP_Sel_liqSueldoXRutMes_Result">
           <Property Type="String" Name="Rut_Empleado" Nullable="false" MaxLength="10" />
           <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
-          <Property Type="Int32" Name="Id_Tipo_Renumeracion" Nullable="false" />
           <Property Type="String" Name="Descr_Tipo" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Plazo_Contrato" Nullable="false" MaxLength="50" />
           <Property Type="DateTime" Name="Fecha_Liquidacion" Nullable="false" Precision="23" />
@@ -2321,14 +2310,9 @@
               <ComplexTypeMapping TypeName="EmpleadosModel.SP_Mues_liqSueldo_Result">
                 <ScalarProperty Name="Rut_Empleado" ColumnName="Rut_Empleado" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Id_Tipo_Renumeracion" ColumnName="Id_Tipo_Renumeracion" />
                 <ScalarProperty Name="Descr_Tipo" ColumnName="Descr_Tipo" />
-                <ScalarProperty Name="Plazo_Contrato" ColumnName="Plazo_Contrato" />
-                <ScalarProperty Name="Fecha_Liquidacion" ColumnName="Fecha_Liquidacion" />
                 <ScalarProperty Name="Sueldo_Base" ColumnName="Sueldo_Base" />
                 <ScalarProperty Name="Dias_Trabajados" ColumnName="Dias_Trabajados" />
-                <ScalarProperty Name="Gratificacion" ColumnName="Gratificacion" />
-                <ScalarProperty Name="Valor_Grat" ColumnName="Valor_Grat" />
                 <ScalarProperty Name="Cant_Horas_Extras" ColumnName="Cant_Horas_Extras" />
                 <ScalarProperty Name="Valor_Horas_Extras" ColumnName="Valor_Horas_Extras" />
                 <ScalarProperty Name="Comisiones" ColumnName="Comisiones" />
@@ -2336,14 +2320,9 @@
                 <ScalarProperty Name="Colacion" ColumnName="Colacion" />
                 <ScalarProperty Name="Movilizacion" ColumnName="Movilizacion" />
                 <ScalarProperty Name="Nom_Afp" ColumnName="Nom_Afp" />
-                <ScalarProperty Name="Porc_Desc" ColumnName="Porc_Desc" />
                 <ScalarProperty Name="Valor_Afp" ColumnName="Valor_Afp" />
                 <ScalarProperty Name="Nombre_Salud" ColumnName="Nombre_Salud" />
-                <ScalarProperty Name="Porc_Cotiz" ColumnName="Porc_Cotiz" />
                 <ScalarProperty Name="Valor_Salud" ColumnName="Valor_Salud" />
-                <ScalarProperty Name="Valor_Seg_Cesantia" ColumnName="Valor_Seg_Cesantia" />
-                <ScalarProperty Name="Valor_Impuesto" ColumnName="Valor_Impuesto" />
-                <ScalarProperty Name="Apv" ColumnName="Apv" />
                 <ScalarProperty Name="Otrs_Descuentos" ColumnName="Otrs_Descuentos" />
                 <ScalarProperty Name="Total_Pagar" ColumnName="Total_Pagar" />
               </ComplexTypeMapping>
@@ -2488,7 +2467,6 @@
               <ComplexTypeMapping TypeName="EmpleadosModel.SP_Sel_liqSueldoXRutMes_Result">
                 <ScalarProperty Name="Rut_Empleado" ColumnName="Rut_Empleado" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Id_Tipo_Renumeracion" ColumnName="Id_Tipo_Renumeracion" />
                 <ScalarProperty Name="Descr_Tipo" ColumnName="Descr_Tipo" />
                 <ScalarProperty Name="Plazo_Contrato" ColumnName="Plazo_Contrato" />
                 <ScalarProperty Name="Fecha_Liquidacion" ColumnName="Fecha_Liquidacion" />

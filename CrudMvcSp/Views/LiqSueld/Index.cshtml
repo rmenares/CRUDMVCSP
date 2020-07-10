@@ -1,4 +1,4 @@
-﻿@model  IEnumerable<CrudMvcSp.Models.Liquidacion_Sueldo>
+﻿@model  IEnumerable<CrudMvcSp.Models.SP_Mues_liqSueldo_Result>
 
 @{
 
@@ -24,7 +24,7 @@
 <table class="table table-responsive table-striped table-condensed" id="NueLiqSueld">
     <tr>
         <td>
-            <button id="BtnNueLiqSueld" value="Agregar Liquidación De Sueldos" class="btn btn-group-lg btn-success BtnNuevo"> <i class="fa fa-plus-circle"></i> Agregar Liquidación De Sueldos </button>
+            <button id="BtnNueLiqSueld" value="Agregar Liquidación De Sueldo" class="btn btn-group-lg btn-success BtnNuevo"> <i class="fa fa-plus-circle"></i> Agregar Liquidación De Sueldo </button>
         </td>
     </tr>
 </table>
@@ -35,7 +35,7 @@
         <div class="table table-responsive table-striped table-bordered table-condensed" id="gridCargFam">
             @grid.GetHtml(
              alternatingRowStyle: "webgrid-alternating-row",
-             htmlAttributes: new { @id = "TablaCargFam", width = "50px", @class = "Grid" },
+             htmlAttributes: new { @id = "TablaLiqSueld", width = "50px", @class = "Grid" },
              tableStyle: "webgrid-table table table-responsive table-bordered",
              headerStyle: "webgrid-header",
              footerStyle: "webgrid-footer",
@@ -49,77 +49,41 @@
              displayHeader: true,
              columns:
               new[] {
-                    grid.Column("Rut_Carga","Rut"),
-                    grid.Column("Nombre", "Nombre"),
-                    grid.Column("Paterno","Apellido Paterno"),
-                    //grid.Column("Materno","Apellido Materno"),
-                    grid.Column("Fono_Movil","Fono Movil"),
-                    //grid.Column("Fono_Fijo","Fono Fijo"),
-                    grid.Column("Fecha_Nacimiento","Fecha Nacimiento" ),
-                    //grid.Column("Sexo","Sexo"),
-                    grid.Column("Direccion", "Dirección"),
-                    //grid.Column("Villa","Villa"),
-                    grid.Column("Comuna","Comuna"),
-                    //grid.Column("Ciudad", "Ciudad"),
-                    grid.Column("Email", "Email"),
-                    //grid.Column("Rut_Empleado", "Rut Empleado"),
-                    grid.Column("Nombre_Empleado","Nombre Empleado"),
-                    //grid.Column("Nacionalidad","Nacionalidad"),
-                    grid.Column("Comentarios","Comentarios"),
-
-                      //grid.Column("Id_Liq", "Id_Liq"),
-                      //grid.Column("Rut_Empleado", ""),
-                      //grid.Column("Id_Tipo_Renumeracion", ""),
-                      //grid.Column("Plazo_Contrato", ""),
-                      //grid.Column("Fecha_Liquidacion", ""),
-                      //grid.Column("Dias_Trabajados", ""),
-                      //grid.Column("Gratificacion", ""),
-                      //grid.Column("Sueldo_Base", ""),
-                      //grid.Column("Valor_Grat", ""),
-                      //grid.Column("Cant_Horas_Extras", ""),
-                      //grid.Column("Valor_Horas_Extras", ""),
-                      //grid.Column("Comisiones", ""),
-                      //grid.Column("Bonos", ""),
-                      //grid.Column("Colacion", ""),
-                      //grid.Column("Movilizacion", ""),
-                      //grid.Column("CodAfp", ""),
-                      //grid.Column("Valor_Afp", ""),
-                      //grid.Column("Cod_Salud", ""),
-                      //grid.Column("Valor_Salud", ""),
-                      //grid.Column("Valor_Seg_Cesantia", ""),
-                      //grid.Column("Valor_Impuesto", ""),
-                      //grid.Column("Apv", ""),
-                      //grid.Column("Otrs_Descuentos", ""),
-                      //grid.Column("Total_Pagar", ""),
-
-
-
-
-
-
-
-
-
-
-
+                    grid.Column("Rut_Empleado",""),
+                    grid.Column("Nombre",""),
+                    grid.Column("Descr_Tipo",""),
+                    grid.Column("Sueldo_Base",""),
+                    grid.Column("Dias_Trabajados",""),
+                    grid.Column("Cant_Horas_Extras",""),
+                    grid.Column("Valor_Horas_Extras",""),
+                    grid.Column("Comisiones",""),
+                    grid.Column("Bonos",""),
+                    grid.Column("Colacion",""),
+                    grid.Column("Movilizacion",""),
+                    grid.Column("Nom_Afp",""),
+                    grid.Column("Valor_Afp",""),
+                    grid.Column("Nombre_Salud",""),
+                    grid.Column("Valor_Salud",""),
+                    grid.Column("Otrs_Descuentos",""),
+                    grid.Column("Total_Pagar",""),
                     grid.Column(header: "Acciones", style: "col-sm-2", format:
-@<span class="link">
-    <a class="btn btn-success btn-xs glyphicon glyphicon-pencil Edit" href="javascript:;"> Edit</a>
-    @*<a class="btn btn-warning btn-xs glyphicon glyphicon-print  Info" href="javascript:;"> Info</a>*@
-    <a class="btn btn-danger  btn-xs glyphicon glyphicon-trash  Delete" href="javascript:;"> Delete</a>
-</span> )
-                        })
+                    @<span class="link">
+                        <a class="btn btn-success btn-xs glyphicon glyphicon-pencil Edit" href="javascript:;"> Edit</a>
+                        <a class="btn btn-warning btn-xs glyphicon glyphicon-print  Info" href="javascript:;"> Info</a>
+                        <a class="btn btn-danger  btn-xs glyphicon glyphicon-trash  Delete" href="javascript:;"> Delete</a>
+                    </span> )
+              })
         </div>
         <div id="TablExport">
             <table align="center">
                 <tr>
-                    <td>@Html.ActionLink(" Export A Pdf", "CargFamPDF", "CargFam", new { @class = "btn btn-primary fa fa-file-pdf-o" }) | </td>
+                    <td>@Html.ActionLink(" Export A Pdf", "LiqSueldPDF", "LiqSueld", new { @class = "btn btn-primary fa fa-file-pdf-o" }) | </td>
                     <td> </td>
-                    <td>@Html.ActionLink(" Export A Excel", "CargFamXls", "CargFam", new { @class = "btn btn-primary fa fa-file-excel-o" }) | </td>
+                    <td>@Html.ActionLink(" Export A Excel", "LiqSueldXls", "LiqSueld", new { @class = "btn btn-primary fa fa-file-excel-o" }) | </td>
                     <td> </td>
-                    <td>@Html.ActionLink(" Export A CSV", "CargFamCsv", "CargFam", new { @class = "btn btn-primary fa fa-file-excel-o" }) | </td>
+                    <td>@Html.ActionLink(" Export A CSV", "LiqSueldCsv", "LiqSueld", new { @class = "btn btn-primary fa fa-file-excel-o" }) | </td>
                     <td> </td>
-                    <td>@Html.ActionLink(" Export A DOC", "CargFamDocx", "CargFam", new { @class = "btn btn-primary fa fa-file-word-o" }) </td>
+                    <td>@Html.ActionLink(" Export A DOC", "LiqSueldDocx", "LiqSueld", new { @class = "btn btn-primary fa fa-file-word-o" }) </td>
                 </tr>
             </table>
         </div>
@@ -130,7 +94,7 @@
             <table align="center">
                 <tr>
                     <td>
-                        <h4> <i class="fa fa-folder-open"></i> No Hay Datos Disponibles, Haga Click en <b>Agregar Carga Familiar</b> <i class="fa fa-folder-open"></i> </h4>
+                        <h4> <i class="fa fa-folder-open"></i> No Hay Datos Disponibles, Haga Click en <b>Agregar Liquidación De Sueldo</b> <i class="fa fa-folder-open"></i> </h4>
                     </td>
                 </tr>
             </table>

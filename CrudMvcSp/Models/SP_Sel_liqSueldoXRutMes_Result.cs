@@ -15,7 +15,6 @@ namespace CrudMvcSp.Models
     {
         public string Rut_Empleado { get; set; }
         public string Nombre { get; set; }
-        public int Id_Tipo_Renumeracion { get; set; }
         public string Descr_Tipo { get; set; }
         public string Plazo_Contrato { get; set; }
         public System.DateTime Fecha_Liquidacion { get; set; }

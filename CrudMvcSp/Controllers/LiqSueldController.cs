@@ -19,10 +19,18 @@ namespace CrudMvcSp.Controllers
 {
     public class LiqSueldController : Controller
     {
+        EmpleadosEntities LiqSueld = new EmpleadosEntities();
         // GET: LiqSueld
+        #region Muest_Liq_suel
         public ActionResult Index()
         {
-            return View();
+            using(LiqSueld = new EmpleadosEntities())
+            {
+                var ListLiqSueld = LiqSueld.SP_Mues_liqSueldo().ToList();
+
+                return View(ListLiqSueld);
+            }
         }
+        #endregion
     }
 }

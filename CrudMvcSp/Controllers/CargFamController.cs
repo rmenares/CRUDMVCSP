@@ -20,9 +20,8 @@ namespace CrudMvcSp.Controllers
     public class CargFamController : Controller
     {
         string url;
-        EmpleadosEntities CargFam = new EmpleadosEntities();
-
-        #region LLena los DropdownList
+        #region Carga_Las_Instamcias
+            EmpleadosEntities CargFam = new EmpleadosEntities();
             EmpleadosEntities Empleados = new EmpleadosEntities();
             EmpleadosEntities Comun = new EmpleadosEntities();
             EmpleadosEntities Ciud = new EmpleadosEntities();

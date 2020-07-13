@@ -17,6 +17,7 @@ namespace CrudMvcSp.Models
         public string Nombre { get; set; }
         public string Descr_Tipo { get; set; }
         public string Sueldo_Base { get; set; }
+        public System.DateTime Fecha_Liquidacion { get; set; }
         public string Dias_Trabajados { get; set; }
         public decimal Cant_Horas_Extras { get; set; }
         public decimal Valor_Horas_Extras { get; set; }

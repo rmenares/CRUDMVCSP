@@ -19,7 +19,14 @@ namespace CrudMvcSp.Controllers
 {
     public class LiqSueldController : Controller
     {
+        #region LLena_las_Instancias
+
         EmpleadosEntities LiqSueld = new EmpleadosEntities();
+
+        EmpleadosEntities Empl = new EmpleadosEntities();
+
+        #endregion
+                       
         // GET: LiqSueld
         #region Muest_Liq_suel
         public ActionResult Index()
@@ -32,11 +39,32 @@ namespace CrudMvcSp.Controllers
             }
         }
         #endregion
+  
+
+    #region Busca_Empleados
+    //busca el rut del empleado y verifica si este esta en la tabla de empleados
+    public ActionResult BuscEmp(Empleados emplead)
+    {
+        int Verifica;
+        using (Empl = new EmpleadosEntities())
+        {
+            var BuscEmp = Empl.Sp_Sel_Empleado(emplead.Rut_Empleado).ToList();
+            if (BuscEmp.Count != 0)
+            { Verifica = 1; }
+            else
+            { Verifica = 0; }
+            return Json(Verifica);
+        }
     }
+        #endregion
 
 
 
 
 
+
+
+
+    }
 
 }

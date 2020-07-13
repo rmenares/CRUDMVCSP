@@ -1,4 +1,4 @@
-﻿@model  IEnumerable<CrudMvcSp.Models.SP_Mues_liqSueldo_Result>
+﻿@model  IEnumerable<CrudMvcSp.Models.SP_Mues_liqSueldo_Result
 
 @{
 
@@ -29,6 +29,13 @@
     </tr>
 </table>
 
+
+
+
+
+
+
+
 <form id="formMuesCargFam" method="post">
     @if (Model.Count() != 0)
     {
@@ -49,30 +56,31 @@
              displayHeader: true,
              columns:
               new[] {
-                    grid.Column("Rut_Empleado",""),
-                    grid.Column("Nombre",""),
-                    grid.Column("Descr_Tipo",""),
-                    grid.Column("Sueldo_Base",""),
-                    grid.Column("Dias_Trabajados",""),
-                    grid.Column("Cant_Horas_Extras",""),
-                    grid.Column("Valor_Horas_Extras",""),
-                    grid.Column("Comisiones",""),
-                    grid.Column("Bonos",""),
-                    grid.Column("Colacion",""),
-                    grid.Column("Movilizacion",""),
-                    grid.Column("Nom_Afp",""),
-                    grid.Column("Valor_Afp",""),
-                    grid.Column("Nombre_Salud",""),
-                    grid.Column("Valor_Salud",""),
-                    grid.Column("Otrs_Descuentos",""),
-                    grid.Column("Total_Pagar",""),
+                    grid.Column("Rut_Empleado","Rut Empleado"),
+                    grid.Column("Nombre","Nombre"),
+                    grid.Column("Descr_Tipo","Tipo_Liquidación"),
+                    grid.Column("Sueldo_Base","Sueldo Base"),
+                    grid.Column("Fecha_Liquidacion","Mes Liquidacióon"),
+                    grid.Column("Dias_Trabajados","Dias Trabajados"),
+                    grid.Column("Cant_Horas_Extras","Horas Hextras"),
+                    grid.Column("Valor_Horas_Extras","Valor Hora"),
+                    grid.Column("Comisiones","Comisiones"),
+                    grid.Column("Bonos","Bonon"),
+                    grid.Column("Colacion","Colación"),
+                    grid.Column("Movilizacion","Moovilización"),
+                    grid.Column("Nom_Afp","Afp"),
+                    grid.Column("Valor_Afp","Monto a Pagar"),
+                    grid.Column("Nombre_Salud","Salud"),
+                    grid.Column("Valor_Salud","Monto a Pagar"),
+                    grid.Column("Otrs_Descuentos","Total Descuentos"),
+                    grid.Column("Total_Pagar","A Pagar"),
                     grid.Column(header: "Acciones", style: "col-sm-2", format:
                     @<span class="link">
                         <a class="btn btn-success btn-xs glyphicon glyphicon-pencil Edit" href="javascript:;"> Edit</a>
                         <a class="btn btn-warning btn-xs glyphicon glyphicon-print  Info" href="javascript:;"> Info</a>
                         <a class="btn btn-danger  btn-xs glyphicon glyphicon-trash  Delete" href="javascript:;"> Delete</a>
                     </span> )
-              })
+                                         })
         </div>
         <div id="TablExport">
             <table align="center">
@@ -103,27 +111,167 @@
 </form>
 
 
-          @*Id_Liq,
-          Rut_Empleado,
-          Id_Tipo_Renumeracion,
-          Plazo_Contrato,
-          Fecha_Liquidacion,
-          Dias_Trabajados,
-          Gratificacion,
-          Sueldo_Base,
-          Valor_Grat,
-          Cant_Horas_Extras,
-          Valor_Horas_Extras,
-          Comisiones,
-          Bonos,
-          Colacion,
-          Movilizacion,
-          CodAfp,
-          Valor_Afp,
-          Cod_Salud,
-          Valor_Salud,
-          Valor_Seg_Cesantia,
-          Valor_Impuesto,
-          Apv,
-          Otrs_Descuentos,
-          Total_Pagar,*@
+
+
+@*Id_Liq,
+    Rut_Empleado,
+    Id_Tipo_Renumeracion,
+    Plazo_Contrato,
+    Fecha_Liquidacion,
+    Dias_Trabajados,
+    Gratificacion,
+    Sueldo_Base,
+    Valor_Grat,
+    Cant_Horas_Extras,
+    Valor_Horas_Extras,
+    Comisiones,
+    Bonos,
+    Colacion,
+    Movilizacion,
+    CodAfp,
+    Valor_Afp,
+    Cod_Salud,
+    Valor_Salud,
+    Valor_Seg_Cesantia,
+    Valor_Impuesto,
+    Apv,
+    Otrs_Descuentos,
+    Total_Pagar,*@
+
+<!-- Modal Agrega Liquidación De Sueldo -->
+<div class="modal" id="AgrLiqSueld">
+    <div class="modal-dialog modal-lg" style="width:70%;">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header text-center">
+                <h2 class="modal-title">Nueva Liquidación De Sueldo</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form id="IngEmpl" enctype="multipart/form-data" method="post">
+                    <div class="tab-content">
+                        <br />
+                        <table align="center" border="1">
+                            <tr>
+                                <td align="center">Rut Empleado</td>
+                                <td></td>
+                                <td align="center"><input type="text" id="RutEmp" required /></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td ></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </div>
+                </form>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button class="btn btn-success" id="BtnGrabLiqSueld" value="Grabar"><i class="fa fa-download"></i> Grabar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section scripts {
+    <link href="~/Content/WebGrid/WebGrid.css" rel="stylesheet" />
+    <link href="~/Content/EstilosGenerales/style.css" rel="stylesheet" />
+    <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+    <link href="~/Content/toastr.css" rel="stylesheet" />
+    <script src="~/Scripts/toastr.js"></script>
+    <script src="~/Scripts/Aplicacion/LiqSuel/LiqSuel.js"></script>
+}

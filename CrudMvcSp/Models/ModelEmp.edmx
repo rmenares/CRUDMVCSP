@@ -1753,6 +1753,7 @@
           <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Descr_Tipo" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Sueldo_Base" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="Fecha_Liquidacion" Nullable="false" Precision="23" />
           <Property Type="String" Name="Dias_Trabajados" Nullable="false" MaxLength="2" />
           <Property Type="Decimal" Name="Cant_Horas_Extras" Nullable="false" Precision="9" Scale="0" />
           <Property Type="Decimal" Name="Valor_Horas_Extras" Nullable="false" Precision="9" Scale="2" />
@@ -2312,6 +2313,7 @@
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Descr_Tipo" ColumnName="Descr_Tipo" />
                 <ScalarProperty Name="Sueldo_Base" ColumnName="Sueldo_Base" />
+                <ScalarProperty Name="Fecha_Liquidacion" ColumnName="Fecha_Liquidacion" />
                 <ScalarProperty Name="Dias_Trabajados" ColumnName="Dias_Trabajados" />
                 <ScalarProperty Name="Cant_Horas_Extras" ColumnName="Cant_Horas_Extras" />
                 <ScalarProperty Name="Valor_Horas_Extras" ColumnName="Valor_Horas_Extras" />

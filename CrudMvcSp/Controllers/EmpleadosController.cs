@@ -489,7 +489,6 @@ namespace CrudMvcSp.Controllers
                 tblFooter.AddCell(_cell4);
 
                 tblFooter.WriteSelectedRows(0, -1, document.LeftMargin, writer.PageSize.GetBottom(document.BottomMargin) - 5, writer.DirectContent);
-
             }
         }
         #endregion

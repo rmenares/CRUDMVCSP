@@ -1,4 +1,4 @@
-﻿@model  IEnumerable<CrudMvcSp.Models.SP_Mues_liqSueldo_Result
+﻿@model  IEnumerable<CrudMvcSp.Models.SP_Mues_liqSueldo_Result>
 
 @{
 
@@ -29,12 +29,18 @@
     </tr>
 </table>
 
-
-
-
-
-
-
+@*<table border="1" class="table table-responsive table-striped table-condensed" id="TablSelec">
+    <tr>
+        <td align="center">Id Liquidación Sueldo</td>
+        <td align="center">Rut Empleado</td>
+        <td align="center">Fecha Liquidación Sueldo</td>
+    </tr>
+    <tr>
+        <td align="center"><input type="text"  id="idliqsu"/></td>
+        <td align="center"><input type="text" id="RutEmplLiqsu" /></td>
+        <td align="center"><input type="text" id="FechLiqSu" /></td>
+    </tr>
+</table>*@
 
 <form id="formMuesCargFam" method="post">
     @if (Model.Count() != 0)
@@ -110,10 +116,137 @@
     }
 </form>
 
+<!-- Modal Agrega Liquidación de Sueldos -->
+<div class="modal" id="AgrLiqSueld">
+    <div class="modal-dialog modal-lg" style="width:70%;">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header text-center">
+                <h2 class="modal-title">Nueva Liquidación de Sueldos</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form id="IngLiqSuel" enctype="multipart/form-data" method="post">
+                    <div class="tab-content">
+                            <br />
+                            <table align="center">
+                                <tr>
+                                    <td align="center">Rut Empleado</td>
+                                    <td></td>
+                                    <td align="center"><input type="text" id="RutEmp" required /></td>
+                                    <td></td>
+                                    <td align="center">Tipo Remuneración</td>
+                                    <td></td>
+                                    <td>@Html.DropDownList("ListTipRem", ViewBag.ListNacion as SelectList, "Seleccione Tipo Remuneración", new { @class = "form-control", style = "width:175px" })</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td> </td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                    </div>
+                </form>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button class="btn btn-success" id="BtnGrabEmp" value="Grabar"><i class="fa fa-download"></i> Grabar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
-@*Id_Liq,
+
+@*
     Rut_Empleado,
     Id_Tipo_Renumeracion,
     Plazo_Contrato,

@@ -591,6 +591,11 @@ namespace CrudMvcSp.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Sp_Mues_Salud_Result>("Sp_Mues_Salud");
         }
     
+        public virtual ObjectResult<Sp_Mues_TipRem_Result> Sp_Mues_TipRem()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Sp_Mues_TipRem_Result>("Sp_Mues_TipRem");
+        }
+    
         public virtual int sp_renamediagram(string diagramname, Nullable<int> owner_id, string new_diagramname)
         {
             var diagramnameParameter = diagramname != null ?
@@ -688,7 +693,7 @@ namespace CrudMvcSp.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Sp_Sel_Empresas_Result>("Sp_Sel_Empresas", rut_EmpresaParameter);
         }
     
-        public virtual ObjectResult<SP_Sel_liqSueldoXRutMes_Result> SP_Sel_liqSueldoXRutMes(string fechLiq, string rut_Emp)
+        public virtual int SP_Sel_liqSueldoXRutMes(string fechLiq, string rut_Emp)
         {
             var fechLiqParameter = fechLiq != null ?
                 new ObjectParameter("FechLiq", fechLiq) :
@@ -698,7 +703,7 @@ namespace CrudMvcSp.Models
                 new ObjectParameter("Rut_Emp", rut_Emp) :
                 new ObjectParameter("Rut_Emp", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_Sel_liqSueldoXRutMes_Result>("SP_Sel_liqSueldoXRutMes", fechLiqParameter, rut_EmpParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_Sel_liqSueldoXRutMes", fechLiqParameter, rut_EmpParameter);
         }
     
         public virtual ObjectResult<Sp_Sel_Nacionalidad_Result> Sp_Sel_Nacionalidad(Nullable<int> id_Nac)

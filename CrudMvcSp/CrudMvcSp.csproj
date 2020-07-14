@@ -261,6 +261,9 @@
     <Compile Include="Models\Sp_Mues_Salud_Result.cs">
       <DependentUpon>ModelEmp.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Sp_Mues_TipRem_Result.cs">
+      <DependentUpon>ModelEmp.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Sp_Sel_Afp_Result.cs">
       <DependentUpon>ModelEmp.tt</DependentUpon>
     </Compile>
@@ -280,9 +283,6 @@
       <DependentUpon>ModelEmp.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sp_Sel_Empresas_Result.cs">
-      <DependentUpon>ModelEmp.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\SP_Sel_liqSueldoXRutMes_Result.cs">
       <DependentUpon>ModelEmp.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sp_Sel_Nacionalidad_Result.cs">

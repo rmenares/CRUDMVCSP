@@ -22,49 +22,46 @@ namespace CrudMvcSp.Controllers
         #region LLena_las_Instancias
 
         EmpleadosEntities LiqSueld = new EmpleadosEntities();
-
         EmpleadosEntities Empl = new EmpleadosEntities();
+        EmpleadosEntities TipRemu = new EmpleadosEntities();
 
         #endregion
-                       
+
         // GET: LiqSueld
         #region Muest_Liq_suel
         public ActionResult Index()
         {
-            using(LiqSueld = new EmpleadosEntities())
+            using (LiqSueld = new EmpleadosEntities())
             {
                 var ListLiqSueld = LiqSueld.SP_Mues_liqSueldo().ToList();
+
+                //Carga Y Lista El Tipo de Remuneracion
+                var TipRem = TipRemu.Sp_Mues_TipRem().ToList();
+                ViewBag.ListTipRem = new SelectList(TipRem, "Id_Tipo", "Descr_Tipo");
 
                 return View(ListLiqSueld);
             }
         }
         #endregion
-  
 
-    #region Busca_Empleados
-    //busca el rut del empleado y verifica si este esta en la tabla de empleados
-    public ActionResult BuscEmp(Empleados emplead)
-    {
-        int Verifica;
-        using (Empl = new EmpleadosEntities())
+
+        #region Busca_Empleados
+        //busca el rut del empleado y verifica si este esta en la tabla de empleados
+        public ActionResult BuscEmp(Empleados emplead)
         {
-            var BuscEmp = Empl.Sp_Sel_Empleado(emplead.Rut_Empleado).ToList();
-            if (BuscEmp.Count != 0)
-            { Verifica = 1; }
-            else
-            { Verifica = 0; }
-            return Json(Verifica);
+            int Verifica;
+            using (Empl = new EmpleadosEntities())
+            {
+                var BuscEmp = Empl.Sp_Sel_Empleado(emplead.Rut_Empleado).ToList();
+                if (BuscEmp.Count != 0)
+                { Verifica = 1; }
+                else
+                { Verifica = 0; }
+                return Json(Verifica);
+            }
         }
-    }
         #endregion
 
 
-
-
-
-
-
-
     }
-
 }

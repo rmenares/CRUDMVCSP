@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="eb841d63c0134889a68fed30d541d0e7" Name="Diagram1">
+      <Diagram DiagramId="21e37d8bacf64cc9981ccf5c919318c5" Name="Diagram1">
         <EntityTypeShape EntityType="EmpleadosModel.Afp" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="EmpleadosModel.Carg_Familiar" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
         <EntityTypeShape EntityType="EmpleadosModel.Cargas_Familiares" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
@@ -24,7 +24,7 @@
         <EntityTypeShape EntityType="EmpleadosModel.TablImpMensual" Width="1.5" PointX="8.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="EmpleadosModel.TablImpQuincenal" Width="1.5" PointX="10.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="EmpleadosModel.TablImpSemanal" Width="1.5" PointX="8.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EmpleadosModel.Tipo_Remuneracion" Width="1.5" PointX="8.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmpleadosModel.Tipo_Remuneracion" Width="1.5" PointX="8.75" PointY="3.125" IsExpanded="true" />
         <AssociationConnector Association="EmpleadosModel.FK_Empleados_Afp" ManuallyRouted="false" />
         <AssociationConnector Association="EmpleadosModel.FK_Carg_Familiar_Comuna" ManuallyRouted="false" />
         <AssociationConnector Association="EmpleadosModel.FK_Carg_Familiar_Empleados" ManuallyRouted="false" />

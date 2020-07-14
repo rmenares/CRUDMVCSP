@@ -24,6 +24,8 @@ namespace CrudMvcSp.Controllers
         EmpleadosEntities LiqSueld = new EmpleadosEntities();
         EmpleadosEntities Empl = new EmpleadosEntities();
         EmpleadosEntities TipRemu = new EmpleadosEntities();
+        EmpleadosEntities ManAfp = new EmpleadosEntities();
+        EmpleadosEntities ManSalud = new EmpleadosEntities();
 
         #endregion
 
@@ -38,6 +40,12 @@ namespace CrudMvcSp.Controllers
                 //Carga Y Lista El Tipo de Remuneracion
                 var TipRem = TipRemu.Sp_Mues_TipRem().ToList();
                 ViewBag.ListTipRem = new SelectList(TipRem, "Id_Tipo", "Descr_Tipo");
+
+                var ListAfp = ManAfp.Sp_Mues_Afp().ToList();
+                ViewBag.ListAfps = new SelectList(ListAfp, "Cod_Afp", "Nom_Afp", "Porc_Desc");
+
+                var LisSal = ManSalud.Sp_Mues_Salud().ToList();
+                ViewBag.ListSalud = new SelectList(LisSal, "Cod_Salud", "Nombre_Salud", "Porc_Cotiz");
 
                 return View(ListLiqSueld);
             }

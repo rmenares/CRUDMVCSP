@@ -142,92 +142,99 @@
                                     <td></td>
                                     <td>@Html.DropDownList("ListTipRem", ViewBag.ListNacion as SelectList, "Seleccione Tipo Remuneración", new { @class = "form-control", style = "width:175px" })</td>
                                     <td></td>
+                                    <td align="center">Fecha Liquidación</td>
                                     <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td align="center"><INPUT type="text" id="FechLiq" /></td>
                                     <td></td>
                                 </tr>
                                 <tr>
+                                    <td align="center">Sueldo Base</td>
                                     <td></td>
+                                    <td align="center"><input type="text" /></td>
                                     <td></td>
+                                    <td align="center">Dias Trabajados</td>
                                     <td></td>
+                                    <td align="center"><input type="text" id="DiasTrab" /></td>
                                     <td></td>
+                                    <td align="center">% Gratificación</td>
                                     <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td align="center"><input type="text" id="PorcGrat" /></td>
                                     <td></td>
                                 </tr>
                                 <tr>
+                                    <td align="center">Valor Gratificación</td>
                                     <td></td>
+                                    <td align="center"><input type="text" id="ValorGrat" /></td>
                                     <td></td>
+                                    <td align="center">Cantidad Horas Extras</td>
                                     <td></td>
+                                    <td align="center"><input type="text" id="CantHrsExt" /></td>
                                     <td></td>
+                                    <td align="center">Valor Hora Extra</td>
                                     <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td align="center"><input type="text" id="ValHrsExt"/></td>
                                     <td></td>
                                 </tr>
                                 <tr>
+                                    <td align="center">Comisiones</td>
                                     <td></td>
+                                    <td align="center"><input type="text" id="ValComi" /></td>
                                     <td></td>
-                                    <td> </td>
+                                    <td align="center">Bonos</td>
                                     <td></td>
+                                    <td align="center"><input type="text" id="Bonos" /></td>
                                     <td></td>
+                                    <td align="center">Colación</td>
                                     <td></td>
+                                    <td align="center"><input type="text" id="ValCola" /></td>
                                     <td></td>
+                                </tr>
+                                <tr>
+                                    <td align="center">Movilización</td>
                                     <td></td>
+                                    <td align="center"><input type="text" id="ValMov" /></td>
                                     <td></td>
+                                    <td align="center">Nombre Afp</td>
                                     <td></td>
+                                    <td align="center">@Html.DropDownList("AfpSelec", ViewBag.ListAfps as SelectList, "Seleccione AFP", new { @class = "form-control", style = "width:175px" })</td>
                                     <td></td>
+                                    <td align="center">Monto AFP</td>
+                                    <td></td>
+                                    <td align="center"><input type="text" id="MontoAfp" /></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td align="center">Nombre Salud</td>
+                                    <td></td>
+                                    <td align="center">@Html.DropDownList("SalSelec", ViewBag.ListSalud as SelectList, "Seleccione Salud", new { @class = "form-control", style = "width:175px" })</td>
+                                    <td></td>
+                                    <td align="center">Monto Salud</td>
+                                    <td></td>
+                                    <td align="center"><input type="text" id="MontoSalud" /></td>
+                                    <td></td>
+                                    <td align="center">Valor Seguro Cesantía</td>
+                                    <td></td>
+                                    <td align="center"><input type="text" id="ValCesantia" /></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td align="center">Total Impuesto</td>
+                                    <td></td>
+                                    <td align="center"><input type="text" id="TotImp" /></td>
+                                    <td></td>
+                                    <td align="center">Apv</td>
+                                    <td></td>
+                                    <td align="center"><input type="text" id="ValApv" /></td>
+                                    <td></td>
+                                    <td align="center">Otros Descuentos</td>
+                                    <td></td>
+                                    <td align="center"><input type="text" id="OtDesc" /></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td align="center">Total A Pagar</td>
+                                    <td></td>
+                                    <td align="center"><input type="text" id="TotPagar" /></td>
                                     <td></td>
                                 </tr>
                             </table>
@@ -244,12 +251,9 @@
 </div>
 
 
-
-
 @*
     Rut_Empleado,
     Id_Tipo_Renumeracion,
-    Plazo_Contrato,
     Fecha_Liquidacion,
     Dias_Trabajados,
     Gratificacion,

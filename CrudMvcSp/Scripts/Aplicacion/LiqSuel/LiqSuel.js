@@ -48,23 +48,14 @@ $(document).ready(function () {
         }
     });
 
-        //Add Header Row with TextBoxes.
-        var row = $("<TR />");
-        $("#WebGrid TR").eq(0).find("TH").each(function () {
-            row.append("<th><input type = 'text' /></th>");
-        });
-        $("#WebGrid TR").eq(0).after(row);
-
-        //Applying the QuickSearch Plugin to each TextBox.
-        $("#WebGrid TR").eq(1).find("INPUT").each(function (i) {
-            $(this).quicksearch("#WebGrid tr:not(:has(th))", {
-                'testQuery': function (query, txt, row) {
-                    return $(row).children(":eq(" + i + ")").text().toLowerCase().indexOf(query[0].toLowerCase()) != -1;
-                }
-            });
-        });
+       
 
     //Calculos de la Liquidacion de Sueldo
+
+
+    PorcGrat = $("#PorcGrat").val();
+    ValorGrat = $("#ValorGrat").val(); 
+
 
 
 
@@ -213,6 +204,32 @@ $(document).ready(function () {
             }
         }
     })
+
+
+    //Add Header Row with TextBoxes.
+    var row = $("<TR />");
+    $("#TablaLiqSueld TR").eq(0).find("TH").each(function () {
+        row.append("<th><input type = 'text' /></th>");
+    });
+    $("#TablaLiqSueld TR").eq(0).after(row);
+
+    //Applying the QuickSearch Plugin to each TextBox.
+    $("#TablaLiqSueld TR").eq(1).find("INPUT").each(function (i) {
+        $(this).quicksearch("#TablaLiqSueld tr:not(:has(th))", {
+            'testQuery': function (query, txt, row) {
+                return $(row).children(":eq(" + i + ")").text().toLowerCase().indexOf(query[0].toLowerCase()) != -1;
+            }
+        });
+    });
+
+
+
+
+
+
+
+
+
 
 
    

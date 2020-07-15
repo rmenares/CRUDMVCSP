@@ -21,7 +21,8 @@ namespace CrudMvcSp.Models
         public string Dias_Trabajados { get; set; }
         public decimal Cant_Horas_Extras { get; set; }
         public decimal Valor_Horas_Extras { get; set; }
-        public decimal Comisiones { get; set; }
+        public string PorcComision { get; set; }
+        public decimal Valor_Com { get; set; }
         public decimal Bonos { get; set; }
         public decimal Colacion { get; set; }
         public decimal Movilizacion { get; set; }

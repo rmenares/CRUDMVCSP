@@ -30,17 +30,17 @@
 </table>
 
 @*<table border="1" class="table table-responsive table-striped table-condensed" id="TablSelec">
-    <tr>
-        <td align="center">Id Liquidación Sueldo</td>
-        <td align="center">Rut Empleado</td>
-        <td align="center">Fecha Liquidación Sueldo</td>
-    </tr>
-    <tr>
-        <td align="center"><input type="text"  id="idliqsu"/></td>
-        <td align="center"><input type="text" id="RutEmplLiqsu" /></td>
-        <td align="center"><input type="text" id="FechLiqSu" /></td>
-    </tr>
-</table>*@
+        <tr>
+            <td align="center">Id Liquidación Sueldo</td>
+            <td align="center">Rut Empleado</td>
+            <td align="center">Fecha Liquidación Sueldo</td>
+        </tr>
+        <tr>
+            <td align="center"><input type="text"  id="idliqsu"/></td>
+            <td align="center"><input type="text" id="RutEmplLiqsu" /></td>
+            <td align="center"><input type="text" id="FechLiqSu" /></td>
+        </tr>
+    </table>*@
 
 <form id="formMuesCargFam" method="post">
     @if (Model.Count() != 0)
@@ -66,27 +66,28 @@
                     grid.Column("Nombre","Nombre"),
                     grid.Column("Descr_Tipo","Tipo_Liquidación"),
                     grid.Column("Sueldo_Base","Sueldo Base"),
-                    grid.Column("Fecha_Liquidacion","Mes Liquidacióon"),
+                    grid.Column("Fecha_Liquidacion","Mes Liquidación"),
                     grid.Column("Dias_Trabajados","Dias Trabajados"),
                     grid.Column("Cant_Horas_Extras","Horas Hextras"),
                     grid.Column("Valor_Horas_Extras","Valor Hora"),
-                    grid.Column("Comisiones","Comisiones"),
-                    grid.Column("Bonos","Bonon"),
+                    grid.Column("PorcComision","% Comisión"),
+                    grid.Column("Valor_Com","Comisión A Pagar"),
+                    grid.Column("Bonos","Bonos"),
                     grid.Column("Colacion","Colación"),
-                    grid.Column("Movilizacion","Moovilización"),
+                    grid.Column("Movilizacion","Movilización"),
                     grid.Column("Nom_Afp","Afp"),
                     grid.Column("Valor_Afp","Monto a Pagar"),
                     grid.Column("Nombre_Salud","Salud"),
                     grid.Column("Valor_Salud","Monto a Pagar"),
-                    grid.Column("Otrs_Descuentos","Total Descuentos"),
+                    grid.Column("Otrs_Descuentos","Otros Descuentos"),
                     grid.Column("Total_Pagar","A Pagar"),
                     grid.Column(header: "Acciones", style: "col-sm-2", format:
-                    @<span class="link">
-                        <a class="btn btn-success btn-xs glyphicon glyphicon-pencil Edit" href="javascript:;"> Edit</a>
-                        <a class="btn btn-warning btn-xs glyphicon glyphicon-print  Info" href="javascript:;"> Info</a>
-                        <a class="btn btn-danger  btn-xs glyphicon glyphicon-trash  Delete" href="javascript:;"> Delete</a>
-                    </span> )
-                                         })
+@<span class="link">
+    <a class="btn btn-success btn-xs glyphicon glyphicon-pencil Edit" href="javascript:;"> Edit</a>
+    <a class="btn btn-warning btn-xs glyphicon glyphicon-print  Info" href="javascript:;"> Info</a>
+    <a class="btn btn-danger  btn-xs glyphicon glyphicon-trash  Delete" href="javascript:;"> Delete</a>
+</span> )
+                        })
         </div>
         <div id="TablExport">
             <table align="center">
@@ -131,261 +132,110 @@
             <div class="modal-body">
                 <form id="IngLiqSuel" enctype="multipart/form-data" method="post">
                     <div class="tab-content">
-                            <br />
-                            <table align="center">
-                                <tr>
-                                    <td align="center">Rut Empleado</td>
-                                    <td></td>
-                                    <td align="center"><input type="text" id="RutEmp" required /></td>
-                                    <td></td>
-                                    <td align="center">Tipo Remuneración</td>
-                                    <td></td>
-                                    <td>@Html.DropDownList("ListTipRem", ViewBag.ListNacion as SelectList, "Seleccione Tipo Remuneración", new { @class = "form-control", style = "width:175px" })</td>
-                                    <td></td>
-                                    <td align="center">Fecha Liquidación</td>
-                                    <td></td>
-                                    <td align="center"><input type="text" id="FechLiq" /></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td align="center">Sueldo Base</td>
-                                    <td></td>
-                                    <td align="center"><input type="text" id="SueldBas" style="text-align:right;"/></td>
-                                    <td></td>
-                                    <td align="center">Dias Trabajados</td>
-                                    <td></td>
-                                    <td align="center"><input type="text" id="DiasTrab" style="text-align:right;" /></td>
-                                    <td></td>
-                                    <td align="center">% Gratificación</td>
-                                    <td></td>
-                                    <td align="center"><input type="text" id="PorcGrat" style="text-align:right;" /></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td align="center">Valor Gratificación</td>
-                                    <td></td>
-                                    <td align="center"><input type="text" id="ValorGrat" style="text-align:right;" disabled/></td>
-                                    <td></td>
-                                    <td align="center">Cantidad Horas Extras</td>
-                                    <td></td>
-                                    <td align="center"><input type="text" id="CantHrsExt" style="text-align:right;" /></td>
-                                    <td></td>
-                                    <td align="center">Valor Hora Extra</td>
-                                    <td></td>
-                                    <td align="center"><input type="text" id="ValHrsExt" style="text-align:right;" disabled/></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td align="center">Comisiones</td>
-                                    <td></td>
-                                    <td align="center"><input type="text" id="ValComi" style="text-align:right;" /></td>
-                                    <td></td>
-                                    <td align="center">Bonos</td>
-                                    <td></td>
-                                    <td align="center"><input type="text" id="Bonos" style="text-align:right;" /></td>
-                                    <td></td>
-                                    <td align="center">Colación</td>
-                                    <td></td>
-                                    <td align="center"><input type="text" id="ValCola" style="text-align:right;"  /></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td align="center">Movilización</td>
-                                    <td></td>
-                                    <td align="center"><input type="text" id="ValMov" style="text-align:right;"  /></td>
-                                    <td></td>
-                                    <td align="center">Nombre Afp</td>
-                                    <td></td>
-                                    <td align="center">@Html.DropDownList("AfpSelec", ViewBag.ListAfps as SelectList, "Seleccione AFP", new { @class = "form-control", style = "width:175px" })</td>
-                                    <td></td>
-                                    <td align="center">Monto AFP</td>
-                                    <td></td>
-                                    <td align="center"><input type="text" id="MontoAfp" style="text-align:right;"  /></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td align="center">Nombre Salud</td>
-                                    <td></td>
-                                    <td align="center">@Html.DropDownList("SalSelec", ViewBag.ListSalud as SelectList, "Seleccione Salud", new { @class = "form-control", style = "width:175px" })</td>
-                                    <td></td>
-                                    <td align="center">Monto Salud</td>
-                                    <td></td>
-                                    <td align="center"><input type="text" id="MontoSalud" style="text-align:right;"  /></td>
-                                    <td></td>
-                                    <td align="center">Valor Seguro Cesantía</td>
-                                    <td></td>
-                                    <td align="center"><input type="text" id="ValCesantia" style="text-align:right;"  /></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td align="center">Total Impuesto</td>
-                                    <td></td>
-                                    <td align="center"><input type="text" id="TotImp" style="text-align:right;"  disabled/></td>
-                                    <td></td>
-                                    <td align="center">Apv</td>
-                                    <td></td>
-                                    <td align="center"><input type="text" id="ValApv" style="text-align:right;"  /></td>
-                                    <td></td>
-                                    <td align="center">Otros Descuentos</td>
-                                    <td></td>
-                                    <td align="center"><input type="text" id="OtDesc" style="text-align:right;"  /></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td align="center">Total A Pagar</td>
-                                    <td></td>
-                                    <td align="center"><input type="text" id="TotPagar" style="text-align:right;"  disabled /></td>
-                                    <td></td>
-                                </tr>
-                            </table>
-                    </div>
-                </form>
-            </div>
-            <!-- Modal footer -->
-            <div class="modal-footer">
-                <button class="btn btn-success" id="BtnGrabLiqSueld" value="Grabar"><i class="fa fa-download"></i> Grabar</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-@*
-    Rut_Empleado,
-    Id_Tipo_Renumeracion,
-    Fecha_Liquidacion,
-    Dias_Trabajados,
-    Gratificacion,
-    Sueldo_Base,
-    Valor_Grat,
-    Cant_Horas_Extras,
-    Valor_Horas_Extras,
-    Comisiones,
-    Bonos,
-    Colacion,
-    Movilizacion,
-    CodAfp,
-    Valor_Afp,
-    Cod_Salud,
-    Valor_Salud,
-    Valor_Seg_Cesantia,
-    Valor_Impuesto,
-    Apv,
-    Otrs_Descuentos,
-    Total_Pagar,*@
-
-<!-- Modal Agrega Liquidación De Sueldo -->
-@*<div class="modal" id="AgrLiqSueld">
-    <div class="modal-dialog modal-lg" style="width:70%;">
-        <div class="modal-content">
-            <!-- Modal Header -->
-            <div class="modal-header text-center">
-                <h2 class="modal-title">Nueva Liquidación De Sueldo</h2>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <!-- Modal body -->
-            <div class="modal-body">
-                <form id="IngEmpl" enctype="multipart/form-data" method="post">
-                    <div class="tab-content">
                         <br />
-                        <table align="center" border="1">
+                        <table align="center">
                             <tr>
                                 <td align="center">Rut Empleado</td>
                                 <td></td>
                                 <td align="center"><input type="text" id="RutEmp" required /></td>
                                 <td></td>
+                                <td align="center">Tipo Remuneración</td>
                                 <td></td>
+                                <td>@Html.DropDownList("ListTipRem", ViewBag.ListNacion as SelectList, "Seleccione Tipo Remuneración", new { @class = "form-control", style = "width:175px" })</td>
                                 <td></td>
+                                <td align="center">Fecha Liquidación</td>
                                 <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td align="center"><input type="text" id="FechLiq" /></td>
                                 <td></td>
                             </tr>
                             <tr>
+                                <td align="center">Sueldo Base</td>
                                 <td></td>
+                                <td align="center"><input type="text" id="SueldBas" style="text-align:right;" /></td>
                                 <td></td>
+                                <td align="center">Dias Trabajados</td>
                                 <td></td>
+                                <td align="center"><input type="text" id="DiasTrab" style="text-align:right;" /></td>
                                 <td></td>
+                                <td align="center">% Gratificación</td>
                                 <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td align="center"><input type="text" id="PorcCom" style="text-align:right;" /></td>
                                 <td></td>
                             </tr>
                             <tr>
+                                <td align="center">Valor Gratificación</td>
                                 <td></td>
+                                <td align="center"><input type="text" id="ValorCom" style="text-align:right;" disabled /></td>
                                 <td></td>
+                                <td align="center">Cantidad Horas Extras</td>
                                 <td></td>
+                                <td align="center"><input type="text" id="CantHrsExt" style="text-align:right;" /></td>
                                 <td></td>
+                                <td align="center">Valor Hora Extra</td>
                                 <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td align="center"><input type="text" id="ValHrsExt" style="text-align:right;" disabled /></td>
                                 <td></td>
                             </tr>
                             <tr>
+                                <td align="center">Gratificación</td>
                                 <td></td>
+                                <td align="center"><input type="text" id="ValGrat" style="text-align:right;" /></td>
                                 <td></td>
+                                <td align="center">Bonos</td>
                                 <td></td>
+                                <td align="center"><input type="text" id="Bonos" style="text-align:right;" /></td>
                                 <td></td>
-                                <td ></td>
+                                <td align="center">Colación</td>
                                 <td></td>
+                                <td align="center"><input type="text" id="ValCola" style="text-align:right;" /></td>
                                 <td></td>
+                            </tr>
+                            <tr>
+                                <td align="center">Movilización</td>
                                 <td></td>
+                                <td align="center"><input type="text" id="ValMov" style="text-align:right;" /></td>
                                 <td></td>
+                                <td align="center">Nombre Afp</td>
                                 <td></td>
+                                <td align="center">@Html.DropDownList("AfpSelec", ViewBag.ListAfps as SelectList, "Seleccione AFP", new { @class = "form-control", style = "width:175px" })</td>
                                 <td></td>
+                                <td align="center">Monto AFP</td>
+                                <td></td>
+                                <td align="center"><input type="text" id="MontoAfp" style="text-align:right;" /></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td align="center">Nombre Salud</td>
+                                <td></td>
+                                <td align="center">@Html.DropDownList("SalSelec", ViewBag.ListSalud as SelectList, "Seleccione Salud", new { @class = "form-control", style = "width:175px" })</td>
+                                <td></td>
+                                <td align="center">Monto Salud</td>
+                                <td></td>
+                                <td align="center"><input type="text" id="MontoSalud" style="text-align:right;" /></td>
+                                <td></td>
+                                <td align="center">Valor Seguro Cesantía</td>
+                                <td></td>
+                                <td align="center"><input type="text" id="ValCesantia" style="text-align:right;" /></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td align="center">Total Impuesto</td>
+                                <td></td>
+                                <td align="center"><input type="text" id="TotImp" style="text-align:right;" disabled /></td>
+                                <td></td>
+                                <td align="center">Apv</td>
+                                <td></td>
+                                <td align="center"><input type="text" id="ValApv" style="text-align:right;" /></td>
+                                <td></td>
+                                <td align="center">Otros Descuentos</td>
+                                <td></td>
+                                <td align="center"><input type="text" id="OtDesc" style="text-align:right;" /></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td align="center">Total A Pagar</td>
+                                <td></td>
+                                <td align="center"><input type="text" id="TotPagar" style="text-align:right;" disabled /></td>
                                 <td></td>
                             </tr>
                         </table>
@@ -399,7 +249,157 @@
             </div>
         </div>
     </div>
-</div>*@
+</div>
+
+
+        @*Rut_Empleado 
+        Id_Tipo_Renumeracion 
+        Fecha_Liquidacion 
+        Sueldo_Base 
+        Dias_Trabajados 
+        PorcComision 
+        Valor_Com 
+        Cant_Horas_Extras 
+        Valor_Horas_Extras 
+        Gratificacion 
+        Bonos 
+        Colacion 
+        Movilizacion 
+        CodAfp 
+        Valor_Afp 
+        Cod_Salud 
+        Valor_Salud 
+        Valor_Seg_Cesantia 
+        Valor_Impuesto 
+        Apv 
+        Otrs_Descuentos 
+        Total_Pagar*@ 
+
+<!-- Modal Agrega Liquidación De Sueldo -->
+@*<div class="modal" id="AgrLiqSueld">
+        <div class="modal-dialog modal-lg" style="width:70%;">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header text-center">
+                    <h2 class="modal-title">Nueva Liquidación De Sueldo</h2>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form id="IngEmpl" enctype="multipart/form-data" method="post">
+                        <div class="tab-content">
+                            <br />
+                            <table align="center" border="1">
+                                <tr>
+                                    <td align="center">Rut Empleado</td>
+                                    <td></td>
+                                    <td align="center"><input type="text" id="RutEmp" required /></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td ></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </form>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button class="btn btn-success" id="BtnGrabLiqSueld" value="Grabar"><i class="fa fa-download"></i> Grabar</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>*@
 
 
 @section scripts {

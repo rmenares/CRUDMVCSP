@@ -144,55 +144,55 @@
                                     <td></td>
                                     <td align="center">Fecha Liquidación</td>
                                     <td></td>
-                                    <td align="center"><INPUT type="text" id="FechLiq" /></td>
+                                    <td align="center"><input type="text" id="FechLiq" /></td>
                                     <td></td>
                                 </tr>
                                 <tr>
                                     <td align="center">Sueldo Base</td>
                                     <td></td>
-                                    <td align="center"><input type="text" /></td>
+                                    <td align="center"><input type="text" id="SueldBas" style="text-align:right;"/></td>
                                     <td></td>
                                     <td align="center">Dias Trabajados</td>
                                     <td></td>
-                                    <td align="center"><input type="text" id="DiasTrab" /></td>
+                                    <td align="center"><input type="text" id="DiasTrab" style="text-align:right;" /></td>
                                     <td></td>
                                     <td align="center">% Gratificación</td>
                                     <td></td>
-                                    <td align="center"><input type="text" id="PorcGrat" /></td>
+                                    <td align="center"><input type="text" id="PorcGrat" style="text-align:right;" /></td>
                                     <td></td>
                                 </tr>
                                 <tr>
                                     <td align="center">Valor Gratificación</td>
                                     <td></td>
-                                    <td align="center"><input type="text" id="ValorGrat" /></td>
+                                    <td align="center"><input type="text" id="ValorGrat" style="text-align:right;" disabled/></td>
                                     <td></td>
                                     <td align="center">Cantidad Horas Extras</td>
                                     <td></td>
-                                    <td align="center"><input type="text" id="CantHrsExt" /></td>
+                                    <td align="center"><input type="text" id="CantHrsExt" style="text-align:right;" /></td>
                                     <td></td>
                                     <td align="center">Valor Hora Extra</td>
                                     <td></td>
-                                    <td align="center"><input type="text" id="ValHrsExt"/></td>
+                                    <td align="center"><input type="text" id="ValHrsExt" style="text-align:right;" disabled/></td>
                                     <td></td>
                                 </tr>
                                 <tr>
                                     <td align="center">Comisiones</td>
                                     <td></td>
-                                    <td align="center"><input type="text" id="ValComi" /></td>
+                                    <td align="center"><input type="text" id="ValComi" style="text-align:right;" /></td>
                                     <td></td>
                                     <td align="center">Bonos</td>
                                     <td></td>
-                                    <td align="center"><input type="text" id="Bonos" /></td>
+                                    <td align="center"><input type="text" id="Bonos" style="text-align:right;" /></td>
                                     <td></td>
                                     <td align="center">Colación</td>
                                     <td></td>
-                                    <td align="center"><input type="text" id="ValCola" /></td>
+                                    <td align="center"><input type="text" id="ValCola" style="text-align:right;"  /></td>
                                     <td></td>
                                 </tr>
                                 <tr>
                                     <td align="center">Movilización</td>
                                     <td></td>
-                                    <td align="center"><input type="text" id="ValMov" /></td>
+                                    <td align="center"><input type="text" id="ValMov" style="text-align:right;"  /></td>
                                     <td></td>
                                     <td align="center">Nombre Afp</td>
                                     <td></td>
@@ -200,7 +200,7 @@
                                     <td></td>
                                     <td align="center">Monto AFP</td>
                                     <td></td>
-                                    <td align="center"><input type="text" id="MontoAfp" /></td>
+                                    <td align="center"><input type="text" id="MontoAfp" style="text-align:right;"  /></td>
                                     <td></td>
                                 </tr>
                                 <tr>
@@ -210,31 +210,31 @@
                                     <td></td>
                                     <td align="center">Monto Salud</td>
                                     <td></td>
-                                    <td align="center"><input type="text" id="MontoSalud" /></td>
+                                    <td align="center"><input type="text" id="MontoSalud" style="text-align:right;"  /></td>
                                     <td></td>
                                     <td align="center">Valor Seguro Cesantía</td>
                                     <td></td>
-                                    <td align="center"><input type="text" id="ValCesantia" /></td>
+                                    <td align="center"><input type="text" id="ValCesantia" style="text-align:right;"  /></td>
                                     <td></td>
                                 </tr>
                                 <tr>
                                     <td align="center">Total Impuesto</td>
                                     <td></td>
-                                    <td align="center"><input type="text" id="TotImp" /></td>
+                                    <td align="center"><input type="text" id="TotImp" style="text-align:right;"  disabled/></td>
                                     <td></td>
                                     <td align="center">Apv</td>
                                     <td></td>
-                                    <td align="center"><input type="text" id="ValApv" /></td>
+                                    <td align="center"><input type="text" id="ValApv" style="text-align:right;"  /></td>
                                     <td></td>
                                     <td align="center">Otros Descuentos</td>
                                     <td></td>
-                                    <td align="center"><input type="text" id="OtDesc" /></td>
+                                    <td align="center"><input type="text" id="OtDesc" style="text-align:right;"  /></td>
                                     <td></td>
                                 </tr>
                                 <tr>
                                     <td align="center">Total A Pagar</td>
                                     <td></td>
-                                    <td align="center"><input type="text" id="TotPagar" /></td>
+                                    <td align="center"><input type="text" id="TotPagar" style="text-align:right;"  disabled /></td>
                                     <td></td>
                                 </tr>
                             </table>
@@ -243,7 +243,7 @@
             </div>
             <!-- Modal footer -->
             <div class="modal-footer">
-                <button class="btn btn-success" id="BtnGrabEmp" value="Grabar"><i class="fa fa-download"></i> Grabar</button>
+                <button class="btn btn-success" id="BtnGrabLiqSueld" value="Grabar"><i class="fa fa-download"></i> Grabar</button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
             </div>
         </div>
@@ -276,7 +276,7 @@
     Total_Pagar,*@
 
 <!-- Modal Agrega Liquidación De Sueldo -->
-<div class="modal" id="AgrLiqSueld">
+@*<div class="modal" id="AgrLiqSueld">
     <div class="modal-dialog modal-lg" style="width:70%;">
         <div class="modal-content">
             <!-- Modal Header -->
@@ -399,9 +399,7 @@
             </div>
         </div>
     </div>
-</div>
-
-
+</div>*@
 
 
 @section scripts {
@@ -412,3 +410,4 @@
     <script src="~/Scripts/toastr.js"></script>
     <script src="~/Scripts/Aplicacion/LiqSuel/LiqSuel.js"></script>
 }
+

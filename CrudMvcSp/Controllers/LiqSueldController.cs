@@ -42,10 +42,10 @@ namespace CrudMvcSp.Controllers
                 ViewBag.ListTipRem = new SelectList(TipRem, "Id_Tipo", "Descr_Tipo");
 
                 var ListAfp = ManAfp.Sp_Mues_Afp().ToList();
-                ViewBag.ListAfps = new SelectList(ListAfp, "Cod_Afp", "Nom_Afp", "Porc_Desc");
+                ViewBag.ListAfps = new SelectList(ListAfp, "Cod_Afp", "Nom_Afp");
 
                 var LisSal = ManSalud.Sp_Mues_Salud().ToList();
-                ViewBag.ListSalud = new SelectList(LisSal, "Cod_Salud", "Nombre_Salud", "Porc_Cotiz");
+                ViewBag.ListSalud = new SelectList(LisSal, "Cod_Salud", "Nombre_Salud");
 
                 return View(ListLiqSueld);
             }

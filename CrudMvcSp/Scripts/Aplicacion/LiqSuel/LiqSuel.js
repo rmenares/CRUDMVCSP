@@ -1,4 +1,4 @@
-﻿
+﻿var SuelBase, PorcCom, CantHrsExt, totHrsExt;
 
 $(document).ready(function () {
     
@@ -48,17 +48,58 @@ $(document).ready(function () {
         }
     });
 
-       
+    $("#FechLiq").on('keyup', function (e) {
+        var keycode = e.keyCode || e.which;
+        if (keycode == 13) {
+            var f = new Date();
+            var fecha = f.getDate() + "/" + "0"+(f.getMonth() + 1) + "/" + f.getFullYear();
+            $("#FechLiq").val(fecha);
+            $("#SueldBas").focus();
+        }
+    })
+
+    $("#SueldBas").on('keyup', function (e) {
+        var keycode = e.keyCode || e.which;
+        if (keycode == 13) {
+            $("#DiasTrab").focus();
+        }
+    })
+
+    $("#DiasTrab").on('keyup', function (e) {
+        var keycode = e.keyCode || e.which;
+        if (keycode == 13) {
+            var DiasTrab = $("#DiasTrab").val();
+            if (DiasTrab < 20) {
+                toastr["error"](" No Puede Haber Menos de 20 Dias Trabajados Al Mes ", "Atención")
+                toastr.options = {
+                    "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false, "positionClass": "toast-top-center", "preventDuplicates": false,
+                    "onclick": null, "showDuration": "400", "hideDuration": "1000", "timeOut": "5000",
+                    "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear", "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                };
+                $("#DiasTrab").val("");
+                $("#DiasTrab").focus();
+            }
+            $("#PorcCom").focus();
+        }
+    })
 
     //Calculos de la Liquidacion de Sueldo
 
-
-    PorcGrat = $("#PorcGrat").val();
-    ValorGrat = $("#ValorGrat").val(); 
-
-
-
-
+    //Calulo de Comisiones
+    $("#PorcCom").on('keyup', function (e) {
+        var keycode = e.keyCode || e.which;
+        if (keycode == 13) {
+            SuelBase = $("#SueldBas").val();
+            PorcCom = $("#PorcCom").val();
+            PorcCom = ((SuelBase * PorcCom) / 100);
+            // lo convierte a entero
+            PorcCom = PorcCom | 0;
+            //muestra el Valor de la comision.
+            $("#ValorCom").val(PorcCom);
+            $("#CantHrsExt").focus();
+        }
+    })
 
     //Calcula Las Horas Extras
     $("#CantHrsExt").on('keyup', function (e) {
@@ -75,11 +116,29 @@ $(document).ready(function () {
                 //precio de la hora Extra
                 ValorHrExt = TotFactores * SuelBase;
                 // saldo Total de las Horas Extras.
-                totHrsExt = (ValorHrExt * CantHrsExt);
+                TotHrsExt = (ValorHrExt * CantHrsExt);
                 //convierte a entero
-                totHrsExt = totHrsExt | 0;
-                $("#ValHrsExt").val(totHrsExt);
-                $("#ValComi").focus();
+                TotHrsExt = TotHrsExt | 0;
+                $("#ValHrsExt").val(TotHrsExt);
+
+                // Calculo de la Gratificación
+                var Ganancias = (parseInt(SuelBase) + parseInt(PorcCom) + parseInt(TotHrsExt));
+                var SuelDevengado = ((Ganancias * 25) / 100);
+                SuelDevengado = SuelDevengado | 0;
+
+                var SueldMin = 320500;
+                var GratMensual = ((parseInt(SueldMin) * 4, 75) / 12);
+                var Grat2 = (  parseInt(GratMensual) * 4,75);
+                var TopeGratMensual = (  parseInt(Grat2) / 12);
+
+                if (SuelDevengado > TopeGratMensual) {
+                    $("#ValGrat").val(TopeGratMensual);
+                }
+                if(SuelDevengado < TopeGratMensual)
+                {
+                    $("#ValGrat").val(SuelDevengado);
+                }
+                $("#Bonos").focus();
             }
             else {
                 toastr["error"](" No Puede Haber Más de 40 Horas Extras Al Mes ", "Atención")
@@ -95,7 +154,7 @@ $(document).ready(function () {
         }
     })
 
-
+    
     
 
 

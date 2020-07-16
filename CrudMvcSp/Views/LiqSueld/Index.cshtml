@@ -67,18 +67,18 @@
                     grid.Column("Descr_Tipo","Tipo_Liquidación"),
                     grid.Column("Sueldo_Base","Sueldo Base"),
                     grid.Column("Fecha_Liquidacion","Mes Liquidación"),
-                    grid.Column("Dias_Trabajados","Dias Trabajados"),
-                    grid.Column("Cant_Horas_Extras","Horas Hextras"),
-                    grid.Column("Valor_Horas_Extras","Valor Hora"),
-                    grid.Column("PorcComision","% Comisión"),
+                    //grid.Column("Dias_Trabajados","Dias Trabajados"),
+                    //grid.Column("Cant_Horas_Extras","Horas Hextras"),
+                    //grid.Column("Valor_Horas_Extras","Valor Hora"),
+                    //grid.Column("PorcComision","% Comisión"),
                     grid.Column("Valor_Com","Comisión A Pagar"),
                     grid.Column("Bonos","Bonos"),
-                    grid.Column("Colacion","Colación"),
-                    grid.Column("Movilizacion","Movilización"),
+                    //grid.Column("Colacion","Colación"),
+                    //grid.Column("Movilizacion","Movilización"),
                     grid.Column("Nom_Afp","Afp"),
-                    grid.Column("Valor_Afp","Monto a Pagar"),
+                    //grid.Column("Valor_Afp","Monto a Pagar"),
                     grid.Column("Nombre_Salud","Salud"),
-                    grid.Column("Valor_Salud","Monto a Pagar"),
+                    //grid.Column("Valor_Salud","Monto a Pagar"),
                     grid.Column("Otrs_Descuentos","Otros Descuentos"),
                     grid.Column("Total_Pagar","A Pagar"),
                     grid.Column(header: "Acciones", style: "col-sm-2", format:
@@ -157,13 +157,13 @@
                                 <td></td>
                                 <td align="center"><input type="text" id="DiasTrab" style="text-align:right;" /></td>
                                 <td></td>
-                                <td align="center">% Gratificación</td>
+                                <td align="center">% Comision</td>
                                 <td></td>
                                 <td align="center"><input type="text" id="PorcCom" style="text-align:right;" /></td>
                                 <td></td>
                             </tr>
                             <tr>
-                                <td align="center">Valor Gratificación</td>
+                                <td align="center">Valor a Pagar</td>
                                 <td></td>
                                 <td align="center"><input type="text" id="ValorCom" style="text-align:right;" disabled /></td>
                                 <td></td>
@@ -179,7 +179,7 @@
                             <tr>
                                 <td align="center">Gratificación</td>
                                 <td></td>
-                                <td align="center"><input type="text" id="ValGrat" style="text-align:right;" /></td>
+                                <td align="center"><input type="text" id="ValGrat" style="text-align:right;" disabled/></td>
                                 <td></td>
                                 <td align="center">Bonos</td>
                                 <td></td>

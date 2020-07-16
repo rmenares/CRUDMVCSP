@@ -48,6 +48,7 @@ $(document).ready(function () {
         }
     });
 
+    //Ingresa o acepta la fecha de liquidación
     $("#FechLiq").on('keyup', function (e) {
         var keycode = e.keyCode || e.which;
         if (keycode == 13) {
@@ -58,19 +59,33 @@ $(document).ready(function () {
         }
     })
 
+    // Ingreso del Sueldo Base
     $("#SueldBas").on('keyup', function (e) {
         var keycode = e.keyCode || e.which;
         if (keycode == 13) {
-            $("#DiasTrab").focus();
+            valor = document.getElementById("SueldBas").value;
+            if (isNaN(valor) || (valor ==  "")) {
+                toastr["error"](" Dato Debe Ser Numérico ", "Atención")
+                toastr.options = {
+                    "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false, "positionClass": "toast-top-center", "preventDuplicates": false,
+                    "onclick": null, "showDuration": "400", "hideDuration": "1000", "timeOut": "5000",
+                    "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear", "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut" };
+                $("#SueldBas").val("");
+                $("#SueldBas").focus();
+                return false;
+            }
+            else { $("#DiasTrab").focus(); }
         }
     })
 
+    //dias trabajados
     $("#DiasTrab").on('keyup', function (e) {
         var keycode = e.keyCode || e.which;
         if (keycode == 13) {
             var DiasTrab = $("#DiasTrab").val();
-            if (DiasTrab < 20) {
-                toastr["error"](" No Puede Haber Menos de 20 Dias Trabajados Al Mes ", "Atención")
+            if (isNaN(DiasTrab) || (DiasTrab == "")) {
+                toastr["error"](" Dato Debe Ser Numérico ", "Atención")
                 toastr.options = {
                     "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false, "positionClass": "toast-top-center", "preventDuplicates": false,
                     "onclick": null, "showDuration": "400", "hideDuration": "1000", "timeOut": "5000",
@@ -79,8 +94,9 @@ $(document).ready(function () {
                 };
                 $("#DiasTrab").val("");
                 $("#DiasTrab").focus();
+                return false;
             }
-            $("#PorcCom").focus();
+            else { $("#PorcCom").focus();}                                
         }
     })
 
@@ -90,14 +106,28 @@ $(document).ready(function () {
     $("#PorcCom").on('keyup', function (e) {
         var keycode = e.keyCode || e.which;
         if (keycode == 13) {
-            SuelBase = $("#SueldBas").val();
             PorcCom = $("#PorcCom").val();
-            PorcCom = ((SuelBase * PorcCom) / 100);
-            // lo convierte a entero
-            PorcCom = PorcCom | 0;
-            //muestra el Valor de la comision.
-            $("#ValorCom").val(PorcCom);
-            $("#CantHrsExt").focus();
+            if (isNaN(PorcCom) || (PorcCom=="")) {
+                toastr["error"](" Dato Debe Ser Numérico ", "Atención")
+                toastr.options = {
+                    "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false, "positionClass": "toast-top-center", "preventDuplicates": false,
+                    "onclick": null, "showDuration": "400", "hideDuration": "1000", "timeOut": "5000",
+                    "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear", "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                };
+                $("#PorcCom").val("");
+                $("#PorcCom").focus();
+                return false;
+            }
+            else {
+                SuelBase = $("#SueldBas").val();
+                PorcCom = ((SuelBase * PorcCom) / 100);
+                // lo convierte a entero
+                PorcCom = PorcCom | 0;
+                //muestra el Valor de la comision.
+                $("#ValorCom").val(PorcCom);
+                $("#CantHrsExt").focus();
+            }
         }
     })
 
@@ -107,55 +137,111 @@ $(document).ready(function () {
         if (keycode == 13) {
             //Cantidad Horas Extras
             CantHrsExt = $("#CantHrsExt").val();
-            if (CantHrsExt <= "40") {
-                //horas Extras
-                var factor1 = 0.2333333 / 45; // 45 es la jornada semanal
-                var factor2 = 50 / 100 + 1
-                var TotFactores = factor1 * factor2
-                SuelBase = $("#SueldBas").val();
-                //precio de la hora Extra
-                ValorHrExt = TotFactores * SuelBase;
-                // saldo Total de las Horas Extras.
-                TotHrsExt = (ValorHrExt * CantHrsExt);
-                //convierte a entero
-                TotHrsExt = TotHrsExt | 0;
-                $("#ValHrsExt").val(TotHrsExt);
-
-                // Calculo de la Gratificación
-                var Ganancias = (parseInt(SuelBase) + parseInt(PorcCom) + parseInt(TotHrsExt));
-                var SuelDevengado = ((Ganancias * 25) / 100);
-                SuelDevengado = SuelDevengado | 0;
-
-                var SueldMin = 320500;
-                var GratMensual = ((parseInt(SueldMin) * 4, 75) / 12);
-                var Grat2 = (  parseInt(GratMensual) * 4,75);
-                var TopeGratMensual = (  parseInt(Grat2) / 12);
-
-                if (SuelDevengado > TopeGratMensual) {
-                    $("#ValGrat").val(TopeGratMensual);
-                }
-                if(SuelDevengado < TopeGratMensual)
-                {
-                    $("#ValGrat").val(SuelDevengado);
-                }
-                $("#Bonos").focus();
-            }
-            else {
-                toastr["error"](" No Puede Haber Más de 40 Horas Extras Al Mes ", "Atención")
+            if (isNaN(CantHrsExt) || (CantHrsExt == "")) {
+                toastr["error"](" Dato Debe Ser Numérico ", "Atención")
                 toastr.options = {
                     "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false, "positionClass": "toast-top-center", "preventDuplicates": false,
                     "onclick": null, "showDuration": "400", "hideDuration": "1000", "timeOut": "5000",
                     "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear", "showMethod": "fadeIn",
                     "hideMethod": "fadeOut"
                 };
-                $("#CantHrsExt").val("")
+                $("#CantHrsExt").val("");
                 $("#CantHrsExt").focus();
-            }            
+                return false;
+            }
+            else {
+                if (CantHrsExt <= "40") {
+                    //horas Extras
+                    var factor1 = 0.2333333 / 45; // 45 es la jornada semanal
+                    var factor2 = 50 / 100 + 1
+                    var TotFactores = factor1 * factor2
+                    SuelBase = $("#SueldBas").val();
+                    //precio de la hora Extra
+                    ValorHrExt = TotFactores * SuelBase;
+                    // saldo Total de las Horas Extras.
+                    TotHrsExt = (ValorHrExt * CantHrsExt);
+                    //convierte a entero
+                    TotHrsExt = TotHrsExt | 0;
+                    $("#ValHrsExt").val(TotHrsExt);
+
+                    // Calculo de la Gratificación
+                    var Ganancias = (parseFloat(SuelBase) + parseFloat(PorcCom) + parseFloat(TotHrsExt));
+                    var SuelDevengado = parseFloat((Ganancias * 25) / 100);
+                    //SuelDevengado = SuelDevengado | 0;
+
+                    var SueldMin = 320500;
+
+                    var GratMensual = ((parseFloat(SueldMin) * 4, 75) / 12);
+
+                    var Grat2 = (parseFloat(GratMensual) * 4, 75);
+
+                    var TopeGratMensual = (parseFloat(Grat2) / 12);
+
+                    if (SuelDevengado > TopeGratMensual) {
+                        $("#ValGrat").val(TopeGratMensual);
+                    }
+                    if (SuelDevengado < TopeGratMensual) {
+                        $("#ValGrat").val(SuelDevengado);
+                    }
+                    $("#Bonos").focus();
+                }
+                else {
+                    toastr["error"](" No Puede Haber Más de 40 Horas Extras Al Mes ", "Atención")
+                    toastr.options = {
+                        "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false, "positionClass": "toast-top-center", "preventDuplicates": false,
+                        "onclick": null, "showDuration": "400", "hideDuration": "1000", "timeOut": "5000",
+                        "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear", "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut"
+                    };
+                    $("#CantHrsExt").val("")
+                    $("#CantHrsExt").focus();
+                } 
+            }
         }
     })
 
     
-    
+    $("#Bonos").on('keyup', function (e) {
+        var keycode = e.keyCode || e.which;
+        if (keycode == 13) {
+            Bonos = $("#Bonos").val();
+            if (isNaN(Bonos) ||(Bonos == "")) {
+                toastr["error"](" Dato Debe Ser Numérico ", "Atención")
+                toastr.options = {
+                    "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false, "positionClass": "toast-top-center", "preventDuplicates": false,
+                    "onclick": null, "showDuration": "400", "hideDuration": "1000", "timeOut": "5000",
+                    "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear", "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                };
+                $("#Bonos").val("");
+                $("#Bonos").focus();
+                return false;
+            }
+            else {$("#ValCola").focus();  }     
+        }
+    })
+
+    $("#ValCola").on('keyup', function (e) {
+        var keycode = e.keyCode || e.which;
+        if (keycode == 13) {
+            ValCola = $("#ValCola").val();
+            if (isNaN(ValCola) || (ValCola =="")) {
+                toastr["error"](" Dato Debe Ser Numérico ", "Atención")
+                toastr.options = {
+                    "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false, "positionClass": "toast-top-center", "preventDuplicates": false,
+                    "onclick": null, "showDuration": "400", "hideDuration": "1000", "timeOut": "5000",
+                    "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear", "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                };
+                $("#ValCola").val("");
+                $("#ValCola").focus();
+                return false;
+            }
+            else { $("#AfpSelec").focus(); }
+        }
+    })
+
+
 
 
 
@@ -185,25 +271,23 @@ $(document).ready(function () {
 
         if (Verifica() != false) {
             var data = {
-
-
-                Rut_Benef: RutCgFm,
-                Nombre: NomCgFm,
-                ApPat: ApPatCgFm,
-                ApMat: ApMatCgFm,
-                Telefono1: FonoMovilCgFm,
-                Telefono2: FonoFijCgFm,
-                Fecha_Nac: FechNacCgFm,
-                Cod_Sexo: SexoSelec,
-                Calle_Pje: CallePjeCgFm,
-                Num_Casa: NumCasaCgFm,
-                Villa_Pobl: VilPoblCgFm,
-                Comuna_Id: ComuCgFm,
-                Provincia_Id: CodCiud,
-                email: EmailCgFm,
-                Rut_Empleado: RutEmp,
-                Id_Nac: NacioSelec,
-                Descripcion: DescrCgFm
+                //Rut_Benef:    
+                //Nombre:       
+                //ApPat:        
+                //ApMat:        
+                //Telefono1:    
+                //Telefono2:    
+                //Fecha_Nac:    
+                //Cod_Sexo:     
+                //Calle_Pje:    
+                //Num_Casa:     
+                //Villa_Pobl:   
+                //Comuna_Id:    
+                //Provincia_Id: 
+                //email:        
+                //Rut_Empleado: 
+                //Id_Nac:       
+                //Descripcion:  
             }
             var url = "LiqSueld/GrabLiqSueld";
             event.preventDefault();

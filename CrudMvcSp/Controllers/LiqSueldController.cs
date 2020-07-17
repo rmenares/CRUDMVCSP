@@ -67,8 +67,27 @@ namespace CrudMvcSp.Controllers
         }
         #endregion
 
+        #region Busca_Valor_AFP
+        public ActionResult BuscaValAfp(Afp afp)
+        {
+            using (ManAfp = new EmpleadosEntities())
+            {
+                var BuscAfp = ManAfp.Sp_Mues_Afp_ID(afp.Cod_Afp).ToList();
+                return Json(BuscAfp);
+            }
+        }
+        #endregion
 
-
+        #region Busca_Valor_Salud
+        public ActionResult BuscaValSal(Salud salud)
+        {
+            using (ManSalud = new EmpleadosEntities())
+            {
+                var BuscSalud = ManSalud.Sp_Mues_Salud_ID(salud.Cod_Salud).ToList();
+                return Json(BuscSalud);
+            }
+        }
+        #endregion
 
     }
 }

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="EmpleadosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="EmpleadosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Afp">
           <Key>
             <PropertyRef Name="Cod_Afp" />
@@ -566,6 +566,9 @@
           <Parameter Name="Porc_Cotiz" Type="numeric" Mode="In" />
         </Function>
         <Function Name="Sp_Mues_Afp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Sp_Mues_Afp_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idAFP" Type="int" Mode="In" />
+        </Function>
         <Function Name="Sp_Mues_CargFam" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Sp_Mues_Comunas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Sp_Mues_Cuidades" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -577,6 +580,9 @@
         <Function Name="SP_Mues_liqSueldo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Sp_Mues_Nacionalidad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Sp_Mues_Salud" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Sp_Mues_Salud_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idsal" Type="int" Mode="In" />
+        </Function>
         <Function Name="Sp_Mues_TipRem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
@@ -836,8 +842,7 @@
             <End Role="Empleados" EntitySet="Empleados" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="EmpleadosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1400,10 +1405,10 @@
             <Parameter Name="definition" Mode="In" Type="Binary" />
           </FunctionImport>
           <FunctionImport Name="Sp_Del_Carga_Familiar">
-            <Parameter Name="rut_benf" Mode="In" Type="String" />
+          <Parameter Name="rut_benf" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Sp_Del_Empleados">
-            <Parameter Name="Rut_Empl" Mode="In" Type="String" />
+          <Parameter Name="Rut_Empl" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_dropdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
@@ -1441,10 +1446,10 @@
             <Parameter Name="Desc" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Sp_Ins_Cargos">
-            <Parameter Name="Descr" Mode="In" Type="String" />
+          <Parameter Name="Descr" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Sp_Ins_Depto">
-            <Parameter Name="NomDepto" Mode="In" Type="String" />
+          <Parameter Name="NomDepto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Sp_Ins_Empleados">
             <Parameter Name="Rut_Empleado" Mode="In" Type="String" />
@@ -1511,7 +1516,7 @@
             <Parameter Name="Total_Pagar" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="Sp_Ins_Nacionalidad">
-            <Parameter Name="Descr" Mode="In" Type="String" />
+          <Parameter Name="Descr" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Sp_Ins_Salud">
             <Parameter Name="Nomb_Salud" Mode="In" Type="String" />
@@ -1523,7 +1528,7 @@
           <FunctionImport Name="Sp_Mues_Cuidades" ReturnType="Collection(EmpleadosModel.Sp_Mues_Cuidades_Result)" />
           <FunctionImport Name="SP_Mues_Empleado" ReturnType="Collection(EmpleadosModel.SP_Mues_Empleado_Result)" />
           <FunctionImport Name="SP_Mues_Empleado_PDF" ReturnType="Collection(EmpleadosModel.SP_Mues_Empleado_PDF_Result)">
-            <Parameter Name="Rut_Emp" Mode="In" Type="String" />
+          <Parameter Name="Rut_Emp" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Sp_Mues_Empresas" ReturnType="Collection(EmpleadosModel.Sp_Mues_Empresas_Result)" />
           <FunctionImport Name="SP_Mues_liqSueldo" ReturnType="Collection(EmpleadosModel.SP_Mues_liqSueldo_Result)" />
@@ -1541,32 +1546,32 @@
             <Parameter Name="PorcDesc" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="Sp_Sel_Carg_FamXRutEmpl" ReturnType="Collection(EmpleadosModel.Sp_Sel_Carg_FamXRutEmpl_Result)">
-            <Parameter Name="Rut_Empl" Mode="In" Type="String" />
+          <Parameter Name="Rut_Empl" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Sp_Sel_CargFamxRut" ReturnType="Collection(EmpleadosModel.Sp_Sel_CargFamxRut_Result)">
-            <Parameter Name="Rut_Benef" Mode="In" Type="String" />
+          <Parameter Name="Rut_Benef" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Sp_Sel_Cargos" ReturnType="Collection(EmpleadosModel.Sp_Sel_Cargos_Result)">
-            <Parameter Name="Id_Tipo" Mode="In" Type="Int32" />
+          <Parameter Name="Id_Tipo" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Sp_Sel_CiudadesxComu" ReturnType="Collection(EmpleadosModel.Sp_Sel_CiudadesxComu_Result)">
-            <Parameter Name="Cod_Comu" Mode="In" Type="Int32" />
+          <Parameter Name="Cod_Comu" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_Sel_Depto" ReturnType="Collection(String)">
-            <Parameter Name="idd" Mode="In" Type="Int32" />
+          <Parameter Name="idd" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Sp_Sel_Empleado" ReturnType="Collection(EmpleadosModel.Sp_Sel_Empleado_Result)">
-            <Parameter Name="Rut_Emp" Mode="In" Type="String" />
+          <Parameter Name="Rut_Emp" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Sp_Sel_Empresas" ReturnType="Collection(EmpleadosModel.Sp_Sel_Empresas_Result)">
-            <Parameter Name="Rut_Empresa" Mode="In" Type="String" />
+          <Parameter Name="Rut_Empresa" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SP_Sel_liqSueldoXRutMes" ReturnType="Collection(EmpleadosModel.SP_Sel_liqSueldoXRutMes_Result)">
             <Parameter Name="FechLiq" Mode="In" Type="String" />
             <Parameter Name="Rut_Emp" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Sp_Sel_Nacionalidad" ReturnType="Collection(EmpleadosModel.Sp_Sel_Nacionalidad_Result)">
-            <Parameter Name="id_Nac" Mode="In" Type="Int32" />
+          <Parameter Name="id_Nac" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Sp_Sel_Salud" ReturnType="Collection(EmpleadosModel.Sp_Sel_Salud_Result)">
             <Parameter Name="Cod_Salud" Mode="In" Type="Int32" />
@@ -1702,6 +1707,12 @@
             <Parameter Name="Porc_Cotiz" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="Sp_Mues_Afp_ID" ReturnType="Collection(EmpleadosModel.Sp_Mues_Afp_ID_Result)">
+            <Parameter Name="idAFP" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_Mues_Salud_ID" ReturnType="Collection(EmpleadosModel.Sp_Mues_Salud_ID_Result)">
+            <Parameter Name="idsal" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="SP_Autoriza_Result">
           <Property Type="String" Name="User_Id" Nullable="false" MaxLength="50" />
@@ -1948,6 +1959,16 @@
           <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="50" />
         </ComplexType>
         <ComplexType Name="Sp_Sel_Salud_Result">
+          <Property Type="Int32" Name="Cod_Salud" Nullable="false" />
+          <Property Type="String" Name="Nombre_Salud" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Porc_Cotiz" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="Sp_Mues_Afp_ID_Result">
+          <Property Type="Int32" Name="Cod_Afp" Nullable="false" />
+          <Property Type="String" Name="Nom_Afp" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Porc_Desc" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="Sp_Mues_Salud_ID_Result">
           <Property Type="Int32" Name="Cod_Salud" Nullable="false" />
           <Property Type="String" Name="Nombre_Salud" Nullable="true" MaxLength="50" />
           <Property Type="Decimal" Name="Porc_Cotiz" Nullable="true" Precision="18" Scale="2" />
@@ -2583,6 +2604,24 @@
           <FunctionImportMapping FunctionImportName="Sp_UPD_Nacionalidad" FunctionName="EmpleadosModel.Store.Sp_UPD_Nacionalidad" />
           <FunctionImportMapping FunctionImportName="Sp_UPD_Salud" FunctionName="EmpleadosModel.Store.Sp_UPD_Salud" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="EmpleadosModel.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="Sp_Mues_Afp_ID" FunctionName="EmpleadosModel.Store.Sp_Mues_Afp_ID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EmpleadosModel.Sp_Mues_Afp_ID_Result">
+                <ScalarProperty Name="Cod_Afp" ColumnName="Cod_Afp" />
+                <ScalarProperty Name="Nom_Afp" ColumnName="Nom_Afp" />
+                <ScalarProperty Name="Porc_Desc" ColumnName="Porc_Desc" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_Mues_Salud_ID" FunctionName="EmpleadosModel.Store.Sp_Mues_Salud_ID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EmpleadosModel.Sp_Mues_Salud_ID_Result">
+                <ScalarProperty Name="Cod_Salud" ColumnName="Cod_Salud" />
+                <ScalarProperty Name="Nombre_Salud" ColumnName="Nombre_Salud" />
+                <ScalarProperty Name="Porc_Cotiz" ColumnName="Porc_Cotiz" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

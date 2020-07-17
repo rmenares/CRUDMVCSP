@@ -231,6 +231,9 @@
     <Compile Include="Models\sp_helpdiagrams_Result.cs">
       <DependentUpon>ModelEmp.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Sp_Mues_Afp_ID_Result.cs">
+      <DependentUpon>ModelEmp.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Sp_Mues_Afp_Result.cs">
       <DependentUpon>ModelEmp.tt</DependentUpon>
     </Compile>
@@ -256,6 +259,9 @@
       <DependentUpon>ModelEmp.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sp_Mues_Nacionalidad_Result.cs">
+      <DependentUpon>ModelEmp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Sp_Mues_Salud_ID_Result.cs">
       <DependentUpon>ModelEmp.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sp_Mues_Salud_Result.cs">

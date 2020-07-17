@@ -1,7 +1,7 @@
 ﻿var SuelBase, PorcCom, CantHrsExt, totHrsExt;
+var CodigoAfp, NomAfp, PorcAfp, MontAfp;
 
-$(document).ready(function () {
-    
+$(document).ready(function () {    
     $("#BtnNueLiqSueld").click(function (event) {
         event.preventDefault();
         $("#AgrLiqSueld").modal("show");
@@ -28,11 +28,25 @@ $(document).ready(function () {
         //verifica si el codigo de la tecla es ENTER
         if (keycode == 13) {
             var RutEmple = $("#RutEmp").val();
-            var data = { Rut_Empleado: RutEmple };
-            var url = "/LiqSueld/BuscEmp";
-            $.post(url, data)
+            if (RutEmple == "") {
+                toastr["error"](" Dato Debe Estar VACIO!!!! ", "Atención")
+                toastr.options = {
+                    "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false, "positionClass": "toast-top-center", "preventDuplicates": false,
+                    "onclick": null, "showDuration": "400", "hideDuration": "1000", "timeOut": "5000",
+                    "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear", "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                };
+                $("#RutEmp").focus();
+                return false;
+            }
+            else {
+                var data = { Rut_Empleado: RutEmple };
+                var url = "/LiqSueld/BuscEmp";
+                $.post(url, data)
                 .done(function (data) {
-                    if (data == 1) { $("#ListTipRem").focus(); }
+                    if (data == 1) {
+                        $("#ListTipRem").focus();
+                    }
                     else {
                         toastr["error"](" Empleado Incorrecto, Verifique ", "Atención")
                         toastr.options = {
@@ -43,8 +57,10 @@ $(document).ready(function () {
                         };
                         $("#RutEmp").val("");
                         $("#RutEmp").focus();
+                        return false;
                     }
                 });
+            }
         }
     });
 
@@ -63,8 +79,8 @@ $(document).ready(function () {
     $("#SueldBas").on('keyup', function (e) {
         var keycode = e.keyCode || e.which;
         if (keycode == 13) {
-            valor = document.getElementById("SueldBas").value;
-            if (isNaN(valor) || (valor ==  "")) {
+            SuelBase = document.getElementById("SueldBas").value;
+            if (isNaN(SuelBase) || (SuelBase ==  "")) {
                 toastr["error"](" Dato Debe Ser Numérico ", "Atención")
                 toastr.options = {
                     "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false, "positionClass": "toast-top-center", "preventDuplicates": false,
@@ -224,8 +240,8 @@ $(document).ready(function () {
     $("#ValCola").on('keyup', function (e) {
         var keycode = e.keyCode || e.which;
         if (keycode == 13) {
-            ValCola = $("#ValCola").val();
-            if (isNaN(ValCola) || (ValCola =="")) {
+            ValColac = $("#ValCola").val();
+            if (isNaN(ValColac) || (ValCola =="")) {
                 toastr["error"](" Dato Debe Ser Numérico ", "Atención")
                 toastr.options = {
                     "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false, "positionClass": "toast-top-center", "preventDuplicates": false,
@@ -237,14 +253,65 @@ $(document).ready(function () {
                 $("#ValCola").focus();
                 return false;
             }
+            else { $("#ValMov").focus(); }
+        }
+    })
+
+    $("#ValMov").on('keyup', function (e) {
+        var keycode = e.keyCode || e.which;
+        if (keycode == 13) {
+            ValMovi = $("#ValMov").val();
+            if (isNaN(ValMovi) || (ValMovi == "")) {
+                toastr["error"](" Dato Debe Ser Numérico ", "Atención")
+                toastr.options = {
+                    "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false, "positionClass": "toast-top-center", "preventDuplicates": false,
+                    "onclick": null, "showDuration": "400", "hideDuration": "1000", "timeOut": "5000",
+                    "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear", "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                };
+                $("#ValMov").val("");
+                $("#ValMov").focus();
+                return false;
+            }
             else { $("#AfpSelec").focus(); }
         }
     })
 
 
+    $("#AfpSelec").dblclick(function (e) {
+        e.preventDefault();
+        cod_afp = $("#AfpSelec").val();
+        var data = { Cod_Afp: cod_afp };
+        var url = "/LiqSueld/BuscaValAfp";
+        $.post(url, data)
+            .done(function (data) {
+                    var DatosDev = data[0];
+                    CodigoAfp =  DatosDev["Cod_Afp"];
+                    NomAfp = DatosDev["Nom_Afp"];
+                    PorcAfp = DatosDev["Porc_Desc"];
+            });
+        SuelBase = $("#SueldBas").val();
+        MontAfp = ((parseInt(SuelBase) * parseInt(PorcAfp) ) / 100);
+        //MontAfp = MontAfp | 0;
+        $("#MontoAfp").val(MontAfp);
+    })
+    
 
-
-
+    //$("#Cerrar").click(function (event) {
+    //    event.preventDefault();
+    //    RutEmple = "";
+    //    fecha = "";
+    //    SuelBase = 0;
+    //    PorcCom = 0;
+    //    CantHrsExt = 0;
+    //    totHrsExt = 0;
+    //    CodigoAfp = 0;
+    //    NomAfp = 0;
+    //    PorcAfp = 0;
+    //    MontAfp = 0;
+    //    Ganancias = 0;
+    //    SuelDevengado = 0;
+    //})
 
     // grabar datos 
     $("#BtnGrabLiqSueld").click(function (event) {

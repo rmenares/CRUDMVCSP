@@ -1214,5 +1214,23 @@ namespace CrudMvcSp.Models
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
+    
+        public virtual ObjectResult<Sp_Mues_Afp_ID_Result> Sp_Mues_Afp_ID(Nullable<int> idAFP)
+        {
+            var idAFPParameter = idAFP.HasValue ?
+                new ObjectParameter("idAFP", idAFP) :
+                new ObjectParameter("idAFP", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Sp_Mues_Afp_ID_Result>("Sp_Mues_Afp_ID", idAFPParameter);
+        }
+    
+        public virtual ObjectResult<Sp_Mues_Salud_ID_Result> Sp_Mues_Salud_ID(Nullable<int> idsal)
+        {
+            var idsalParameter = idsal.HasValue ?
+                new ObjectParameter("idsal", idsal) :
+                new ObjectParameter("idsal", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Sp_Mues_Salud_ID_Result>("Sp_Mues_Salud_ID", idsalParameter);
+        }
     }
 }

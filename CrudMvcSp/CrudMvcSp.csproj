@@ -219,6 +219,9 @@
     <Compile Include="Models\Salud.cs">
       <DependentUpon>ModelEmp.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Seg_Cesantia.cs">
+      <DependentUpon>ModelEmp.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Sexo.cs">
       <DependentUpon>ModelEmp.tt</DependentUpon>
     </Compile>
@@ -267,6 +270,9 @@
     <Compile Include="Models\Sp_Mues_Salud_Result.cs">
       <DependentUpon>ModelEmp.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Sp_Mues_Seg_Cesantia_Result.cs">
+      <DependentUpon>ModelEmp.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Sp_Mues_TipRem_Result.cs">
       <DependentUpon>ModelEmp.tt</DependentUpon>
     </Compile>
@@ -298,6 +304,9 @@
       <DependentUpon>ModelEmp.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sp_Sel_Salud_Result.cs">
+      <DependentUpon>ModelEmp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Sp_Sel_Seg_Cesantia_Id_Result.cs">
       <DependentUpon>ModelEmp.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TablImpDiario.cs">

@@ -32,6 +32,7 @@ namespace CrudMvcSp.Models
         public decimal Valor_Afp { get; set; }
         public int Cod_Salud { get; set; }
         public decimal Valor_Salud { get; set; }
+        public int Id_Seg_Cesantia { get; set; }
         public decimal Valor_Seg_Cesantia { get; set; }
         public decimal Valor_Impuesto { get; set; }
         public decimal Apv { get; set; }

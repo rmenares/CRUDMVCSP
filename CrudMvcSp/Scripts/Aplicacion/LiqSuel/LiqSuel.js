@@ -1,5 +1,6 @@
 ﻿var SuelBase, PorcCom, CantHrsExt, totHrsExt;
 var CodigoAfp, NomAfp, PorcAfp, MontAfp;
+var CodigoSalud, NomSalud, PorcSalud;
 
 $(document).ready(function () {    
     $("#BtnNueLiqSueld").click(function (event) {
@@ -285,17 +286,38 @@ $(document).ready(function () {
         var url = "/LiqSueld/BuscaValAfp";
         $.post(url, data)
             .done(function (data) {
-                    var DatosDev = data[0];
-                    CodigoAfp =  DatosDev["Cod_Afp"];
-                    NomAfp = DatosDev["Nom_Afp"];
-                    PorcAfp = DatosDev["Porc_Desc"];
+                var DatosDevAfp = data[0];
+                CodigoAfp = DatosDevAfp["Cod_Afp"];
+                NomAfp = DatosDevAfp["Nom_Afp"];
+                PorcAfp = DatosDevAfp["Porc_Desc"];
             });
         SuelBase = $("#SueldBas").val();
-        MontAfp = ((parseInt(SuelBase) * parseInt(PorcAfp) ) / 100);
+        MontAfp = parseInt((parseInt(SuelBase) * parseInt(PorcAfp)) / 100);
         //MontAfp = MontAfp | 0;
         $("#MontoAfp").val(MontAfp);
     })
-    
+
+    $("#SalSelec").dblclick(function (e) {
+        e.preventDefault();
+        cod_salud = $("#SalSelec").val();
+        var data = { Cod_Salud: cod_salud };
+        var url = "/LiqSueld/BuscaValSal";
+        $.post(url, data)
+            .done(function (data) {
+                var DatosDevSal = data[0];
+                CodigoSalud = DatosDevSal["Cod_Salud"];
+                NomSalud = DatosDevSal["Nombre_Salud"];
+                PorcSalud = DatosDevSal["Porc_Cotiz"];
+            })
+        SuelBase = $("#SueldBas").val();
+        MonSalud = parseInt((parseInt(SuelBase) * parseInt(PorcSalud)) / 100);
+        $("#MontoSalud").val(MonSalud);
+    })
+
+
+    ValCesantia
+
+
 
     //$("#Cerrar").click(function (event) {
     //    event.preventDefault();
@@ -336,7 +358,7 @@ $(document).ready(function () {
         OtDesc = $("#OtDesc").val();
         TotPagar = $("#TotPagar").val();
 
-        if (Verifica() != false) {
+      
             var data = {
                 //Rut_Benef:    
                 //Nombre:       
@@ -403,16 +425,6 @@ $(document).ready(function () {
                     $("#AgrLiqSueld").modal("hide");
                     window.location.reload(true);
                 })
-        }
-        else {
-            toastr["error"]("Hay Datos Que Faltan, Verifique", "Error")
-            toastr.options = {
-                "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false,
-                "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "400",
-                "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-            }
-        }
     })
 
 
@@ -431,186 +443,8 @@ $(document).ready(function () {
             }
         });
     });
-
-
-
-
-
-
-
-
-
-
-
-   
+             
 
               
 })
 
-// verifica que los campos ingresados no esten vacios
-function Verifica() {
-    if (RutEmp == "") {
-        toastr["error"]("El Rut Empleado NO Puede Estar Vacio!", "Verifique");
-        toastr.options = {
-            "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-            "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-            "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-            "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-        };
-        return false;
-    }
-
-    if (RutCgFm == "") {
-        toastr["error"]("El Rut NO Puede Estar Vacio!", "Verifique");
-        toastr.options = {
-            "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-            "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-            "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-            "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-        };
-        return false;
-    }
-
-    if (NomCgFm == "") {
-        toastr["error"]("El Nombre NO Puede Estar Vacio!", "Verifique");
-        toastr.options = {
-            "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-            "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-            "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-            "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-        };
-        return false;
-    }
-
-    if (ApPatCgFm == "") {
-        toastr["error"]("El Apellido NO Puede Estar Vacio!", "Verifique");
-        toastr.options = {
-            "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-            "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-            "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-            "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-        };
-        return false;
-    }
-
-    if (ApMatCgFm == "") {
-        toastr["error"]("El Apellido Materno NO Puede Estar Vacio!", "Verifique");
-        toastr.options = {
-            "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-            "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-            "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-            "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-        };
-        return false;
-    }
-
-    if (FonoMovilCgFm == "") {
-        toastr["error"]("El Fono Movil NO Puede Estar Vacio!", "Verifique");
-        toastr.options = {
-            "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-            "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-            "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-            "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-        };
-        return false;
-    }
-
-    if (FonoFijCgFm == "") {
-        toastr["error"]("El Fono Fijo NO Puede Estar Vacio!", "Verifique");
-        toastr.options = {
-            "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-            "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-            "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-            "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-        };
-        return false;
-    }
-
-    if (FechNacCgFm == "") {
-        toastr["error"]("La Fecha de Nacimiento NO Puede Estar Vacia!", "Verifique");
-        toastr.options = {
-            "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-            "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-            "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-            "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-        };
-        return false;
-    }
-
-    if (SexoSelec == "") {
-        toastr["error"]("El Sexo NO Puede Estar Vacio!", "Verifique");
-        toastr.options = {
-            "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-            "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-            "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-            "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-        };
-        return false;
-    }
-
-    if (CallePjeCgFm == "") {
-        toastr["error"]("La Calle/Pje NO Puede Estar Vacio!", "Verifique");
-        toastr.options = {
-            "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-            "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-            "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-            "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-        };
-        return false;
-    }
-
-    if (NumCasaCgFm == "") {
-        toastr["error"]("El Número NO Puede Estar Vacio!", "Verifique");
-        toastr.options = {
-            "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-            "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-            "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-            "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-        };
-        return false;
-    }
-
-    if (ComuCgFm == "") {
-        toastr["error"]("La Comuna NO Puede Estar Vacio!", "Verifique");
-        toastr.options = {
-            "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-            "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-            "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-            "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-        };
-        return false;
-    }
-
-    if (CodCiud == "") {
-        toastr["error"]("La Ciudad NO Puede Estar Vacio!", "Verifique");
-        toastr.options = {
-            "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-            "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-            "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-            "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-        };
-        return false;
-    }
-
-    if (EmailCgFm == "") {
-        toastr["error"]("El Email NO Puede Estar Vacio!", "Verifique");
-        toastr.options = {
-            "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-            "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-            "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-            "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-        };
-        return false;
-    }
-
-    if (DescrCgFm == "") {
-        toastr["error"]("La Descripción NO Puede Estar Vacia!", "Verifique");
-        toastr.options = {
-            "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-            "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-            "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-            "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-        };
-        return false;
-    }
-}

@@ -19,21 +19,23 @@ namespace CrudMvcSp.Models
         public System.DateTime Fecha_Liquidacion { get; set; }
         public string Sueldo_Base { get; set; }
         public string Dias_Trabajados { get; set; }
-        public decimal Gratificacion { get; set; }
         public string PorcComision { get; set; }
         public decimal Valor_Com { get; set; }
         public decimal Cant_Horas_Extras { get; set; }
         public decimal Valor_Horas_Extras { get; set; }
-        public decimal Gratificacion1 { get; set; }
+        public decimal Gratificacion { get; set; }
         public decimal Bonos { get; set; }
         public decimal Colacion { get; set; }
         public decimal Movilizacion { get; set; }
-        public string Nom_Afp { get; set; }
+        public string AFP { get; set; }
         public Nullable<decimal> Porc_Desc { get; set; }
         public decimal Valor_Afp { get; set; }
         public string Nombre_Salud { get; set; }
         public Nullable<decimal> Porc_Cotiz { get; set; }
         public decimal Valor_Salud { get; set; }
+        public string Tipo_Contrato { get; set; }
+        public decimal Monto_Empleador { get; set; }
+        public Nullable<decimal> Monto_Trabajador { get; set; }
         public decimal Valor_Seg_Cesantia { get; set; }
         public decimal Valor_Impuesto { get; set; }
         public decimal Apv { get; set; }

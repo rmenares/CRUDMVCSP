@@ -297,6 +297,9 @@
     <Compile Include="Models\Sp_Sel_Empresas_Result.cs">
       <DependentUpon>ModelEmp.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SP_Sel_liqSueldoXId_Result.cs">
+      <DependentUpon>ModelEmp.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SP_Sel_liqSueldoXRutMes_Result.cs">
       <DependentUpon>ModelEmp.tt</DependentUpon>
     </Compile>

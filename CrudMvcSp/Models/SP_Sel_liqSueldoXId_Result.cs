@@ -11,7 +11,7 @@ namespace CrudMvcSp.Models
 {
     using System;
     
-    public partial class SP_Mues_liqSueldo_Result
+    public partial class SP_Sel_liqSueldoXId_Result
     {
         public string Rut_Empleado { get; set; }
         public string Nombre { get; set; }

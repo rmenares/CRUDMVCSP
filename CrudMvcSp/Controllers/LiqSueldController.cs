@@ -25,6 +25,7 @@ namespace CrudMvcSp.Controllers
         EmpleadosEntities TipRemu = new EmpleadosEntities();
         EmpleadosEntities ManAfp = new EmpleadosEntities();
         EmpleadosEntities ManSalud = new EmpleadosEntities();
+        EmpleadosEntities Cesantia = new EmpleadosEntities();
         #endregion
 
         // GET: LiqSueld
@@ -44,6 +45,9 @@ namespace CrudMvcSp.Controllers
 
                 var LisSal = ManSalud.Sp_Mues_Salud().ToList();
                 ViewBag.ListSalud = new SelectList(LisSal, "Cod_Salud", "Nombre_Salud");
+
+                var LisCesa = Cesantia.Sp_Mues_Seg_Cesantia().ToList();
+                ViewBag.ListSegCes = new SelectList(LisCesa, "Id_Tip_Contrato", "Tipo_Contrato");
 
                 return View(ListLiqSueld);
             }

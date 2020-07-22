@@ -62,32 +62,41 @@
              displayHeader: true,
              columns:
               new[] {
-                    grid.Column("Rut_Empleado","Rut Empleado"),
-                    grid.Column("Nombre","Nombre"),
-                    grid.Column("Descr_Tipo","Tipo_Liquidación"),
-                    grid.Column("Sueldo_Base","Sueldo Base"),
-                    grid.Column("Fecha_Liquidacion","Mes Liquidación"),
-                    //grid.Column("Dias_Trabajados","Dias Trabajados"),
-                    //grid.Column("Cant_Horas_Extras","Horas Hextras"),
-                    //grid.Column("Valor_Horas_Extras","Valor Hora"),
-                    //grid.Column("PorcComision","% Comisión"),
-                    grid.Column("Valor_Com","Comisión A Pagar"),
-                    grid.Column("Bonos","Bonos"),
-                    //grid.Column("Colacion","Colación"),
-                    //grid.Column("Movilizacion","Movilización"),
-                    grid.Column("Nom_Afp","Afp"),
-                    //grid.Column("Valor_Afp","Monto a Pagar"),
-                    grid.Column("Nombre_Salud","Salud"),
-                    //grid.Column("Valor_Salud","Monto a Pagar"),
-                    grid.Column("Otrs_Descuentos","Otros Descuentos"),
-                    grid.Column("Total_Pagar","A Pagar"),
-                    grid.Column(header: "Acciones", style: "col-sm-2", format:
+                      grid.Column("Rut_Empleado ","Rut"),
+                      grid.Column("Nombre ","Nombre"),
+                      //grid.Column("Descr_Tipo ","Tipo_Liquidación"),
+                      grid.Column("Fecha_Liquidacion ","Mes Liquidación"),
+                      grid.Column("Sueldo_Base ","Sueldo Base"),
+                      grid.Column("Dias_Trabajados ","Dias Trabajados"),
+                      grid.Column("PorcComision ","% Comisión"),
+                      grid.Column("Valor_Com ","Comisión A Pagar"),
+                      grid.Column("Cant_Horas_Extras ","Horas Extras"),
+                      grid.Column("Valor_Horas_Extras ","Valor Hora"),
+                      grid.Column("Gratificacion ","Gratificación"),
+                      grid.Column("Bonos ","Bonificación"),
+                      grid.Column("Colacion ","Colación"),
+                      grid.Column("Movilizacion ","Movilización"),
+                      grid.Column("AFP ","AFP"),
+                      //grid.Column("Porc_Desc ","% Desc."),
+                      grid.Column("Valor_Afp ","A Pagar"),
+                      grid.Column("Nombre_Salud ","Salud"),
+                      //grid.Column("Porc_Cotiz ","% Desc"),
+                      grid.Column("Valor_Salud ","A Pagar"),
+                      grid.Column("Tipo_Contrato ","Seg Cesantía"),
+                      //grid.Column("Monto_Empleador ","Monto Empleador"),
+                      //grid.Column("Monto_Trabajador ","Monto Trabajador"),
+                      grid.Column("Valor_Seg_Cesantia ","Descuento Seg. Cesantia"),
+                      grid.Column("Valor_Impuesto ","Impuesto a Pagar"),
+                      grid.Column("Apv ","Apv"),
+                      grid.Column("Otrs_Descuentos ","Otros Descuentos"),
+                      grid.Column("Total_Pagar ","Total a Pagar"),
+                      grid.Column(header: "Acciones", style: "col-sm-2", format:
 @<span class="link">
     <a class="btn btn-success btn-xs glyphicon glyphicon-pencil Edit" href="javascript:;"> Edit</a>
     <a class="btn btn-warning btn-xs glyphicon glyphicon-print  Info" href="javascript:;"> Info</a>
     <a class="btn btn-danger  btn-xs glyphicon glyphicon-trash  Delete" href="javascript:;"> Delete</a>
 </span> )
-                        })
+                                })
         </div>
         <div id="TablExport">
             <table align="center">
@@ -179,7 +188,7 @@
                             <tr>
                                 <td align="center">Gratificación</td>
                                 <td></td>
-                                <td align="center"><input type="text" id="ValGrat" style="text-align:right;" disabled/></td>
+                                <td align="center"><input type="text" id="ValGrat" style="text-align:right;" disabled /></td>
                                 <td></td>
                                 <td align="center">Bonos</td>
                                 <td></td>
@@ -252,28 +261,30 @@
 </div>
 
 
-        @*Rut_Empleado 
-        Id_Tipo_Renumeracion 
-        Fecha_Liquidacion 
-        Sueldo_Base 
-        Dias_Trabajados 
-        PorcComision 
-        Valor_Com 
-        Cant_Horas_Extras 
-        Valor_Horas_Extras 
-        Gratificacion 
-        Bonos 
-        Colacion 
-        Movilizacion 
-        CodAfp 
-        Valor_Afp 
-        Cod_Salud 
-        Valor_Salud 
-        Valor_Seg_Cesantia 
-        Valor_Impuesto 
-        Apv 
-        Otrs_Descuentos 
-        Total_Pagar*@ 
+        
+        @*Rut_Empleado
+        Id_Tipo_Renumeracion
+        Fecha_Liquidacion
+        Sueldo_Base
+        Dias_Trabajados
+        PorcComision
+        Valor_Com
+        Cant_Horas_Extras
+        Valor_Horas_Extras
+        Gratificacion
+        Bonos
+        Colacion
+        Movilizacion
+        CodAfp
+        Valor_Afp
+        Cod_Salud
+        Valor_Salud
+        Id_Seg_Cesantia
+        Valor_Seg_Cesantia
+        Valor_Impuesto
+        Apv
+        Otrs_Descuentos
+        Total_Pagar*@
 
 <!-- Modal Agrega Liquidación De Sueldo -->
 @*<div class="modal" id="AgrLiqSueld">

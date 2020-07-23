@@ -93,5 +93,16 @@ namespace CrudMvcSp.Controllers
         }
         #endregion
 
+        #region Busca_Val_Seg_Cesantia
+
+        public ActionResult BuscaValSegCes(Seg_Cesantia seg_Cesantia)
+        {
+            using (Cesantia = new EmpleadosEntities())
+            {
+                var ValSegCes = Cesantia.Sp_Sel_Seg_Cesantia_Id(seg_Cesantia.Id_Tip_Contrato).ToList();
+                return Json(ValSegCes);
+            }
+        }
+        #endregion
     }
 }

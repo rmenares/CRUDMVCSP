@@ -1,6 +1,7 @@
 ﻿var SuelBase, PorcCom, CantHrsExt, totHrsExt;
 var CodigoAfp, NomAfp, PorcAfp, MontAfp;
-var CodigoSalud, NomSalud, PorcSalud;
+var CodSalud, NomSalud, PorcSalud;
+var TipContrat, MontEmpl, MontTrab;
 
 $(document).ready(function () {    
     $("#BtnNueLiqSueld").click(function (event) {
@@ -64,7 +65,7 @@ $(document).ready(function () {
             }
         }
     });
-
+ 
     //Ingresa o acepta la fecha de liquidación
     $("#FechLiq").on('keyup', function (e) {
         var keycode = e.keyCode || e.which;
@@ -92,7 +93,23 @@ $(document).ready(function () {
                 $("#SueldBas").focus();
                 return false;
             }
-            else { $("#DiasTrab").focus(); }
+            else {
+                //calcula el valor del Seguro de Cesantia
+                var tipRem = $("#ListTipRem").val();
+                var data = { Id_Tip_Contrato: tipRem };
+                var url = "/LiqSueld/BuscaValSegCes";
+                $.post(url, data)
+                    .done(function (data) {
+                        var DatosDev = data[0];
+                        TipContrat = DatosDev["Tipo_Contrato"];
+                        MontEmpl = DatosDev["Monto_Empleador"];
+                        MontTrab = DatosDev["Monto_Trabajador"];
+                        var sumcesa = (MontEmpl + MontTrab);
+                        var ValorCesantia = ( (SuelBase * sumcesa) / 100);
+                        $("#ValCesantia").val(ValorCesantia);
+                    });
+                $("#DiasTrab").focus();
+            }
         }
     })
 
@@ -182,17 +199,17 @@ $(document).ready(function () {
                     $("#ValHrsExt").val(TotHrsExt);
 
                     // Calculo de la Gratificación
-                    var Ganancias = (parseFloat(SuelBase) + parseFloat(PorcCom) + parseFloat(TotHrsExt));
-                    var SuelDevengado = parseFloat((Ganancias * 25) / 100);
+                    var Ganancias = (SuelBase + PorcCom + TotHrsExt);
+                    var SuelDevengado = ((Ganancias * 25) / 100);
                     //SuelDevengado = SuelDevengado | 0;
 
                     var SueldMin = 320500;
 
-                    var GratMensual = ((parseFloat(SueldMin) * 4, 75) / 12);
+                    var GratMensual = ((SueldMin * 4, 75) / 12);
 
-                    var Grat2 = (parseFloat(GratMensual) * 4, 75);
+                    var Grat2 = (GratMensual * 4, 75);
 
-                    var TopeGratMensual = (parseFloat(Grat2) / 12);
+                    var TopeGratMensual = (Grat2 / 12);
 
                     if (SuelDevengado > TopeGratMensual) {
                         $("#ValGrat").val(TopeGratMensual);
@@ -290,11 +307,12 @@ $(document).ready(function () {
                 CodigoAfp = DatosDevAfp["Cod_Afp"];
                 NomAfp = DatosDevAfp["Nom_Afp"];
                 PorcAfp = DatosDevAfp["Porc_Desc"];
+                //SuelBase = $("#SueldBas").val();
+                MontAfp = ((SuelBase * PorcAfp) / 100);
+                //MontAfp = MontAfp | 0;
+                $("#MontoAfp").val(MontAfp);
             });
-        SuelBase = $("#SueldBas").val();
-        MontAfp = parseInt((parseInt(SuelBase) * parseInt(PorcAfp)) / 100);
-        //MontAfp = MontAfp | 0;
-        $("#MontoAfp").val(MontAfp);
+        $("#SalSelec").focus();
     })
 
     $("#SalSelec").dblclick(function (e) {
@@ -305,17 +323,18 @@ $(document).ready(function () {
         $.post(url, data)
             .done(function (data) {
                 var DatosDevSal = data[0];
-                CodigoSalud = DatosDevSal["Cod_Salud"];
+                CodSalud = DatosDevSal["Cod_Salud"];
                 NomSalud = DatosDevSal["Nombre_Salud"];
                 PorcSalud = DatosDevSal["Porc_Cotiz"];
+                //SuelBase = $("#SueldBas").val();
+                MonSalud = ((SuelBase * PorcSalud) / 100);
+                $("#MontoSalud").val(MonSalud);
             })
-        SuelBase = $("#SueldBas").val();
-        MonSalud = parseInt((parseInt(SuelBase) * parseInt(PorcSalud)) / 100);
-        $("#MontoSalud").val(MonSalud);
+        
     })
 
 
-    ValCesantia
+    
 
 
 

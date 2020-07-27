@@ -142,11 +142,11 @@
                 <form id="IngLiqSuel" enctype="multipart/form-data" method="post">
                     <div class="tab-content">
                         <br />
-                        <table align="center">
+                        <table align="center" border="1">
                             <tr>
                                 <td align="center">Rut Empleado</td>
                                 <td></td>
-                                <td align="center"><input type="text" id="RutEmp" required /></td>
+                                <td align="center"><input type="text" id="RutEmp" style="text-align:right;" required /></td>
                                 <td></td>
                                 <td align="center">Tipo Remuneración</td>
                                 <td></td>
@@ -166,37 +166,61 @@
                                 <td></td>
                                 <td align="center"><input type="text" id="DiasTrab" style="text-align:right;" /></td>
                                 <td></td>
-                                <td align="center">% Comision</td>
                                 <td></td>
-                                <td align="center"><input type="text" id="PorcCom" style="text-align:right;" /></td>
+                                <td></td>
+                                <td></td>
                                 <td></td>
                             </tr>
                             <tr>
-                                <td align="center">Valor a Pagar</td>
-                                <td></td>
-                                <td align="center"><input type="text" id="ValorCom" style="text-align:right;" disabled /></td>
-                                <td></td>
                                 <td align="center">Cantidad Horas Extras</td>
                                 <td></td>
                                 <td align="center"><input type="text" id="CantHrsExt" style="text-align:right;" /></td>
                                 <td></td>
-                                <td align="center">Valor Hora Extra</td>
+                                <td align="center">Total Horas Extras</td>
                                 <td></td>
                                 <td align="center"><input type="text" id="ValHrsExt" style="text-align:right;" disabled /></td>
                                 <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                             </tr>
                             <tr>
-                                <td align="center">Gratificación</td>
+                                <td align="center">% Comision</td>
                                 <td></td>
-                                <td align="center"><input type="text" id="ValGrat" style="text-align:right;" disabled /></td>
+                                <td align="center"><input type="text" id="PorcCom" style="text-align:right;" /></td>
                                 <td></td>
+                                <td align="center">Total Comisión</td>
+                                <td></td>
+                                <td align="center"><input type="text" id="ValorCom" style="text-align:right;" disabled /></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
                                 <td align="center">Bonos</td>
                                 <td></td>
                                 <td align="center"><input type="text" id="Bonos" style="text-align:right;" /></td>
                                 <td></td>
-                                <td align="center">Colación</td>
+                                <td align="center">Gratificación</td>
                                 <td></td>
-                                <td align="center"><input type="text" id="ValCola" style="text-align:right;" /></td>
+                                <td align="center"><input type="text" id="ValGrat" style="text-align:right;" disabled /></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td align="center" colspan="3">TOTAL REMUNERACION IMPONIBLE</td>
+                                <td></td>
+                                <td align="center" colspan="3"><input type="text" Id="TotImponible" style="text-align:right;" disabled /> </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                                 <td></td>
                             </tr>
                             <tr>
@@ -204,6 +228,26 @@
                                 <td></td>
                                 <td align="center"><input type="text" id="ValMov" style="text-align:right;" /></td>
                                 <td></td>
+                                <td align="center">Colación</td>
+                                <td></td>
+                                <td align="center"><input type="text" id="ValCola" style="text-align:right;" /></td>
+                                <td></td>
+                                <td align="center">Viaticos</td>
+                                <td></td>
+                                <td align="center"><input type="text" id="ValViatico" style="text-align:right;" /></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td align="center" colspan="3">TOTAL HABER</td>
+                                <td></td>
+                                <td align="center" colspan="3"><input type="text" Id="TotHaber" style="text-align:right;" disabled /> </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
                                 <td align="center">Nombre Afp</td>
                                 <td></td>
                                 <td align="center">@Html.DropDownList("AfpSelec", ViewBag.ListAfps as SelectList, "Seleccione AFP", new { @class = "form-control", style = "width:175px" })</td>
@@ -211,6 +255,10 @@
                                 <td align="center">Monto AFP</td>
                                 <td></td>
                                 <td align="center"><input type="text" id="MontoAfp" style="text-align:right;" /></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                                 <td></td>
                             </tr>
                             <tr>

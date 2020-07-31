@@ -228,6 +228,9 @@
     <Compile Include="Models\SP_Autoriza_Result.cs">
       <DependentUpon>ModelEmp.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SP_BusRangImpxSueldo_Result.cs">
+      <DependentUpon>ModelEmp.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
       <DependentUpon>ModelEmp.tt</DependentUpon>
     </Compile>

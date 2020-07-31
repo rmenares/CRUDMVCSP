@@ -1215,5 +1215,14 @@ namespace CrudMvcSp.Models
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
+    
+        public virtual ObjectResult<SP_BusRangImpxSueldo_Result> SP_BusRangImpxSueldo(Nullable<decimal> sb)
+        {
+            var sbParameter = sb.HasValue ?
+                new ObjectParameter("sb", sb) :
+                new ObjectParameter("sb", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_BusRangImpxSueldo_Result>("SP_BusRangImpxSueldo", sbParameter);
+        }
     }
 }

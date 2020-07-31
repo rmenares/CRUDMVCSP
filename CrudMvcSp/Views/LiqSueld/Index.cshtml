@@ -62,35 +62,41 @@
              displayHeader: true,
              columns:
               new[] {
-                      grid.Column("Rut_Empleado ","Rut"),
-                      grid.Column("Nombre ","Nombre"),
-                      //grid.Column("Descr_Tipo ","Tipo_Liquidación"),
-                      grid.Column("Fecha_Liquidacion ","Mes Liquidación"),
-                      grid.Column("Sueldo_Base ","Sueldo Base"),
-                      grid.Column("Dias_Trabajados ","Dias Trabajados"),
-                      grid.Column("PorcComision ","% Comisión"),
-                      grid.Column("Valor_Com ","Comisión A Pagar"),
-                      grid.Column("Cant_Horas_Extras ","Horas Extras"),
-                      grid.Column("Valor_Horas_Extras ","Valor Hora"),
-                      grid.Column("Gratificacion ","Gratificación"),
-                      grid.Column("Bonos ","Bonificación"),
-                      grid.Column("Colacion ","Colación"),
-                      grid.Column("Movilizacion ","Movilización"),
-                      grid.Column("AFP ","AFP"),
-                      //grid.Column("Porc_Desc ","% Desc."),
-                      grid.Column("Valor_Afp ","A Pagar"),
-                      grid.Column("Nombre_Salud ","Salud"),
-                      //grid.Column("Porc_Cotiz ","% Desc"),
-                      grid.Column("Valor_Salud ","A Pagar"),
-                      grid.Column("Tipo_Contrato ","Seg Cesantía"),
-                      //grid.Column("Monto_Empleador ","Monto Empleador"),
-                      //grid.Column("Monto_Trabajador ","Monto Trabajador"),
-                      grid.Column("Valor_Seg_Cesantia ","Descuento Seg. Cesantia"),
-                      grid.Column("Valor_Impuesto ","Impuesto a Pagar"),
-                      grid.Column("Apv ","Apv"),
-                      grid.Column("Otrs_Descuentos ","Otros Descuentos"),
-                      grid.Column("Total_Pagar ","Total a Pagar"),
-                      grid.Column(header: "Acciones", style: "col-sm-2", format:
+                        grid.Column("Rut_Empleado","Rut"),
+                        grid.Column("Nombre","Nombre"),
+                        //grid.Column("Descr_Tipo","Tipo_Liquidación"),
+                        grid.Column("Fecha_Liquidacion","Fecha Liquidación"),
+                        grid.Column("Sueldo_Base","Sueldo Base"),
+                        //grid.Column("Dias_Trabajados","Dias Trabajados"),
+                        //grid.Column("PorcComision","% Comisión"),
+                        //grid.Column("Valor_Com","Comisión A Pagar"),
+                        //grid.Column("Cant_Horas_Extras","Horas Extras"),
+                        //grid.Column("Total_Horas_Extras","Total Horas Extras"),
+                        //grid.Column("Bonos","Bonos"),
+                        //grid.Column("Gratificacion","Gratificación"),
+                        grid.Column("TotalImponible","Total Imponible"),
+                        //grid.Column("Colacion","Colación"),
+                        //grid.Column("Movilizacion","Movilización"),
+                        //grid.Column("Viaticos","Viaticos"),
+                        grid.Column("TotalHaberes","Total Haberes"),
+                        //grid.Column("Nom_Afp","Afp"),
+                        //grid.Column("Porc_Desc","% Descuento"),
+                        //grid.Column("Valor_Afp","$ Descuento"),
+                        //grid.Column("Nombre_Salud","Salud"),
+                        //grid.Column("Porc_Cotiz","% Descuento"),
+                        //grid.Column("Valor_Salud","$ Descuento"),
+                        //grid.Column("Tipo_Contrato","Seg. Cesantía"),
+                        //grid.Column("Monto_Empleador","Monto Empleador"),
+                        //grid.Column("Monto_Trabajador","Monto Trabajador"),
+                        //grid.Column("Valor_Seg_Cesantia","Descuento Seg. Cesantía"),
+                        grid.Column("TotalDescSegSocial","Total Seg. Social"),
+                        //grid.Column("Valor_Impuesto","Valor Impuesto"),
+                        //grid.Column("ImpAPagar","Impuesto A Pagar"),
+                        //grid.Column("Prestamos","Prestamos"),
+                        grid.Column("TotalDesctos","Total Desctos."),
+                        grid.Column("Otrs_Descuentos","Otros Desctos."),
+                        grid.Column("Total_Pagar","Total A Pagar"),
+                       grid.Column(header: "Acciones", style: "col-sm-2", format:
                       @<span class="link">
                             <a class="btn btn-success btn-xs glyphicon glyphicon-pencil Edit" href="javascript:;"> Edit</a>
                             <a class="btn btn-warning btn-xs glyphicon glyphicon-print  Info" href="javascript:;"> Info</a>
@@ -214,14 +220,8 @@
                                 <td></td>
                             </tr>
                             <tr>
-                                <td align="center" colspan="3">TOTAL REMUNERACION IMPONIBLE</td>
-                                <td></td>
-                                <td align="center" colspan="3"><input type="text" Id="TotImponible" style="text-align:right;" disabled /> </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td align="center" colspan="6" bgcolor="cac5c4">TOTAL REMUNERACION IMPONIBLE</td>
+                                <td align="center" colspan="6" bgcolor="cac5c4"><input type="text" Id="TotImponible" disabled /> </td>
                             </tr>
                             <tr>
                                 <td align="center">Movilización</td>
@@ -238,14 +238,11 @@
                                 <td></td>
                             </tr>
                             <tr>
-                                <td align="center" colspan="3">TOTAL HABER</td>
-                                <td></td>
-                                <td align="center" colspan="3"><input type="text" Id="TotHaber" style="text-align:right;" disabled /> </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td align="center" colspan="6" bgcolor="cac5c4">TOTAL HABER</td>
+                                <td align="center" colspan="6" bgcolor="cac5c4"><input type="text" Id="TotHaber" style="text-align:right;" disabled /> </td>
+                            </tr>
+                            <tr>
+                                <td align="center" colspan="12" bgcolor="cac5c4">Descuentos Seg Social</td>
                             </tr>
                             <tr>
                                 <td align="center">Nombre Afp</td>
@@ -270,9 +267,44 @@
                                 <td></td>
                                 <td align="center"><input type="text" id="MontoSalud" style="text-align:right;" /></td>
                                 <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
                                 <td align="center">Valor Seguro Cesantía</td>
                                 <td></td>
                                 <td align="center"><input type="text" id="ValCesantia" style="text-align:right;" /></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td align="center" colspan="6" bgcolor="cac5c4">Descuentos Previsionales(-)</td>
+                                <td align="center" colspan="6" bgcolor="cac5c4"><input type="text" Id="CPTotDescPrev" style="text-align:right;" disabled /> </td>
+                            </tr>
+                            <tr>
+                                <td align="center" colspan="12" bgcolor="cac5c4">Cálculo Impuesto A la Renta</td>
+                            </tr>
+                            <tr>
+                                <td align="center">Remuneracion Imponible</td>
+                                <td></td>
+                                <td align="center"><input type="text" Id="CpTotImponible" style="text-align:right;" disabled /></td>
+                                <td></td>
+                                <td align="center">Descuentos Previsionales(-)</td>
+                                <td></td>
+                                <td align="center"><input type="text" Id="CPTotDescPrev2" style="text-align:right;" disabled /> </td>
+                                <td></td>
+                                <td align="center">Remuneración Neta(=)</td>
+                                <td></td>
+                                <td align="center"><input type="text" id="RemNeta" style="text-align:right;" /></td>
                                 <td></td>
                             </tr>
                             <tr>
@@ -280,15 +312,28 @@
                                 <td></td>
                                 <td align="center"><input type="text" id="TotImp" style="text-align:right;" disabled /></td>
                                 <td></td>
-                                <td align="center">Apv</td>
+                                <td align="center">Rebajas Al Impuesto (-)</td>
+                                <td></td>
+                                <td align="center"><input type="text" id="RebaImpto" style="text-align:right;" disabled /></td>
+                                <td></td>
+                                <td align="center">Impuesto A Pagar</td>
+                                <td></td>
+                                <td align="center"><input type="text" id="ImpAPagar" style="text-align:right;" disabled /></td>
+                                <td></td>
+                            </tr>
+
+
+                                @*<td align="center">Apv</td>
                                 <td></td>
                                 <td align="center"><input type="text" id="ValApv" style="text-align:right;" /></td>
-                                <td></td>
+                                <td></td>*@
+                           
+                            <tr>
                                 <td align="center">Otros Descuentos</td>
                                 <td></td>
                                 <td align="center"><input type="text" id="OtDesc" style="text-align:right;" /></td>
                                 <td></td>
-                            </tr>
+                            </tr>                             
                             <tr>
                                 <td align="center">Total A Pagar</td>
                                 <td></td>

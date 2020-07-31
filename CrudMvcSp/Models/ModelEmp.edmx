@@ -127,19 +127,25 @@
           <Property Name="PorcComision" Type="varchar" MaxLength="2" Nullable="false" />
           <Property Name="Valor_Com" Type="numeric" Precision="9" Scale="2" Nullable="false" />
           <Property Name="Cant_Horas_Extras" Type="numeric" Precision="9" Scale="0" Nullable="false" />
-          <Property Name="Valor_Horas_Extras" Type="numeric" Precision="9" Scale="2" Nullable="false" />
-          <Property Name="Gratificacion" Type="numeric" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="Total_Horas_Extras" Type="numeric" Precision="9" Scale="2" Nullable="false" />
           <Property Name="Bonos" Type="numeric" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="Gratificacion" Type="numeric" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="TotalImponible" Type="numeric" Precision="9" Scale="0" Nullable="false" />
           <Property Name="Colacion" Type="numeric" Precision="9" Scale="2" Nullable="false" />
           <Property Name="Movilizacion" Type="numeric" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="Viaticos" Type="numeric" Precision="9" Scale="0" Nullable="false" />
+          <Property Name="TotalHaberes" Type="numeric" Precision="9" Scale="0" Nullable="false" />
           <Property Name="CodAfp" Type="int" Nullable="false" />
           <Property Name="Valor_Afp" Type="numeric" Precision="9" Scale="2" Nullable="false" />
           <Property Name="Cod_Salud" Type="int" Nullable="false" />
           <Property Name="Valor_Salud" Type="numeric" Precision="9" Scale="2" Nullable="false" />
           <Property Name="Id_Seg_Cesantia" Type="int" Nullable="false" />
           <Property Name="Valor_Seg_Cesantia" Type="numeric" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="TotalDescSegSocial" Type="numeric" Precision="9" Scale="2" Nullable="false" />
           <Property Name="Valor_Impuesto" Type="numeric" Precision="9" Scale="2" Nullable="false" />
-          <Property Name="Apv" Type="numeric" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="ImpAPagar" Type="numeric" Precision="9" Scale="0" Nullable="false" />
+          <Property Name="Prestamos" Type="numeric" Precision="9" Scale="0" Nullable="false" />
+          <Property Name="TotalDesctos" Type="numeric" Precision="9" Scale="0" Nullable="false" />
           <Property Name="Otrs_Descuentos" Type="numeric" Precision="9" Scale="2" Nullable="false" />
           <Property Name="Total_Pagar" Type="numeric" Precision="9" Scale="0" Nullable="false" />
         </EntityType>
@@ -201,45 +207,45 @@
           <Key>
             <PropertyRef Name="Id_Factor_Diario" />
           </Key>
-          <Property Name="Id_Factor_Diario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Desde" Type="decimal" Precision="18" Scale="3" />
-          <Property Name="Hasta" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="Id_Factor_Diario" Type="int" Nullable="false" />
+          <Property Name="Desde" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Hasta" Type="decimal" Precision="18" Scale="2" />
           <Property Name="Factor" Type="decimal" Precision="18" Scale="3" />
-          <Property Name="CantAReb" Type="decimal" Precision="18" Scale="3" />
-          <Property Name="TasaImpEfec" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="CantAReb" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TasaImpEfec" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="TablImpMensual">
           <Key>
             <PropertyRef Name="Id_Factor_Mensual" />
           </Key>
-          <Property Name="Id_Factor_Mensual" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Desde" Type="decimal" Precision="18" Scale="3" />
-          <Property Name="Hasta" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="Id_Factor_Mensual" Type="int" Nullable="false" />
+          <Property Name="Desde" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Hasta" Type="decimal" Precision="18" Scale="2" />
           <Property Name="Factor" Type="decimal" Precision="18" Scale="3" />
-          <Property Name="CantAReb" Type="decimal" Precision="18" Scale="3" />
-          <Property Name="TasaImpEfec" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="CantAReb" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TasaImpEfec" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="TablImpQuincenal">
           <Key>
             <PropertyRef Name="Id_Factor_Quincenal" />
           </Key>
-          <Property Name="Id_Factor_Quincenal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Desde" Type="decimal" Precision="18" Scale="3" />
-          <Property Name="Hasta" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="Id_Factor_Quincenal" Type="int" Nullable="false" />
+          <Property Name="Desde" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Hasta" Type="decimal" Precision="18" Scale="2" />
           <Property Name="Factor" Type="decimal" Precision="18" Scale="3" />
-          <Property Name="CantAReb" Type="decimal" Precision="18" Scale="3" />
-          <Property Name="TasaImpEfec" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="CantAReb" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TasaImpEfec" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="TablImpSemanal">
           <Key>
             <PropertyRef Name="Id_Factor_Semanal" />
           </Key>
-          <Property Name="Id_Factor_Semanal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Desde" Type="decimal" Precision="18" Scale="3" />
-          <Property Name="Hasta" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="Id_Factor_Semanal" Type="int" Nullable="false" />
+          <Property Name="Desde" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Hasta" Type="decimal" Precision="18" Scale="2" />
           <Property Name="Factor" Type="decimal" Precision="18" Scale="3" />
-          <Property Name="CantAReb" Type="decimal" Precision="18" Scale="3" />
-          <Property Name="TasaImpEfec" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="CantAReb" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TasaImpEfec" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="Tipo_Remuneracion">
           <Key>
@@ -553,19 +559,25 @@
           <Parameter Name="PorcComision" Type="varchar" Mode="In" />
           <Parameter Name="Valor_Com" Type="numeric" Mode="In" />
           <Parameter Name="Cant_Horas_Extras" Type="numeric" Mode="In" />
-          <Parameter Name="Valor_Horas_Extras" Type="numeric" Mode="In" />
-          <Parameter Name="Gratificacion" Type="numeric" Mode="In" />
+          <Parameter Name="Total_Horas_Extras" Type="numeric" Mode="In" />
           <Parameter Name="Bonos" Type="numeric" Mode="In" />
+          <Parameter Name="Gratificacion" Type="numeric" Mode="In" />
+          <Parameter Name="TotalImponible" Type="numeric" Mode="In" />
           <Parameter Name="Colacion" Type="numeric" Mode="In" />
           <Parameter Name="Movilizacion" Type="numeric" Mode="In" />
+          <Parameter Name="Viaticos" Type="numeric" Mode="In" />
+          <Parameter Name="TotalHaberes" Type="numeric" Mode="In" />
           <Parameter Name="CodAfp" Type="int" Mode="In" />
           <Parameter Name="Valor_Afp" Type="numeric" Mode="In" />
           <Parameter Name="Cod_Salud" Type="int" Mode="In" />
           <Parameter Name="Valor_Salud" Type="numeric" Mode="In" />
           <Parameter Name="Id_Seg_Cesantia" Type="int" Mode="In" />
           <Parameter Name="Valor_Seg_Cesantia" Type="numeric" Mode="In" />
+          <Parameter Name="TotalDescSegSocial" Type="numeric" Mode="In" />
           <Parameter Name="Valor_Impuesto" Type="numeric" Mode="In" />
-          <Parameter Name="Apv" Type="numeric" Mode="In" />
+          <Parameter Name="ImpAPagar" Type="numeric" Mode="In" />
+          <Parameter Name="Prestamos" Type="numeric" Mode="In" />
+          <Parameter Name="TotalDesctos" Type="numeric" Mode="In" />
           <Parameter Name="Otrs_Descuentos" Type="numeric" Mode="In" />
           <Parameter Name="Total_Pagar" Type="numeric" Mode="In" />
         </Function>
@@ -724,19 +736,25 @@
           <Parameter Name="PorcComision" Type="varchar" Mode="In" />
           <Parameter Name="Valor_Com" Type="numeric" Mode="In" />
           <Parameter Name="Cant_Horas_Extras" Type="numeric" Mode="In" />
-          <Parameter Name="Valor_Horas_Extras" Type="numeric" Mode="In" />
-          <Parameter Name="Gratificacion" Type="numeric" Mode="In" />
+          <Parameter Name="Total_Horas_Extras" Type="numeric" Mode="In" />
           <Parameter Name="Bonos" Type="numeric" Mode="In" />
+          <Parameter Name="Gratificacion" Type="numeric" Mode="In" />
+          <Parameter Name="TotalImponible" Type="numeric" Mode="In" />
           <Parameter Name="Colacion" Type="numeric" Mode="In" />
           <Parameter Name="Movilizacion" Type="numeric" Mode="In" />
+          <Parameter Name="Viaticos" Type="numeric" Mode="In" />
+          <Parameter Name="TotalHaberes" Type="numeric" Mode="In" />
           <Parameter Name="CodAfp" Type="int" Mode="In" />
           <Parameter Name="Valor_Afp" Type="numeric" Mode="In" />
           <Parameter Name="Cod_Salud" Type="int" Mode="In" />
           <Parameter Name="Valor_Salud" Type="numeric" Mode="In" />
           <Parameter Name="Id_Seg_Cesantia" Type="int" Mode="In" />
           <Parameter Name="Valor_Seg_Cesantia" Type="numeric" Mode="In" />
+          <Parameter Name="TotalDescSegSocial" Type="numeric" Mode="In" />
           <Parameter Name="Valor_Impuesto" Type="numeric" Mode="In" />
-          <Parameter Name="Apv" Type="numeric" Mode="In" />
+          <Parameter Name="ImpAPagar" Type="numeric" Mode="In" />
+          <Parameter Name="Prestamos" Type="numeric" Mode="In" />
+          <Parameter Name="TotalDesctos" Type="numeric" Mode="In" />
           <Parameter Name="Otrs_Descuentos" Type="numeric" Mode="In" />
           <Parameter Name="Total_Pagar" Type="numeric" Mode="In" />
         </Function>
@@ -985,19 +1003,25 @@
           <Property Name="PorcComision" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Valor_Com" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
           <Property Name="Cant_Horas_Extras" Type="Decimal" Precision="9" Scale="0" Nullable="false" />
-          <Property Name="Valor_Horas_Extras" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
-          <Property Name="Gratificacion" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="Total_Horas_Extras" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
           <Property Name="Bonos" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="Gratificacion" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="TotalImponible" Type="Decimal" Precision="9" Scale="0" Nullable="false" />
           <Property Name="Colacion" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
           <Property Name="Movilizacion" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="Viaticos" Type="Decimal" Precision="9" Scale="0" Nullable="false" />
+          <Property Name="TotalHaberes" Type="Decimal" Precision="9" Scale="0" Nullable="false" />
           <Property Name="CodAfp" Type="Int32" Nullable="false" />
           <Property Name="Valor_Afp" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
           <Property Name="Cod_Salud" Type="Int32" Nullable="false" />
           <Property Name="Valor_Salud" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
           <Property Name="Id_Seg_Cesantia" Type="Int32" Nullable="false" />
           <Property Name="Valor_Seg_Cesantia" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="TotalDescSegSocial" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
           <Property Name="Valor_Impuesto" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
-          <Property Name="Apv" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="ImpAPagar" Type="Decimal" Precision="9" Scale="0" Nullable="false" />
+          <Property Name="Prestamos" Type="Decimal" Precision="9" Scale="0" Nullable="false" />
+          <Property Name="TotalDesctos" Type="Decimal" Precision="9" Scale="0" Nullable="false" />
           <Property Name="Otrs_Descuentos" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
           <Property Name="Total_Pagar" Type="Decimal" Precision="9" Scale="0" Nullable="false" />
           <NavigationProperty Name="Tipo_Remuneracion" Relationship="Self.FK_Liquidacion_Sueldo_Tipo_Remuneracion" FromRole="Liquidacion_Sueldo" ToRole="Tipo_Remuneracion" />
@@ -1069,45 +1093,45 @@
           <Key>
             <PropertyRef Name="Id_Factor_Diario" />
           </Key>
-          <Property Name="Id_Factor_Diario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Desde" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="Hasta" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="Id_Factor_Diario" Type="Int32" Nullable="false" />
+          <Property Name="Desde" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Hasta" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="Factor" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="CantAReb" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="TasaImpEfec" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="CantAReb" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TasaImpEfec" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="TablImpMensual">
           <Key>
             <PropertyRef Name="Id_Factor_Mensual" />
           </Key>
-          <Property Name="Id_Factor_Mensual" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Desde" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="Hasta" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="Id_Factor_Mensual" Type="Int32" Nullable="false" />
+          <Property Name="Desde" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Hasta" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="Factor" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="CantAReb" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="TasaImpEfec" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="CantAReb" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TasaImpEfec" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="TablImpQuincenal">
           <Key>
             <PropertyRef Name="Id_Factor_Quincenal" />
           </Key>
-          <Property Name="Id_Factor_Quincenal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Desde" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="Hasta" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="Id_Factor_Quincenal" Type="Int32" Nullable="false" />
+          <Property Name="Desde" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Hasta" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="Factor" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="CantAReb" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="TasaImpEfec" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="CantAReb" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TasaImpEfec" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="TablImpSemanal">
           <Key>
             <PropertyRef Name="Id_Factor_Semanal" />
           </Key>
-          <Property Name="Id_Factor_Semanal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Desde" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="Hasta" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="Id_Factor_Semanal" Type="Int32" Nullable="false" />
+          <Property Name="Desde" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Hasta" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="Factor" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="CantAReb" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="TasaImpEfec" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="CantAReb" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TasaImpEfec" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="Tipo_Remuneracion">
           <Key>
@@ -1507,19 +1531,25 @@
             <Parameter Name="PorcComision" Mode="In" Type="String" />
             <Parameter Name="Valor_Com" Mode="In" Type="Decimal" />
             <Parameter Name="Cant_Horas_Extras" Mode="In" Type="Decimal" />
-            <Parameter Name="Valor_Horas_Extras" Mode="In" Type="Decimal" />
-            <Parameter Name="Gratificacion" Mode="In" Type="Decimal" />
+            <Parameter Name="Total_Horas_Extras" Mode="In" Type="Decimal" />
             <Parameter Name="Bonos" Mode="In" Type="Decimal" />
+            <Parameter Name="Gratificacion" Mode="In" Type="Decimal" />
+            <Parameter Name="TotalImponible" Mode="In" Type="Decimal" />
             <Parameter Name="Colacion" Mode="In" Type="Decimal" />
             <Parameter Name="Movilizacion" Mode="In" Type="Decimal" />
+            <Parameter Name="Viaticos" Mode="In" Type="Decimal" />
+            <Parameter Name="TotalHaberes" Mode="In" Type="Decimal" />
             <Parameter Name="CodAfp" Mode="In" Type="Int32" />
             <Parameter Name="Valor_Afp" Mode="In" Type="Decimal" />
             <Parameter Name="Cod_Salud" Mode="In" Type="Int32" />
             <Parameter Name="Valor_Salud" Mode="In" Type="Decimal" />
             <Parameter Name="Id_Seg_Cesantia" Mode="In" Type="Int32" />
             <Parameter Name="Valor_Seg_Cesantia" Mode="In" Type="Decimal" />
+            <Parameter Name="TotalDescSegSocial" Mode="In" Type="Decimal" />
             <Parameter Name="Valor_Impuesto" Mode="In" Type="Decimal" />
-            <Parameter Name="Apv" Mode="In" Type="Decimal" />
+            <Parameter Name="ImpAPagar" Mode="In" Type="Decimal" />
+            <Parameter Name="Prestamos" Mode="In" Type="Decimal" />
+            <Parameter Name="TotalDesctos" Mode="In" Type="Decimal" />
             <Parameter Name="Otrs_Descuentos" Mode="In" Type="Decimal" />
             <Parameter Name="Total_Pagar" Mode="In" Type="Decimal" />
           </FunctionImport>
@@ -1678,19 +1708,25 @@
             <Parameter Name="PorcComision" Mode="In" Type="String" />
             <Parameter Name="Valor_Com" Mode="In" Type="Decimal" />
             <Parameter Name="Cant_Horas_Extras" Mode="In" Type="Decimal" />
-            <Parameter Name="Valor_Horas_Extras" Mode="In" Type="Decimal" />
-            <Parameter Name="Gratificacion" Mode="In" Type="Decimal" />
+            <Parameter Name="Total_Horas_Extras" Mode="In" Type="Decimal" />
             <Parameter Name="Bonos" Mode="In" Type="Decimal" />
+            <Parameter Name="Gratificacion" Mode="In" Type="Decimal" />
+            <Parameter Name="TotalImponible" Mode="In" Type="Decimal" />
             <Parameter Name="Colacion" Mode="In" Type="Decimal" />
             <Parameter Name="Movilizacion" Mode="In" Type="Decimal" />
+            <Parameter Name="Viaticos" Mode="In" Type="Decimal" />
+            <Parameter Name="TotalHaberes" Mode="In" Type="Decimal" />
             <Parameter Name="CodAfp" Mode="In" Type="Int32" />
             <Parameter Name="Valor_Afp" Mode="In" Type="Decimal" />
             <Parameter Name="Cod_Salud" Mode="In" Type="Int32" />
             <Parameter Name="Valor_Salud" Mode="In" Type="Decimal" />
             <Parameter Name="Id_Seg_Cesantia" Mode="In" Type="Int32" />
             <Parameter Name="Valor_Seg_Cesantia" Mode="In" Type="Decimal" />
+            <Parameter Name="TotalDescSegSocial" Mode="In" Type="Decimal" />
             <Parameter Name="Valor_Impuesto" Mode="In" Type="Decimal" />
-            <Parameter Name="Apv" Mode="In" Type="Decimal" />
+            <Parameter Name="ImpAPagar" Mode="In" Type="Decimal" />
+            <Parameter Name="Prestamos" Mode="In" Type="Decimal" />
+            <Parameter Name="TotalDesctos" Mode="In" Type="Decimal" />
             <Parameter Name="Otrs_Descuentos" Mode="In" Type="Decimal" />
             <Parameter Name="Total_Pagar" Mode="In" Type="Decimal" />
           </FunctionImport>
@@ -1811,12 +1847,15 @@
           <Property Type="String" Name="PorcComision" Nullable="false" MaxLength="2" />
           <Property Type="Decimal" Name="Valor_Com" Nullable="false" Precision="9" Scale="2" />
           <Property Type="Decimal" Name="Cant_Horas_Extras" Nullable="false" Precision="9" Scale="0" />
-          <Property Type="Decimal" Name="Valor_Horas_Extras" Nullable="false" Precision="9" Scale="2" />
-          <Property Type="Decimal" Name="Gratificacion" Nullable="false" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="Total_Horas_Extras" Nullable="false" Precision="9" Scale="2" />
           <Property Type="Decimal" Name="Bonos" Nullable="false" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="Gratificacion" Nullable="false" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="TotalImponible" Nullable="false" Precision="9" Scale="0" />
           <Property Type="Decimal" Name="Colacion" Nullable="false" Precision="9" Scale="2" />
           <Property Type="Decimal" Name="Movilizacion" Nullable="false" Precision="9" Scale="2" />
-          <Property Type="String" Name="AFP" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Viaticos" Nullable="false" Precision="9" Scale="0" />
+          <Property Type="Decimal" Name="TotalHaberes" Nullable="false" Precision="9" Scale="0" />
+          <Property Type="String" Name="Nom_Afp" Nullable="true" MaxLength="50" />
           <Property Type="Decimal" Name="Porc_Desc" Nullable="true" Precision="18" Scale="2" />
           <Property Type="Decimal" Name="Valor_Afp" Nullable="false" Precision="9" Scale="2" />
           <Property Type="String" Name="Nombre_Salud" Nullable="true" MaxLength="50" />
@@ -1826,8 +1865,11 @@
           <Property Type="Decimal" Name="Monto_Empleador" Nullable="false" Precision="9" Scale="2" />
           <Property Type="Decimal" Name="Monto_Trabajador" Nullable="true" Precision="9" Scale="2" />
           <Property Type="Decimal" Name="Valor_Seg_Cesantia" Nullable="false" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="TotalDescSegSocial" Nullable="false" Precision="9" Scale="2" />
           <Property Type="Decimal" Name="Valor_Impuesto" Nullable="false" Precision="9" Scale="2" />
-          <Property Type="Decimal" Name="Apv" Nullable="false" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="ImpAPagar" Nullable="false" Precision="9" Scale="0" />
+          <Property Type="Decimal" Name="Prestamos" Nullable="false" Precision="9" Scale="0" />
+          <Property Type="Decimal" Name="TotalDesctos" Nullable="false" Precision="9" Scale="0" />
           <Property Type="Decimal" Name="Otrs_Descuentos" Nullable="false" Precision="9" Scale="2" />
           <Property Type="Decimal" Name="Total_Pagar" Nullable="false" Precision="9" Scale="0" />
         </ComplexType>
@@ -1952,12 +1994,15 @@
           <Property Type="String" Name="PorcComision" Nullable="false" MaxLength="2" />
           <Property Type="Decimal" Name="Valor_Com" Nullable="false" Precision="9" Scale="2" />
           <Property Type="Decimal" Name="Cant_Horas_Extras" Nullable="false" Precision="9" Scale="0" />
-          <Property Type="Decimal" Name="Valor_Horas_Extras" Nullable="false" Precision="9" Scale="2" />
-          <Property Type="Decimal" Name="Gratificacion" Nullable="false" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="Total_Horas_Extras" Nullable="false" Precision="9" Scale="2" />
           <Property Type="Decimal" Name="Bonos" Nullable="false" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="Gratificacion" Nullable="false" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="TotalImponible" Nullable="false" Precision="9" Scale="0" />
           <Property Type="Decimal" Name="Colacion" Nullable="false" Precision="9" Scale="2" />
           <Property Type="Decimal" Name="Movilizacion" Nullable="false" Precision="9" Scale="2" />
-          <Property Type="String" Name="AFP" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Viaticos" Nullable="false" Precision="9" Scale="0" />
+          <Property Type="Decimal" Name="TotalHaberes" Nullable="false" Precision="9" Scale="0" />
+          <Property Type="String" Name="Nom_Afp" Nullable="true" MaxLength="50" />
           <Property Type="Decimal" Name="Porc_Desc" Nullable="true" Precision="18" Scale="2" />
           <Property Type="Decimal" Name="Valor_Afp" Nullable="false" Precision="9" Scale="2" />
           <Property Type="String" Name="Nombre_Salud" Nullable="true" MaxLength="50" />
@@ -1967,8 +2012,11 @@
           <Property Type="Decimal" Name="Monto_Empleador" Nullable="false" Precision="9" Scale="2" />
           <Property Type="Decimal" Name="Monto_Trabajador" Nullable="true" Precision="9" Scale="2" />
           <Property Type="Decimal" Name="Valor_Seg_Cesantia" Nullable="false" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="TotalDescSegSocial" Nullable="false" Precision="9" Scale="2" />
           <Property Type="Decimal" Name="Valor_Impuesto" Nullable="false" Precision="9" Scale="2" />
-          <Property Type="Decimal" Name="Apv" Nullable="false" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="ImpAPagar" Nullable="false" Precision="9" Scale="0" />
+          <Property Type="Decimal" Name="Prestamos" Nullable="false" Precision="9" Scale="0" />
+          <Property Type="Decimal" Name="TotalDesctos" Nullable="false" Precision="9" Scale="0" />
           <Property Type="Decimal" Name="Otrs_Descuentos" Nullable="false" Precision="9" Scale="2" />
           <Property Type="Decimal" Name="Total_Pagar" Nullable="false" Precision="9" Scale="0" />
         </ComplexType>
@@ -1982,12 +2030,15 @@
           <Property Type="String" Name="PorcComision" Nullable="false" MaxLength="2" />
           <Property Type="Decimal" Name="Valor_Com" Nullable="false" Precision="9" Scale="2" />
           <Property Type="Decimal" Name="Cant_Horas_Extras" Nullable="false" Precision="9" Scale="0" />
-          <Property Type="Decimal" Name="Valor_Horas_Extras" Nullable="false" Precision="9" Scale="2" />
-          <Property Type="Decimal" Name="Gratificacion" Nullable="false" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="Total_Horas_Extras" Nullable="false" Precision="9" Scale="2" />
           <Property Type="Decimal" Name="Bonos" Nullable="false" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="Gratificacion" Nullable="false" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="TotalImponible" Nullable="false" Precision="9" Scale="0" />
           <Property Type="Decimal" Name="Colacion" Nullable="false" Precision="9" Scale="2" />
           <Property Type="Decimal" Name="Movilizacion" Nullable="false" Precision="9" Scale="2" />
-          <Property Type="String" Name="AFP" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Viaticos" Nullable="false" Precision="9" Scale="0" />
+          <Property Type="Decimal" Name="TotalHaberes" Nullable="false" Precision="9" Scale="0" />
+          <Property Type="String" Name="Nom_Afp" Nullable="true" MaxLength="50" />
           <Property Type="Decimal" Name="Porc_Desc" Nullable="true" Precision="18" Scale="2" />
           <Property Type="Decimal" Name="Valor_Afp" Nullable="false" Precision="9" Scale="2" />
           <Property Type="String" Name="Nombre_Salud" Nullable="true" MaxLength="50" />
@@ -1997,8 +2048,11 @@
           <Property Type="Decimal" Name="Monto_Empleador" Nullable="false" Precision="9" Scale="2" />
           <Property Type="Decimal" Name="Monto_Trabajador" Nullable="true" Precision="9" Scale="2" />
           <Property Type="Decimal" Name="Valor_Seg_Cesantia" Nullable="false" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="TotalDescSegSocial" Nullable="false" Precision="9" Scale="2" />
           <Property Type="Decimal" Name="Valor_Impuesto" Nullable="false" Precision="9" Scale="2" />
-          <Property Type="Decimal" Name="Apv" Nullable="false" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="ImpAPagar" Nullable="false" Precision="9" Scale="0" />
+          <Property Type="Decimal" Name="Prestamos" Nullable="false" Precision="9" Scale="0" />
+          <Property Type="Decimal" Name="TotalDesctos" Nullable="false" Precision="9" Scale="0" />
           <Property Type="Decimal" Name="Otrs_Descuentos" Nullable="false" Precision="9" Scale="2" />
           <Property Type="Decimal" Name="Total_Pagar" Nullable="false" Precision="9" Scale="0" />
         </ComplexType>
@@ -2151,19 +2205,25 @@
                 <ScalarProperty Name="PorcComision" ColumnName="PorcComision" />
                 <ScalarProperty Name="Valor_Com" ColumnName="Valor_Com" />
                 <ScalarProperty Name="Cant_Horas_Extras" ColumnName="Cant_Horas_Extras" />
-                <ScalarProperty Name="Valor_Horas_Extras" ColumnName="Valor_Horas_Extras" />
-                <ScalarProperty Name="Gratificacion" ColumnName="Gratificacion" />
+                <ScalarProperty Name="Total_Horas_Extras" ColumnName="Total_Horas_Extras" />
                 <ScalarProperty Name="Bonos" ColumnName="Bonos" />
+                <ScalarProperty Name="Gratificacion" ColumnName="Gratificacion" />
+                <ScalarProperty Name="TotalImponible" ColumnName="TotalImponible" />
                 <ScalarProperty Name="Colacion" ColumnName="Colacion" />
                 <ScalarProperty Name="Movilizacion" ColumnName="Movilizacion" />
+                <ScalarProperty Name="Viaticos" ColumnName="Viaticos" />
+                <ScalarProperty Name="TotalHaberes" ColumnName="TotalHaberes" />
                 <ScalarProperty Name="CodAfp" ColumnName="CodAfp" />
                 <ScalarProperty Name="Valor_Afp" ColumnName="Valor_Afp" />
                 <ScalarProperty Name="Cod_Salud" ColumnName="Cod_Salud" />
                 <ScalarProperty Name="Valor_Salud" ColumnName="Valor_Salud" />
                 <ScalarProperty Name="Id_Seg_Cesantia" ColumnName="Id_Seg_Cesantia" />
                 <ScalarProperty Name="Valor_Seg_Cesantia" ColumnName="Valor_Seg_Cesantia" />
+                <ScalarProperty Name="TotalDescSegSocial" ColumnName="TotalDescSegSocial" />
                 <ScalarProperty Name="Valor_Impuesto" ColumnName="Valor_Impuesto" />
-                <ScalarProperty Name="Apv" ColumnName="Apv" />
+                <ScalarProperty Name="ImpAPagar" ColumnName="ImpAPagar" />
+                <ScalarProperty Name="Prestamos" ColumnName="Prestamos" />
+                <ScalarProperty Name="TotalDesctos" ColumnName="TotalDesctos" />
                 <ScalarProperty Name="Otrs_Descuentos" ColumnName="Otrs_Descuentos" />
                 <ScalarProperty Name="Total_Pagar" ColumnName="Total_Pagar" />
               </MappingFragment>
@@ -2452,12 +2512,15 @@
                 <ScalarProperty Name="PorcComision" ColumnName="PorcComision" />
                 <ScalarProperty Name="Valor_Com" ColumnName="Valor_Com" />
                 <ScalarProperty Name="Cant_Horas_Extras" ColumnName="Cant_Horas_Extras" />
-                <ScalarProperty Name="Valor_Horas_Extras" ColumnName="Valor_Horas_Extras" />
-                <ScalarProperty Name="Gratificacion" ColumnName="Gratificacion" />
+                <ScalarProperty Name="Total_Horas_Extras" ColumnName="Total_Horas_Extras" />
                 <ScalarProperty Name="Bonos" ColumnName="Bonos" />
+                <ScalarProperty Name="Gratificacion" ColumnName="Gratificacion" />
+                <ScalarProperty Name="TotalImponible" ColumnName="TotalImponible" />
                 <ScalarProperty Name="Colacion" ColumnName="Colacion" />
                 <ScalarProperty Name="Movilizacion" ColumnName="Movilizacion" />
-                <ScalarProperty Name="AFP" ColumnName="AFP" />
+                <ScalarProperty Name="Viaticos" ColumnName="Viaticos" />
+                <ScalarProperty Name="TotalHaberes" ColumnName="TotalHaberes" />
+                <ScalarProperty Name="Nom_Afp" ColumnName="Nom_Afp" />
                 <ScalarProperty Name="Porc_Desc" ColumnName="Porc_Desc" />
                 <ScalarProperty Name="Valor_Afp" ColumnName="Valor_Afp" />
                 <ScalarProperty Name="Nombre_Salud" ColumnName="Nombre_Salud" />
@@ -2467,8 +2530,11 @@
                 <ScalarProperty Name="Monto_Empleador" ColumnName="Monto_Empleador" />
                 <ScalarProperty Name="Monto_Trabajador" ColumnName="Monto_Trabajador" />
                 <ScalarProperty Name="Valor_Seg_Cesantia" ColumnName="Valor_Seg_Cesantia" />
+                <ScalarProperty Name="TotalDescSegSocial" ColumnName="TotalDescSegSocial" />
                 <ScalarProperty Name="Valor_Impuesto" ColumnName="Valor_Impuesto" />
-                <ScalarProperty Name="Apv" ColumnName="Apv" />
+                <ScalarProperty Name="ImpAPagar" ColumnName="ImpAPagar" />
+                <ScalarProperty Name="Prestamos" ColumnName="Prestamos" />
+                <ScalarProperty Name="TotalDesctos" ColumnName="TotalDesctos" />
                 <ScalarProperty Name="Otrs_Descuentos" ColumnName="Otrs_Descuentos" />
                 <ScalarProperty Name="Total_Pagar" ColumnName="Total_Pagar" />
               </ComplexTypeMapping>
@@ -2647,12 +2713,15 @@
                 <ScalarProperty Name="PorcComision" ColumnName="PorcComision" />
                 <ScalarProperty Name="Valor_Com" ColumnName="Valor_Com" />
                 <ScalarProperty Name="Cant_Horas_Extras" ColumnName="Cant_Horas_Extras" />
-                <ScalarProperty Name="Valor_Horas_Extras" ColumnName="Valor_Horas_Extras" />
-                <ScalarProperty Name="Gratificacion" ColumnName="Gratificacion" />
+                <ScalarProperty Name="Total_Horas_Extras" ColumnName="Total_Horas_Extras" />
                 <ScalarProperty Name="Bonos" ColumnName="Bonos" />
+                <ScalarProperty Name="Gratificacion" ColumnName="Gratificacion" />
+                <ScalarProperty Name="TotalImponible" ColumnName="TotalImponible" />
                 <ScalarProperty Name="Colacion" ColumnName="Colacion" />
                 <ScalarProperty Name="Movilizacion" ColumnName="Movilizacion" />
-                <ScalarProperty Name="AFP" ColumnName="AFP" />
+                <ScalarProperty Name="Viaticos" ColumnName="Viaticos" />
+                <ScalarProperty Name="TotalHaberes" ColumnName="TotalHaberes" />
+                <ScalarProperty Name="Nom_Afp" ColumnName="Nom_Afp" />
                 <ScalarProperty Name="Porc_Desc" ColumnName="Porc_Desc" />
                 <ScalarProperty Name="Valor_Afp" ColumnName="Valor_Afp" />
                 <ScalarProperty Name="Nombre_Salud" ColumnName="Nombre_Salud" />
@@ -2662,8 +2731,11 @@
                 <ScalarProperty Name="Monto_Empleador" ColumnName="Monto_Empleador" />
                 <ScalarProperty Name="Monto_Trabajador" ColumnName="Monto_Trabajador" />
                 <ScalarProperty Name="Valor_Seg_Cesantia" ColumnName="Valor_Seg_Cesantia" />
+                <ScalarProperty Name="TotalDescSegSocial" ColumnName="TotalDescSegSocial" />
                 <ScalarProperty Name="Valor_Impuesto" ColumnName="Valor_Impuesto" />
-                <ScalarProperty Name="Apv" ColumnName="Apv" />
+                <ScalarProperty Name="ImpAPagar" ColumnName="ImpAPagar" />
+                <ScalarProperty Name="Prestamos" ColumnName="Prestamos" />
+                <ScalarProperty Name="TotalDesctos" ColumnName="TotalDesctos" />
                 <ScalarProperty Name="Otrs_Descuentos" ColumnName="Otrs_Descuentos" />
                 <ScalarProperty Name="Total_Pagar" ColumnName="Total_Pagar" />
               </ComplexTypeMapping>
@@ -2681,12 +2753,15 @@
                 <ScalarProperty Name="PorcComision" ColumnName="PorcComision" />
                 <ScalarProperty Name="Valor_Com" ColumnName="Valor_Com" />
                 <ScalarProperty Name="Cant_Horas_Extras" ColumnName="Cant_Horas_Extras" />
-                <ScalarProperty Name="Valor_Horas_Extras" ColumnName="Valor_Horas_Extras" />
-                <ScalarProperty Name="Gratificacion" ColumnName="Gratificacion" />
+                <ScalarProperty Name="Total_Horas_Extras" ColumnName="Total_Horas_Extras" />
                 <ScalarProperty Name="Bonos" ColumnName="Bonos" />
+                <ScalarProperty Name="Gratificacion" ColumnName="Gratificacion" />
+                <ScalarProperty Name="TotalImponible" ColumnName="TotalImponible" />
                 <ScalarProperty Name="Colacion" ColumnName="Colacion" />
                 <ScalarProperty Name="Movilizacion" ColumnName="Movilizacion" />
-                <ScalarProperty Name="AFP" ColumnName="AFP" />
+                <ScalarProperty Name="Viaticos" ColumnName="Viaticos" />
+                <ScalarProperty Name="TotalHaberes" ColumnName="TotalHaberes" />
+                <ScalarProperty Name="Nom_Afp" ColumnName="Nom_Afp" />
                 <ScalarProperty Name="Porc_Desc" ColumnName="Porc_Desc" />
                 <ScalarProperty Name="Valor_Afp" ColumnName="Valor_Afp" />
                 <ScalarProperty Name="Nombre_Salud" ColumnName="Nombre_Salud" />
@@ -2696,8 +2771,11 @@
                 <ScalarProperty Name="Monto_Empleador" ColumnName="Monto_Empleador" />
                 <ScalarProperty Name="Monto_Trabajador" ColumnName="Monto_Trabajador" />
                 <ScalarProperty Name="Valor_Seg_Cesantia" ColumnName="Valor_Seg_Cesantia" />
+                <ScalarProperty Name="TotalDescSegSocial" ColumnName="TotalDescSegSocial" />
                 <ScalarProperty Name="Valor_Impuesto" ColumnName="Valor_Impuesto" />
-                <ScalarProperty Name="Apv" ColumnName="Apv" />
+                <ScalarProperty Name="ImpAPagar" ColumnName="ImpAPagar" />
+                <ScalarProperty Name="Prestamos" ColumnName="Prestamos" />
+                <ScalarProperty Name="TotalDesctos" ColumnName="TotalDesctos" />
                 <ScalarProperty Name="Otrs_Descuentos" ColumnName="Otrs_Descuentos" />
                 <ScalarProperty Name="Total_Pagar" ColumnName="Total_Pagar" />
               </ComplexTypeMapping>

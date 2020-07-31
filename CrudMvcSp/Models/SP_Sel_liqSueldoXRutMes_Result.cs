@@ -22,12 +22,15 @@ namespace CrudMvcSp.Models
         public string PorcComision { get; set; }
         public decimal Valor_Com { get; set; }
         public decimal Cant_Horas_Extras { get; set; }
-        public decimal Valor_Horas_Extras { get; set; }
-        public decimal Gratificacion { get; set; }
+        public decimal Total_Horas_Extras { get; set; }
         public decimal Bonos { get; set; }
+        public decimal Gratificacion { get; set; }
+        public decimal TotalImponible { get; set; }
         public decimal Colacion { get; set; }
         public decimal Movilizacion { get; set; }
-        public string AFP { get; set; }
+        public decimal Viaticos { get; set; }
+        public decimal TotalHaberes { get; set; }
+        public string Nom_Afp { get; set; }
         public Nullable<decimal> Porc_Desc { get; set; }
         public decimal Valor_Afp { get; set; }
         public string Nombre_Salud { get; set; }
@@ -37,8 +40,11 @@ namespace CrudMvcSp.Models
         public decimal Monto_Empleador { get; set; }
         public Nullable<decimal> Monto_Trabajador { get; set; }
         public decimal Valor_Seg_Cesantia { get; set; }
+        public decimal TotalDescSegSocial { get; set; }
         public decimal Valor_Impuesto { get; set; }
-        public decimal Apv { get; set; }
+        public decimal ImpAPagar { get; set; }
+        public decimal Prestamos { get; set; }
+        public decimal TotalDesctos { get; set; }
         public decimal Otrs_Descuentos { get; set; }
         public decimal Total_Pagar { get; set; }
     }

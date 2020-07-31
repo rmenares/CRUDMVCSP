@@ -1,7 +1,11 @@
-﻿var SuelBase, PorcCom, CantHrsExt, totHrsExt;
-var CodigoAfp, NomAfp, PorcAfp, MontAfp;
-var CodSalud, NomSalud, PorcSalud;
-var TipContrat, MontEmpl, MontTrab;
+﻿
+var RutEmple, TipContrat, DiasTrab
+var SuelBase, PorcCom, CantHrsExt, totHrsExt, PorcCom, ValCom, Bonos, Gratificacion, TotImponible;
+var ValMovi, ValColac, ValViat, TotHaberes;
+var cod_afp, CodigoAfp, NomAfp, PorcAfp, MontAfp;
+var csalud, CodSalud, NomSalud, PorcSalud, MonSalud;
+var ValorCesantia, TotDescPrev;
+var DesctoTrab;
 
 $(document).ready(function () {    
     $("#BtnNueLiqSueld").click(function (event) {
@@ -29,7 +33,7 @@ $(document).ready(function () {
         var keycode = e.keyCode || e.which;
         //verifica si el codigo de la tecla es ENTER
         if (keycode == 13) {
-            var RutEmple = $("#RutEmp").val();
+            RutEmple = $("#RutEmp").val();
             if (RutEmple == "") {
                 toastr["error"](" Dato Debe Estar VACIO!!!! ", "Atención")
                 toastr.options = {
@@ -95,7 +99,7 @@ $(document).ready(function () {
             }
             else {
 
-                $("#SueldBas").val(new Intl.NumberFormat("de-DE").format(SuelBase));
+                //$("#SueldBas").val(new Intl.NumberFormat("de-DE").format(SuelBase));
                 //calcula el valor del Seguro de Cesantia
                 var tipRem = $("#ListTipRem").val();
                 var data = { Id_Tip_Contrato: tipRem };
@@ -107,7 +111,7 @@ $(document).ready(function () {
                         MontEmpl = DatosDev["Monto_Empleador"];
                         MontTrab = DatosDev["Monto_Trabajador"];
                         var sumcesa = (MontEmpl + MontTrab);
-                        var ValorCesantia = ( (SuelBase * sumcesa) / 100);
+                        ValorCesantia = ( (SuelBase * sumcesa) / 100);
                         $("#ValCesantia").val(new Intl.NumberFormat("de-DE").format(ValorCesantia));
                     });
                 $("#DiasTrab").focus();
@@ -119,7 +123,7 @@ $(document).ready(function () {
     $("#DiasTrab").on('keyup', function (e) {
         var keycode = e.keyCode || e.which;
         if (keycode == 13) {
-            var DiasTrab = $("#DiasTrab").val();
+            DiasTrab = $("#DiasTrab").val();
             if (isNaN(DiasTrab) || (DiasTrab == "")) {
                 toastr["error"](" Dato Debe Ser Numérico ", "Atención")
                 toastr.options = {
@@ -135,10 +139,9 @@ $(document).ready(function () {
             else { $("#CantHrsExt").focus();}                                
         }
     })
+
     //Calculos de la Liquidacion de Sueldo
-
-
-    //Calcula Las Horas Extras
+    
     $("#CantHrsExt").on('keyup', function (e) {
         var keycode = e.keyCode || e.which;
         if (keycode == 13) {
@@ -157,6 +160,7 @@ $(document).ready(function () {
                 return false;
             }
             else {
+                //Calcula Las Horas Extras
                 if (CantHrsExt <= "40") {
                     //horas Extras
                     var factor1 = 0.2333333 / 45; // 45 es la jornada semanal
@@ -207,11 +211,11 @@ $(document).ready(function () {
             }
             else {
                 SuelBase = $("#SueldBas").val();
-                PorcCom = ((SuelBase * PorcCom) / 100);
+                ValCom = ((SuelBase * PorcCom) / 100);
                 // lo convierte a entero
-                PorcCom = PorcCom | 0;
+                ValCom = PorcCom | 0;
                 //muestra el Valor de la comision.
-                $("#ValorCom").val(new Intl.NumberFormat("de-DE").format(PorcCom));
+                $("#ValorCom").val(new Intl.NumberFormat("de-DE").format(ValCom));
                 $("#Bonos").focus();
             }
         }
@@ -238,7 +242,6 @@ $(document).ready(function () {
                 var Ganancias = (parseInt(SuelBase) + parseInt(PorcCom) + parseInt(TotHrsExt) + parseInt(Bonos));
 
                 var SuelDevengado = ((Ganancias * 25) / 100);
-                //SuelDevengado = SuelDevengado | 0;
 
                 var SueldMin = 320500;
 
@@ -249,18 +252,23 @@ $(document).ready(function () {
                 var TopeGratMensual = (Grat2 / 12);
 
                 if (SuelDevengado > TopeGratMensual) {
-                    $("#ValGrat").val(new Intl.NumberFormat("de-DE").format(TopeGratMensual));
 
+                    Gratificacion = TopeGratMensual;
+
+                    $("#ValGrat").val(new Intl.NumberFormat("de-DE").format(Gratificacion));
                 }
                 if (SuelDevengado < TopeGratMensual) {
-                    $("#ValGrat").val(new Intl.NumberFormat("de-DE").format(SuelDevengado));
+
+                    Gratificacion = SuelDevengado;
+
+                    $("#ValGrat").val(new Intl.NumberFormat("de-DE").format(Gratificacion));
                 }
                 valgrat = $("#ValGrat").val();
 
-                var TotHaberes = parseInt(Ganancias) + parseInt(valgrat);
+                TotImponible = parseInt(Ganancias) + parseInt(valgrat);
 
-                $("#TotImponible").val(new Intl.NumberFormat("de-DE").format(TotHaberes));
-
+                $("#TotImponible").val(new Intl.NumberFormat("de-DE").format(TotImponible));
+                $("#CpTotImponible").val(new Intl.NumberFormat("de-DE").format(TotImponible));
                 $("#ValMov").focus();
             }     
         }
@@ -371,8 +379,20 @@ $(document).ready(function () {
                 //SuelBase = $("#SueldBas").val();
                 MonSalud = ((SuelBase * PorcSalud) / 100);
                 $("#MontoSalud").val(new Intl.NumberFormat("de-DE").format(MonSalud));
+
+                TotDescPrev = (MontAfp + MontSalud + ValorCesantia);
+
+                $("#CPTotDescPrev").val(new Intl.NumberFormat("de-DE").format(TotDescPrev));
+
+                $("#CPTotDescPrev2").val(new Intl.NumberFormat("de-DE").format(TotDescPrev));
             })
     })
+
+
+
+
+    
+
 
     // grabar datos 
     $("#BtnGrabLiqSueld").click(function (event) {

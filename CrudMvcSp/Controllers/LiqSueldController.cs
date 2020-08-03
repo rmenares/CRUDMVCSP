@@ -26,6 +26,7 @@ namespace CrudMvcSp.Controllers
         EmpleadosEntities ManAfp = new EmpleadosEntities();
         EmpleadosEntities ManSalud = new EmpleadosEntities();
         EmpleadosEntities Cesantia = new EmpleadosEntities();
+        EmpleadosEntities Imptos = new EmpleadosEntities();
         #endregion
 
         // GET: LiqSueld
@@ -94,7 +95,6 @@ namespace CrudMvcSp.Controllers
         #endregion
 
         #region Busca_Val_Seg_Cesantia
-
         public ActionResult BuscaValSegCes(Seg_Cesantia seg_Cesantia)
         {
             using (Cesantia = new EmpleadosEntities())
@@ -103,6 +103,20 @@ namespace CrudMvcSp.Controllers
                 return Json(ValSegCes);
             }
         }
+        #endregion
+
+        #region buscaTablaImpto
+        public ActionResult BuscImpto(SP_BusRangImpxSueldo_Result ImptoMen)
+        {
+            using (Imptos = new EmpleadosEntities())
+            {
+                var TablImpto = Imptos.SP_BusRangImpxSueldo(ImptoMen.Desde).ToList();
+                return Json(TablImpto);
+
+            }
+
+        }
+
         #endregion
     }
 }

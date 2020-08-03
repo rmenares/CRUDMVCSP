@@ -1,10 +1,19 @@
 ﻿
 var RutEmple, TipContrat, DiasTrab
+
+//Imponibles
 var SuelBase, PorcCom, CantHrsExt, totHrsExt, PorcCom, ValCom, Bonos, Gratificacion, TotImponible;
-var ValMovi, ValColac, ValViat, TotHaberes;
+
+//Desc Previsionales
 var cod_afp, CodigoAfp, NomAfp, PorcAfp, MontAfp;
-var csalud, CodSalud, NomSalud, PorcSalud, MonSalud;
-var ValorCesantia, TotDescPrev;
+var csalud, CodSalud, NomSalud, PorcSalud, MonSalud, TotDescPrev;
+
+// Impuestos
+var ImptoDesde, ImptoHasta, ImptoFactor, ImptoCantAReb, ImptoTasaImpto, ImptoAPagar ; 
+
+//Haberes
+var ValMovi, ValColac, ValViat, ValorCesantia, TotHaberes;
+// Otros Descuentos
 var DesctoTrab;
 
 $(document).ready(function () {    
@@ -141,7 +150,6 @@ $(document).ready(function () {
     })
 
     //Calculos de la Liquidacion de Sueldo
-    
     $("#CantHrsExt").on('keyup', function (e) {
         var keycode = e.keyCode || e.which;
         if (keycode == 13) {
@@ -212,8 +220,6 @@ $(document).ready(function () {
             else {
                 SuelBase = $("#SueldBas").val();
                 ValCom = ((SuelBase * PorcCom) / 100);
-                // lo convierte a entero
-                ValCom = PorcCom | 0;
                 //muestra el Valor de la comision.
                 $("#ValorCom").val(new Intl.NumberFormat("de-DE").format(ValCom));
                 $("#Bonos").focus();
@@ -240,17 +246,11 @@ $(document).ready(function () {
             else {
                 // Calculo de la Gratificación
                 var Ganancias = (parseInt(SuelBase) + parseInt(PorcCom) + parseInt(TotHrsExt) + parseInt(Bonos));
-
                 var SuelDevengado = ((Ganancias * 25) / 100);
-
                 var SueldMin = 320500;
-
                 var GratMensual = ((SueldMin * 4.75) / 12);
-
                 var Grat2 = (GratMensual * 4.75);
-
                 var TopeGratMensual = (Grat2 / 12);
-
                 if (SuelDevengado > TopeGratMensual) {
 
                     Gratificacion = TopeGratMensual;
@@ -264,11 +264,33 @@ $(document).ready(function () {
                     $("#ValGrat").val(new Intl.NumberFormat("de-DE").format(Gratificacion));
                 }
                 valgrat = $("#ValGrat").val();
+                //fin calculo de la gratificacion
 
+                //calculo de la Remuneracion Imponible
                 TotImponible = parseInt(Ganancias) + parseInt(valgrat);
-
                 $("#TotImponible").val(new Intl.NumberFormat("de-DE").format(TotImponible));
                 $("#CpTotImponible").val(new Intl.NumberFormat("de-DE").format(TotImponible));
+
+                //Calculo de Impuestos
+                SuelBase = $("#SueldBas").val();
+                var data = { Desde: SuelBase };
+                var url = "/LiqSueld/BuscImpto";
+                $.post(url, data)
+                    .done(function (data) {
+                        var DatosDevImptos = data[0];
+                        ImptoDesde     = DatosDevImptos["Desde"];
+                        ImptoHasta     = DatosDevImptos["Hasta"];
+                        ImptoFactor    = DatosDevImptos["Factor"];
+                        ImptoCantAReb  = DatosDevImptos["CantAReb"];
+                        ImptoTasaImpto = DatosDevImptos["TasaImpEfec"];     
+
+                        $("#TotImp").val((SuelBase * ImptoFactor))
+                        $("#RebaImpto").val(ImptoCantAReb);
+                        ImptoAPagar = ((SuelBase * ImptoFactor) - ImptoCantAReb);
+                        $("#ImpAPagar").val(new Intl.NumberFormat("de-DE").format(ImptoAPagar));
+
+                    })
+
                 $("#ValMov").focus();
             }     
         }
@@ -340,7 +362,7 @@ $(document).ready(function () {
                 $("#ValViatico").val(new Intl.NumberFormat("de-DE").format(ValViat));
                 $("#AfpSelec").focus();
             }
-            var TotHaberes = ( parseInt(ValMovi)  + parseInt(ValColac)  + parseInt(ValViat)  );
+            var TotHaberes = (parseInt(ValMovi) + parseInt(ValColac) + parseInt(ValViat) + TotImponible );
             $("#TotHaber").val(new Intl.NumberFormat("de-DE").format(TotHaberes));
             $("#AfpSelec").focus();
         }

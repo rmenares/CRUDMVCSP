@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="EmpleadosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="EmpleadosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Afp">
           <Key>
             <PropertyRef Name="Cod_Afp" />
@@ -858,7 +858,8 @@
             <End Role="Empleados" EntitySet="Empleados" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="EmpleadosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1431,6 +1432,9 @@
             <Parameter Name="User_Id" Mode="In" Type="String" />
             <Parameter Name="clave" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="SP_BusRangImpxSueldo" ReturnType="Collection(EmpleadosModel.SP_BusRangImpxSueldo_Result)">
+            <Parameter Name="sb" Mode="In" Type="Decimal" />
+          </FunctionImport>
           <FunctionImport Name="sp_creatediagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
@@ -1438,10 +1442,10 @@
             <Parameter Name="definition" Mode="In" Type="Binary" />
           </FunctionImport>
           <FunctionImport Name="Sp_Del_Carga_Familiar">
-          <Parameter Name="rut_benf" Mode="In" Type="String" />
+            <Parameter Name="rut_benf" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Sp_Del_Empleados">
-          <Parameter Name="Rut_Empl" Mode="In" Type="String" />
+            <Parameter Name="Rut_Empl" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_dropdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
@@ -1479,10 +1483,10 @@
             <Parameter Name="Desc" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Sp_Ins_Cargos">
-          <Parameter Name="Descr" Mode="In" Type="String" />
+            <Parameter Name="Descr" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Sp_Ins_Depto">
-          <Parameter Name="NomDepto" Mode="In" Type="String" />
+            <Parameter Name="NomDepto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Sp_Ins_Empleados">
             <Parameter Name="Rut_Empleado" Mode="In" Type="String" />
@@ -1556,7 +1560,7 @@
             <Parameter Name="Total_Pagar" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="Sp_Ins_Nacionalidad">
-          <Parameter Name="Descr" Mode="In" Type="String" />
+            <Parameter Name="Descr" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Sp_Ins_Salud">
             <Parameter Name="Nomb_Salud" Mode="In" Type="String" />
@@ -1564,21 +1568,21 @@
           </FunctionImport>
           <FunctionImport Name="Sp_Mues_Afp" ReturnType="Collection(EmpleadosModel.Sp_Mues_Afp_Result)" />
           <FunctionImport Name="Sp_Mues_Afp_ID" ReturnType="Collection(EmpleadosModel.Sp_Mues_Afp_ID_Result)">
-          <Parameter Name="idAFP" Mode="In" Type="Int32" />
+            <Parameter Name="idAFP" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Sp_Mues_CargFam" ReturnType="Collection(EmpleadosModel.Sp_Mues_CargFam_Result)" />
           <FunctionImport Name="Sp_Mues_Comunas" ReturnType="Collection(EmpleadosModel.Sp_Mues_Comunas_Result)" />
           <FunctionImport Name="Sp_Mues_Cuidades" ReturnType="Collection(EmpleadosModel.Sp_Mues_Cuidades_Result)" />
           <FunctionImport Name="SP_Mues_Empleado" ReturnType="Collection(EmpleadosModel.SP_Mues_Empleado_Result)" />
           <FunctionImport Name="SP_Mues_Empleado_PDF" ReturnType="Collection(EmpleadosModel.SP_Mues_Empleado_PDF_Result)">
-          <Parameter Name="Rut_Emp" Mode="In" Type="String" />
+            <Parameter Name="Rut_Emp" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Sp_Mues_Empresas" ReturnType="Collection(EmpleadosModel.Sp_Mues_Empresas_Result)" />
           <FunctionImport Name="SP_Mues_liqSueldo" ReturnType="Collection(EmpleadosModel.SP_Mues_liqSueldo_Result)" />
           <FunctionImport Name="Sp_Mues_Nacionalidad" ReturnType="Collection(EmpleadosModel.Sp_Mues_Nacionalidad_Result)" />
           <FunctionImport Name="Sp_Mues_Salud" ReturnType="Collection(EmpleadosModel.Sp_Mues_Salud_Result)" />
           <FunctionImport Name="Sp_Mues_Salud_ID" ReturnType="Collection(EmpleadosModel.Sp_Mues_Salud_ID_Result)">
-          <Parameter Name="idsal" Mode="In" Type="Int32" />
+            <Parameter Name="idsal" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Sp_Mues_Seg_Cesantia" ReturnType="Collection(EmpleadosModel.Sp_Mues_Seg_Cesantia_Result)" />
           <FunctionImport Name="Sp_Mues_TipRem" ReturnType="Collection(EmpleadosModel.Sp_Mues_TipRem_Result)" />
@@ -1593,35 +1597,35 @@
             <Parameter Name="PorcDesc" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="Sp_Sel_Carg_FamXRutEmpl" ReturnType="Collection(EmpleadosModel.Sp_Sel_Carg_FamXRutEmpl_Result)">
-          <Parameter Name="Rut_Empl" Mode="In" Type="String" />
+            <Parameter Name="Rut_Empl" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Sp_Sel_CargFamxRut" ReturnType="Collection(EmpleadosModel.Sp_Sel_CargFamxRut_Result)">
-          <Parameter Name="Rut_Benef" Mode="In" Type="String" />
+            <Parameter Name="Rut_Benef" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Sp_Sel_Cargos" ReturnType="Collection(EmpleadosModel.Sp_Sel_Cargos_Result)">
-          <Parameter Name="Id_Tipo" Mode="In" Type="Int32" />
+            <Parameter Name="Id_Tipo" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Sp_Sel_CiudadesxComu" ReturnType="Collection(EmpleadosModel.Sp_Sel_CiudadesxComu_Result)">
-          <Parameter Name="Cod_Comu" Mode="In" Type="Int32" />
+            <Parameter Name="Cod_Comu" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_Sel_Depto" ReturnType="Collection(String)">
-          <Parameter Name="idd" Mode="In" Type="Int32" />
+            <Parameter Name="idd" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Sp_Sel_Empleado" ReturnType="Collection(EmpleadosModel.Sp_Sel_Empleado_Result)">
-          <Parameter Name="Rut_Emp" Mode="In" Type="String" />
+            <Parameter Name="Rut_Emp" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Sp_Sel_Empresas" ReturnType="Collection(EmpleadosModel.Sp_Sel_Empresas_Result)">
-          <Parameter Name="Rut_Empresa" Mode="In" Type="String" />
+            <Parameter Name="Rut_Empresa" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SP_Sel_liqSueldoXId" ReturnType="Collection(EmpleadosModel.SP_Sel_liqSueldoXId_Result)">
-          <Parameter Name="id_Liq" Mode="In" Type="Int32" />
+            <Parameter Name="id_Liq" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_Sel_liqSueldoXRutMes" ReturnType="Collection(EmpleadosModel.SP_Sel_liqSueldoXRutMes_Result)">
             <Parameter Name="FechLiq" Mode="In" Type="String" />
             <Parameter Name="Rut_Emp" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Sp_Sel_Nacionalidad" ReturnType="Collection(EmpleadosModel.Sp_Sel_Nacionalidad_Result)">
-          <Parameter Name="id_Nac" Mode="In" Type="Int32" />
+            <Parameter Name="id_Nac" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Sp_Sel_Salud" ReturnType="Collection(EmpleadosModel.Sp_Sel_Salud_Result)">
             <Parameter Name="Cod_Salud" Mode="In" Type="Int32" />
@@ -1629,7 +1633,7 @@
             <Parameter Name="Porc_Cotiz" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="Sp_Sel_Seg_Cesantia_Id" ReturnType="Collection(EmpleadosModel.Sp_Sel_Seg_Cesantia_Id_Result)">
-          <Parameter Name="idtipcon" Mode="In" Type="Int32" />
+            <Parameter Name="idtipcon" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Sp_UPD_Afp">
             <Parameter Name="Cod_Afp" Mode="In" Type="Int32" />
@@ -1742,13 +1746,17 @@
             <Parameter Name="Porc_Cotiz" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
-          <FunctionImport Name="SP_BusRangImpxSueldo" ReturnType="Collection(EmpleadosModel.SP_BusRangImpxSueldo_Result)">
-            <Parameter Name="sb" Mode="In" Type="Decimal" />
-          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="SP_Autoriza_Result">
           <Property Type="String" Name="User_Id" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="PassWord" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SP_BusRangImpxSueldo_Result">
+          <Property Type="Decimal" Name="Desde" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Hasta" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Factor" Nullable="true" Precision="18" Scale="3" />
+          <Property Type="Decimal" Name="CantAReb" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="TasaImpEfec" Nullable="true" Precision="18" Scale="2" />
         </ComplexType>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -2075,14 +2083,6 @@
           <Property Type="Decimal" Name="Monto_Empleador" Nullable="false" Precision="9" Scale="2" />
           <Property Type="Decimal" Name="Monto_Trabajador" Nullable="true" Precision="9" Scale="2" />
         </ComplexType>
-        <ComplexType Name="SP_BusRangImpxSueldo_Result">
-          <Property Type="Int32" Name="Id_Factor_Mensual" Nullable="false" />
-          <Property Type="Decimal" Name="Desde" Nullable="true" Precision="18" Scale="2" />
-          <Property Type="Decimal" Name="Hasta" Nullable="true" Precision="18" Scale="2" />
-          <Property Type="Decimal" Name="Factor" Nullable="true" Precision="18" Scale="3" />
-          <Property Type="Decimal" Name="CantAReb" Nullable="true" Precision="18" Scale="2" />
-          <Property Type="Decimal" Name="TasaImpEfec" Nullable="true" Precision="18" Scale="2" />
-        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2365,6 +2365,17 @@
               <ComplexTypeMapping TypeName="EmpleadosModel.SP_Autoriza_Result">
                 <ScalarProperty Name="User_Id" ColumnName="User_Id" />
                 <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_BusRangImpxSueldo" FunctionName="EmpleadosModel.Store.SP_BusRangImpxSueldo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EmpleadosModel.SP_BusRangImpxSueldo_Result">
+                <ScalarProperty Name="Desde" ColumnName="Desde" />
+                <ScalarProperty Name="Hasta" ColumnName="Hasta" />
+                <ScalarProperty Name="Factor" ColumnName="Factor" />
+                <ScalarProperty Name="CantAReb" ColumnName="CantAReb" />
+                <ScalarProperty Name="TasaImpEfec" ColumnName="TasaImpEfec" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -2830,18 +2841,6 @@
           <FunctionImportMapping FunctionImportName="Sp_UPD_Nacionalidad" FunctionName="EmpleadosModel.Store.Sp_UPD_Nacionalidad" />
           <FunctionImportMapping FunctionImportName="Sp_UPD_Salud" FunctionName="EmpleadosModel.Store.Sp_UPD_Salud" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="EmpleadosModel.Store.sp_upgraddiagrams" />
-          <FunctionImportMapping FunctionImportName="SP_BusRangImpxSueldo" FunctionName="EmpleadosModel.Store.SP_BusRangImpxSueldo">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="EmpleadosModel.SP_BusRangImpxSueldo_Result">
-                <ScalarProperty Name="Id_Factor_Mensual" ColumnName="Id_Factor_Mensual" />
-                <ScalarProperty Name="Desde" ColumnName="Desde" />
-                <ScalarProperty Name="Hasta" ColumnName="Hasta" />
-                <ScalarProperty Name="Factor" ColumnName="Factor" />
-                <ScalarProperty Name="CantAReb" ColumnName="CantAReb" />
-                <ScalarProperty Name="TasaImpEfec" ColumnName="TasaImpEfec" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -221,7 +221,7 @@
                             </tr>
                             <tr>
                                 <td align="center" colspan="6" bgcolor="cac5c4">TOTAL REMUNERACION IMPONIBLE</td>
-                                <td align="center" colspan="6" bgcolor="cac5c4"><input type="text" Id="TotImponible" disabled /> </td>
+                                <td align="center" colspan="6" bgcolor="cac5c4"><input type="text" Id="TotImponible" disabled style="text-align:right;" /> </td>
                             </tr>
                             <tr>
                                 <td align="center">Movilización</td>
@@ -251,7 +251,7 @@
                                 <td></td>
                                 <td align="center">Monto AFP</td>
                                 <td></td>
-                                <td align="center"><input type="text" id="MontoAfp" style="text-align:right;" /></td>
+                                <td align="center"><input type="text" id="MontoAfp" style="text-align:right;" disabled/></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -265,7 +265,7 @@
                                 <td></td>
                                 <td align="center">Monto Salud</td>
                                 <td></td>
-                                <td align="center"><input type="text" id="MontoSalud" style="text-align:right;" /></td>
+                                <td align="center"><input type="text" id="MontoSalud" style="text-align:right;" disabled /></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -275,7 +275,7 @@
                             <tr>
                                 <td align="center">Valor Seguro Cesantía</td>
                                 <td></td>
-                                <td align="center"><input type="text" id="ValCesantia" style="text-align:right;" /></td>
+                                <td align="center"><input type="text" id="ValCesantia" style="text-align:right;" disabled/></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -347,6 +347,7 @@
             </div>
             <!-- Modal footer -->
             <div class="modal-footer">
+                @*<button class="btn btn-info" id="BtnCalculos" value="Calcular LLiquidación"><i class="fa fa-calculator"></i> Calcular Liquidación</button>*@
                 <button class="btn btn-success" id="BtnGrabLiqSueld" value="Grabar"><i class="fa fa-download"></i> Grabar</button>
                 <button type="button" class="btn btn-danger" id="Cerrar" data-dismiss="modal">Cerrar</button>
             </div>

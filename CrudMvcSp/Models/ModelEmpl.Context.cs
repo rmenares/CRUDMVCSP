@@ -83,6 +83,15 @@ namespace CrudMvcSp.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_Autoriza_Result>("SP_Autoriza", user_IdParameter, claveParameter);
         }
     
+        public virtual ObjectResult<SP_BusRangImpxSueldo_Result> SP_BusRangImpxSueldo(Nullable<decimal> sb)
+        {
+            var sbParameter = sb.HasValue ?
+                new ObjectParameter("sb", sb) :
+                new ObjectParameter("sb", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_BusRangImpxSueldo_Result>("SP_BusRangImpxSueldo", sbParameter);
+        }
+    
         public virtual int sp_creatediagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {
             var diagramnameParameter = diagramname != null ?
@@ -1214,15 +1223,6 @@ namespace CrudMvcSp.Models
         public virtual int sp_upgraddiagrams()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
-        }
-    
-        public virtual ObjectResult<SP_BusRangImpxSueldo_Result> SP_BusRangImpxSueldo(Nullable<decimal> sb)
-        {
-            var sbParameter = sb.HasValue ?
-                new ObjectParameter("sb", sb) :
-                new ObjectParameter("sb", typeof(decimal));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_BusRangImpxSueldo_Result>("SP_BusRangImpxSueldo", sbParameter);
         }
     }
 }

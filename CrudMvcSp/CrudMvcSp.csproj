@@ -163,172 +163,172 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Afp.cs">
-      <DependentUpon>ModelEmp.tt</DependentUpon>
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Cargas_Familiares.cs">
-      <DependentUpon>ModelEmp.tt</DependentUpon>
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Cargos.cs">
-      <DependentUpon>ModelEmp.tt</DependentUpon>
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Carg_Familiar.cs">
-      <DependentUpon>ModelEmp.tt</DependentUpon>
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Comuna.cs">
-      <DependentUpon>ModelEmp.tt</DependentUpon>
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Departamento.cs">
-      <DependentUpon>ModelEmp.tt</DependentUpon>
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Empleados.cs">
-      <DependentUpon>ModelEmp.tt</DependentUpon>
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Empresa.cs">
-      <DependentUpon>ModelEmp.tt</DependentUpon>
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Liquidacion_Sueldo.cs">
-      <DependentUpon>ModelEmp.tt</DependentUpon>
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Login.cs">
-      <DependentUpon>ModelEmp.tt</DependentUpon>
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ModelEmp.Context.cs">
+    <Compile Include="Models\ModelEmpl.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelEmp.Context.tt</DependentUpon>
+      <DependentUpon>ModelEmpl.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ModelEmp.cs">
+    <Compile Include="Models\ModelEmpl.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelEmp.tt</DependentUpon>
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ModelEmp.Designer.cs">
+    <Compile Include="Models\ModelEmpl.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelEmp.edmx</DependentUpon>
+      <DependentUpon>ModelEmpl.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Nacionalidad.cs">
-      <DependentUpon>ModelEmp.tt</DependentUpon>
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Provincia.cs">
-      <DependentUpon>ModelEmp.tt</DependentUpon>
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Region.cs">
-      <DependentUpon>ModelEmp.tt</DependentUpon>
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Salud.cs">
-      <DependentUpon>ModelEmp.tt</DependentUpon>
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Seg_Cesantia.cs">
-      <DependentUpon>ModelEmp.tt</DependentUpon>
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sexo.cs">
-      <DependentUpon>ModelEmp.tt</DependentUpon>
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SP_Autoriza_Result.cs">
-      <DependentUpon>ModelEmp.tt</DependentUpon>
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SP_BusRangImpxSueldo_Result.cs">
-      <DependentUpon>ModelEmp.tt</DependentUpon>
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>ModelEmp.tt</DependentUpon>
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_helpdiagrams_Result.cs">
-      <DependentUpon>ModelEmp.tt</DependentUpon>
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sp_Mues_Afp_ID_Result.cs">
-      <DependentUpon>ModelEmp.tt</DependentUpon>
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sp_Mues_Afp_Result.cs">
-      <DependentUpon>ModelEmp.tt</DependentUpon>
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sp_Mues_CargFam_Result.cs">
-      <DependentUpon>ModelEmp.tt</DependentUpon>
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sp_Mues_Comunas_Result.cs">
-      <DependentUpon>ModelEmp.tt</DependentUpon>
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sp_Mues_Cuidades_Result.cs">
-      <DependentUpon>ModelEmp.tt</DependentUpon>
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SP_Mues_Empleado_PDF_Result.cs">
-      <DependentUpon>ModelEmp.tt</DependentUpon>
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SP_Mues_Empleado_Result.cs">
-      <DependentUpon>ModelEmp.tt</DependentUpon>
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sp_Mues_Empresas_Result.cs">
-      <DependentUpon>ModelEmp.tt</DependentUpon>
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SP_Mues_liqSueldo_Result.cs">
-      <DependentUpon>ModelEmp.tt</DependentUpon>
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sp_Mues_Nacionalidad_Result.cs">
-      <DependentUpon>ModelEmp.tt</DependentUpon>
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sp_Mues_Salud_ID_Result.cs">
-      <DependentUpon>ModelEmp.tt</DependentUpon>
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sp_Mues_Salud_Result.cs">
-      <DependentUpon>ModelEmp.tt</DependentUpon>
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sp_Mues_Seg_Cesantia_Result.cs">
-      <DependentUpon>ModelEmp.tt</DependentUpon>
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sp_Mues_TipRem_Result.cs">
-      <DependentUpon>ModelEmp.tt</DependentUpon>
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sp_Sel_Afp_Result.cs">
-      <DependentUpon>ModelEmp.tt</DependentUpon>
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sp_Sel_CargFamxRut_Result.cs">
-      <DependentUpon>ModelEmp.tt</DependentUpon>
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sp_Sel_Cargos_Result.cs">
-      <DependentUpon>ModelEmp.tt</DependentUpon>
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sp_Sel_Carg_FamXRutEmpl_Result.cs">
-      <DependentUpon>ModelEmp.tt</DependentUpon>
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sp_Sel_CiudadesxComu_Result.cs">
-      <DependentUpon>ModelEmp.tt</DependentUpon>
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sp_Sel_Empleado_Result.cs">
-      <DependentUpon>ModelEmp.tt</DependentUpon>
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sp_Sel_Empresas_Result.cs">
-      <DependentUpon>ModelEmp.tt</DependentUpon>
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SP_Sel_liqSueldoXId_Result.cs">
-      <DependentUpon>ModelEmp.tt</DependentUpon>
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SP_Sel_liqSueldoXRutMes_Result.cs">
-      <DependentUpon>ModelEmp.tt</DependentUpon>
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sp_Sel_Nacionalidad_Result.cs">
-      <DependentUpon>ModelEmp.tt</DependentUpon>
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sp_Sel_Salud_Result.cs">
-      <DependentUpon>ModelEmp.tt</DependentUpon>
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sp_Sel_Seg_Cesantia_Id_Result.cs">
-      <DependentUpon>ModelEmp.tt</DependentUpon>
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TablImpDiario.cs">
-      <DependentUpon>ModelEmp.tt</DependentUpon>
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TablImpMensual.cs">
-      <DependentUpon>ModelEmp.tt</DependentUpon>
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TablImpQuincenal.cs">
-      <DependentUpon>ModelEmp.tt</DependentUpon>
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TablImpSemanal.cs">
-      <DependentUpon>ModelEmp.tt</DependentUpon>
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Tipo_Remuneracion.cs">
-      <DependentUpon>ModelEmp.tt</DependentUpon>
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -416,15 +416,15 @@
     <Content Include="Imagenes\ok.gif" />
     <Content Include="Content\toastr.less" />
     <Content Include="Content\toastr.scss" />
-    <Content Include="Models\ModelEmp.Context.tt">
+    <Content Include="Models\ModelEmpl.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelEmp.edmx</DependentUpon>
-      <LastGenOutput>ModelEmp.Context.cs</LastGenOutput>
+      <DependentUpon>ModelEmpl.edmx</DependentUpon>
+      <LastGenOutput>ModelEmpl.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\ModelEmp.tt">
+    <Content Include="Models\ModelEmpl.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelEmp.edmx</DependentUpon>
-      <LastGenOutput>ModelEmp.cs</LastGenOutput>
+      <DependentUpon>ModelEmpl.edmx</DependentUpon>
+      <LastGenOutput>ModelEmpl.cs</LastGenOutput>
     </Content>
     <Content Include="Reportes\FichaEmpleado.docx" />
     <Content Include="Scripts\Aplicacion\Afp\ManAfp.js" />
@@ -461,12 +461,12 @@
     <Content Include="webfonts\fa-brands-400.svg" />
     <Content Include="webfonts\fa-regular-400.svg" />
     <Content Include="webfonts\fa-solid-900.svg" />
-    <EntityDeploy Include="Models\ModelEmp.edmx">
+    <EntityDeploy Include="Models\ModelEmpl.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModelEmp.Designer.cs</LastGenOutput>
+      <LastGenOutput>ModelEmpl.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\ModelEmp.edmx.diagram">
-      <DependentUpon>ModelEmp.edmx</DependentUpon>
+    <Content Include="Models\ModelEmpl.edmx.diagram">
+      <DependentUpon>ModelEmpl.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.4.4-vsdoc.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />

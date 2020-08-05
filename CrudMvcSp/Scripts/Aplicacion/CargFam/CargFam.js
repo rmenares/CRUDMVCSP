@@ -62,7 +62,8 @@ $(document).ready(function () {
     });
     
     //captura el valor de dropdownList Comuna y entrega la ciudad
-    $("#ComuCargFam").dblclick(function (event) {
+
+    $("#ComuCargFam").change('click', function (event) {
         event.preventDefault();
         type: 'Post';
         ComuCgFm = $("#ComuCargFam").val();
@@ -76,7 +77,7 @@ $(document).ready(function () {
             })
     })
 
-    $("#ModComuCargFam").dblclick(function (event) {
+    $("#ModComuCargFam").change('click', function (event) {
         event.preventDefault();
         type: 'Post';
         ComuCgFm = $("#ModComuCargFam").val();
@@ -91,13 +92,13 @@ $(document).ready(function () {
     })
 
     //captura el Codigo de dropdownList Sexo Seleccionado
-    $("#SexoSelec").change(function (event) {
+    $("#SexoSelec").change('click', function (event) {
         event.preventDefault();
         SexoSelec = $("#SexoSelec").val();
     })
 
     //captura el Codigo de dropdownList Nacionalidad Seleccionado
-    $("#NacioSelec").change(function (event) {
+    $("#NacioSelec").change('click', function (event) {
         event.preventDefault();
         NacioSelec = $("#NacioSelec").val();
     })

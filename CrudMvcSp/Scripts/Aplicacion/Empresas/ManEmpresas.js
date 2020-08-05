@@ -168,7 +168,7 @@ $(document).ready(function () {
     })
 
     //captura el valor de dropdownList Comuna y entrega la ciudad
-    $("#ComuSelec").dblclick(function(event) {
+    $("#ComuSelec").change('click', function (event) {
         event.preventDefault();
         type: 'Post';
         ComuEmp = $("#ComuSelec").val();
@@ -182,7 +182,9 @@ $(document).ready(function () {
             })
     })
 
-    $("#ComuSelec2").dblclick(function (event) {
+
+
+    $("#ComuSelec2").change('click', function (event) {    
         event.preventDefault();
         type: 'Post';
         ComuEmp2 = $("#ComuSelec2").val();

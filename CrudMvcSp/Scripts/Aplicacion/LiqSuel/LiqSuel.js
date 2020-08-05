@@ -9,12 +9,17 @@ var cod_afp, CodigoAfp, NomAfp, PorcAfp, MontAfp;
 var csalud, CodSalud, NomSalud, PorcSalud, MonSalud, TotDescPrev;
 
 // Impuestos
-var ImptoDesde, ImptoHasta, ImptoFactor, ImptoCantAReb, ImptoTasaImpto, ImptoAPagar ; 
+var ImptoDesde, ImptoHasta, ImptoFactor, ImptoCantAReb, ImptoTasaImpto, ImptoAPagar, TotImpuesto; 
 
+//calcula el valor del Seguro de Cesantia
+var TipContrat, MontEmpl, MontTrab, sumcesa, ValorCesantia, Cotizacion;
+ 
 //Haberes
 var ValMovi, ValColac, ValViat, ValorCesantia, TotHaberes;
+
 // Otros Descuentos
-var DesctoTrab;
+var DesctoTrab, RemuNeta, ValPrestamos, ValOtDesc, TotOtDesc, Anticipos, Antcip, TotalPagar;
+var AlcLiq, TotPag;
 
 $(document).ready(function () {    
     $("#BtnNueLiqSueld").click(function (event) {
@@ -78,6 +83,31 @@ $(document).ready(function () {
             }
         }
     });
+
+    //Seleccciona el tipo de remuneracion y 
+    $("#ListTipRem").change('click', function (e) {
+        e.preventDefault();
+        //calcula el valor del Seguro de Cesantia
+        var tipRem = $("#ListTipRem").val();
+        var data = { Id_Tip_Contrato: tipRem };
+        var url = "/LiqSueld/BuscaValSegCes";
+        $.post(url, data)
+            .done(function (data) {
+                var DatosDev = data[0];
+                TipContrat = DatosDev["Tipo_Contrato"];
+                MontEmpl = DatosDev["Monto_Empleador"];
+                MontTrab = DatosDev["Monto_Trabajador"];
+
+                if ((TipContrat == "Plazo Fijo") || (TipContrat == "Plazo Indefinido Mayor"))
+                {
+                    Cotizacion = MontEmpl;
+                }
+                if (TipContrat == "Plazo Indefinido") {
+                    Cotizacion = MontTrab
+                }
+                $("#FechLiq").focus();
+            });
+    });
  
     //Ingresa o acepta la fecha de liquidación
     $("#FechLiq").on('keyup', function (e) {
@@ -107,22 +137,6 @@ $(document).ready(function () {
                 return false;
             }
             else {
-
-                //$("#SueldBas").val(new Intl.NumberFormat("de-DE").format(SuelBase));
-                //calcula el valor del Seguro de Cesantia
-                var tipRem = $("#ListTipRem").val();
-                var data = { Id_Tip_Contrato: tipRem };
-                var url = "/LiqSueld/BuscaValSegCes";
-                $.post(url, data)
-                    .done(function (data) {
-                        var DatosDev = data[0];
-                        TipContrat = DatosDev["Tipo_Contrato"];
-                        MontEmpl = DatosDev["Monto_Empleador"];
-                        MontTrab = DatosDev["Monto_Trabajador"];
-                        var sumcesa = (MontEmpl + MontTrab);
-                        ValorCesantia = ( (SuelBase * sumcesa) / 100);
-                        $("#ValCesantia").val(new Intl.NumberFormat("de-DE").format(ValorCesantia));
-                    });
                 $("#DiasTrab").focus();
             }
         }
@@ -178,9 +192,7 @@ $(document).ready(function () {
                     //precio de la hora Extra
                     ValorHrExt = TotFactores * SuelBase;
                     // saldo Total de las Horas Extras.
-                    TotHrsExt = (ValorHrExt * CantHrsExt);
-                    //convierte a entero
-                    TotHrsExt = TotHrsExt | 0;
+                    TotHrsExt = parseInt(ValorHrExt * CantHrsExt);
                     // muestra el valor a pagar por horas extras
                     $("#ValHrsExt").val(new Intl.NumberFormat("de-DE").format(TotHrsExt));
                     $("#PorcCom").focus();
@@ -219,7 +231,7 @@ $(document).ready(function () {
             }
             else {
                 SuelBase = $("#SueldBas").val();
-                ValCom = ((SuelBase * PorcCom) / 100);
+                ValCom = parseInt((SuelBase * PorcCom) / 100);
                 //muestra el Valor de la comision.
                 $("#ValorCom").val(new Intl.NumberFormat("de-DE").format(ValCom));
                 $("#Bonos").focus();
@@ -245,12 +257,14 @@ $(document).ready(function () {
             }
             else {
                 // Calculo de la Gratificación
-                var Ganancias = (parseInt(SuelBase) + parseInt(PorcCom) + parseInt(TotHrsExt) + parseInt(Bonos));
+                var Ganancias = (parseInt(SuelBase) + parseInt(ValCom) + parseInt(TotHrsExt) + parseInt(Bonos));
+
                 var SuelDevengado = ((Ganancias * 25) / 100);
                 var SueldMin = 320500;
                 var GratMensual = ((SueldMin * 4.75) / 12);
                 var Grat2 = (GratMensual * 4.75);
-                var TopeGratMensual = (Grat2 / 12);
+                var TopeGratMensual = parseInt(Grat2 / 12);
+
                 if (SuelDevengado > TopeGratMensual) {
 
                     Gratificacion = TopeGratMensual;
@@ -267,7 +281,13 @@ $(document).ready(function () {
                 //fin calculo de la gratificacion
 
                 //calculo de la Remuneracion Imponible
-                TotImponible = parseInt(Ganancias) + parseInt(valgrat);
+                TotImponible = parseInt(Ganancias) + parseInt(Gratificacion);
+
+                //calculo del valor del seguro de cesantia
+                ValorCesantia = parseInt((TotImponible * Cotizacion) / 100);
+
+                $("#ValCesantia").val(new Intl.NumberFormat("de-DE").format(ValorCesantia));
+
                 $("#TotImponible").val(new Intl.NumberFormat("de-DE").format(TotImponible));
                 $("#CpTotImponible").val(new Intl.NumberFormat("de-DE").format(TotImponible));
 
@@ -282,15 +302,19 @@ $(document).ready(function () {
                         ImptoHasta     = DatosDevImptos["Hasta"];
                         ImptoFactor    = DatosDevImptos["Factor"];
                         ImptoCantAReb  = DatosDevImptos["CantAReb"];
-                        ImptoTasaImpto = DatosDevImptos["TasaImpEfec"];     
+                        ImptoTasaImpto = DatosDevImptos["TasaImpEfec"];
 
-                        $("#TotImp").val((SuelBase * ImptoFactor))
+                        TotImpuesto = parseInt(SuelBase * ImptoFactor)
+
+                        $("#TotImp").val(new Intl.NumberFormat("de-DE").format(TotImpuesto));
+
                         $("#RebaImpto").val(ImptoCantAReb);
-                        ImptoAPagar = ((SuelBase * ImptoFactor) - ImptoCantAReb);
+
+                        ImptoAPagar = ( parseInt(SuelBase * ImptoFactor) - ImptoCantAReb);
+
                         $("#ImpAPagar").val(new Intl.NumberFormat("de-DE").format(ImptoAPagar));
 
                     })
-
                 $("#ValMov").focus();
             }     
         }
@@ -362,13 +386,13 @@ $(document).ready(function () {
                 $("#ValViatico").val(new Intl.NumberFormat("de-DE").format(ValViat));
                 $("#AfpSelec").focus();
             }
-            var TotHaberes = (parseInt(ValMovi) + parseInt(ValColac) + parseInt(ValViat) + TotImponible );
+            TotHaberes = (parseInt(ValMovi) + parseInt(ValColac) + parseInt(ValViat) + TotImponible );
             $("#TotHaber").val(new Intl.NumberFormat("de-DE").format(TotHaberes));
             $("#AfpSelec").focus();
         }
     })
     
-    $("#AfpSelec").dblclick(function (e) {
+    $("#AfpSelec").change('click', function (e) {
         e.preventDefault();
         cod_afp = $("#AfpSelec").val();
         var data = { Cod_Afp: cod_afp };
@@ -380,14 +404,13 @@ $(document).ready(function () {
                 NomAfp = DatosDevAfp["Nom_Afp"];
                 PorcAfp = DatosDevAfp["Porc_Desc"];
                 //SuelBase = $("#SueldBas").val();
-                MontAfp = ((SuelBase * PorcAfp) / 100);
-                //MontAfp = MontAfp | 0;
+                MontAfp = parseInt((SuelBase * PorcAfp) / 100);
                 $("#MontoAfp").val(new Intl.NumberFormat("de-DE").format(MontAfp));
             });
         $("#SalSelec").focus();
     });
 
-    $("#SalSelec").dblclick(function (e) {
+    $("#SalSelec").change('click', function (e) {    
         e.preventDefault();
         csalud = $("#SalSelec").val();
         var data = { Cod_Salud: csalud };       
@@ -398,24 +421,74 @@ $(document).ready(function () {
                 CodSalud = DatosDevSal["Cod_Salud"];
                 NomSalud = DatosDevSal["Nombre_Salud"];
                 PorcSalud = DatosDevSal["Porc_Cotiz"];
-                //SuelBase = $("#SueldBas").val();
-                MonSalud = ((SuelBase * PorcSalud) / 100);
+
+                MonSalud = parseInt((SuelBase * PorcSalud) / 100);
+
                 $("#MontoSalud").val(new Intl.NumberFormat("de-DE").format(MonSalud));
 
-                TotDescPrev = (MontAfp + MontSalud + ValorCesantia);
-
+                // totales prevsionales
+                TotDescPrev = ( parseInt(MontAfp) + parseInt(MonSalud) + parseInt(ValorCesantia));
+                $("#TotDescPrev").val(new Intl.NumberFormat("de-DE").format(TotDescPrev)  );
                 $("#CPTotDescPrev").val(new Intl.NumberFormat("de-DE").format(TotDescPrev));
+                RemuNeta = TotImponible - TotDescPrev; 
+                $("#RemNeta").val(new Intl.NumberFormat("de-DE").format(RemuNeta));
 
-                $("#CPTotDescPrev2").val(new Intl.NumberFormat("de-DE").format(TotDescPrev));
             })
     })
 
 
+    $("#ValPrestmos").on('keyup', function (e) {
+        e.preventDefault();
+        var keycode = e.keyCode || e.which;
+        if (keycode == 13) {
+            ValPrestamos = $("#ValPrestmos").val();
+            if (ValPrestamos == "") {
+                ValPrestamos = 0;
+                $("#OtDesc").focus();
+            }
+            $("#OtDesc").focus();
+        }
+    })
 
+    $("#OtDesc").on('keyup', function (e) {
+        e.preventDefault();
+        var keycode = e.keyCode || e.which;
+        if (keycode == 13) {
+            ValOtDesc = $("#OtDesc").val();
+            if (ValOtDesc == "") {
+                ValOtDesc = 0;
+            }
+            else {
 
-    
+                TotOtDesc = parseInt(ValPrestamos + ValOtDesc);
 
+                $("#TotDesc").val(new Intl.NumberFormat("de-DE").format(TotOtDesc));
 
+                $("#Anticipos").focus();
+            }            
+        }
+    })
+
+    $("#Anticipos").on('keyup', function (e) {
+        e.preventDefault();
+        var keycode = e.keyCode || e.which;
+        if (keycode == 13) {
+            Antcip = $("#Anticipos").val();
+            if (Antcip == "") {
+                Antcip = 0;
+            }
+            else {
+                //Saldo Finales
+                AlcLiq = (TotHaberes - TotOtDesc);
+
+                TotPag = (AlcLiq - Antcip);
+
+                $("#TotPagar").val(new Intl.NumberFormat("de-DE").format(TotPag));
+            }
+        }
+    })
+            
+         
     // grabar datos 
     $("#BtnGrabLiqSueld").click(function (event) {
         RutEmp = $("#RutEmp").val();

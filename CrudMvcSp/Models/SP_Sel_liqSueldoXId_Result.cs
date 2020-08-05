@@ -46,6 +46,7 @@ namespace CrudMvcSp.Models
         public decimal Prestamos { get; set; }
         public decimal TotalDesctos { get; set; }
         public decimal Otrs_Descuentos { get; set; }
+        public decimal Anticipos { get; set; }
         public decimal Total_Pagar { get; set; }
     }
 }

@@ -95,6 +95,7 @@
                         //grid.Column("Prestamos","Prestamos"),
                         grid.Column("TotalDesctos","Total Desctos."),
                         grid.Column("Otrs_Descuentos","Otros Desctos."),
+                        grid.Column("Anticipos","Anticipos"),
                         grid.Column("Total_Pagar","Total A Pagar"),
                        grid.Column(header: "Acciones", style: "col-sm-2", format:
                       @<span class="link">
@@ -288,7 +289,7 @@
                             </tr>
                             <tr>
                                 <td align="center" colspan="6" bgcolor="cac5c4">Descuentos Previsionales(-)</td>
-                                <td align="center" colspan="6" bgcolor="cac5c4"><input type="text" Id="CPTotDescPrev" style="text-align:right;" disabled /> </td>
+                                <td align="center" colspan="6" bgcolor="cac5c4"><input type="text" Id="TotDescPrev" style="text-align:right;" disabled /> </td>
                             </tr>
                             <tr>
                                 <td align="center" colspan="12" bgcolor="cac5c4">Cálculo Impuesto A la Renta</td>
@@ -300,7 +301,7 @@
                                 <td></td>
                                 <td align="center">Descuentos Previsionales(-)</td>
                                 <td></td>
-                                <td align="center"><input type="text" Id="CPTotDescPrev2" style="text-align:right;" disabled /> </td>
+                                <td align="center"><input type="text" Id="CPTotDescPrev" style="text-align:right;" disabled /> </td>
                                 <td></td>
                                 <td align="center">Remuneración Neta(=)</td>
                                 <td></td>
@@ -336,6 +337,10 @@
                                 <td></td>
                             </tr>
                             <tr>
+                                <td align="center">Anticipos</td>
+                                <td></td>
+                                <td align="center"><input type="text" id="Anticipos" style="text-align:right;" /></td>
+                                <td></td>
                                 <td align="center">Total A Pagar</td>
                                 <td></td>
                                 <td align="center"><input type="text" id="TotPagar" style="text-align:right;" disabled /></td>

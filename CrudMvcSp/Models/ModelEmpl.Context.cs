@@ -428,7 +428,7 @@ namespace CrudMvcSp.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Sp_Ins_Empresas", rut_empParameter, nombreParameter, direccionParameter, numParameter, vilpobParameter, comuParameter, ciudadParameter, fonoParameter, emailempParameter);
         }
     
-        public virtual int Sp_Ins_LiqSueldo(string rut_Empleado, Nullable<int> id_Tipo_Renumeracion, Nullable<System.DateTime> fecha_Liquidacion, string sueldo_Base, string dias_Trabajados, string porcComision, Nullable<decimal> valor_Com, Nullable<decimal> cant_Horas_Extras, Nullable<decimal> total_Horas_Extras, Nullable<decimal> bonos, Nullable<decimal> gratificacion, Nullable<decimal> totalImponible, Nullable<decimal> colacion, Nullable<decimal> movilizacion, Nullable<decimal> viaticos, Nullable<decimal> totalHaberes, Nullable<int> codAfp, Nullable<decimal> valor_Afp, Nullable<int> cod_Salud, Nullable<decimal> valor_Salud, Nullable<int> id_Seg_Cesantia, Nullable<decimal> valor_Seg_Cesantia, Nullable<decimal> totalDescSegSocial, Nullable<decimal> valor_Impuesto, Nullable<decimal> impAPagar, Nullable<decimal> prestamos, Nullable<decimal> totalDesctos, Nullable<decimal> otrs_Descuentos, Nullable<decimal> total_Pagar)
+        public virtual int Sp_Ins_LiqSueldo(string rut_Empleado, Nullable<int> id_Tipo_Renumeracion, Nullable<System.DateTime> fecha_Liquidacion, string sueldo_Base, string dias_Trabajados, string porcComision, Nullable<decimal> valor_Com, Nullable<decimal> cant_Horas_Extras, Nullable<decimal> total_Horas_Extras, Nullable<decimal> bonos, Nullable<decimal> gratificacion, Nullable<decimal> totalImponible, Nullable<decimal> colacion, Nullable<decimal> movilizacion, Nullable<decimal> viaticos, Nullable<decimal> totalHaberes, Nullable<int> codAfp, Nullable<decimal> valor_Afp, Nullable<int> cod_Salud, Nullable<decimal> valor_Salud, Nullable<int> id_Seg_Cesantia, Nullable<decimal> valor_Seg_Cesantia, Nullable<decimal> totalDescSegSocial, Nullable<decimal> valor_Impuesto, Nullable<decimal> impAPagar, Nullable<decimal> prestamos, Nullable<decimal> totalDesctos, Nullable<decimal> otrs_Descuentos, Nullable<decimal> anticipos, Nullable<decimal> total_Pagar)
         {
             var rut_EmpleadoParameter = rut_Empleado != null ?
                 new ObjectParameter("Rut_Empleado", rut_Empleado) :
@@ -542,11 +542,15 @@ namespace CrudMvcSp.Models
                 new ObjectParameter("Otrs_Descuentos", otrs_Descuentos) :
                 new ObjectParameter("Otrs_Descuentos", typeof(decimal));
     
+            var anticiposParameter = anticipos.HasValue ?
+                new ObjectParameter("Anticipos", anticipos) :
+                new ObjectParameter("Anticipos", typeof(decimal));
+    
             var total_PagarParameter = total_Pagar.HasValue ?
                 new ObjectParameter("Total_Pagar", total_Pagar) :
                 new ObjectParameter("Total_Pagar", typeof(decimal));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Sp_Ins_LiqSueldo", rut_EmpleadoParameter, id_Tipo_RenumeracionParameter, fecha_LiquidacionParameter, sueldo_BaseParameter, dias_TrabajadosParameter, porcComisionParameter, valor_ComParameter, cant_Horas_ExtrasParameter, total_Horas_ExtrasParameter, bonosParameter, gratificacionParameter, totalImponibleParameter, colacionParameter, movilizacionParameter, viaticosParameter, totalHaberesParameter, codAfpParameter, valor_AfpParameter, cod_SaludParameter, valor_SaludParameter, id_Seg_CesantiaParameter, valor_Seg_CesantiaParameter, totalDescSegSocialParameter, valor_ImpuestoParameter, impAPagarParameter, prestamosParameter, totalDesctosParameter, otrs_DescuentosParameter, total_PagarParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Sp_Ins_LiqSueldo", rut_EmpleadoParameter, id_Tipo_RenumeracionParameter, fecha_LiquidacionParameter, sueldo_BaseParameter, dias_TrabajadosParameter, porcComisionParameter, valor_ComParameter, cant_Horas_ExtrasParameter, total_Horas_ExtrasParameter, bonosParameter, gratificacionParameter, totalImponibleParameter, colacionParameter, movilizacionParameter, viaticosParameter, totalHaberesParameter, codAfpParameter, valor_AfpParameter, cod_SaludParameter, valor_SaludParameter, id_Seg_CesantiaParameter, valor_Seg_CesantiaParameter, totalDescSegSocialParameter, valor_ImpuestoParameter, impAPagarParameter, prestamosParameter, totalDesctosParameter, otrs_DescuentosParameter, anticiposParameter, total_PagarParameter);
         }
     
         public virtual int Sp_Ins_Nacionalidad(string descr)
@@ -1065,15 +1069,11 @@ namespace CrudMvcSp.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Sp_UPD_Empresas", rut_empParameter, nombreParameter, direccionParameter, numParameter, vilpobParameter, comuParameter, ciudadParameter, fonoParameter, emailParameter);
         }
     
-        public virtual int SP_UPD_Liquidacion_Sueldo(Nullable<int> id_Liq, string rut_Empleado, Nullable<int> id_Tipo_Renumeracion, Nullable<System.DateTime> fecha_Liquidacion, string sueldo_Base, string dias_Trabajados, string porcComision, Nullable<decimal> valor_Com, Nullable<decimal> cant_Horas_Extras, Nullable<decimal> total_Horas_Extras, Nullable<decimal> bonos, Nullable<decimal> gratificacion, Nullable<decimal> totalImponible, Nullable<decimal> colacion, Nullable<decimal> movilizacion, Nullable<decimal> viaticos, Nullable<decimal> totalHaberes, Nullable<int> codAfp, Nullable<decimal> valor_Afp, Nullable<int> cod_Salud, Nullable<decimal> valor_Salud, Nullable<int> id_Seg_Cesantia, Nullable<decimal> valor_Seg_Cesantia, Nullable<decimal> totalDescSegSocial, Nullable<decimal> valor_Impuesto, Nullable<decimal> impAPagar, Nullable<decimal> prestamos, Nullable<decimal> totalDesctos, Nullable<decimal> otrs_Descuentos, Nullable<decimal> total_Pagar)
+        public virtual int SP_UPD_Liquidacion_Sueldo(Nullable<int> id_Liq, Nullable<int> id_Tipo_Renumeracion, Nullable<System.DateTime> fecha_Liquidacion, string sueldo_Base, string dias_Trabajados, string porcComision, Nullable<decimal> valor_Com, Nullable<decimal> cant_Horas_Extras, Nullable<decimal> total_Horas_Extras, Nullable<decimal> bonos, Nullable<decimal> gratificacion, Nullable<decimal> totalImponible, Nullable<decimal> colacion, Nullable<decimal> movilizacion, Nullable<decimal> viaticos, Nullable<decimal> totalHaberes, Nullable<int> codAfp, Nullable<decimal> valor_Afp, Nullable<int> cod_Salud, Nullable<decimal> valor_Salud, Nullable<int> id_Seg_Cesantia, Nullable<decimal> valor_Seg_Cesantia, Nullable<decimal> totalDescSegSocial, Nullable<decimal> valor_Impuesto, Nullable<decimal> impAPagar, Nullable<decimal> prestamos, Nullable<decimal> totalDesctos, Nullable<decimal> otrs_Descuentos, Nullable<decimal> anticipos, Nullable<decimal> total_Pagar)
         {
             var id_LiqParameter = id_Liq.HasValue ?
                 new ObjectParameter("Id_Liq", id_Liq) :
                 new ObjectParameter("Id_Liq", typeof(int));
-    
-            var rut_EmpleadoParameter = rut_Empleado != null ?
-                new ObjectParameter("Rut_Empleado", rut_Empleado) :
-                new ObjectParameter("Rut_Empleado", typeof(string));
     
             var id_Tipo_RenumeracionParameter = id_Tipo_Renumeracion.HasValue ?
                 new ObjectParameter("Id_Tipo_Renumeracion", id_Tipo_Renumeracion) :
@@ -1183,11 +1183,15 @@ namespace CrudMvcSp.Models
                 new ObjectParameter("Otrs_Descuentos", otrs_Descuentos) :
                 new ObjectParameter("Otrs_Descuentos", typeof(decimal));
     
+            var anticiposParameter = anticipos.HasValue ?
+                new ObjectParameter("Anticipos", anticipos) :
+                new ObjectParameter("Anticipos", typeof(decimal));
+    
             var total_PagarParameter = total_Pagar.HasValue ?
                 new ObjectParameter("Total_Pagar", total_Pagar) :
                 new ObjectParameter("Total_Pagar", typeof(decimal));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_UPD_Liquidacion_Sueldo", id_LiqParameter, rut_EmpleadoParameter, id_Tipo_RenumeracionParameter, fecha_LiquidacionParameter, sueldo_BaseParameter, dias_TrabajadosParameter, porcComisionParameter, valor_ComParameter, cant_Horas_ExtrasParameter, total_Horas_ExtrasParameter, bonosParameter, gratificacionParameter, totalImponibleParameter, colacionParameter, movilizacionParameter, viaticosParameter, totalHaberesParameter, codAfpParameter, valor_AfpParameter, cod_SaludParameter, valor_SaludParameter, id_Seg_CesantiaParameter, valor_Seg_CesantiaParameter, totalDescSegSocialParameter, valor_ImpuestoParameter, impAPagarParameter, prestamosParameter, totalDesctosParameter, otrs_DescuentosParameter, total_PagarParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_UPD_Liquidacion_Sueldo", id_LiqParameter, id_Tipo_RenumeracionParameter, fecha_LiquidacionParameter, sueldo_BaseParameter, dias_TrabajadosParameter, porcComisionParameter, valor_ComParameter, cant_Horas_ExtrasParameter, total_Horas_ExtrasParameter, bonosParameter, gratificacionParameter, totalImponibleParameter, colacionParameter, movilizacionParameter, viaticosParameter, totalHaberesParameter, codAfpParameter, valor_AfpParameter, cod_SaludParameter, valor_SaludParameter, id_Seg_CesantiaParameter, valor_Seg_CesantiaParameter, totalDescSegSocialParameter, valor_ImpuestoParameter, impAPagarParameter, prestamosParameter, totalDesctosParameter, otrs_DescuentosParameter, anticiposParameter, total_PagarParameter);
         }
     
         public virtual int Sp_UPD_Nacionalidad(Nullable<int> id_Nac, string descr)

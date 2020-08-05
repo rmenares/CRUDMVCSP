@@ -147,6 +147,7 @@
           <Property Name="Prestamos" Type="numeric" Precision="9" Scale="0" Nullable="false" />
           <Property Name="TotalDesctos" Type="numeric" Precision="9" Scale="0" Nullable="false" />
           <Property Name="Otrs_Descuentos" Type="numeric" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="Anticipos" Type="numeric" Precision="9" Scale="0" Nullable="false" />
           <Property Name="Total_Pagar" Type="numeric" Precision="9" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="Login">
@@ -193,8 +194,8 @@
           </Key>
           <Property Name="Id_Tip_Contrato" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Tipo_Contrato" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Monto_Empleador" Type="numeric" Precision="9" Scale="2" Nullable="false" />
-          <Property Name="Monto_Trabajador" Type="numeric" Precision="9" Scale="2" />
+          <Property Name="Monto_Empleador" Type="numeric" Precision="9" Scale="1" Nullable="false" />
+          <Property Name="Monto_Trabajador" Type="numeric" Precision="9" Scale="1" />
         </EntityType>
         <EntityType Name="Sexo">
           <Key>
@@ -582,6 +583,7 @@
           <Parameter Name="Prestamos" Type="numeric" Mode="In" />
           <Parameter Name="TotalDesctos" Type="numeric" Mode="In" />
           <Parameter Name="Otrs_Descuentos" Type="numeric" Mode="In" />
+          <Parameter Name="Anticipos" Type="numeric" Mode="In" />
           <Parameter Name="Total_Pagar" Type="numeric" Mode="In" />
         </Function>
         <Function Name="Sp_Ins_Nacionalidad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -731,7 +733,6 @@
         </Function>
         <Function Name="SP_UPD_Liquidacion_Sueldo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Id_Liq" Type="int" Mode="In" />
-          <Parameter Name="Rut_Empleado" Type="varchar" Mode="In" />
           <Parameter Name="Id_Tipo_Renumeracion" Type="int" Mode="In" />
           <Parameter Name="Fecha_Liquidacion" Type="datetime" Mode="In" />
           <Parameter Name="Sueldo_Base" Type="varchar" Mode="In" />
@@ -759,6 +760,7 @@
           <Parameter Name="Prestamos" Type="numeric" Mode="In" />
           <Parameter Name="TotalDesctos" Type="numeric" Mode="In" />
           <Parameter Name="Otrs_Descuentos" Type="numeric" Mode="In" />
+          <Parameter Name="Anticipos" Type="numeric" Mode="In" />
           <Parameter Name="Total_Pagar" Type="numeric" Mode="In" />
         </Function>
         <Function Name="Sp_UPD_Nacionalidad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -1026,6 +1028,7 @@
           <Property Name="Prestamos" Type="Decimal" Precision="9" Scale="0" Nullable="false" />
           <Property Name="TotalDesctos" Type="Decimal" Precision="9" Scale="0" Nullable="false" />
           <Property Name="Otrs_Descuentos" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="Anticipos" Type="Decimal" Precision="9" Scale="0" Nullable="false" />
           <Property Name="Total_Pagar" Type="Decimal" Precision="9" Scale="0" Nullable="false" />
           <NavigationProperty Name="Tipo_Remuneracion" Relationship="Self.FK_Liquidacion_Sueldo_Tipo_Remuneracion" FromRole="Liquidacion_Sueldo" ToRole="Tipo_Remuneracion" />
         </EntityType>
@@ -1080,8 +1083,8 @@
           </Key>
           <Property Name="Id_Tip_Contrato" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Tipo_Contrato" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Monto_Empleador" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
-          <Property Name="Monto_Trabajador" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="Monto_Empleador" Type="Decimal" Precision="9" Scale="1" Nullable="false" />
+          <Property Name="Monto_Trabajador" Type="Decimal" Precision="9" Scale="1" />
         </EntityType>
         <EntityType Name="Sexo">
           <Key>
@@ -1557,6 +1560,7 @@
             <Parameter Name="Prestamos" Mode="In" Type="Decimal" />
             <Parameter Name="TotalDesctos" Mode="In" Type="Decimal" />
             <Parameter Name="Otrs_Descuentos" Mode="In" Type="Decimal" />
+            <Parameter Name="Anticipos" Mode="In" Type="Decimal" />
             <Parameter Name="Total_Pagar" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="Sp_Ins_Nacionalidad">
@@ -1706,7 +1710,6 @@
           </FunctionImport>
           <FunctionImport Name="SP_UPD_Liquidacion_Sueldo">
             <Parameter Name="Id_Liq" Mode="In" Type="Int32" />
-            <Parameter Name="Rut_Empleado" Mode="In" Type="String" />
             <Parameter Name="Id_Tipo_Renumeracion" Mode="In" Type="Int32" />
             <Parameter Name="Fecha_Liquidacion" Mode="In" Type="DateTime" />
             <Parameter Name="Sueldo_Base" Mode="In" Type="String" />
@@ -1734,6 +1737,7 @@
             <Parameter Name="Prestamos" Mode="In" Type="Decimal" />
             <Parameter Name="TotalDesctos" Mode="In" Type="Decimal" />
             <Parameter Name="Otrs_Descuentos" Mode="In" Type="Decimal" />
+            <Parameter Name="Anticipos" Mode="In" Type="Decimal" />
             <Parameter Name="Total_Pagar" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="Sp_UPD_Nacionalidad">
@@ -1875,8 +1879,8 @@
           <Property Type="Decimal" Name="Porc_Cotiz" Nullable="true" Precision="18" Scale="2" />
           <Property Type="Decimal" Name="Valor_Salud" Nullable="false" Precision="9" Scale="2" />
           <Property Type="String" Name="Tipo_Contrato" Nullable="false" MaxLength="50" />
-          <Property Type="Decimal" Name="Monto_Empleador" Nullable="false" Precision="9" Scale="2" />
-          <Property Type="Decimal" Name="Monto_Trabajador" Nullable="true" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="Monto_Empleador" Nullable="false" Precision="9" Scale="1" />
+          <Property Type="Decimal" Name="Monto_Trabajador" Nullable="true" Precision="9" Scale="1" />
           <Property Type="Decimal" Name="Valor_Seg_Cesantia" Nullable="false" Precision="9" Scale="2" />
           <Property Type="Decimal" Name="TotalDescSegSocial" Nullable="false" Precision="9" Scale="2" />
           <Property Type="Decimal" Name="Valor_Impuesto" Nullable="false" Precision="9" Scale="2" />
@@ -1884,6 +1888,7 @@
           <Property Type="Decimal" Name="Prestamos" Nullable="false" Precision="9" Scale="0" />
           <Property Type="Decimal" Name="TotalDesctos" Nullable="false" Precision="9" Scale="0" />
           <Property Type="Decimal" Name="Otrs_Descuentos" Nullable="false" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="Anticipos" Nullable="false" Precision="9" Scale="0" />
           <Property Type="Decimal" Name="Total_Pagar" Nullable="false" Precision="9" Scale="0" />
         </ComplexType>
         <ComplexType Name="Sp_Mues_Nacionalidad_Result">
@@ -1903,8 +1908,8 @@
         <ComplexType Name="Sp_Mues_Seg_Cesantia_Result">
           <Property Type="Int32" Name="Id_Tip_Contrato" Nullable="false" />
           <Property Type="String" Name="Tipo_Contrato" Nullable="false" MaxLength="50" />
-          <Property Type="Decimal" Name="Monto_Empleador" Nullable="false" Precision="9" Scale="2" />
-          <Property Type="Decimal" Name="Monto_Trabajador" Nullable="true" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="Monto_Empleador" Nullable="false" Precision="9" Scale="1" />
+          <Property Type="Decimal" Name="Monto_Trabajador" Nullable="true" Precision="9" Scale="1" />
         </ComplexType>
         <ComplexType Name="Sp_Mues_TipRem_Result">
           <Property Type="Int32" Name="Id_Tipo" Nullable="false" />
@@ -2022,8 +2027,8 @@
           <Property Type="Decimal" Name="Porc_Cotiz" Nullable="true" Precision="18" Scale="2" />
           <Property Type="Decimal" Name="Valor_Salud" Nullable="false" Precision="9" Scale="2" />
           <Property Type="String" Name="Tipo_Contrato" Nullable="false" MaxLength="50" />
-          <Property Type="Decimal" Name="Monto_Empleador" Nullable="false" Precision="9" Scale="2" />
-          <Property Type="Decimal" Name="Monto_Trabajador" Nullable="true" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="Monto_Empleador" Nullable="false" Precision="9" Scale="1" />
+          <Property Type="Decimal" Name="Monto_Trabajador" Nullable="true" Precision="9" Scale="1" />
           <Property Type="Decimal" Name="Valor_Seg_Cesantia" Nullable="false" Precision="9" Scale="2" />
           <Property Type="Decimal" Name="TotalDescSegSocial" Nullable="false" Precision="9" Scale="2" />
           <Property Type="Decimal" Name="Valor_Impuesto" Nullable="false" Precision="9" Scale="2" />
@@ -2031,6 +2036,7 @@
           <Property Type="Decimal" Name="Prestamos" Nullable="false" Precision="9" Scale="0" />
           <Property Type="Decimal" Name="TotalDesctos" Nullable="false" Precision="9" Scale="0" />
           <Property Type="Decimal" Name="Otrs_Descuentos" Nullable="false" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="Anticipos" Nullable="false" Precision="9" Scale="0" />
           <Property Type="Decimal" Name="Total_Pagar" Nullable="false" Precision="9" Scale="0" />
         </ComplexType>
         <ComplexType Name="SP_Sel_liqSueldoXRutMes_Result">
@@ -2058,8 +2064,8 @@
           <Property Type="Decimal" Name="Porc_Cotiz" Nullable="true" Precision="18" Scale="2" />
           <Property Type="Decimal" Name="Valor_Salud" Nullable="false" Precision="9" Scale="2" />
           <Property Type="String" Name="Tipo_Contrato" Nullable="false" MaxLength="50" />
-          <Property Type="Decimal" Name="Monto_Empleador" Nullable="false" Precision="9" Scale="2" />
-          <Property Type="Decimal" Name="Monto_Trabajador" Nullable="true" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="Monto_Empleador" Nullable="false" Precision="9" Scale="1" />
+          <Property Type="Decimal" Name="Monto_Trabajador" Nullable="true" Precision="9" Scale="1" />
           <Property Type="Decimal" Name="Valor_Seg_Cesantia" Nullable="false" Precision="9" Scale="2" />
           <Property Type="Decimal" Name="TotalDescSegSocial" Nullable="false" Precision="9" Scale="2" />
           <Property Type="Decimal" Name="Valor_Impuesto" Nullable="false" Precision="9" Scale="2" />
@@ -2067,6 +2073,7 @@
           <Property Type="Decimal" Name="Prestamos" Nullable="false" Precision="9" Scale="0" />
           <Property Type="Decimal" Name="TotalDesctos" Nullable="false" Precision="9" Scale="0" />
           <Property Type="Decimal" Name="Otrs_Descuentos" Nullable="false" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="Anticipos" Nullable="false" Precision="9" Scale="0" />
           <Property Type="Decimal" Name="Total_Pagar" Nullable="false" Precision="9" Scale="0" />
         </ComplexType>
         <ComplexType Name="Sp_Sel_Nacionalidad_Result">
@@ -2080,8 +2087,8 @@
         </ComplexType>
         <ComplexType Name="Sp_Sel_Seg_Cesantia_Id_Result">
           <Property Type="String" Name="Tipo_Contrato" Nullable="false" MaxLength="50" />
-          <Property Type="Decimal" Name="Monto_Empleador" Nullable="false" Precision="9" Scale="2" />
-          <Property Type="Decimal" Name="Monto_Trabajador" Nullable="true" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="Monto_Empleador" Nullable="false" Precision="9" Scale="1" />
+          <Property Type="Decimal" Name="Monto_Trabajador" Nullable="true" Precision="9" Scale="1" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2238,6 +2245,7 @@
                 <ScalarProperty Name="Prestamos" ColumnName="Prestamos" />
                 <ScalarProperty Name="TotalDesctos" ColumnName="TotalDesctos" />
                 <ScalarProperty Name="Otrs_Descuentos" ColumnName="Otrs_Descuentos" />
+                <ScalarProperty Name="Anticipos" ColumnName="Anticipos" />
                 <ScalarProperty Name="Total_Pagar" ColumnName="Total_Pagar" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -2560,6 +2568,7 @@
                 <ScalarProperty Name="Prestamos" ColumnName="Prestamos" />
                 <ScalarProperty Name="TotalDesctos" ColumnName="TotalDesctos" />
                 <ScalarProperty Name="Otrs_Descuentos" ColumnName="Otrs_Descuentos" />
+                <ScalarProperty Name="Anticipos" ColumnName="Anticipos" />
                 <ScalarProperty Name="Total_Pagar" ColumnName="Total_Pagar" />
               </ComplexTypeMapping>
             </ResultMapping>
@@ -2761,6 +2770,7 @@
                 <ScalarProperty Name="Prestamos" ColumnName="Prestamos" />
                 <ScalarProperty Name="TotalDesctos" ColumnName="TotalDesctos" />
                 <ScalarProperty Name="Otrs_Descuentos" ColumnName="Otrs_Descuentos" />
+                <ScalarProperty Name="Anticipos" ColumnName="Anticipos" />
                 <ScalarProperty Name="Total_Pagar" ColumnName="Total_Pagar" />
               </ComplexTypeMapping>
             </ResultMapping>
@@ -2801,6 +2811,7 @@
                 <ScalarProperty Name="Prestamos" ColumnName="Prestamos" />
                 <ScalarProperty Name="TotalDesctos" ColumnName="TotalDesctos" />
                 <ScalarProperty Name="Otrs_Descuentos" ColumnName="Otrs_Descuentos" />
+                <ScalarProperty Name="Anticipos" ColumnName="Anticipos" />
                 <ScalarProperty Name="Total_Pagar" ColumnName="Total_Pagar" />
               </ComplexTypeMapping>
             </ResultMapping>

@@ -112,11 +112,8 @@ namespace CrudMvcSp.Controllers
             {
                 var TablImpto = Imptos.SP_BusRangImpxSueldo(ImptoMen.Desde).ToList();
                 return Json(TablImpto);
-
             }
-
         }
-
         #endregion
     }
 }

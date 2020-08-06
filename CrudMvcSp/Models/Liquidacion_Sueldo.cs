@@ -39,7 +39,9 @@ namespace CrudMvcSp.Models
         public decimal Valor_Seg_Cesantia { get; set; }
         public decimal TotalDescSegSocial { get; set; }
         public decimal Valor_Impuesto { get; set; }
+        public decimal RebaImpto { get; set; }
         public decimal ImpAPagar { get; set; }
+        public decimal RemNeta { get; set; }
         public decimal Prestamos { get; set; }
         public decimal TotalDesctos { get; set; }
         public decimal Otrs_Descuentos { get; set; }

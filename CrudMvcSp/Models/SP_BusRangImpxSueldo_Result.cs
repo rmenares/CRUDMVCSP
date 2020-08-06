@@ -13,6 +13,7 @@ namespace CrudMvcSp.Models
     
     public partial class SP_BusRangImpxSueldo_Result
     {
+        public int Id_Factor_Mensual { get; set; }
         public Nullable<decimal> Desde { get; set; }
         public Nullable<decimal> Hasta { get; set; }
         public Nullable<decimal> Factor { get; set; }

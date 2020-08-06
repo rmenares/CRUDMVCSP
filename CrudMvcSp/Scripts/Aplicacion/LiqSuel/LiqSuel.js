@@ -1,21 +1,24 @@
 ﻿
-var RutEmple, TipContrat, DiasTrab
+var RutEmple, TipContrat, FechLiq, DiasTrab, TipRem;
 
 //Imponibles
-var SuelBase, PorcCom, CantHrsExt, totHrsExt, PorcCom, ValCom, Bonos, Gratificacion, TotImponible;
+var SuelBase, CantHrsExt, ValorHrExt, TotHrsExt, PorcCom, ValCom, Bonos, Gratificacion, TotImponible;
+
+// Gratificacion
+var Ganancias, SuelDevengado, SueldMin, GratMensual, Grat2, TopeGratMensual, Gratificacion, valgrat;
 
 //Desc Previsionales
-var cod_afp, CodigoAfp, NomAfp, PorcAfp, MontAfp;
-var csalud, CodSalud, NomSalud, PorcSalud, MonSalud, TotDescPrev;
+var Cod_Afp, CodigoAfp, NomAfp, PorcAfp, MontAfp;
+var CSalud, CodSalud, NomSalud, PorcSalud, MonSalud, TotDescPrev;
 
 // Impuestos
 var ImptoDesde, ImptoHasta, ImptoFactor, ImptoCantAReb, ImptoTasaImpto, ImptoAPagar, TotImpuesto; 
 
 //calcula el valor del Seguro de Cesantia
-var TipContrat, MontEmpl, MontTrab, sumcesa, ValorCesantia, Cotizacion;
+var Id_Seg_Ces, TipContrat, MontEmpl, MontTrab, sumcesa, Cotizacion, ValorCesantia;
  
 //Haberes
-var ValMovi, ValColac, ValViat, ValorCesantia, TotHaberes;
+var ValMovi, ValColac, ValViat, TotHaberes;
 
 // Otros Descuentos
 var DesctoTrab, RemuNeta, ValPrestamos, ValOtDesc, TotOtDesc, Anticipos, Antcip, TotalPagar;
@@ -88,12 +91,13 @@ $(document).ready(function () {
     $("#ListTipRem").change('click', function (e) {
         e.preventDefault();
         //calcula el valor del Seguro de Cesantia
-        var tipRem = $("#ListTipRem").val();
-        var data = { Id_Tip_Contrato: tipRem };
+        TipRem = $("#ListTipRem").val();
+        var data = { Id_Tip_Contrato: TipRem };
         var url = "/LiqSueld/BuscaValSegCes";
         $.post(url, data)
             .done(function (data) {
                 var DatosDev = data[0];
+                Id_Seg_Ces = DatosDev["Id_Factor_Mensual"];
                 TipContrat = DatosDev["Tipo_Contrato"];
                 MontEmpl = DatosDev["Monto_Empleador"];
                 MontTrab = DatosDev["Monto_Trabajador"];
@@ -257,13 +261,12 @@ $(document).ready(function () {
             }
             else {
                 // Calculo de la Gratificación
-                var Ganancias = (parseInt(SuelBase) + parseInt(ValCom) + parseInt(TotHrsExt) + parseInt(Bonos));
-
-                var SuelDevengado = ((Ganancias * 25) / 100);
-                var SueldMin = 320500;
-                var GratMensual = ((SueldMin * 4.75) / 12);
-                var Grat2 = (GratMensual * 4.75);
-                var TopeGratMensual = parseInt(Grat2 / 12);
+                Ganancias = (parseInt(SuelBase) + parseInt(ValCom) + parseInt(TotHrsExt) + parseInt(Bonos));
+                SuelDevengado = ((Ganancias * 25) / 100);
+                SueldMin = 320500;
+                GratMensual = ((SueldMin * 4.75) / 12);
+                Grat2 = (GratMensual * 4.75);
+                TopeGratMensual = parseInt(Grat2 / 12);
 
                 if (SuelDevengado > TopeGratMensual) {
 
@@ -394,8 +397,8 @@ $(document).ready(function () {
     
     $("#AfpSelec").change('click', function (e) {
         e.preventDefault();
-        cod_afp = $("#AfpSelec").val();
-        var data = { Cod_Afp: cod_afp };
+        Cod_Afp = $("#AfpSelec").val();
+        var data = { Cod_Afp: Cod_Afp };
         var url = "/LiqSueld/BuscaValAfp";
         $.post(url, data)
             .done(function (data) {
@@ -412,8 +415,8 @@ $(document).ready(function () {
 
     $("#SalSelec").change('click', function (e) {    
         e.preventDefault();
-        csalud = $("#SalSelec").val();
-        var data = { Cod_Salud: csalud };       
+        CSalud = $("#SalSelec").val();
+        var data = { Cod_Salud: CSalud };       
         var url = "/LiqSueld/BuscaValSal";
         $.post(url, data)
             .done(function (data) {
@@ -491,47 +494,73 @@ $(document).ready(function () {
          
     // grabar datos 
     $("#BtnGrabLiqSueld").click(function (event) {
-        RutEmp = $("#RutEmp").val();
+
         TipRem = $("#ListTipRem").val();
-        fechLLiq = $("#FechLiq").val();
+        RutEmp = $("#RutEmp").val();
+        FechLiq = $("#FechLiq").val();
         SuelBase = $("#SueldBas").val();
         DiasTrab = $("#DiasTrab").val();
-        PorcGrat = $("#PorcGrat").val();
-        ValorGrat = $("#ValorGrat").val();     
-        ValComi = $("#ValComi").val();
-        Bon = $("#Bonos").val();
+        CantHrsExt = $("#CantHrsExt").val();
+        totHrsExt = $("#ValHrsExt").val();
+        PorcCom = $("#PorcCom").val();
+        ValCom = $("#ValorCom").val();
+        Bonos = $("#Bonos").val();
+        Gratificacion = $("#ValGrat").val();
+        TotImponible = $("#TotImponible").val();
+        ValMovi = $("#ValMov").val();
         ValColac = $("#ValCola").val();
-        ValMov = $("#ValMov").val();
-        CodAfp = $("#AfpSelec").val();
-        NomAfp = $("#MontoAfp").val();
-        NomSal = $("#SalSelec").val();
-        MonSal = $("#MontoSalud").val();
-        ValSegCe = $("#ValCesantia").val();
-        ValTotImp = $("#TotImp").val();
-        ValApv = $("#ValApv").val();
-        OtDesc = $("#OtDesc").val();
-        TotPagar = $("#TotPagar").val();
+        ValViat = $("#ValViatico").val();
+        TotHaberes = $("#TotHaber").val();
+        Cod_Afp = $("#AfpSelec").val();
+        MontAfp = $("#MontoAfp").val();
+        CSalud = $("#SalSelec").val();
+        MonSalud = $("#MontoSalud").val();
+        ValorCesantia = $("#ValCesantia").val();
+        TotDescPrev = $("#TotDescPrev").val();
+        RemuNeta = $("#RemNeta").val();
+        TotImponible = $("#TotImp").val();
+        ImptoCantAReb = $("#RebaImpto").val();
+        ImptoAPagar =  $("#ImpAPagar").val();
+        ValPrestamos = $("#ValPrestmos").val();
+        ValOtDesc = $("#OtDesc").val();
+        TotOtDesc = $("#TotDesc").val();
+        Antcip = $("#Anticipos").val();
+        TotPag = $("#TotPagar").val();
+        var data = {  
 
-      
-            var data = {
-                //Rut_Benef:    
-                //Nombre:       
-                //ApPat:        
-                //ApMat:        
-                //Telefono1:    
-                //Telefono2:    
-                //Fecha_Nac:    
-                //Cod_Sexo:     
-                //Calle_Pje:    
-                //Num_Casa:     
-                //Villa_Pobl:   
-                //Comuna_Id:    
-                //Provincia_Id: 
-                //email:        
-                //Rut_Empleado: 
-                //Id_Nac:       
-                //Descripcion:  
-            }
+            Rut_Empleado: RutEmple,
+            Id_Tipo_Renumeracion: TipRem,
+            Fecha_Liquidacion: fecha,
+            Sueldo_Base: SuelBase,
+            Dias_Trabajados: DiasTrab,
+            PorcComision: PorcCom,
+            Valor_Com: ValCom,
+            Cant_Horas_Extras: CantHrsExt,
+            Total_Horas_Extras: TotHrsExt,
+            Bonos: Bonos,
+            Gratificacion: Gratificacion,
+            TotalImponible: TotImponible,
+            Colacion: ValColac,
+            Movilizacion: ValMovi,
+            Viaticos: ValViat,
+            TotalHaberes: TotHaberes,
+            CodAfp: Cod_Afp,
+            Valor_Afp: MontAfp,
+            Cod_Salud: CSalud,
+            Valor_Salud: MonSalud,
+            Id_Seg_Cesantia: Id_Seg_Ces,
+            Valor_Seg_Cesantia: ValorCesantia,
+            TotalDescSegSocial: TotDescPrev,
+            Valor_Impuesto: TotImpuesto, 
+            RebaImpto: ImptoCantAReb,
+            ImpAPagar: ImptoAPagar,
+            RemNeta: RemuNeta,
+            Prestamos: ValPrestamos,
+            TotalDesctos: TotOtDesc,
+            Otrs_Descuentos: ValOtDesc,
+            Anticipos: Antcip,
+            Total_Pagar: TotPag
+        }
             var url = "LiqSueld/GrabLiqSueld";
             event.preventDefault();
             $.post(url, data)
@@ -554,28 +583,11 @@ $(document).ready(function () {
                     }
                 })
                 .always(function (data) {
-                    $("#RutEmp").val("");
-                    $("#ListTipRem").val("");
-                    $("#FechLiq").val("");
-                    $("#SueldBas").val("");
-                    $("#DiasTrab").val("");
-                    $("#PorcGrat").val("");
-                    $("#ValorGrat").val("");
-                    $("#CantHrsExt").val("");
-                    $("#ValHrsExt").val("");
-                    $("#ValComi").val("");
-                    $("#Bonos").val("");
-                    $("#ValCola").val("");
-                    $("#ValMov").val("");
-                    $("#AfpSelec").val("");
-                    $("#MontoAfp").val("");
-                    $("#SalSelec").val("");
-                    $("#MontoSalud").val("");
-                    $("#ValCesantia").val("");
-                    $("#TotImp").val("");
-                    $("#ValApv").val("");
-                    $("#OtDesc").val("");
-                    $("#TotPagar").val("");
+
+
+
+
+
                     $("#AgrLiqSueld").modal("hide");
                     window.location.reload(true);
                 })
@@ -602,3 +614,39 @@ $(document).ready(function () {
               
 })
 
+    
+    
+    
+                $("#RutEmp").val();
+                $("#ListTipRem").val();
+                $("#FechLiq").val(); 
+                $("#SueldBas").val();
+                $("#DiasTrab").val(); 
+                $("#CantHrsExt").val();
+                $("#ValHrsExt").val();
+                $("#PorcCom").val(); 
+                $("#ValorCom").val();
+                $("#Bonos").val(); 
+                $("#ValGrat").val();
+                $("#TotImponible").val();
+                $("#ValMov").val(); 
+                $("#ValCola").val();
+                $("#ValViatico").val();
+                $("#TotHaber").val();
+                $("#AfpSelec").val();
+                $("#MontoAfp").val();
+                $("#SalSelec").val();
+                $("#MontoSalud").val();
+                $("#ValCesantia").val();
+                $("#TotDescPrev").val();
+                $("#CpTotImponible").val();
+                $("#CPTotDescPrev").val(); 
+                $("#RemNeta").val();
+                $("#TotImp").val(); 
+                $("#RebaImpto").val();
+                $("#ImpAPagar").val();
+                $("#ValPrestmos").val();
+                $("#OtDesc").val();
+                $("#TotDesc").val(); 
+                $("#Anticipos").val(); 
+                $("#TotPagar").val();

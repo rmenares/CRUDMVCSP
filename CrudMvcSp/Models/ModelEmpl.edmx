@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="EmpleadosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="EmpleadosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Afp">
           <Key>
             <PropertyRef Name="Cod_Afp" />
@@ -197,7 +197,7 @@
           <Property Name="Id_Tip_Contrato" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Tipo_Contrato" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Monto_Empleador" Type="numeric" Precision="9" Scale="1" Nullable="false" />
-          <Property Name="Monto_Trabajador" Type="numeric" Precision="9" Scale="1" />
+          <Property Name="Monto_Trabajador" Type="numeric" Precision="9" Scale="1" Nullable="false" />
         </EntityType>
         <EntityType Name="Sexo">
           <Key>
@@ -616,6 +616,9 @@
           <Parameter Name="idsal" Type="int" Mode="In" />
         </Function>
         <Function Name="Sp_Mues_Seg_Cesantia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Sp_Mues_Seg_CesantiaxId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdTipSegCes" Type="int" Mode="In" />
+        </Function>
         <Function Name="Sp_Mues_TipRem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
@@ -867,7 +870,8 @@
             <End Role="Empleados" EntitySet="Empleados" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="EmpleadosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1092,7 +1096,7 @@
           <Property Name="Id_Tip_Contrato" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Tipo_Contrato" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Monto_Empleador" Type="Decimal" Precision="9" Scale="1" Nullable="false" />
-          <Property Name="Monto_Trabajador" Type="Decimal" Precision="9" Scale="1" />
+          <Property Name="Monto_Trabajador" Type="Decimal" Precision="9" Scale="1" Nullable="false" />
         </EntityType>
         <EntityType Name="Sexo">
           <Key>
@@ -1444,7 +1448,7 @@
             <Parameter Name="clave" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SP_BusRangImpxSueldo" ReturnType="Collection(EmpleadosModel.SP_BusRangImpxSueldo_Result)">
-          <Parameter Name="sb" Mode="In" Type="Decimal" />
+            <Parameter Name="sb" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="sp_creatediagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
@@ -1453,10 +1457,10 @@
             <Parameter Name="definition" Mode="In" Type="Binary" />
           </FunctionImport>
           <FunctionImport Name="Sp_Del_Carga_Familiar">
-          <Parameter Name="rut_benf" Mode="In" Type="String" />
+            <Parameter Name="rut_benf" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Sp_Del_Empleados">
-          <Parameter Name="Rut_Empl" Mode="In" Type="String" />
+            <Parameter Name="Rut_Empl" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_dropdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
@@ -1494,10 +1498,10 @@
             <Parameter Name="Desc" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Sp_Ins_Cargos">
-          <Parameter Name="Descr" Mode="In" Type="String" />
+            <Parameter Name="Descr" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Sp_Ins_Depto">
-          <Parameter Name="NomDepto" Mode="In" Type="String" />
+            <Parameter Name="NomDepto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Sp_Ins_Empleados">
             <Parameter Name="Rut_Empleado" Mode="In" Type="String" />
@@ -1574,7 +1578,7 @@
             <Parameter Name="Total_Pagar" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="Sp_Ins_Nacionalidad">
-          <Parameter Name="Descr" Mode="In" Type="String" />
+            <Parameter Name="Descr" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Sp_Ins_Salud">
             <Parameter Name="Nomb_Salud" Mode="In" Type="String" />
@@ -1582,23 +1586,26 @@
           </FunctionImport>
           <FunctionImport Name="Sp_Mues_Afp" ReturnType="Collection(EmpleadosModel.Sp_Mues_Afp_Result)" />
           <FunctionImport Name="Sp_Mues_Afp_ID" ReturnType="Collection(EmpleadosModel.Sp_Mues_Afp_ID_Result)">
-          <Parameter Name="idAFP" Mode="In" Type="Int32" />
+            <Parameter Name="idAFP" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Sp_Mues_CargFam" ReturnType="Collection(EmpleadosModel.Sp_Mues_CargFam_Result)" />
           <FunctionImport Name="Sp_Mues_Comunas" ReturnType="Collection(EmpleadosModel.Sp_Mues_Comunas_Result)" />
           <FunctionImport Name="Sp_Mues_Cuidades" ReturnType="Collection(EmpleadosModel.Sp_Mues_Cuidades_Result)" />
           <FunctionImport Name="SP_Mues_Empleado" ReturnType="Collection(EmpleadosModel.SP_Mues_Empleado_Result)" />
           <FunctionImport Name="SP_Mues_Empleado_PDF" ReturnType="Collection(EmpleadosModel.SP_Mues_Empleado_PDF_Result)">
-          <Parameter Name="Rut_Emp" Mode="In" Type="String" />
+            <Parameter Name="Rut_Emp" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Sp_Mues_Empresas" ReturnType="Collection(EmpleadosModel.Sp_Mues_Empresas_Result)" />
           <FunctionImport Name="SP_Mues_liqSueldo" ReturnType="Collection(EmpleadosModel.SP_Mues_liqSueldo_Result)" />
           <FunctionImport Name="Sp_Mues_Nacionalidad" ReturnType="Collection(EmpleadosModel.Sp_Mues_Nacionalidad_Result)" />
           <FunctionImport Name="Sp_Mues_Salud" ReturnType="Collection(EmpleadosModel.Sp_Mues_Salud_Result)" />
           <FunctionImport Name="Sp_Mues_Salud_ID" ReturnType="Collection(EmpleadosModel.Sp_Mues_Salud_ID_Result)">
-          <Parameter Name="idsal" Mode="In" Type="Int32" />
+            <Parameter Name="idsal" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Sp_Mues_Seg_Cesantia" ReturnType="Collection(EmpleadosModel.Sp_Mues_Seg_Cesantia_Result)" />
+          <FunctionImport Name="Sp_Mues_Seg_CesantiaxId" ReturnType="Collection(EmpleadosModel.Sp_Mues_Seg_CesantiaxId_Result)">
+            <Parameter Name="IdTipSegCes" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="Sp_Mues_TipRem" ReturnType="Collection(EmpleadosModel.Sp_Mues_TipRem_Result)" />
           <FunctionImport Name="sp_renamediagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
@@ -1611,35 +1618,35 @@
             <Parameter Name="PorcDesc" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="Sp_Sel_Carg_FamXRutEmpl" ReturnType="Collection(EmpleadosModel.Sp_Sel_Carg_FamXRutEmpl_Result)">
-          <Parameter Name="Rut_Empl" Mode="In" Type="String" />
+            <Parameter Name="Rut_Empl" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Sp_Sel_CargFamxRut" ReturnType="Collection(EmpleadosModel.Sp_Sel_CargFamxRut_Result)">
-          <Parameter Name="Rut_Benef" Mode="In" Type="String" />
+            <Parameter Name="Rut_Benef" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Sp_Sel_Cargos" ReturnType="Collection(EmpleadosModel.Sp_Sel_Cargos_Result)">
-          <Parameter Name="Id_Tipo" Mode="In" Type="Int32" />
+            <Parameter Name="Id_Tipo" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Sp_Sel_CiudadesxComu" ReturnType="Collection(EmpleadosModel.Sp_Sel_CiudadesxComu_Result)">
-          <Parameter Name="Cod_Comu" Mode="In" Type="Int32" />
+            <Parameter Name="Cod_Comu" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_Sel_Depto" ReturnType="Collection(String)">
-          <Parameter Name="idd" Mode="In" Type="Int32" />
+            <Parameter Name="idd" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Sp_Sel_Empleado" ReturnType="Collection(EmpleadosModel.Sp_Sel_Empleado_Result)">
-          <Parameter Name="Rut_Emp" Mode="In" Type="String" />
+            <Parameter Name="Rut_Emp" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Sp_Sel_Empresas" ReturnType="Collection(EmpleadosModel.Sp_Sel_Empresas_Result)">
-          <Parameter Name="Rut_Empresa" Mode="In" Type="String" />
+            <Parameter Name="Rut_Empresa" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SP_Sel_liqSueldoXId" ReturnType="Collection(EmpleadosModel.SP_Sel_liqSueldoXId_Result)">
-          <Parameter Name="id_Liq" Mode="In" Type="Int32" />
+            <Parameter Name="id_Liq" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_Sel_liqSueldoXRutMes" ReturnType="Collection(EmpleadosModel.SP_Sel_liqSueldoXRutMes_Result)">
             <Parameter Name="FechLiq" Mode="In" Type="String" />
             <Parameter Name="Rut_Emp" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Sp_Sel_Nacionalidad" ReturnType="Collection(EmpleadosModel.Sp_Sel_Nacionalidad_Result)">
-          <Parameter Name="id_Nac" Mode="In" Type="Int32" />
+            <Parameter Name="id_Nac" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Sp_Sel_Salud" ReturnType="Collection(EmpleadosModel.Sp_Sel_Salud_Result)">
             <Parameter Name="Cod_Salud" Mode="In" Type="Int32" />
@@ -1647,7 +1654,7 @@
             <Parameter Name="Porc_Cotiz" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="Sp_Sel_Seg_Cesantia_Id" ReturnType="Collection(EmpleadosModel.Sp_Sel_Seg_Cesantia_Id_Result)">
-          <Parameter Name="idtipcon" Mode="In" Type="Int32" />
+            <Parameter Name="idtipcon" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Sp_UPD_Afp">
             <Parameter Name="Cod_Afp" Mode="In" Type="Int32" />
@@ -1894,7 +1901,7 @@
           <Property Type="Decimal" Name="Valor_Salud" Nullable="false" Precision="9" Scale="2" />
           <Property Type="String" Name="Tipo_Contrato" Nullable="false" MaxLength="50" />
           <Property Type="Decimal" Name="Monto_Empleador" Nullable="false" Precision="9" Scale="1" />
-          <Property Type="Decimal" Name="Monto_Trabajador" Nullable="true" Precision="9" Scale="1" />
+          <Property Type="Decimal" Name="Monto_Trabajador" Nullable="false" Precision="9" Scale="1" />
           <Property Type="Decimal" Name="Valor_Seg_Cesantia" Nullable="false" Precision="9" Scale="2" />
           <Property Type="Decimal" Name="TotalDescSegSocial" Nullable="false" Precision="9" Scale="2" />
           <Property Type="Decimal" Name="Valor_Impuesto" Nullable="false" Precision="9" Scale="2" />
@@ -1923,7 +1930,13 @@
           <Property Type="Int32" Name="Id_Tip_Contrato" Nullable="false" />
           <Property Type="String" Name="Tipo_Contrato" Nullable="false" MaxLength="50" />
           <Property Type="Decimal" Name="Monto_Empleador" Nullable="false" Precision="9" Scale="1" />
-          <Property Type="Decimal" Name="Monto_Trabajador" Nullable="true" Precision="9" Scale="1" />
+          <Property Type="Decimal" Name="Monto_Trabajador" Nullable="false" Precision="9" Scale="1" />
+        </ComplexType>
+        <ComplexType Name="Sp_Mues_Seg_CesantiaxId_Result">
+          <Property Type="Int32" Name="Id_Tip_Contrato" Nullable="false" />
+          <Property Type="String" Name="Tipo_Contrato" Nullable="false" MaxLength="50" />
+          <Property Type="Decimal" Name="Monto_Empleador" Nullable="false" Precision="9" Scale="1" />
+          <Property Type="Decimal" Name="Monto_Trabajador" Nullable="false" Precision="9" Scale="1" />
         </ComplexType>
         <ComplexType Name="Sp_Mues_TipRem_Result">
           <Property Type="Int32" Name="Id_Tipo" Nullable="false" />
@@ -2042,7 +2055,7 @@
           <Property Type="Decimal" Name="Valor_Salud" Nullable="false" Precision="9" Scale="2" />
           <Property Type="String" Name="Tipo_Contrato" Nullable="false" MaxLength="50" />
           <Property Type="Decimal" Name="Monto_Empleador" Nullable="false" Precision="9" Scale="1" />
-          <Property Type="Decimal" Name="Monto_Trabajador" Nullable="true" Precision="9" Scale="1" />
+          <Property Type="Decimal" Name="Monto_Trabajador" Nullable="false" Precision="9" Scale="1" />
           <Property Type="Decimal" Name="Valor_Seg_Cesantia" Nullable="false" Precision="9" Scale="2" />
           <Property Type="Decimal" Name="TotalDescSegSocial" Nullable="false" Precision="9" Scale="2" />
           <Property Type="Decimal" Name="Valor_Impuesto" Nullable="false" Precision="9" Scale="2" />
@@ -2071,19 +2084,22 @@
           <Property Type="Decimal" Name="Movilizacion" Nullable="false" Precision="9" Scale="2" />
           <Property Type="Decimal" Name="Viaticos" Nullable="false" Precision="9" Scale="0" />
           <Property Type="Decimal" Name="TotalHaberes" Nullable="false" Precision="9" Scale="0" />
+          <Property Type="Int32" Name="CodAfp" Nullable="false" />
           <Property Type="String" Name="Nom_Afp" Nullable="true" MaxLength="50" />
           <Property Type="Decimal" Name="Porc_Desc" Nullable="true" Precision="18" Scale="2" />
           <Property Type="Decimal" Name="Valor_Afp" Nullable="false" Precision="9" Scale="2" />
+          <Property Type="Int32" Name="Cod_Salud" Nullable="false" />
           <Property Type="String" Name="Nombre_Salud" Nullable="true" MaxLength="50" />
           <Property Type="Decimal" Name="Porc_Cotiz" Nullable="true" Precision="18" Scale="2" />
           <Property Type="Decimal" Name="Valor_Salud" Nullable="false" Precision="9" Scale="2" />
+          <Property Type="Int32" Name="Id_Seg_Cesantia" Nullable="false" />
           <Property Type="String" Name="Tipo_Contrato" Nullable="false" MaxLength="50" />
-          <Property Type="Decimal" Name="Monto_Empleador" Nullable="false" Precision="9" Scale="1" />
-          <Property Type="Decimal" Name="Monto_Trabajador" Nullable="true" Precision="9" Scale="1" />
           <Property Type="Decimal" Name="Valor_Seg_Cesantia" Nullable="false" Precision="9" Scale="2" />
           <Property Type="Decimal" Name="TotalDescSegSocial" Nullable="false" Precision="9" Scale="2" />
           <Property Type="Decimal" Name="Valor_Impuesto" Nullable="false" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="RebaImpto" Nullable="false" Precision="9" Scale="0" />
           <Property Type="Decimal" Name="ImpAPagar" Nullable="false" Precision="9" Scale="0" />
+          <Property Type="Decimal" Name="RemNeta" Nullable="false" Precision="9" Scale="0" />
           <Property Type="Decimal" Name="Prestamos" Nullable="false" Precision="9" Scale="0" />
           <Property Type="Decimal" Name="TotalDesctos" Nullable="false" Precision="9" Scale="0" />
           <Property Type="Decimal" Name="Otrs_Descuentos" Nullable="false" Precision="9" Scale="2" />
@@ -2100,9 +2116,10 @@
           <Property Type="Decimal" Name="Porc_Cotiz" Nullable="true" Precision="18" Scale="2" />
         </ComplexType>
         <ComplexType Name="Sp_Sel_Seg_Cesantia_Id_Result">
+          <Property Type="Int32" Name="Id_Tip_Contrato" Nullable="false" />
           <Property Type="String" Name="Tipo_Contrato" Nullable="false" MaxLength="50" />
           <Property Type="Decimal" Name="Monto_Empleador" Nullable="false" Precision="9" Scale="1" />
-          <Property Type="Decimal" Name="Monto_Trabajador" Nullable="true" Precision="9" Scale="1" />
+          <Property Type="Decimal" Name="Monto_Trabajador" Nullable="false" Precision="9" Scale="1" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2626,6 +2643,16 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_Mues_Seg_CesantiaxId" FunctionName="EmpleadosModel.Store.Sp_Mues_Seg_CesantiaxId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EmpleadosModel.Sp_Mues_Seg_CesantiaxId_Result">
+                <ScalarProperty Name="Id_Tip_Contrato" ColumnName="Id_Tip_Contrato" />
+                <ScalarProperty Name="Tipo_Contrato" ColumnName="Tipo_Contrato" />
+                <ScalarProperty Name="Monto_Empleador" ColumnName="Monto_Empleador" />
+                <ScalarProperty Name="Monto_Trabajador" ColumnName="Monto_Trabajador" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Sp_Mues_TipRem" FunctionName="EmpleadosModel.Store.Sp_Mues_TipRem">
             <ResultMapping>
               <ComplexTypeMapping TypeName="EmpleadosModel.Sp_Mues_TipRem_Result">
@@ -2812,19 +2839,22 @@
                 <ScalarProperty Name="Movilizacion" ColumnName="Movilizacion" />
                 <ScalarProperty Name="Viaticos" ColumnName="Viaticos" />
                 <ScalarProperty Name="TotalHaberes" ColumnName="TotalHaberes" />
+                <ScalarProperty Name="CodAfp" ColumnName="CodAfp" />
                 <ScalarProperty Name="Nom_Afp" ColumnName="Nom_Afp" />
                 <ScalarProperty Name="Porc_Desc" ColumnName="Porc_Desc" />
                 <ScalarProperty Name="Valor_Afp" ColumnName="Valor_Afp" />
+                <ScalarProperty Name="Cod_Salud" ColumnName="Cod_Salud" />
                 <ScalarProperty Name="Nombre_Salud" ColumnName="Nombre_Salud" />
                 <ScalarProperty Name="Porc_Cotiz" ColumnName="Porc_Cotiz" />
                 <ScalarProperty Name="Valor_Salud" ColumnName="Valor_Salud" />
+                <ScalarProperty Name="Id_Seg_Cesantia" ColumnName="Id_Seg_Cesantia" />
                 <ScalarProperty Name="Tipo_Contrato" ColumnName="Tipo_Contrato" />
-                <ScalarProperty Name="Monto_Empleador" ColumnName="Monto_Empleador" />
-                <ScalarProperty Name="Monto_Trabajador" ColumnName="Monto_Trabajador" />
                 <ScalarProperty Name="Valor_Seg_Cesantia" ColumnName="Valor_Seg_Cesantia" />
                 <ScalarProperty Name="TotalDescSegSocial" ColumnName="TotalDescSegSocial" />
                 <ScalarProperty Name="Valor_Impuesto" ColumnName="Valor_Impuesto" />
+                <ScalarProperty Name="RebaImpto" ColumnName="RebaImpto" />
                 <ScalarProperty Name="ImpAPagar" ColumnName="ImpAPagar" />
+                <ScalarProperty Name="RemNeta" ColumnName="RemNeta" />
                 <ScalarProperty Name="Prestamos" ColumnName="Prestamos" />
                 <ScalarProperty Name="TotalDesctos" ColumnName="TotalDesctos" />
                 <ScalarProperty Name="Otrs_Descuentos" ColumnName="Otrs_Descuentos" />
@@ -2853,6 +2883,7 @@
           <FunctionImportMapping FunctionImportName="Sp_Sel_Seg_Cesantia_Id" FunctionName="EmpleadosModel.Store.Sp_Sel_Seg_Cesantia_Id">
             <ResultMapping>
               <ComplexTypeMapping TypeName="EmpleadosModel.Sp_Sel_Seg_Cesantia_Id_Result">
+                <ScalarProperty Name="Id_Tip_Contrato" ColumnName="Id_Tip_Contrato" />
                 <ScalarProperty Name="Tipo_Contrato" ColumnName="Tipo_Contrato" />
                 <ScalarProperty Name="Monto_Empleador" ColumnName="Monto_Empleador" />
                 <ScalarProperty Name="Monto_Trabajador" ColumnName="Monto_Trabajador" />

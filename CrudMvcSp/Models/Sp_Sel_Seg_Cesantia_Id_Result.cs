@@ -13,8 +13,9 @@ namespace CrudMvcSp.Models
     
     public partial class Sp_Sel_Seg_Cesantia_Id_Result
     {
+        public int Id_Tip_Contrato { get; set; }
         public string Tipo_Contrato { get; set; }
         public decimal Monto_Empleador { get; set; }
-        public Nullable<decimal> Monto_Trabajador { get; set; }
+        public decimal Monto_Trabajador { get; set; }
     }
 }

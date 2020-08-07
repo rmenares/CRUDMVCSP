@@ -10,9 +10,8 @@
 namespace CrudMvcSp.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Seg_Cesantia
+    public partial class Sp_Mues_Seg_CesantiaxId_Result
     {
         public int Id_Tip_Contrato { get; set; }
         public string Tipo_Contrato { get; set; }

@@ -46,7 +46,7 @@ namespace CrudMvcSp.Controllers
 
                 var LisSal = ManSalud.Sp_Mues_Salud().ToList();
                 ViewBag.ListSalud = new SelectList(LisSal, "Cod_Salud", "Nombre_Salud");
-
+               
                 var LisCesa = Cesantia.Sp_Mues_Seg_Cesantia().ToList();
                 ViewBag.ListSegCes = new SelectList(LisCesa, "Id_Tip_Contrato", "Tipo_Contrato");
 
@@ -123,17 +123,17 @@ namespace CrudMvcSp.Controllers
             using (LiqSueld = new EmpleadosEntities())
             {
                 var GrabLiq = LiqSueld.Sp_Ins_LiqSueldo(
-                    LiqiSueld.Rut_Empleado,       LiqiSueld.Id_Tipo_Renumeracion, LiqiSueld.Fecha_Liquidacion,
-                    LiqiSueld.Sueldo_Base,        LiqiSueld.Dias_Trabajados,      LiqiSueld.PorcComision,
-                    LiqiSueld.Valor_Com,          LiqiSueld.Cant_Horas_Extras,    LiqiSueld.Total_Horas_Extras,
-                    LiqiSueld.Bonos,              LiqiSueld.Gratificacion,        LiqiSueld.TotalImponible,
-                    LiqiSueld.Colacion,           LiqiSueld.Movilizacion,         LiqiSueld.Viaticos,
-                    LiqiSueld.TotalHaberes,       LiqiSueld.CodAfp,               LiqiSueld.Valor_Afp,
-                    LiqiSueld.Cod_Salud,          LiqiSueld.Valor_Salud,          LiqiSueld.Id_Seg_Cesantia,
-                    LiqiSueld.Valor_Seg_Cesantia, LiqiSueld.TotalDescSegSocial,   LiqiSueld.Valor_Impuesto,
-                    LiqiSueld.RebaImpto,          LiqiSueld.ImpAPagar,            LiqiSueld.RemNeta,
-                    LiqiSueld.Prestamos,          LiqiSueld.TotalDesctos,         LiqiSueld.Otrs_Descuentos,
-                    LiqiSueld.Anticipos,          LiqiSueld.Total_Pagar);
+                     LiqiSueld.Rut_Empleado,           LiqiSueld.Id_Tipo_Renumeracion,             LiqiSueld.Fecha_Liquidacion,
+                     LiqiSueld.Sueldo_Base,            LiqiSueld.Dias_Trabajados,                  LiqiSueld.PorcComision,
+                     LiqiSueld.Valor_Com,              LiqiSueld.Cant_Horas_Extras,                LiqiSueld.Total_Horas_Extras,
+                     LiqiSueld.Bonos,                  LiqiSueld.Gratificacion,                    LiqiSueld.TotalImponible,
+                     LiqiSueld.Colacion,               LiqiSueld.Movilizacion,                     LiqiSueld.Viaticos,
+                     LiqiSueld.TotalHaberes,           LiqiSueld.CodAfp,                           LiqiSueld.Valor_Afp,
+                     LiqiSueld.Cod_Salud,              LiqiSueld.Valor_Salud,                      LiqiSueld.Id_Seg_Cesantia,
+                     LiqiSueld.Valor_Seg_Cesantia,     LiqiSueld.TotalDescSegSocial,               LiqiSueld.Valor_Impuesto,
+                     LiqiSueld.RebaImpto,              LiqiSueld.ImpAPagar,                        LiqiSueld.RemNeta,
+                     LiqiSueld.Prestamos,              LiqiSueld.TotalDesctos,                     LiqiSueld.Otrs_Descuentos,
+                     LiqiSueld.Anticipos,              LiqiSueld.Total_Pagar );
                 return Json(GrabLiq);
             }
         }

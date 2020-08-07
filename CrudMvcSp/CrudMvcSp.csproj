@@ -273,6 +273,9 @@
     <Compile Include="Models\Sp_Mues_Salud_Result.cs">
       <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Sp_Mues_Seg_CesantiaxId_Result.cs">
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Sp_Mues_Seg_Cesantia_Result.cs">
       <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>

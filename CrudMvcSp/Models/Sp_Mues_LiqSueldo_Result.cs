@@ -38,7 +38,7 @@ namespace CrudMvcSp.Models
         public decimal Valor_Salud { get; set; }
         public string Tipo_Contrato { get; set; }
         public decimal Monto_Empleador { get; set; }
-        public Nullable<decimal> Monto_Trabajador { get; set; }
+        public decimal Monto_Trabajador { get; set; }
         public decimal Valor_Seg_Cesantia { get; set; }
         public decimal TotalDescSegSocial { get; set; }
         public decimal Valor_Impuesto { get; set; }

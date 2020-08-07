@@ -660,6 +660,15 @@ namespace CrudMvcSp.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Sp_Mues_Seg_Cesantia_Result>("Sp_Mues_Seg_Cesantia");
         }
     
+        public virtual ObjectResult<Sp_Mues_Seg_CesantiaxId_Result> Sp_Mues_Seg_CesantiaxId(Nullable<int> idTipSegCes)
+        {
+            var idTipSegCesParameter = idTipSegCes.HasValue ?
+                new ObjectParameter("IdTipSegCes", idTipSegCes) :
+                new ObjectParameter("IdTipSegCes", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Sp_Mues_Seg_CesantiaxId_Result>("Sp_Mues_Seg_CesantiaxId", idTipSegCesParameter);
+        }
+    
         public virtual ObjectResult<Sp_Mues_TipRem_Result> Sp_Mues_TipRem()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Sp_Mues_TipRem_Result>("Sp_Mues_TipRem");

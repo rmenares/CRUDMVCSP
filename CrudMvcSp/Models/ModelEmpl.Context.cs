@@ -428,7 +428,7 @@ namespace CrudMvcSp.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Sp_Ins_Empresas", rut_empParameter, nombreParameter, direccionParameter, numParameter, vilpobParameter, comuParameter, ciudadParameter, fonoParameter, emailempParameter);
         }
     
-        public virtual int Sp_Ins_LiqSueldo(string rut_Empleado, Nullable<int> id_Tipo_Renumeracion, Nullable<System.DateTime> fecha_Liquidacion, string sueldo_Base, string dias_Trabajados, string porcComision, Nullable<decimal> valor_Com, Nullable<decimal> cant_Horas_Extras, Nullable<decimal> total_Horas_Extras, Nullable<decimal> bonos, Nullable<decimal> gratificacion, Nullable<decimal> totalImponible, Nullable<decimal> colacion, Nullable<decimal> movilizacion, Nullable<decimal> viaticos, Nullable<decimal> totalHaberes, Nullable<int> codAfp, Nullable<decimal> valor_Afp, Nullable<int> cod_Salud, Nullable<decimal> valor_Salud, Nullable<int> id_Seg_Cesantia, Nullable<decimal> valor_Seg_Cesantia, Nullable<decimal> totalDescSegSocial, Nullable<decimal> valor_Impuesto, Nullable<decimal> rebaImpto, Nullable<decimal> impAPagar, Nullable<decimal> prestamos, Nullable<decimal> remNeta, Nullable<decimal> totalDesctos, Nullable<decimal> otrs_Descuentos, Nullable<decimal> anticipos, Nullable<decimal> total_Pagar)
+        public virtual int Sp_Ins_LiqSueldo(string rut_Empleado, Nullable<int> id_Tipo_Renumeracion, Nullable<System.DateTime> fecha_Liquidacion, string sueldo_Base, string dias_Trabajados, string porcComision, string valor_Com, string cant_Horas_Extras, string total_Horas_Extras, string bonos, string gratificacion, string totalImponible, string colacion, string movilizacion, string viaticos, string totalHaberes, Nullable<int> codAfp, string valor_Afp, Nullable<int> cod_Salud, string valor_Salud, Nullable<int> id_Seg_Cesantia, string valor_Seg_Cesantia, string totalDescSegSocial, string valor_Impuesto, string rebaImpto, string impAPagar, string prestamos, string remNeta, string totalDesctos, string otrs_Descuentos, string anticipos, string total_Pagar)
         {
             var rut_EmpleadoParameter = rut_Empleado != null ?
                 new ObjectParameter("Rut_Empleado", rut_Empleado) :
@@ -454,109 +454,109 @@ namespace CrudMvcSp.Models
                 new ObjectParameter("PorcComision", porcComision) :
                 new ObjectParameter("PorcComision", typeof(string));
     
-            var valor_ComParameter = valor_Com.HasValue ?
+            var valor_ComParameter = valor_Com != null ?
                 new ObjectParameter("Valor_Com", valor_Com) :
-                new ObjectParameter("Valor_Com", typeof(decimal));
+                new ObjectParameter("Valor_Com", typeof(string));
     
-            var cant_Horas_ExtrasParameter = cant_Horas_Extras.HasValue ?
+            var cant_Horas_ExtrasParameter = cant_Horas_Extras != null ?
                 new ObjectParameter("Cant_Horas_Extras", cant_Horas_Extras) :
-                new ObjectParameter("Cant_Horas_Extras", typeof(decimal));
+                new ObjectParameter("Cant_Horas_Extras", typeof(string));
     
-            var total_Horas_ExtrasParameter = total_Horas_Extras.HasValue ?
+            var total_Horas_ExtrasParameter = total_Horas_Extras != null ?
                 new ObjectParameter("Total_Horas_Extras", total_Horas_Extras) :
-                new ObjectParameter("Total_Horas_Extras", typeof(decimal));
+                new ObjectParameter("Total_Horas_Extras", typeof(string));
     
-            var bonosParameter = bonos.HasValue ?
+            var bonosParameter = bonos != null ?
                 new ObjectParameter("Bonos", bonos) :
-                new ObjectParameter("Bonos", typeof(decimal));
+                new ObjectParameter("Bonos", typeof(string));
     
-            var gratificacionParameter = gratificacion.HasValue ?
+            var gratificacionParameter = gratificacion != null ?
                 new ObjectParameter("Gratificacion", gratificacion) :
-                new ObjectParameter("Gratificacion", typeof(decimal));
+                new ObjectParameter("Gratificacion", typeof(string));
     
-            var totalImponibleParameter = totalImponible.HasValue ?
+            var totalImponibleParameter = totalImponible != null ?
                 new ObjectParameter("TotalImponible", totalImponible) :
-                new ObjectParameter("TotalImponible", typeof(decimal));
+                new ObjectParameter("TotalImponible", typeof(string));
     
-            var colacionParameter = colacion.HasValue ?
+            var colacionParameter = colacion != null ?
                 new ObjectParameter("Colacion", colacion) :
-                new ObjectParameter("Colacion", typeof(decimal));
+                new ObjectParameter("Colacion", typeof(string));
     
-            var movilizacionParameter = movilizacion.HasValue ?
+            var movilizacionParameter = movilizacion != null ?
                 new ObjectParameter("Movilizacion", movilizacion) :
-                new ObjectParameter("Movilizacion", typeof(decimal));
+                new ObjectParameter("Movilizacion", typeof(string));
     
-            var viaticosParameter = viaticos.HasValue ?
+            var viaticosParameter = viaticos != null ?
                 new ObjectParameter("Viaticos", viaticos) :
-                new ObjectParameter("Viaticos", typeof(decimal));
+                new ObjectParameter("Viaticos", typeof(string));
     
-            var totalHaberesParameter = totalHaberes.HasValue ?
+            var totalHaberesParameter = totalHaberes != null ?
                 new ObjectParameter("TotalHaberes", totalHaberes) :
-                new ObjectParameter("TotalHaberes", typeof(decimal));
+                new ObjectParameter("TotalHaberes", typeof(string));
     
             var codAfpParameter = codAfp.HasValue ?
                 new ObjectParameter("CodAfp", codAfp) :
                 new ObjectParameter("CodAfp", typeof(int));
     
-            var valor_AfpParameter = valor_Afp.HasValue ?
+            var valor_AfpParameter = valor_Afp != null ?
                 new ObjectParameter("Valor_Afp", valor_Afp) :
-                new ObjectParameter("Valor_Afp", typeof(decimal));
+                new ObjectParameter("Valor_Afp", typeof(string));
     
             var cod_SaludParameter = cod_Salud.HasValue ?
                 new ObjectParameter("Cod_Salud", cod_Salud) :
                 new ObjectParameter("Cod_Salud", typeof(int));
     
-            var valor_SaludParameter = valor_Salud.HasValue ?
+            var valor_SaludParameter = valor_Salud != null ?
                 new ObjectParameter("Valor_Salud", valor_Salud) :
-                new ObjectParameter("Valor_Salud", typeof(decimal));
+                new ObjectParameter("Valor_Salud", typeof(string));
     
             var id_Seg_CesantiaParameter = id_Seg_Cesantia.HasValue ?
                 new ObjectParameter("Id_Seg_Cesantia", id_Seg_Cesantia) :
                 new ObjectParameter("Id_Seg_Cesantia", typeof(int));
     
-            var valor_Seg_CesantiaParameter = valor_Seg_Cesantia.HasValue ?
+            var valor_Seg_CesantiaParameter = valor_Seg_Cesantia != null ?
                 new ObjectParameter("Valor_Seg_Cesantia", valor_Seg_Cesantia) :
-                new ObjectParameter("Valor_Seg_Cesantia", typeof(decimal));
+                new ObjectParameter("Valor_Seg_Cesantia", typeof(string));
     
-            var totalDescSegSocialParameter = totalDescSegSocial.HasValue ?
+            var totalDescSegSocialParameter = totalDescSegSocial != null ?
                 new ObjectParameter("TotalDescSegSocial", totalDescSegSocial) :
-                new ObjectParameter("TotalDescSegSocial", typeof(decimal));
+                new ObjectParameter("TotalDescSegSocial", typeof(string));
     
-            var valor_ImpuestoParameter = valor_Impuesto.HasValue ?
+            var valor_ImpuestoParameter = valor_Impuesto != null ?
                 new ObjectParameter("Valor_Impuesto", valor_Impuesto) :
-                new ObjectParameter("Valor_Impuesto", typeof(decimal));
+                new ObjectParameter("Valor_Impuesto", typeof(string));
     
-            var rebaImptoParameter = rebaImpto.HasValue ?
+            var rebaImptoParameter = rebaImpto != null ?
                 new ObjectParameter("RebaImpto", rebaImpto) :
-                new ObjectParameter("RebaImpto", typeof(decimal));
+                new ObjectParameter("RebaImpto", typeof(string));
     
-            var impAPagarParameter = impAPagar.HasValue ?
+            var impAPagarParameter = impAPagar != null ?
                 new ObjectParameter("ImpAPagar", impAPagar) :
-                new ObjectParameter("ImpAPagar", typeof(decimal));
+                new ObjectParameter("ImpAPagar", typeof(string));
     
-            var prestamosParameter = prestamos.HasValue ?
+            var prestamosParameter = prestamos != null ?
                 new ObjectParameter("Prestamos", prestamos) :
-                new ObjectParameter("Prestamos", typeof(decimal));
+                new ObjectParameter("Prestamos", typeof(string));
     
-            var remNetaParameter = remNeta.HasValue ?
+            var remNetaParameter = remNeta != null ?
                 new ObjectParameter("RemNeta", remNeta) :
-                new ObjectParameter("RemNeta", typeof(decimal));
+                new ObjectParameter("RemNeta", typeof(string));
     
-            var totalDesctosParameter = totalDesctos.HasValue ?
+            var totalDesctosParameter = totalDesctos != null ?
                 new ObjectParameter("TotalDesctos", totalDesctos) :
-                new ObjectParameter("TotalDesctos", typeof(decimal));
+                new ObjectParameter("TotalDesctos", typeof(string));
     
-            var otrs_DescuentosParameter = otrs_Descuentos.HasValue ?
+            var otrs_DescuentosParameter = otrs_Descuentos != null ?
                 new ObjectParameter("Otrs_Descuentos", otrs_Descuentos) :
-                new ObjectParameter("Otrs_Descuentos", typeof(decimal));
+                new ObjectParameter("Otrs_Descuentos", typeof(string));
     
-            var anticiposParameter = anticipos.HasValue ?
+            var anticiposParameter = anticipos != null ?
                 new ObjectParameter("Anticipos", anticipos) :
-                new ObjectParameter("Anticipos", typeof(decimal));
+                new ObjectParameter("Anticipos", typeof(string));
     
-            var total_PagarParameter = total_Pagar.HasValue ?
+            var total_PagarParameter = total_Pagar != null ?
                 new ObjectParameter("Total_Pagar", total_Pagar) :
-                new ObjectParameter("Total_Pagar", typeof(decimal));
+                new ObjectParameter("Total_Pagar", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Sp_Ins_LiqSueldo", rut_EmpleadoParameter, id_Tipo_RenumeracionParameter, fecha_LiquidacionParameter, sueldo_BaseParameter, dias_TrabajadosParameter, porcComisionParameter, valor_ComParameter, cant_Horas_ExtrasParameter, total_Horas_ExtrasParameter, bonosParameter, gratificacionParameter, totalImponibleParameter, colacionParameter, movilizacionParameter, viaticosParameter, totalHaberesParameter, codAfpParameter, valor_AfpParameter, cod_SaludParameter, valor_SaludParameter, id_Seg_CesantiaParameter, valor_Seg_CesantiaParameter, totalDescSegSocialParameter, valor_ImpuestoParameter, rebaImptoParameter, impAPagarParameter, prestamosParameter, remNetaParameter, totalDesctosParameter, otrs_DescuentosParameter, anticiposParameter, total_PagarParameter);
         }
@@ -1086,7 +1086,7 @@ namespace CrudMvcSp.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Sp_UPD_Empresas", rut_empParameter, nombreParameter, direccionParameter, numParameter, vilpobParameter, comuParameter, ciudadParameter, fonoParameter, emailParameter);
         }
     
-        public virtual int SP_UPD_Liquidacion_Sueldo(Nullable<int> id_Liq, string rut_Empleado, Nullable<int> id_Tipo_Renumeracion, Nullable<System.DateTime> fecha_Liquidacion, string sueldo_Base, string dias_Trabajados, string porcComision, Nullable<decimal> valor_Com, Nullable<decimal> cant_Horas_Extras, Nullable<decimal> total_Horas_Extras, Nullable<decimal> bonos, Nullable<decimal> gratificacion, Nullable<decimal> totalImponible, Nullable<decimal> colacion, Nullable<decimal> movilizacion, Nullable<decimal> viaticos, Nullable<decimal> totalHaberes, Nullable<int> codAfp, Nullable<decimal> valor_Afp, Nullable<int> cod_Salud, Nullable<decimal> valor_Salud, Nullable<int> id_Seg_Cesantia, Nullable<decimal> valor_Seg_Cesantia, Nullable<decimal> totalDescSegSocial, Nullable<decimal> valor_Impuesto, Nullable<decimal> rebaImpto, Nullable<decimal> impAPagar, Nullable<decimal> remNeta, Nullable<decimal> prestamos, Nullable<decimal> totalDesctos, Nullable<decimal> otrs_Descuentos, Nullable<decimal> anticipos, Nullable<decimal> total_Pagar)
+        public virtual int SP_UPD_Liquidacion_Sueldo(Nullable<int> id_Liq, string rut_Empleado, Nullable<int> id_Tipo_Renumeracion, Nullable<System.DateTime> fecha_Liquidacion, string sueldo_Base, string dias_Trabajados, string porcComision, string valor_Com, string cant_Horas_Extras, string total_Horas_Extras, string bonos, string gratificacion, string totalImponible, string colacion, string movilizacion, string viaticos, string totalHaberes, Nullable<int> codAfp, string valor_Afp, Nullable<int> cod_Salud, string valor_Salud, Nullable<int> id_Seg_Cesantia, string valor_Seg_Cesantia, string totalDescSegSocial, string valor_Impuesto, string rebaImpto, string impAPagar, string remNeta, string prestamos, string totalDesctos, string otrs_Descuentos, string anticipos, string total_Pagar)
         {
             var id_LiqParameter = id_Liq.HasValue ?
                 new ObjectParameter("Id_Liq", id_Liq) :
@@ -1116,109 +1116,109 @@ namespace CrudMvcSp.Models
                 new ObjectParameter("PorcComision", porcComision) :
                 new ObjectParameter("PorcComision", typeof(string));
     
-            var valor_ComParameter = valor_Com.HasValue ?
+            var valor_ComParameter = valor_Com != null ?
                 new ObjectParameter("Valor_Com", valor_Com) :
-                new ObjectParameter("Valor_Com", typeof(decimal));
+                new ObjectParameter("Valor_Com", typeof(string));
     
-            var cant_Horas_ExtrasParameter = cant_Horas_Extras.HasValue ?
+            var cant_Horas_ExtrasParameter = cant_Horas_Extras != null ?
                 new ObjectParameter("Cant_Horas_Extras", cant_Horas_Extras) :
-                new ObjectParameter("Cant_Horas_Extras", typeof(decimal));
+                new ObjectParameter("Cant_Horas_Extras", typeof(string));
     
-            var total_Horas_ExtrasParameter = total_Horas_Extras.HasValue ?
+            var total_Horas_ExtrasParameter = total_Horas_Extras != null ?
                 new ObjectParameter("Total_Horas_Extras", total_Horas_Extras) :
-                new ObjectParameter("Total_Horas_Extras", typeof(decimal));
+                new ObjectParameter("Total_Horas_Extras", typeof(string));
     
-            var bonosParameter = bonos.HasValue ?
+            var bonosParameter = bonos != null ?
                 new ObjectParameter("Bonos", bonos) :
-                new ObjectParameter("Bonos", typeof(decimal));
+                new ObjectParameter("Bonos", typeof(string));
     
-            var gratificacionParameter = gratificacion.HasValue ?
+            var gratificacionParameter = gratificacion != null ?
                 new ObjectParameter("Gratificacion", gratificacion) :
-                new ObjectParameter("Gratificacion", typeof(decimal));
+                new ObjectParameter("Gratificacion", typeof(string));
     
-            var totalImponibleParameter = totalImponible.HasValue ?
+            var totalImponibleParameter = totalImponible != null ?
                 new ObjectParameter("TotalImponible", totalImponible) :
-                new ObjectParameter("TotalImponible", typeof(decimal));
+                new ObjectParameter("TotalImponible", typeof(string));
     
-            var colacionParameter = colacion.HasValue ?
+            var colacionParameter = colacion != null ?
                 new ObjectParameter("Colacion", colacion) :
-                new ObjectParameter("Colacion", typeof(decimal));
+                new ObjectParameter("Colacion", typeof(string));
     
-            var movilizacionParameter = movilizacion.HasValue ?
+            var movilizacionParameter = movilizacion != null ?
                 new ObjectParameter("Movilizacion", movilizacion) :
-                new ObjectParameter("Movilizacion", typeof(decimal));
+                new ObjectParameter("Movilizacion", typeof(string));
     
-            var viaticosParameter = viaticos.HasValue ?
+            var viaticosParameter = viaticos != null ?
                 new ObjectParameter("Viaticos", viaticos) :
-                new ObjectParameter("Viaticos", typeof(decimal));
+                new ObjectParameter("Viaticos", typeof(string));
     
-            var totalHaberesParameter = totalHaberes.HasValue ?
+            var totalHaberesParameter = totalHaberes != null ?
                 new ObjectParameter("TotalHaberes", totalHaberes) :
-                new ObjectParameter("TotalHaberes", typeof(decimal));
+                new ObjectParameter("TotalHaberes", typeof(string));
     
             var codAfpParameter = codAfp.HasValue ?
                 new ObjectParameter("CodAfp", codAfp) :
                 new ObjectParameter("CodAfp", typeof(int));
     
-            var valor_AfpParameter = valor_Afp.HasValue ?
+            var valor_AfpParameter = valor_Afp != null ?
                 new ObjectParameter("Valor_Afp", valor_Afp) :
-                new ObjectParameter("Valor_Afp", typeof(decimal));
+                new ObjectParameter("Valor_Afp", typeof(string));
     
             var cod_SaludParameter = cod_Salud.HasValue ?
                 new ObjectParameter("Cod_Salud", cod_Salud) :
                 new ObjectParameter("Cod_Salud", typeof(int));
     
-            var valor_SaludParameter = valor_Salud.HasValue ?
+            var valor_SaludParameter = valor_Salud != null ?
                 new ObjectParameter("Valor_Salud", valor_Salud) :
-                new ObjectParameter("Valor_Salud", typeof(decimal));
+                new ObjectParameter("Valor_Salud", typeof(string));
     
             var id_Seg_CesantiaParameter = id_Seg_Cesantia.HasValue ?
                 new ObjectParameter("Id_Seg_Cesantia", id_Seg_Cesantia) :
                 new ObjectParameter("Id_Seg_Cesantia", typeof(int));
     
-            var valor_Seg_CesantiaParameter = valor_Seg_Cesantia.HasValue ?
+            var valor_Seg_CesantiaParameter = valor_Seg_Cesantia != null ?
                 new ObjectParameter("Valor_Seg_Cesantia", valor_Seg_Cesantia) :
-                new ObjectParameter("Valor_Seg_Cesantia", typeof(decimal));
+                new ObjectParameter("Valor_Seg_Cesantia", typeof(string));
     
-            var totalDescSegSocialParameter = totalDescSegSocial.HasValue ?
+            var totalDescSegSocialParameter = totalDescSegSocial != null ?
                 new ObjectParameter("TotalDescSegSocial", totalDescSegSocial) :
-                new ObjectParameter("TotalDescSegSocial", typeof(decimal));
+                new ObjectParameter("TotalDescSegSocial", typeof(string));
     
-            var valor_ImpuestoParameter = valor_Impuesto.HasValue ?
+            var valor_ImpuestoParameter = valor_Impuesto != null ?
                 new ObjectParameter("Valor_Impuesto", valor_Impuesto) :
-                new ObjectParameter("Valor_Impuesto", typeof(decimal));
+                new ObjectParameter("Valor_Impuesto", typeof(string));
     
-            var rebaImptoParameter = rebaImpto.HasValue ?
+            var rebaImptoParameter = rebaImpto != null ?
                 new ObjectParameter("RebaImpto", rebaImpto) :
-                new ObjectParameter("RebaImpto", typeof(decimal));
+                new ObjectParameter("RebaImpto", typeof(string));
     
-            var impAPagarParameter = impAPagar.HasValue ?
+            var impAPagarParameter = impAPagar != null ?
                 new ObjectParameter("ImpAPagar", impAPagar) :
-                new ObjectParameter("ImpAPagar", typeof(decimal));
+                new ObjectParameter("ImpAPagar", typeof(string));
     
-            var remNetaParameter = remNeta.HasValue ?
+            var remNetaParameter = remNeta != null ?
                 new ObjectParameter("RemNeta", remNeta) :
-                new ObjectParameter("RemNeta", typeof(decimal));
+                new ObjectParameter("RemNeta", typeof(string));
     
-            var prestamosParameter = prestamos.HasValue ?
+            var prestamosParameter = prestamos != null ?
                 new ObjectParameter("Prestamos", prestamos) :
-                new ObjectParameter("Prestamos", typeof(decimal));
+                new ObjectParameter("Prestamos", typeof(string));
     
-            var totalDesctosParameter = totalDesctos.HasValue ?
+            var totalDesctosParameter = totalDesctos != null ?
                 new ObjectParameter("TotalDesctos", totalDesctos) :
-                new ObjectParameter("TotalDesctos", typeof(decimal));
+                new ObjectParameter("TotalDesctos", typeof(string));
     
-            var otrs_DescuentosParameter = otrs_Descuentos.HasValue ?
+            var otrs_DescuentosParameter = otrs_Descuentos != null ?
                 new ObjectParameter("Otrs_Descuentos", otrs_Descuentos) :
-                new ObjectParameter("Otrs_Descuentos", typeof(decimal));
+                new ObjectParameter("Otrs_Descuentos", typeof(string));
     
-            var anticiposParameter = anticipos.HasValue ?
+            var anticiposParameter = anticipos != null ?
                 new ObjectParameter("Anticipos", anticipos) :
-                new ObjectParameter("Anticipos", typeof(decimal));
+                new ObjectParameter("Anticipos", typeof(string));
     
-            var total_PagarParameter = total_Pagar.HasValue ?
+            var total_PagarParameter = total_Pagar != null ?
                 new ObjectParameter("Total_Pagar", total_Pagar) :
-                new ObjectParameter("Total_Pagar", typeof(decimal));
+                new ObjectParameter("Total_Pagar", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_UPD_Liquidacion_Sueldo", id_LiqParameter, rut_EmpleadoParameter, id_Tipo_RenumeracionParameter, fecha_LiquidacionParameter, sueldo_BaseParameter, dias_TrabajadosParameter, porcComisionParameter, valor_ComParameter, cant_Horas_ExtrasParameter, total_Horas_ExtrasParameter, bonosParameter, gratificacionParameter, totalImponibleParameter, colacionParameter, movilizacionParameter, viaticosParameter, totalHaberesParameter, codAfpParameter, valor_AfpParameter, cod_SaludParameter, valor_SaludParameter, id_Seg_CesantiaParameter, valor_Seg_CesantiaParameter, totalDescSegSocialParameter, valor_ImpuestoParameter, rebaImptoParameter, impAPagarParameter, remNetaParameter, prestamosParameter, totalDesctosParameter, otrs_DescuentosParameter, anticiposParameter, total_PagarParameter);
         }

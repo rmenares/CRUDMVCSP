@@ -125,32 +125,32 @@
           <Property Name="Sueldo_Base" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Dias_Trabajados" Type="varchar" MaxLength="2" Nullable="false" />
           <Property Name="PorcComision" Type="varchar" MaxLength="2" Nullable="false" />
-          <Property Name="Valor_Com" Type="numeric" Precision="9" Scale="2" Nullable="false" />
-          <Property Name="Cant_Horas_Extras" Type="numeric" Precision="9" Scale="0" Nullable="false" />
-          <Property Name="Total_Horas_Extras" Type="numeric" Precision="9" Scale="2" Nullable="false" />
-          <Property Name="Bonos" Type="numeric" Precision="9" Scale="2" Nullable="false" />
-          <Property Name="Gratificacion" Type="numeric" Precision="9" Scale="2" Nullable="false" />
-          <Property Name="TotalImponible" Type="numeric" Precision="9" Scale="0" Nullable="false" />
-          <Property Name="Colacion" Type="numeric" Precision="9" Scale="2" Nullable="false" />
-          <Property Name="Movilizacion" Type="numeric" Precision="9" Scale="2" Nullable="false" />
-          <Property Name="Viaticos" Type="numeric" Precision="9" Scale="0" Nullable="false" />
-          <Property Name="TotalHaberes" Type="numeric" Precision="9" Scale="0" Nullable="false" />
+          <Property Name="Valor_Com" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cant_Horas_Extras" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Total_Horas_Extras" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Bonos" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Gratificacion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TotalImponible" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Colacion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Movilizacion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Viaticos" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TotalHaberes" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="CodAfp" Type="int" Nullable="false" />
-          <Property Name="Valor_Afp" Type="numeric" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="Valor_Afp" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Cod_Salud" Type="int" Nullable="false" />
-          <Property Name="Valor_Salud" Type="numeric" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="Valor_Salud" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Id_Seg_Cesantia" Type="int" Nullable="false" />
-          <Property Name="Valor_Seg_Cesantia" Type="numeric" Precision="9" Scale="2" Nullable="false" />
-          <Property Name="TotalDescSegSocial" Type="numeric" Precision="9" Scale="2" Nullable="false" />
-          <Property Name="Valor_Impuesto" Type="numeric" Precision="9" Scale="2" Nullable="false" />
-          <Property Name="RebaImpto" Type="numeric" Precision="9" Scale="0" Nullable="false" />
-          <Property Name="ImpAPagar" Type="numeric" Precision="9" Scale="0" Nullable="false" />
-          <Property Name="RemNeta" Type="numeric" Precision="9" Scale="0" Nullable="false" />
-          <Property Name="Prestamos" Type="numeric" Precision="9" Scale="0" Nullable="false" />
-          <Property Name="TotalDesctos" Type="numeric" Precision="9" Scale="0" Nullable="false" />
-          <Property Name="Otrs_Descuentos" Type="numeric" Precision="9" Scale="2" Nullable="false" />
-          <Property Name="Anticipos" Type="numeric" Precision="9" Scale="0" Nullable="false" />
-          <Property Name="Total_Pagar" Type="numeric" Precision="9" Scale="0" Nullable="false" />
+          <Property Name="Valor_Seg_Cesantia" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TotalDescSegSocial" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Valor_Impuesto" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="RebaImpto" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ImpAPagar" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="RemNeta" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Prestamos" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TotalDesctos" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Otrs_Descuentos" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Anticipos" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Total_Pagar" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Login">
           <Key>
@@ -563,32 +563,32 @@
           <Parameter Name="Sueldo_Base" Type="varchar" Mode="In" />
           <Parameter Name="Dias_Trabajados" Type="varchar" Mode="In" />
           <Parameter Name="PorcComision" Type="varchar" Mode="In" />
-          <Parameter Name="Valor_Com" Type="numeric" Mode="In" />
-          <Parameter Name="Cant_Horas_Extras" Type="numeric" Mode="In" />
-          <Parameter Name="Total_Horas_Extras" Type="numeric" Mode="In" />
-          <Parameter Name="Bonos" Type="numeric" Mode="In" />
-          <Parameter Name="Gratificacion" Type="numeric" Mode="In" />
-          <Parameter Name="TotalImponible" Type="numeric" Mode="In" />
-          <Parameter Name="Colacion" Type="numeric" Mode="In" />
-          <Parameter Name="Movilizacion" Type="numeric" Mode="In" />
-          <Parameter Name="Viaticos" Type="numeric" Mode="In" />
-          <Parameter Name="TotalHaberes" Type="numeric" Mode="In" />
+          <Parameter Name="Valor_Com" Type="varchar" Mode="In" />
+          <Parameter Name="Cant_Horas_Extras" Type="varchar" Mode="In" />
+          <Parameter Name="Total_Horas_Extras" Type="varchar" Mode="In" />
+          <Parameter Name="Bonos" Type="varchar" Mode="In" />
+          <Parameter Name="Gratificacion" Type="varchar" Mode="In" />
+          <Parameter Name="TotalImponible" Type="varchar" Mode="In" />
+          <Parameter Name="Colacion" Type="varchar" Mode="In" />
+          <Parameter Name="Movilizacion" Type="varchar" Mode="In" />
+          <Parameter Name="Viaticos" Type="varchar" Mode="In" />
+          <Parameter Name="TotalHaberes" Type="varchar" Mode="In" />
           <Parameter Name="CodAfp" Type="int" Mode="In" />
-          <Parameter Name="Valor_Afp" Type="numeric" Mode="In" />
+          <Parameter Name="Valor_Afp" Type="varchar" Mode="In" />
           <Parameter Name="Cod_Salud" Type="int" Mode="In" />
-          <Parameter Name="Valor_Salud" Type="numeric" Mode="In" />
+          <Parameter Name="Valor_Salud" Type="varchar" Mode="In" />
           <Parameter Name="Id_Seg_Cesantia" Type="int" Mode="In" />
-          <Parameter Name="Valor_Seg_Cesantia" Type="numeric" Mode="In" />
-          <Parameter Name="TotalDescSegSocial" Type="numeric" Mode="In" />
-          <Parameter Name="Valor_Impuesto" Type="numeric" Mode="In" />
-          <Parameter Name="RebaImpto" Type="numeric" Mode="In" />
-          <Parameter Name="ImpAPagar" Type="numeric" Mode="In" />
-          <Parameter Name="Prestamos" Type="numeric" Mode="In" />
-          <Parameter Name="RemNeta" Type="numeric" Mode="In" />
-          <Parameter Name="TotalDesctos" Type="numeric" Mode="In" />
-          <Parameter Name="Otrs_Descuentos" Type="numeric" Mode="In" />
-          <Parameter Name="Anticipos" Type="numeric" Mode="In" />
-          <Parameter Name="Total_Pagar" Type="numeric" Mode="In" />
+          <Parameter Name="Valor_Seg_Cesantia" Type="varchar" Mode="In" />
+          <Parameter Name="TotalDescSegSocial" Type="varchar" Mode="In" />
+          <Parameter Name="Valor_Impuesto" Type="varchar" Mode="In" />
+          <Parameter Name="RebaImpto" Type="varchar" Mode="In" />
+          <Parameter Name="ImpAPagar" Type="varchar" Mode="In" />
+          <Parameter Name="Prestamos" Type="varchar" Mode="In" />
+          <Parameter Name="RemNeta" Type="varchar" Mode="In" />
+          <Parameter Name="TotalDesctos" Type="varchar" Mode="In" />
+          <Parameter Name="Otrs_Descuentos" Type="varchar" Mode="In" />
+          <Parameter Name="Anticipos" Type="varchar" Mode="In" />
+          <Parameter Name="Total_Pagar" Type="varchar" Mode="In" />
         </Function>
         <Function Name="Sp_Ins_Nacionalidad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Descr" Type="varchar" Mode="In" />
@@ -746,32 +746,32 @@
           <Parameter Name="Sueldo_Base" Type="varchar" Mode="In" />
           <Parameter Name="Dias_Trabajados" Type="varchar" Mode="In" />
           <Parameter Name="PorcComision" Type="varchar" Mode="In" />
-          <Parameter Name="Valor_Com" Type="numeric" Mode="In" />
-          <Parameter Name="Cant_Horas_Extras" Type="numeric" Mode="In" />
-          <Parameter Name="Total_Horas_Extras" Type="numeric" Mode="In" />
-          <Parameter Name="Bonos" Type="numeric" Mode="In" />
-          <Parameter Name="Gratificacion" Type="numeric" Mode="In" />
-          <Parameter Name="TotalImponible" Type="numeric" Mode="In" />
-          <Parameter Name="Colacion" Type="numeric" Mode="In" />
-          <Parameter Name="Movilizacion" Type="numeric" Mode="In" />
-          <Parameter Name="Viaticos" Type="numeric" Mode="In" />
-          <Parameter Name="TotalHaberes" Type="numeric" Mode="In" />
+          <Parameter Name="Valor_Com" Type="varchar" Mode="In" />
+          <Parameter Name="Cant_Horas_Extras" Type="varchar" Mode="In" />
+          <Parameter Name="Total_Horas_Extras" Type="varchar" Mode="In" />
+          <Parameter Name="Bonos" Type="varchar" Mode="In" />
+          <Parameter Name="Gratificacion" Type="varchar" Mode="In" />
+          <Parameter Name="TotalImponible" Type="varchar" Mode="In" />
+          <Parameter Name="Colacion" Type="varchar" Mode="In" />
+          <Parameter Name="Movilizacion" Type="varchar" Mode="In" />
+          <Parameter Name="Viaticos" Type="varchar" Mode="In" />
+          <Parameter Name="TotalHaberes" Type="varchar" Mode="In" />
           <Parameter Name="CodAfp" Type="int" Mode="In" />
-          <Parameter Name="Valor_Afp" Type="numeric" Mode="In" />
+          <Parameter Name="Valor_Afp" Type="varchar" Mode="In" />
           <Parameter Name="Cod_Salud" Type="int" Mode="In" />
-          <Parameter Name="Valor_Salud" Type="numeric" Mode="In" />
+          <Parameter Name="Valor_Salud" Type="varchar" Mode="In" />
           <Parameter Name="Id_Seg_Cesantia" Type="int" Mode="In" />
-          <Parameter Name="Valor_Seg_Cesantia" Type="numeric" Mode="In" />
-          <Parameter Name="TotalDescSegSocial" Type="numeric" Mode="In" />
-          <Parameter Name="Valor_Impuesto" Type="numeric" Mode="In" />
-          <Parameter Name="RebaImpto" Type="numeric" Mode="In" />
-          <Parameter Name="ImpAPagar" Type="numeric" Mode="In" />
-          <Parameter Name="RemNeta" Type="numeric" Mode="In" />
-          <Parameter Name="Prestamos" Type="numeric" Mode="In" />
-          <Parameter Name="TotalDesctos" Type="numeric" Mode="In" />
-          <Parameter Name="Otrs_Descuentos" Type="numeric" Mode="In" />
-          <Parameter Name="Anticipos" Type="numeric" Mode="In" />
-          <Parameter Name="Total_Pagar" Type="numeric" Mode="In" />
+          <Parameter Name="Valor_Seg_Cesantia" Type="varchar" Mode="In" />
+          <Parameter Name="TotalDescSegSocial" Type="varchar" Mode="In" />
+          <Parameter Name="Valor_Impuesto" Type="varchar" Mode="In" />
+          <Parameter Name="RebaImpto" Type="varchar" Mode="In" />
+          <Parameter Name="ImpAPagar" Type="varchar" Mode="In" />
+          <Parameter Name="RemNeta" Type="varchar" Mode="In" />
+          <Parameter Name="Prestamos" Type="varchar" Mode="In" />
+          <Parameter Name="TotalDesctos" Type="varchar" Mode="In" />
+          <Parameter Name="Otrs_Descuentos" Type="varchar" Mode="In" />
+          <Parameter Name="Anticipos" Type="varchar" Mode="In" />
+          <Parameter Name="Total_Pagar" Type="varchar" Mode="In" />
         </Function>
         <Function Name="Sp_UPD_Nacionalidad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Id_Nac" Type="int" Mode="In" />
@@ -1016,32 +1016,32 @@
           <Property Name="Sueldo_Base" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Dias_Trabajados" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PorcComision" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Valor_Com" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
-          <Property Name="Cant_Horas_Extras" Type="Decimal" Precision="9" Scale="0" Nullable="false" />
-          <Property Name="Total_Horas_Extras" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
-          <Property Name="Bonos" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
-          <Property Name="Gratificacion" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
-          <Property Name="TotalImponible" Type="Decimal" Precision="9" Scale="0" Nullable="false" />
-          <Property Name="Colacion" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
-          <Property Name="Movilizacion" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
-          <Property Name="Viaticos" Type="Decimal" Precision="9" Scale="0" Nullable="false" />
-          <Property Name="TotalHaberes" Type="Decimal" Precision="9" Scale="0" Nullable="false" />
+          <Property Name="Valor_Com" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cant_Horas_Extras" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Total_Horas_Extras" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Bonos" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Gratificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TotalImponible" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Colacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Movilizacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Viaticos" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TotalHaberes" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CodAfp" Type="Int32" Nullable="false" />
-          <Property Name="Valor_Afp" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="Valor_Afp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Cod_Salud" Type="Int32" Nullable="false" />
-          <Property Name="Valor_Salud" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="Valor_Salud" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Id_Seg_Cesantia" Type="Int32" Nullable="false" />
-          <Property Name="Valor_Seg_Cesantia" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
-          <Property Name="TotalDescSegSocial" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
-          <Property Name="Valor_Impuesto" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
-          <Property Name="RebaImpto" Type="Decimal" Precision="9" Scale="0" Nullable="false" />
-          <Property Name="ImpAPagar" Type="Decimal" Precision="9" Scale="0" Nullable="false" />
-          <Property Name="RemNeta" Type="Decimal" Precision="9" Scale="0" Nullable="false" />
-          <Property Name="Prestamos" Type="Decimal" Precision="9" Scale="0" Nullable="false" />
-          <Property Name="TotalDesctos" Type="Decimal" Precision="9" Scale="0" Nullable="false" />
-          <Property Name="Otrs_Descuentos" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
-          <Property Name="Anticipos" Type="Decimal" Precision="9" Scale="0" Nullable="false" />
-          <Property Name="Total_Pagar" Type="Decimal" Precision="9" Scale="0" Nullable="false" />
+          <Property Name="Valor_Seg_Cesantia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TotalDescSegSocial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Valor_Impuesto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RebaImpto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ImpAPagar" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RemNeta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Prestamos" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TotalDesctos" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Otrs_Descuentos" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Anticipos" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Total_Pagar" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Tipo_Remuneracion" Relationship="Self.FK_Liquidacion_Sueldo_Tipo_Remuneracion" FromRole="Liquidacion_Sueldo" ToRole="Tipo_Remuneracion" />
         </EntityType>
         <EntityType Name="Login">
@@ -1550,32 +1550,32 @@
             <Parameter Name="Sueldo_Base" Mode="In" Type="String" />
             <Parameter Name="Dias_Trabajados" Mode="In" Type="String" />
             <Parameter Name="PorcComision" Mode="In" Type="String" />
-            <Parameter Name="Valor_Com" Mode="In" Type="Decimal" />
-            <Parameter Name="Cant_Horas_Extras" Mode="In" Type="Decimal" />
-            <Parameter Name="Total_Horas_Extras" Mode="In" Type="Decimal" />
-            <Parameter Name="Bonos" Mode="In" Type="Decimal" />
-            <Parameter Name="Gratificacion" Mode="In" Type="Decimal" />
-            <Parameter Name="TotalImponible" Mode="In" Type="Decimal" />
-            <Parameter Name="Colacion" Mode="In" Type="Decimal" />
-            <Parameter Name="Movilizacion" Mode="In" Type="Decimal" />
-            <Parameter Name="Viaticos" Mode="In" Type="Decimal" />
-            <Parameter Name="TotalHaberes" Mode="In" Type="Decimal" />
+            <Parameter Name="Valor_Com" Mode="In" Type="String" />
+            <Parameter Name="Cant_Horas_Extras" Mode="In" Type="String" />
+            <Parameter Name="Total_Horas_Extras" Mode="In" Type="String" />
+            <Parameter Name="Bonos" Mode="In" Type="String" />
+            <Parameter Name="Gratificacion" Mode="In" Type="String" />
+            <Parameter Name="TotalImponible" Mode="In" Type="String" />
+            <Parameter Name="Colacion" Mode="In" Type="String" />
+            <Parameter Name="Movilizacion" Mode="In" Type="String" />
+            <Parameter Name="Viaticos" Mode="In" Type="String" />
+            <Parameter Name="TotalHaberes" Mode="In" Type="String" />
             <Parameter Name="CodAfp" Mode="In" Type="Int32" />
-            <Parameter Name="Valor_Afp" Mode="In" Type="Decimal" />
+            <Parameter Name="Valor_Afp" Mode="In" Type="String" />
             <Parameter Name="Cod_Salud" Mode="In" Type="Int32" />
-            <Parameter Name="Valor_Salud" Mode="In" Type="Decimal" />
+            <Parameter Name="Valor_Salud" Mode="In" Type="String" />
             <Parameter Name="Id_Seg_Cesantia" Mode="In" Type="Int32" />
-            <Parameter Name="Valor_Seg_Cesantia" Mode="In" Type="Decimal" />
-            <Parameter Name="TotalDescSegSocial" Mode="In" Type="Decimal" />
-            <Parameter Name="Valor_Impuesto" Mode="In" Type="Decimal" />
-            <Parameter Name="RebaImpto" Mode="In" Type="Decimal" />
-            <Parameter Name="ImpAPagar" Mode="In" Type="Decimal" />
-            <Parameter Name="Prestamos" Mode="In" Type="Decimal" />
-            <Parameter Name="RemNeta" Mode="In" Type="Decimal" />
-            <Parameter Name="TotalDesctos" Mode="In" Type="Decimal" />
-            <Parameter Name="Otrs_Descuentos" Mode="In" Type="Decimal" />
-            <Parameter Name="Anticipos" Mode="In" Type="Decimal" />
-            <Parameter Name="Total_Pagar" Mode="In" Type="Decimal" />
+            <Parameter Name="Valor_Seg_Cesantia" Mode="In" Type="String" />
+            <Parameter Name="TotalDescSegSocial" Mode="In" Type="String" />
+            <Parameter Name="Valor_Impuesto" Mode="In" Type="String" />
+            <Parameter Name="RebaImpto" Mode="In" Type="String" />
+            <Parameter Name="ImpAPagar" Mode="In" Type="String" />
+            <Parameter Name="Prestamos" Mode="In" Type="String" />
+            <Parameter Name="RemNeta" Mode="In" Type="String" />
+            <Parameter Name="TotalDesctos" Mode="In" Type="String" />
+            <Parameter Name="Otrs_Descuentos" Mode="In" Type="String" />
+            <Parameter Name="Anticipos" Mode="In" Type="String" />
+            <Parameter Name="Total_Pagar" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Sp_Ins_Nacionalidad">
             <Parameter Name="Descr" Mode="In" Type="String" />
@@ -1733,32 +1733,32 @@
             <Parameter Name="Sueldo_Base" Mode="In" Type="String" />
             <Parameter Name="Dias_Trabajados" Mode="In" Type="String" />
             <Parameter Name="PorcComision" Mode="In" Type="String" />
-            <Parameter Name="Valor_Com" Mode="In" Type="Decimal" />
-            <Parameter Name="Cant_Horas_Extras" Mode="In" Type="Decimal" />
-            <Parameter Name="Total_Horas_Extras" Mode="In" Type="Decimal" />
-            <Parameter Name="Bonos" Mode="In" Type="Decimal" />
-            <Parameter Name="Gratificacion" Mode="In" Type="Decimal" />
-            <Parameter Name="TotalImponible" Mode="In" Type="Decimal" />
-            <Parameter Name="Colacion" Mode="In" Type="Decimal" />
-            <Parameter Name="Movilizacion" Mode="In" Type="Decimal" />
-            <Parameter Name="Viaticos" Mode="In" Type="Decimal" />
-            <Parameter Name="TotalHaberes" Mode="In" Type="Decimal" />
+            <Parameter Name="Valor_Com" Mode="In" Type="String" />
+            <Parameter Name="Cant_Horas_Extras" Mode="In" Type="String" />
+            <Parameter Name="Total_Horas_Extras" Mode="In" Type="String" />
+            <Parameter Name="Bonos" Mode="In" Type="String" />
+            <Parameter Name="Gratificacion" Mode="In" Type="String" />
+            <Parameter Name="TotalImponible" Mode="In" Type="String" />
+            <Parameter Name="Colacion" Mode="In" Type="String" />
+            <Parameter Name="Movilizacion" Mode="In" Type="String" />
+            <Parameter Name="Viaticos" Mode="In" Type="String" />
+            <Parameter Name="TotalHaberes" Mode="In" Type="String" />
             <Parameter Name="CodAfp" Mode="In" Type="Int32" />
-            <Parameter Name="Valor_Afp" Mode="In" Type="Decimal" />
+            <Parameter Name="Valor_Afp" Mode="In" Type="String" />
             <Parameter Name="Cod_Salud" Mode="In" Type="Int32" />
-            <Parameter Name="Valor_Salud" Mode="In" Type="Decimal" />
+            <Parameter Name="Valor_Salud" Mode="In" Type="String" />
             <Parameter Name="Id_Seg_Cesantia" Mode="In" Type="Int32" />
-            <Parameter Name="Valor_Seg_Cesantia" Mode="In" Type="Decimal" />
-            <Parameter Name="TotalDescSegSocial" Mode="In" Type="Decimal" />
-            <Parameter Name="Valor_Impuesto" Mode="In" Type="Decimal" />
-            <Parameter Name="RebaImpto" Mode="In" Type="Decimal" />
-            <Parameter Name="ImpAPagar" Mode="In" Type="Decimal" />
-            <Parameter Name="RemNeta" Mode="In" Type="Decimal" />
-            <Parameter Name="Prestamos" Mode="In" Type="Decimal" />
-            <Parameter Name="TotalDesctos" Mode="In" Type="Decimal" />
-            <Parameter Name="Otrs_Descuentos" Mode="In" Type="Decimal" />
-            <Parameter Name="Anticipos" Mode="In" Type="Decimal" />
-            <Parameter Name="Total_Pagar" Mode="In" Type="Decimal" />
+            <Parameter Name="Valor_Seg_Cesantia" Mode="In" Type="String" />
+            <Parameter Name="TotalDescSegSocial" Mode="In" Type="String" />
+            <Parameter Name="Valor_Impuesto" Mode="In" Type="String" />
+            <Parameter Name="RebaImpto" Mode="In" Type="String" />
+            <Parameter Name="ImpAPagar" Mode="In" Type="String" />
+            <Parameter Name="RemNeta" Mode="In" Type="String" />
+            <Parameter Name="Prestamos" Mode="In" Type="String" />
+            <Parameter Name="TotalDesctos" Mode="In" Type="String" />
+            <Parameter Name="Otrs_Descuentos" Mode="In" Type="String" />
+            <Parameter Name="Anticipos" Mode="In" Type="String" />
+            <Parameter Name="Total_Pagar" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Sp_UPD_Nacionalidad">
             <Parameter Name="Id_Nac" Mode="In" Type="Int32" />
@@ -1879,38 +1879,35 @@
           <Property Type="String" Name="Rut_Empleado" Nullable="false" MaxLength="10" />
           <Property Type="String" Name="Nombre" Nullable="false" MaxLength="101" />
           <Property Type="String" Name="Descr_Tipo" Nullable="false" MaxLength="50" />
-          <Property Type="DateTime" Name="Fecha_Liquidacion" Nullable="false" Precision="23" />
+          <Property Type="String" Name="Fecha" Nullable="true" MaxLength="10" />
           <Property Type="String" Name="Sueldo_Base" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Dias_Trabajados" Nullable="false" MaxLength="2" />
           <Property Type="String" Name="PorcComision" Nullable="false" MaxLength="2" />
-          <Property Type="Decimal" Name="Valor_Com" Nullable="false" Precision="9" Scale="2" />
-          <Property Type="Decimal" Name="Cant_Horas_Extras" Nullable="false" Precision="9" Scale="0" />
-          <Property Type="Decimal" Name="Total_Horas_Extras" Nullable="false" Precision="9" Scale="2" />
-          <Property Type="Decimal" Name="Bonos" Nullable="false" Precision="9" Scale="2" />
-          <Property Type="Decimal" Name="Gratificacion" Nullable="false" Precision="9" Scale="2" />
-          <Property Type="Decimal" Name="TotalImponible" Nullable="false" Precision="9" Scale="0" />
-          <Property Type="Decimal" Name="Colacion" Nullable="false" Precision="9" Scale="2" />
-          <Property Type="Decimal" Name="Movilizacion" Nullable="false" Precision="9" Scale="2" />
-          <Property Type="Decimal" Name="Viaticos" Nullable="false" Precision="9" Scale="0" />
-          <Property Type="Decimal" Name="TotalHaberes" Nullable="false" Precision="9" Scale="0" />
+          <Property Type="String" Name="Valor_Com" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Cant_Horas_Extras" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Total_Horas_Extras" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Bonos" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Gratificacion" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TotalImponible" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Colacion" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Movilizacion" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Viaticos" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TotalHaberes" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Nom_Afp" Nullable="true" MaxLength="50" />
           <Property Type="Decimal" Name="Porc_Desc" Nullable="true" Precision="18" Scale="2" />
-          <Property Type="Decimal" Name="Valor_Afp" Nullable="false" Precision="9" Scale="2" />
+          <Property Type="String" Name="Valor_Afp" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Nombre_Salud" Nullable="true" MaxLength="50" />
           <Property Type="Decimal" Name="Porc_Cotiz" Nullable="true" Precision="18" Scale="2" />
-          <Property Type="Decimal" Name="Valor_Salud" Nullable="false" Precision="9" Scale="2" />
-          <Property Type="String" Name="Tipo_Contrato" Nullable="false" MaxLength="50" />
-          <Property Type="Decimal" Name="Monto_Empleador" Nullable="false" Precision="9" Scale="1" />
-          <Property Type="Decimal" Name="Monto_Trabajador" Nullable="false" Precision="9" Scale="1" />
-          <Property Type="Decimal" Name="Valor_Seg_Cesantia" Nullable="false" Precision="9" Scale="2" />
-          <Property Type="Decimal" Name="TotalDescSegSocial" Nullable="false" Precision="9" Scale="2" />
-          <Property Type="Decimal" Name="Valor_Impuesto" Nullable="false" Precision="9" Scale="2" />
-          <Property Type="Decimal" Name="ImpAPagar" Nullable="false" Precision="9" Scale="0" />
-          <Property Type="Decimal" Name="Prestamos" Nullable="false" Precision="9" Scale="0" />
-          <Property Type="Decimal" Name="TotalDesctos" Nullable="false" Precision="9" Scale="0" />
-          <Property Type="Decimal" Name="Otrs_Descuentos" Nullable="false" Precision="9" Scale="2" />
-          <Property Type="Decimal" Name="Anticipos" Nullable="false" Precision="9" Scale="0" />
-          <Property Type="Decimal" Name="Total_Pagar" Nullable="false" Precision="9" Scale="0" />
+          <Property Type="String" Name="Valor_Salud" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Valor_Seg_Cesantia" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TotalDescSegSocial" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Valor_Impuesto" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ImpAPagar" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Prestamos" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TotalDesctos" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Otrs_Descuentos" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Anticipos" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Total_Pagar" Nullable="false" MaxLength="50" />
         </ComplexType>
         <ComplexType Name="Sp_Mues_Nacionalidad_Result">
           <Property Type="Int32" Name="Id_Nac" Nullable="false" />
@@ -2037,34 +2034,34 @@
           <Property Type="String" Name="Sueldo_Base" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Dias_Trabajados" Nullable="false" MaxLength="2" />
           <Property Type="String" Name="PorcComision" Nullable="false" MaxLength="2" />
-          <Property Type="Decimal" Name="Valor_Com" Nullable="false" Precision="9" Scale="2" />
-          <Property Type="Decimal" Name="Cant_Horas_Extras" Nullable="false" Precision="9" Scale="0" />
-          <Property Type="Decimal" Name="Total_Horas_Extras" Nullable="false" Precision="9" Scale="2" />
-          <Property Type="Decimal" Name="Bonos" Nullable="false" Precision="9" Scale="2" />
-          <Property Type="Decimal" Name="Gratificacion" Nullable="false" Precision="9" Scale="2" />
-          <Property Type="Decimal" Name="TotalImponible" Nullable="false" Precision="9" Scale="0" />
-          <Property Type="Decimal" Name="Colacion" Nullable="false" Precision="9" Scale="2" />
-          <Property Type="Decimal" Name="Movilizacion" Nullable="false" Precision="9" Scale="2" />
-          <Property Type="Decimal" Name="Viaticos" Nullable="false" Precision="9" Scale="0" />
-          <Property Type="Decimal" Name="TotalHaberes" Nullable="false" Precision="9" Scale="0" />
+          <Property Type="String" Name="Valor_Com" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Cant_Horas_Extras" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Total_Horas_Extras" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Bonos" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Gratificacion" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TotalImponible" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Colacion" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Movilizacion" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Viaticos" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TotalHaberes" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Nom_Afp" Nullable="true" MaxLength="50" />
           <Property Type="Decimal" Name="Porc_Desc" Nullable="true" Precision="18" Scale="2" />
-          <Property Type="Decimal" Name="Valor_Afp" Nullable="false" Precision="9" Scale="2" />
+          <Property Type="String" Name="Valor_Afp" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Nombre_Salud" Nullable="true" MaxLength="50" />
           <Property Type="Decimal" Name="Porc_Cotiz" Nullable="true" Precision="18" Scale="2" />
-          <Property Type="Decimal" Name="Valor_Salud" Nullable="false" Precision="9" Scale="2" />
+          <Property Type="String" Name="Valor_Salud" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Tipo_Contrato" Nullable="false" MaxLength="50" />
           <Property Type="Decimal" Name="Monto_Empleador" Nullable="false" Precision="9" Scale="1" />
           <Property Type="Decimal" Name="Monto_Trabajador" Nullable="false" Precision="9" Scale="1" />
-          <Property Type="Decimal" Name="Valor_Seg_Cesantia" Nullable="false" Precision="9" Scale="2" />
-          <Property Type="Decimal" Name="TotalDescSegSocial" Nullable="false" Precision="9" Scale="2" />
-          <Property Type="Decimal" Name="Valor_Impuesto" Nullable="false" Precision="9" Scale="2" />
-          <Property Type="Decimal" Name="ImpAPagar" Nullable="false" Precision="9" Scale="0" />
-          <Property Type="Decimal" Name="Prestamos" Nullable="false" Precision="9" Scale="0" />
-          <Property Type="Decimal" Name="TotalDesctos" Nullable="false" Precision="9" Scale="0" />
-          <Property Type="Decimal" Name="Otrs_Descuentos" Nullable="false" Precision="9" Scale="2" />
-          <Property Type="Decimal" Name="Anticipos" Nullable="false" Precision="9" Scale="0" />
-          <Property Type="Decimal" Name="Total_Pagar" Nullable="false" Precision="9" Scale="0" />
+          <Property Type="String" Name="Valor_Seg_Cesantia" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TotalDescSegSocial" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Valor_Impuesto" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ImpAPagar" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Prestamos" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TotalDesctos" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Otrs_Descuentos" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Anticipos" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Total_Pagar" Nullable="false" MaxLength="50" />
         </ComplexType>
         <ComplexType Name="SP_Sel_liqSueldoXRutMes_Result">
           <Property Type="String" Name="Rut_Empleado" Nullable="false" MaxLength="10" />
@@ -2074,37 +2071,37 @@
           <Property Type="String" Name="Sueldo_Base" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Dias_Trabajados" Nullable="false" MaxLength="2" />
           <Property Type="String" Name="PorcComision" Nullable="false" MaxLength="2" />
-          <Property Type="Decimal" Name="Valor_Com" Nullable="false" Precision="9" Scale="2" />
-          <Property Type="Decimal" Name="Cant_Horas_Extras" Nullable="false" Precision="9" Scale="0" />
-          <Property Type="Decimal" Name="Total_Horas_Extras" Nullable="false" Precision="9" Scale="2" />
-          <Property Type="Decimal" Name="Bonos" Nullable="false" Precision="9" Scale="2" />
-          <Property Type="Decimal" Name="Gratificacion" Nullable="false" Precision="9" Scale="2" />
-          <Property Type="Decimal" Name="TotalImponible" Nullable="false" Precision="9" Scale="0" />
-          <Property Type="Decimal" Name="Colacion" Nullable="false" Precision="9" Scale="2" />
-          <Property Type="Decimal" Name="Movilizacion" Nullable="false" Precision="9" Scale="2" />
-          <Property Type="Decimal" Name="Viaticos" Nullable="false" Precision="9" Scale="0" />
-          <Property Type="Decimal" Name="TotalHaberes" Nullable="false" Precision="9" Scale="0" />
+          <Property Type="String" Name="Valor_Com" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Cant_Horas_Extras" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Total_Horas_Extras" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Bonos" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Gratificacion" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TotalImponible" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Colacion" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Movilizacion" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Viaticos" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TotalHaberes" Nullable="false" MaxLength="50" />
           <Property Type="Int32" Name="CodAfp" Nullable="false" />
           <Property Type="String" Name="Nom_Afp" Nullable="true" MaxLength="50" />
           <Property Type="Decimal" Name="Porc_Desc" Nullable="true" Precision="18" Scale="2" />
-          <Property Type="Decimal" Name="Valor_Afp" Nullable="false" Precision="9" Scale="2" />
+          <Property Type="String" Name="Valor_Afp" Nullable="false" MaxLength="50" />
           <Property Type="Int32" Name="Cod_Salud" Nullable="false" />
           <Property Type="String" Name="Nombre_Salud" Nullable="true" MaxLength="50" />
           <Property Type="Decimal" Name="Porc_Cotiz" Nullable="true" Precision="18" Scale="2" />
-          <Property Type="Decimal" Name="Valor_Salud" Nullable="false" Precision="9" Scale="2" />
+          <Property Type="String" Name="Valor_Salud" Nullable="false" MaxLength="50" />
           <Property Type="Int32" Name="Id_Seg_Cesantia" Nullable="false" />
           <Property Type="String" Name="Tipo_Contrato" Nullable="false" MaxLength="50" />
-          <Property Type="Decimal" Name="Valor_Seg_Cesantia" Nullable="false" Precision="9" Scale="2" />
-          <Property Type="Decimal" Name="TotalDescSegSocial" Nullable="false" Precision="9" Scale="2" />
-          <Property Type="Decimal" Name="Valor_Impuesto" Nullable="false" Precision="9" Scale="2" />
-          <Property Type="Decimal" Name="RebaImpto" Nullable="false" Precision="9" Scale="0" />
-          <Property Type="Decimal" Name="ImpAPagar" Nullable="false" Precision="9" Scale="0" />
-          <Property Type="Decimal" Name="RemNeta" Nullable="false" Precision="9" Scale="0" />
-          <Property Type="Decimal" Name="Prestamos" Nullable="false" Precision="9" Scale="0" />
-          <Property Type="Decimal" Name="TotalDesctos" Nullable="false" Precision="9" Scale="0" />
-          <Property Type="Decimal" Name="Otrs_Descuentos" Nullable="false" Precision="9" Scale="2" />
-          <Property Type="Decimal" Name="Anticipos" Nullable="false" Precision="9" Scale="0" />
-          <Property Type="Decimal" Name="Total_Pagar" Nullable="false" Precision="9" Scale="0" />
+          <Property Type="String" Name="Valor_Seg_Cesantia" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TotalDescSegSocial" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Valor_Impuesto" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="RebaImpto" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ImpAPagar" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="RemNeta" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Prestamos" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TotalDesctos" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Otrs_Descuentos" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Anticipos" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Total_Pagar" Nullable="false" MaxLength="50" />
         </ComplexType>
         <ComplexType Name="Sp_Sel_Nacionalidad_Result">
           <Property Type="Int32" Name="Id_Nac" Nullable="false" />
@@ -2572,7 +2569,7 @@
                 <ScalarProperty Name="Rut_Empleado" ColumnName="Rut_Empleado" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Descr_Tipo" ColumnName="Descr_Tipo" />
-                <ScalarProperty Name="Fecha_Liquidacion" ColumnName="Fecha_Liquidacion" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
                 <ScalarProperty Name="Sueldo_Base" ColumnName="Sueldo_Base" />
                 <ScalarProperty Name="Dias_Trabajados" ColumnName="Dias_Trabajados" />
                 <ScalarProperty Name="PorcComision" ColumnName="PorcComision" />
@@ -2592,9 +2589,6 @@
                 <ScalarProperty Name="Nombre_Salud" ColumnName="Nombre_Salud" />
                 <ScalarProperty Name="Porc_Cotiz" ColumnName="Porc_Cotiz" />
                 <ScalarProperty Name="Valor_Salud" ColumnName="Valor_Salud" />
-                <ScalarProperty Name="Tipo_Contrato" ColumnName="Tipo_Contrato" />
-                <ScalarProperty Name="Monto_Empleador" ColumnName="Monto_Empleador" />
-                <ScalarProperty Name="Monto_Trabajador" ColumnName="Monto_Trabajador" />
                 <ScalarProperty Name="Valor_Seg_Cesantia" ColumnName="Valor_Seg_Cesantia" />
                 <ScalarProperty Name="TotalDescSegSocial" ColumnName="TotalDescSegSocial" />
                 <ScalarProperty Name="Valor_Impuesto" ColumnName="Valor_Impuesto" />

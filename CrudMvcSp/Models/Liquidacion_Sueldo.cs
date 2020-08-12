@@ -21,32 +21,32 @@ namespace CrudMvcSp.Models
         public string Sueldo_Base { get; set; }
         public string Dias_Trabajados { get; set; }
         public string PorcComision { get; set; }
-        public decimal Valor_Com { get; set; }
-        public decimal Cant_Horas_Extras { get; set; }
-        public decimal Total_Horas_Extras { get; set; }
-        public decimal Bonos { get; set; }
-        public decimal Gratificacion { get; set; }
-        public decimal TotalImponible { get; set; }
-        public decimal Colacion { get; set; }
-        public decimal Movilizacion { get; set; }
-        public decimal Viaticos { get; set; }
-        public decimal TotalHaberes { get; set; }
+        public string Valor_Com { get; set; }
+        public string Cant_Horas_Extras { get; set; }
+        public string Total_Horas_Extras { get; set; }
+        public string Bonos { get; set; }
+        public string Gratificacion { get; set; }
+        public string TotalImponible { get; set; }
+        public string Colacion { get; set; }
+        public string Movilizacion { get; set; }
+        public string Viaticos { get; set; }
+        public string TotalHaberes { get; set; }
         public int CodAfp { get; set; }
-        public decimal Valor_Afp { get; set; }
+        public string Valor_Afp { get; set; }
         public int Cod_Salud { get; set; }
-        public decimal Valor_Salud { get; set; }
+        public string Valor_Salud { get; set; }
         public int Id_Seg_Cesantia { get; set; }
-        public decimal Valor_Seg_Cesantia { get; set; }
-        public decimal TotalDescSegSocial { get; set; }
-        public decimal Valor_Impuesto { get; set; }
-        public decimal RebaImpto { get; set; }
-        public decimal ImpAPagar { get; set; }
-        public decimal RemNeta { get; set; }
-        public decimal Prestamos { get; set; }
-        public decimal TotalDesctos { get; set; }
-        public decimal Otrs_Descuentos { get; set; }
-        public decimal Anticipos { get; set; }
-        public decimal Total_Pagar { get; set; }
+        public string Valor_Seg_Cesantia { get; set; }
+        public string TotalDescSegSocial { get; set; }
+        public string Valor_Impuesto { get; set; }
+        public string RebaImpto { get; set; }
+        public string ImpAPagar { get; set; }
+        public string RemNeta { get; set; }
+        public string Prestamos { get; set; }
+        public string TotalDesctos { get; set; }
+        public string Otrs_Descuentos { get; set; }
+        public string Anticipos { get; set; }
+        public string Total_Pagar { get; set; }
     
         public virtual Tipo_Remuneracion Tipo_Remuneracion { get; set; }
     }

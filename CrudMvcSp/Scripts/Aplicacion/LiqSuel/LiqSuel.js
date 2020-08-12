@@ -489,7 +489,7 @@ $(document).ready(function () {
             }
             else {
                 //Saldo Finales
-                AlcLiq = ( parseInt(TotHaberes) - parseInt(TotOtDesc) );
+                AlcLiq = (    (parseInt(TotHaberes) + parseInt(TotOtDesc))  + parseInt(RemuNeta) );
 
                 TotPag = (parseInt(AlcLiq) -  parseInt(Antcip) );
 
@@ -536,7 +536,7 @@ $(document).ready(function () {
         var data = {
             Rut_Empleado:         RutEmp2,
             Id_Tipo_Renumeracion: TipRem2,
-            Fecha_Liquidacion:    FechLiq2,
+            Fecha:                FechLiq2,
             Sueldo_Base:          SuelBase2,
             Dias_Trabajados:      DiasTrab2,
             PorcComision:         PorcCom2,

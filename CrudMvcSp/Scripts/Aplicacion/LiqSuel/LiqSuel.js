@@ -29,7 +29,8 @@ var TotImponible2, ValMovi2, ValColac2, ValViat2, TotHaberes2, Cod_Afp2, MontAfp
 var Id_Seg_Ces2, ValorCesantia2, TotDescPrev2, RemuNeta2, TotImponible2, TotImpto2, ImptoCantAReb2, ImptoAPagar2;
 var ValPrestamos2,  ValOtDesc2, TotOtDesc2, Antcip2, TotPag2;
 
-$(document).ready(function () {    
+$(document).ready(function () {
+
     $("#BtnNueLiqSueld").click(function (event) {
         event.preventDefault();
         $("#AgrLiqSueld").modal("show");
@@ -72,23 +73,23 @@ $(document).ready(function () {
                 var data = { Rut_Empleado: RutEmple };
                 var url = "/LiqSueld/BuscEmp";
                 $.post(url, data)
-                .done(function (data) {
-                    if (data == 1) {
-                        $("#ListTipRem").focus();
-                    }
-                    else {
-                        toastr["error"](" Empleado Incorrecto, Verifique ", "Atención")
-                        toastr.options = {
-                            "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false, "positionClass": "toast-top-center", "preventDuplicates": false,
-                            "onclick": null, "showDuration": "400", "hideDuration": "1000", "timeOut": "5000",
-                            "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear", "showMethod": "fadeIn",
-                            "hideMethod": "fadeOut"
-                        };
-                        $("#RutEmp").val("");
-                        $("#RutEmp").focus();
-                        return false;
-                    }
-                });
+                    .done(function (data) {
+                        if (data == 1) {
+                            $("#ListTipRem").focus();
+                        }
+                        else {
+                            toastr["error"](" Empleado Incorrecto, Verifique ", "Atención")
+                            toastr.options = {
+                                "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false, "positionClass": "toast-top-center", "preventDuplicates": false,
+                                "onclick": null, "showDuration": "400", "hideDuration": "1000", "timeOut": "5000",
+                                "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear", "showMethod": "fadeIn",
+                                "hideMethod": "fadeOut"
+                            };
+                            $("#RutEmp").val("");
+                            $("#RutEmp").focus();
+                            return false;
+                        }
+                    });
             }
         }
     });
@@ -107,8 +108,7 @@ $(document).ready(function () {
                 TipContrat = DatosDev["Tipo_Contrato"];
                 MontEmpl = DatosDev["Monto_Empleador"];
                 MontTrab = DatosDev["Monto_Trabajador"];
-                if ((TipContrat == "Plazo Fijo") || (TipContrat == "Plazo Indefinido Mayor"))
-                {
+                if ((TipContrat == "Plazo Fijo") || (TipContrat == "Plazo Indefinido Mayor")) {
                     Cotizacion = MontEmpl;
                 }
                 if (TipContrat == "Plazo Indefinido") {
@@ -117,13 +117,13 @@ $(document).ready(function () {
                 $("#FechLiq").focus();
             });
     });
- 
+
     //Ingresa o acepta la fecha de liquidación
     $("#FechLiq").on('keyup', function (e) {
         var keycode = e.keyCode || e.which;
         if (keycode == 13) {
             var f = new Date();
-            var fecha = f.getDate() + "/" + "0"+(f.getMonth() + 1) + "/" + f.getFullYear();
+            var fecha = f.getDate() + "/" + "0" + (f.getMonth() + 1) + "/" + f.getFullYear();
             $("#FechLiq").val(fecha);
             $("#SueldBas").focus();
         }
@@ -134,13 +134,14 @@ $(document).ready(function () {
         var keycode = e.keyCode || e.which;
         if (keycode == 13) {
             SuelBase = document.getElementById("SueldBas").value;
-            if (isNaN(SuelBase) || (SuelBase ==  "")) {
+            if (isNaN(SuelBase) || (SuelBase == "")) {
                 toastr["error"](" Dato Debe Ser Numérico ", "Atención")
                 toastr.options = {
                     "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false, "positionClass": "toast-top-center", "preventDuplicates": false,
                     "onclick": null, "showDuration": "400", "hideDuration": "1000", "timeOut": "5000",
                     "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear", "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut" };
+                    "hideMethod": "fadeOut"
+                };
                 $("#SueldBas").val("");
                 $("#SueldBas").focus();
                 return false;
@@ -168,7 +169,7 @@ $(document).ready(function () {
                 $("#DiasTrab").focus();
                 return false;
             }
-            else { $("#CantHrsExt").focus();}                                
+            else { $("#CantHrsExt").focus(); }
         }
     })
 
@@ -226,7 +227,7 @@ $(document).ready(function () {
         var keycode = e.keyCode || e.which;
         if (keycode == 13) {
             PorcCom = $("#PorcCom").val();
-            if (isNaN(PorcCom) || (PorcCom=="")) {
+            if (isNaN(PorcCom) || (PorcCom == "")) {
                 toastr["error"](" Dato Debe Ser Numérico ", "Atención")
                 toastr.options = {
                     "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false, "positionClass": "toast-top-center", "preventDuplicates": false,
@@ -247,12 +248,12 @@ $(document).ready(function () {
             }
         }
     })
-    
+
     $("#Bonos").on('keyup', function (e) {
         var keycode = e.keyCode || e.which;
         if (keycode == 13) {
             Bonos = $("#Bonos").val();
-            if (isNaN(Bonos) ||(Bonos == "")) {
+            if (isNaN(Bonos) || (Bonos == "")) {
                 toastr["error"](" Dato Debe Ser Numérico ", "Atención")
                 toastr.options = {
                     "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false, "positionClass": "toast-top-center", "preventDuplicates": false,
@@ -274,31 +275,22 @@ $(document).ready(function () {
                 TopeGratMensual = parseInt(Grat2 / 12);
 
                 if (SuelDevengado > TopeGratMensual) {
-
                     Gratificacion = TopeGratMensual;
-
                     $("#ValGrat").val(new Intl.NumberFormat("de-DE").format(Gratificacion));
                 }
                 if (SuelDevengado < TopeGratMensual) {
-
                     Gratificacion = SuelDevengado;
-
                     $("#ValGrat").val(new Intl.NumberFormat("de-DE").format(Gratificacion));
                 }
                 valgrat = $("#ValGrat").val();
                 //fin calculo de la gratificacion
-
                 //calculo de la Remuneracion Imponible
                 TotImponible = parseInt(Ganancias) + parseInt(Gratificacion);
-
                 //calculo del valor del seguro de cesantia
                 ValorCesantia = parseInt((TotImponible * Cotizacion) / 100);
-
                 $("#ValCesantia").val(new Intl.NumberFormat("de-DE").format(ValorCesantia));
-
                 $("#TotImponible").val(new Intl.NumberFormat("de-DE").format(TotImponible));
                 $("#CpTotImponible").val(new Intl.NumberFormat("de-DE").format(TotImponible));
-
                 //Calculo de Impuestos
                 SuelBase = $("#SueldBas").val();
                 var data = { Desde: SuelBase };
@@ -306,25 +298,19 @@ $(document).ready(function () {
                 $.post(url, data)
                     .done(function (data) {
                         var DatosDevImptos = data[0];
-                        ImptoDesde     = DatosDevImptos["Desde"];
-                        ImptoHasta     = DatosDevImptos["Hasta"];
-                        ImptoFactor    = DatosDevImptos["Factor"];
-                        ImptoCantAReb  = DatosDevImptos["CantAReb"];
+                        ImptoDesde = DatosDevImptos["Desde"];
+                        ImptoHasta = DatosDevImptos["Hasta"];
+                        ImptoFactor = DatosDevImptos["Factor"];
+                        ImptoCantAReb = DatosDevImptos["CantAReb"];
                         ImptoTasaImpto = DatosDevImptos["TasaImpEfec"];
-
                         TotImpuesto = parseInt(SuelBase * ImptoFactor)
-
                         ImptoAPagar = (parseInt(SuelBase * ImptoFactor) - parseInt(ImptoCantAReb));
-
                         $("#TotImp").val(new Intl.NumberFormat("de-DE").format(TotImpuesto));
-                        
-                        $("#RebaImpto").val(new Intl.NumberFormat("de-DE").format( parseInt(ImptoCantAReb)  ));
-
+                        $("#RebaImpto").val(new Intl.NumberFormat("de-DE").format(parseInt(ImptoCantAReb)));
                         $("#ImpAPagar").val(new Intl.NumberFormat("de-DE").format(ImptoAPagar));
-
                     })
                 $("#ValMov").focus();
-            }     
+            }
         }
     })
 
@@ -350,7 +336,7 @@ $(document).ready(function () {
             }
         }
     })
-    
+
     $("#ValCola").on('keyup', function (e) {
         var keycode = e.keyCode || e.which;
         if (keycode == 13) {
@@ -394,12 +380,12 @@ $(document).ready(function () {
                 $("#ValViatico").val(new Intl.NumberFormat("de-DE").format(ValViat));
                 $("#AfpSelec").focus();
             }
-            TotHaberes = (parseInt(ValMovi) + parseInt(ValColac) + parseInt(ValViat) + TotImponible );
+            TotHaberes = (parseInt(ValMovi) + parseInt(ValColac) + parseInt(ValViat) + TotImponible);
             $("#TotHaber").val(new Intl.NumberFormat("de-DE").format(TotHaberes));
             $("#AfpSelec").focus();
         }
     })
-    
+
     $("#AfpSelec").change('click', function (e) {
         e.preventDefault();
         Cod_Afp = $("#AfpSelec").val();
@@ -417,10 +403,10 @@ $(document).ready(function () {
         $("#SalSelec").focus();
     });
 
-    $("#SalSelec").change('click', function (e) {    
+    $("#SalSelec").change('click', function (e) {
         e.preventDefault();
         CSalud = $("#SalSelec").val();
-        var data = { Cod_Salud: CSalud };       
+        var data = { Cod_Salud: CSalud };
         var url = "/LiqSueld/BuscaValSal";
         $.post(url, data)
             .done(function (data) {
@@ -428,24 +414,16 @@ $(document).ready(function () {
                 CodSalud = DatosDevSal["Cod_Salud"];
                 NomSalud = DatosDevSal["Nombre_Salud"];
                 PorcSalud = DatosDevSal["Porc_Cotiz"];
-
                 MonSalud = parseInt((SuelBase * PorcSalud) / 100);
-
                 $("#MontoSalud").val(new Intl.NumberFormat("de-DE").format(MonSalud));
-
                 // totales prevsionales
                 TotDescPrev = (parseInt(MontAfp) + parseInt(MonSalud) + parseInt(ValorCesantia));
-
                 $("#TotDescPrev").val(new Intl.NumberFormat("de-DE").format(TotDescPrev));
-
                 $("#CPTotDescPrev").val(new Intl.NumberFormat("de-DE").format(TotDescPrev));
-
-                RemuNeta = TotImponible - TotDescPrev; 
-
+                RemuNeta = TotImponible - TotDescPrev;
                 $("#RemNeta").val(new Intl.NumberFormat("de-DE").format(RemuNeta));
             })
     })
-
 
     $("#ValPrestmos").on('keyup', function (e) {
         e.preventDefault();
@@ -469,13 +447,10 @@ $(document).ready(function () {
                 ValOtDesc = 0;
             }
             else {
-
-                TotOtDesc = parseInt( parseInt(ValPrestamos) + parseInt(ValOtDesc) );
-
+                TotOtDesc = parseInt(parseInt(ValPrestamos) + parseInt(ValOtDesc));
                 $("#TotDesc").val(new Intl.NumberFormat("de-DE").format(TotOtDesc));
-
                 $("#Anticipos").focus();
-            }            
+            }
         }
     })
 
@@ -489,83 +464,81 @@ $(document).ready(function () {
             }
             else {
                 //Saldo Finales
-                AlcLiq = (    (parseInt(TotHaberes) + parseInt(TotOtDesc))  + parseInt(RemuNeta) );
-
-                TotPag = (parseInt(AlcLiq) -  parseInt(Antcip) );
-
-                $("#TotPagar").val(new Intl.NumberFormat("de-DE").format( parseInt(TotPag)) );
+                AlcLiq = ((parseInt(TotHaberes) + parseInt(TotOtDesc)) + parseInt(RemuNeta));
+                TotPag = (parseInt(AlcLiq) - parseInt(Antcip));
+                $("#TotPagar").val(new Intl.NumberFormat("de-DE").format(parseInt(TotPag)));
             }
         }
     })
-         
+
     // grabar datos 
     $("#BtnGrabLiqSueld").click(function (event) {
-        RutEmp2         = $("#RutEmp").val();
-        TipRem2         = $("#ListTipRem").val();
-        FechLiq2        = $("#FechLiq").val();
-        SuelBase2       = $("#SueldBas").val();
-        DiasTrab2       = $("#DiasTrab").val();
-        CantHrsExt2     = $("#CantHrsExt").val();
-        TotHrsExt2      = $("#ValHrsExt").val();
-        PorcCom2        = $("#PorcCom").val();
-        ValCom2         = $("#ValorCom").val();
-        Bonos2          = $("#Bonos").val();
-        Gratificacion2  = $("#ValGrat").val();
-        TotImponible2   = $("#TotImponible").val();
-        ValMovi2        = $("#ValMov").val();
-        ValColac2       = $("#ValCola").val();
-        ValViat2        = $("#ValViatico").val();
-        TotHaberes2     = $("#TotHaber").val();
-        Cod_Afp2        = $("#AfpSelec").val();
-        MontAfp2        = $("#MontoAfp").val();
-        CSalud2         = $("#SalSelec").val();
-        MonSalud2       = $("#MontoSalud").val();
-        Id_Seg_Ces2     = Id_Seg_Ces; 
-        ValorCesantia2  = $("#ValCesantia").val();
-        TotDescPrev2    = $("#TotDescPrev").val();
-        RemuNeta2       = $("#RemNeta").val();
-        TotImponible2   = $("#TotImp").val();
-        TotImpto2       = $("#TotImp").val();
-        ImptoCantAReb2  = $("#RebaImpto").val();
-        ImptoAPagar2    = $("#ImpAPagar").val();
-        ValPrestamos2   = $("#ValPrestmos").val();
-        ValOtDesc2      = $("#OtDesc").val();
-        TotOtDesc2      = $("#TotDesc").val();
-        Antcip2         = $("#Anticipos").val();
-        TotPag2         = $("#TotPagar").val();
+        RutEmp2 = $("#RutEmp").val();
+        TipRem2 = $("#ListTipRem").val();
+        FechLiq2 = $("#FechLiq").val();
+        SuelBase2 = $("#SueldBas").val();
+        DiasTrab2 = $("#DiasTrab").val();
+        CantHrsExt2 = $("#CantHrsExt").val();
+        TotHrsExt2 = $("#ValHrsExt").val();
+        PorcCom2 = $("#PorcCom").val();
+        ValCom2 = $("#ValorCom").val();
+        Bonos2 = $("#Bonos").val();
+        Gratificacion2 = $("#ValGrat").val();
+        TotImponible2 = $("#TotImponible").val();
+        ValMovi2 = $("#ValMov").val();
+        ValColac2 = $("#ValCola").val();
+        ValViat2 = $("#ValViatico").val();
+        TotHaberes2 = $("#TotHaber").val();
+        Cod_Afp2 = $("#AfpSelec").val();
+        MontAfp2 = $("#MontoAfp").val();
+        CSalud2 = $("#SalSelec").val();
+        MonSalud2 = $("#MontoSalud").val();
+        Id_Seg_Ces2 = Id_Seg_Ces;
+        ValorCesantia2 = $("#ValCesantia").val();
+        TotDescPrev2 = $("#TotDescPrev").val();
+        RemuNeta2 = $("#RemNeta").val();
+        TotImponible2 = $("#TotImp").val();
+        TotImpto2 = $("#TotImp").val();
+        ImptoCantAReb2 = $("#RebaImpto").val();
+        ImptoAPagar2 = $("#ImpAPagar").val();
+        ValPrestamos2 = $("#ValPrestmos").val();
+        ValOtDesc2 = $("#OtDesc").val();
+        TotOtDesc2 = $("#TotDesc").val();
+        Antcip2 = $("#Anticipos").val();
+        TotPag2 = $("#TotPagar").val();
         var data = {
-            Rut_Empleado:         RutEmp2,
+            Rut_Empleado: RutEmp2,
             Id_Tipo_Renumeracion: TipRem2,
-            Fecha:                FechLiq2,
-            Sueldo_Base:          SuelBase2,
-            Dias_Trabajados:      DiasTrab2,
-            PorcComision:         PorcCom2,
-            Valor_Com:            ValCom2,
-            Cant_Horas_Extras:    CantHrsExt2,
-            Total_Horas_Extras:   TotHrsExt2,
-            Bonos:                Bonos2,
-            Gratificacion:        Gratificacion2,
-            TotalImponible:       TotImponible2,
-            Colacion:             ValColac2,
-            Movilizacion:         ValMovi2,
-            Viaticos:             ValViat2,
-            TotalHaberes:         TotHaberes2,
-            CodAfp:               Cod_Afp2,
-            Valor_Afp:            MontAfp2,
-            Cod_Salud:            CSalud2,
-            Valor_Salud:          MonSalud2,
-            Id_Seg_Cesantia:      Id_Seg_Ces2,
-            Valor_Seg_Cesantia:   ValorCesantia2,
-            TotalDescSegSocial:   TotDescPrev2,
-            Valor_Impuesto:       TotImpto2,
-            RebaImpto:            ImptoCantAReb2,
-            ImpAPagar:            ImptoAPagar2,
-            RemNeta:              RemuNeta2,
-            Prestamos:            ValPrestamos2,
-            TotalDesctos:         TotOtDesc2,
-            Otrs_Descuentos:      ValOtDesc2,
-            Anticipos:            Antcip2,
-            Total_Pagar:          TotPag2
+            Fecha_Liquidacion: FechLiq2,
+            Sueldo_Base: SuelBase2,
+            Dias_Trabajados: DiasTrab2,
+            PorcComision: PorcCom2,
+            Valor_Com: ValCom2,
+            Cant_Horas_Extras: CantHrsExt2,
+            Total_Horas_Extras: TotHrsExt2,
+            Bonos: Bonos2,
+            Gratificacion: Gratificacion2,
+            TotalImponible: TotImponible2,
+            Colacion: ValColac2,
+            Movilizacion: ValMovi2,
+            Viaticos: ValViat2,
+            TotalHaberes: TotHaberes2,
+            CodAfp: Cod_Afp2,
+            Valor_Afp: MontAfp2,
+            Cod_Salud: CSalud2,
+            Valor_Salud: MonSalud2,
+            Id_Seg_Cesantia: Id_Seg_Ces2,
+            Valor_Seg_Cesantia: ValorCesantia2,
+            TotalDescSegSocial: TotDescPrev2,
+            Valor_Impuesto: TotImpto2,
+            RebaImpto: ImptoCantAReb2,
+            ImpAPagar: ImptoAPagar2,
+            RemNeta: RemuNeta2,
+            Prestamos: ValPrestamos2,
+            TotalDesctos: TotOtDesc2,
+            Otrs_Descuentos: ValOtDesc2,
+            Anticipos: Antcip2,
+            Total_Pagar: TotPag2
         };
         var url = "LiqSueld/GrabLiqSueld";
         event.preventDefault();
@@ -579,99 +552,124 @@ $(document).ready(function () {
                     "hideMethod": "fadeOut"
                 };
             })
-                .fail(function (data) {
-                    toastr["error"](" Error De Grabación, Verifique!!! ", "Error")
-                    toastr.options = {
-                        "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false,
-                        "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "400",
-                        "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                        "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-                    }
-                })
+            .fail(function (data) {
+                toastr["error"](" Error De Grabación, Verifique!!! ", "Error")
+                toastr.options = {
+                    "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false,
+                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "400",
+                    "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
+                    "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
+                }
+            })
             .always(function (data) {
-                    $("#ListTipRem").val("Seleccione Tipo Remuneración");
-                    $("#RutEmp").val("");
-                    $("#FechLiq").val("");
-                    $("#SueldBas").val("");
-                    $("#DiasTrab").val("");
-                    $("#CantHrsExt").val("");
-                    $("#ValHrsExt").val("");
-                    $("#PorcCom").val("");
-                    $("#ValorCom").val("");
-                    $("#Bonos").val("");
-                    $("#ValGrat").val("");
-                    $("#TotImponible").val("");
-                    $("#ValMov").val("");
-                    $("#ValCola").val("");
-                    $("#ValViatico").val("");
-                    $("#TotHaber").val("");
-                    $("#AfpSelec").val("Seleccione AFP");
-                    $("#MontoAfp").val("");
-                    $("#SalSelec").val("Seleccione Salud");
-                    $("#MontoSalud").val("");
-                    $("#ValCesantia").val("");
-                    $("#TotDescPrev").val("");
-                    $("#RemNeta").val("");
-                    $("#TotImp").val("");
-                    $("#RebaImpto").val("");
-                    $("#ImpAPagar").val("");
-                    $("#ValPrestmos").val("");
-                    $("#OtDesc").val("");
-                    $("#TotDesc").val("");
-                    $("#Anticipos").val("");
-                    $("#TotPagar").val("");
-                    $("#AgrLiqSueld").modal("hide");
-                    window.location.reload(true);
+                $("#ListTipRem").val("Seleccione Tipo Remuneración");
+                $("#RutEmp").val("");
+                $("#FechLiq").val("");
+                $("#SueldBas").val("");
+                $("#DiasTrab").val("");
+                $("#CantHrsExt").val("");
+                $("#ValHrsExt").val("");
+                $("#PorcCom").val("");
+                $("#ValorCom").val("");
+                $("#Bonos").val("");
+                $("#ValGrat").val("");
+                $("#TotImponible").val("");
+                $("#ValMov").val("");
+                $("#ValCola").val("");
+                $("#ValViatico").val("");
+                $("#TotHaber").val("");
+                $("#AfpSelec").val("Seleccione AFP");
+                $("#MontoAfp").val("");
+                $("#SalSelec").val("Seleccione Salud");
+                $("#MontoSalud").val("");
+                $("#ValCesantia").val("");
+                $("#TotDescPrev").val("");
+                $("#RemNeta").val("");
+                $("#TotImp").val("");
+                $("#RebaImpto").val("");
+                $("#ImpAPagar").val("");
+                $("#ValPrestmos").val("");
+                $("#OtDesc").val("");
+                $("#TotDesc").val("");
+                $("#Anticipos").val("");
+                $("#TotPagar").val("");
+                $("#AgrLiqSueld").modal("hide");
+                window.location.reload(true);
             })
     })
 
-    //Add Header Row with TextBoxes.
-    var row = $("<TR />");
-    $("#TablaLiqSueld TR").eq(0).find("TH").each(function () {
-        row.append("<th><input type = 'text' /></th>");
+
+    //Manipulador del evento Edit(ar)
+    $("body").on("click", "#TablaLiqSueld TBODY .Edit", function (event) {
+        event.preventDefault();
+        $("#ModLiqSueld").modal("show");
+        var row = $(this).closest("tr");
+        RutEmp = row.find("td").eq(0).html();
+        FechLiq = row.find("td").eq(3).html();
+        type: 'Post';
+        var data = { Rut_Empleado: RutEmp, Fecha_Liquidacion: FechLiq};
+        var url = "LiqSueld/BuscLiqSueld";
+        $.post(url, data)
+        //    .done(function (data) {
+        //        // pasa los datos devueltos a un arreglo
+        //        var DatosEmp = data[0];
+        //        // pasa los datos del arreglo a las cajas
+        //        //$("#user_img").val(DatosEmp.Foto_Usuario)
+        //        $("#EDComuEmp").val(DatosEmp.Comuna_Id);
+        //        ComuPaso = DatosEmp.Comuna_Id;
+        //        $("EDNomCiu").val(BuscaCiudad());
+        //        $("#EDNomEmp").val(DatosEmp.Nombre);
+        //        $("#EDApPatEmp").val(DatosEmp.ApePat)
+        //        $("#EDApMatEmp").val(DatosEmp.ApeMat)
+        //        $("#EDDeptSelec").val(DatosEmp.Id_Depto)
+        //        $("#EDCargSelec").val(DatosEmp.Id_Carg);
+        //        $("#EDAnexoEmp").val(DatosEmp.Anexo)
+        //        $("#EDEmaEmp").val(DatosEmp.EmailEmp)
+        //        $("#EDFechIncEmp").val(DatosEmp.Fecha_Incorporacion)
+        //        $("#EDRutEmpre").val(DatosEmp.Rut_Empresa);
+        //        $("#EDAfpSelec").val(DatosEmp.Cod_Afp);
+        //        $("#EDSalSelec").val(DatosEmp.Cod_Salud);
+        //        $("#EDSexoSelec").val(DatosEmp.Id_Sexo);
+        //        $("#EDNacioSelec").val(DatosEmp.Id_Nac);
+        //        $("#EDCallPjeEmp").val(DatosEmp.Calle_Pje)
+        //        $("#EDNumCasaEmp").val(DatosEmp.NumCasa)
+        //        $("#EDVilla_PoblEmp").val(DatosEmp.Vill_Pobl)
+        //        $("#EDFonoPer").val(DatosEmp.Fono)
+        //        $("#EDEmailPer").val(DatosEmp.Email)
+        //        $("#EDFechNacEmp").val(DatosEmp.Fecha_Nacimiento)
+        //        $("#EDPerEmerEmp").val(DatosEmp.Persona_Emergencia)
+        //        $("#EDFonPerEmerEmp").val(DatosEmp.Fono_Emergencia)
+        //})
     });
-    $("#TablaLiqSueld TR").eq(0).after(row);
+
+});
+
+
+//Add Header Row with TextBoxes.
+    //var row = $("<TR />");
+    //$("#TablaLiqSueld TR").eq(0).find("TH").each(function () {
+    //    row.append("<th><input type = 'text' /></th>");
+    //});
+    //$("#TablaLiqSueld TR").eq(0).after(row);
 
     //Applying the QuickSearch Plugin to each TextBox.
-    $("#TablaLiqSueld TR").eq(1).find("INPUT").each(function (i) {
-        $(this).quicksearch("#TablaLiqSueld tr:not(:has(th))", {
-            'testQuery': function (query, txt, row) {
-                return $(row).children(":eq(" + i + ")").text().toLowerCase().indexOf(query[0].toLowerCase()) != -1;
-            }
-        });
-    });
-})
+    //$("#TablaLiqSueld TR").eq(1).find("INPUT").each(function (i) {
+    //    $(this).quicksearch("#TablaLiqSueld tr:not(:has(th))", {
+    //        'testQuery': function (query, txt, row) {
+    //            return $(row).children(":eq(" + i + ")").text().toLowerCase().indexOf(query[0].toLowerCase()) != -1;
+    //        }
+    //    });
+    //});
 
-                //$("#RutEmp").val();
-                //$("#ListTipRem").val();
-                //$("#FechLiq").val(); 
-                //$("#SueldBas").val();
-                //$("#DiasTrab").val(); 
-                //$("#CantHrsExt").val();
-                //$("#ValHrsExt").val();
-                //$("#PorcCom").val(); 
-                //$("#ValorCom").val();
-                //$("#Bonos").val(); 
-                //$("#ValGrat").val();
-                //$("#TotImponible").val();
-                //$("#ValMov").val(); 
-                //$("#ValCola").val();
-                //$("#ValViatico").val();
-                //$("#TotHaber").val();
-                //$("#AfpSelec").val();
-                //$("#MontoAfp").val();
-                //$("#SalSelec").val();
-                //$("#MontoSalud").val();
-                //$("#ValCesantia").val();
-                //$("#TotDescPrev").val();
-                //$("#CpTotImponible").val();
-                //$("#CPTotDescPrev").val(); 
-                //$("#RemNeta").val();
-                //$("#TotImp").val(); 
-                //$("#RebaImpto").val();
-                //$("#ImpAPagar").val();
-                //$("#ValPrestmos").val();
-                //$("#OtDesc").val();
-                //$("#TotDesc").val(); 
-                //$("#Anticipos").val(); 
-                //$("#TotPagar").val();
+//permite identificar la fila seleccionada del WebGrid
+$(function () {
+    var row = $("#TablaLiqSueld TBODY tr:eq(0)");
+    if ($("#TablaLiqSueld TBODY tr").length > 1) {
+        //row.remove();
+    }
+    else {
+        row.find(".label").html("");
+        row.find(".text").val("");
+        row.find(".link").hide();
+    }
+});   

@@ -11,11 +11,11 @@ namespace CrudMvcSp.Models
 {
     using System;
     
-    public partial class SP_Sel_liqSueldoXRutMes_Result
+    public partial class SP_Sel_liqSueldoXRyM_Result
     {
+        public int Id_Liq { get; set; }
         public string Rut_Empleado { get; set; }
-        public string Nombre { get; set; }
-        public string Descr_Tipo { get; set; }
+        public int Id_Tipo_Renumeracion { get; set; }
         public System.DateTime Fecha_Liquidacion { get; set; }
         public string Sueldo_Base { get; set; }
         public string Dias_Trabajados { get; set; }
@@ -31,15 +31,10 @@ namespace CrudMvcSp.Models
         public string Viaticos { get; set; }
         public string TotalHaberes { get; set; }
         public int CodAfp { get; set; }
-        public string Nom_Afp { get; set; }
-        public Nullable<decimal> Porc_Desc { get; set; }
         public string Valor_Afp { get; set; }
         public int Cod_Salud { get; set; }
-        public string Nombre_Salud { get; set; }
-        public Nullable<decimal> Porc_Cotiz { get; set; }
         public string Valor_Salud { get; set; }
         public int Id_Seg_Cesantia { get; set; }
-        public string Tipo_Contrato { get; set; }
         public string Valor_Seg_Cesantia { get; set; }
         public string TotalDescSegSocial { get; set; }
         public string Valor_Impuesto { get; set; }

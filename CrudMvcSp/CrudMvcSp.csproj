@@ -306,7 +306,7 @@
     <Compile Include="Models\SP_Sel_liqSueldoXId_Result.cs">
       <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\SP_Sel_liqSueldoXRutMes_Result.cs">
+    <Compile Include="Models\SP_Sel_liqSueldoXRyM_Result.cs">
       <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sp_Sel_Nacionalidad_Result.cs">

@@ -1,5 +1,6 @@
 ﻿
 var RutEmple, TipContrat, FechLiq, DiasTrab, TipRem;
+var FechLiq2;
 
 //Imponibles
 var SuelBase, CantHrsExt, ValorHrExt, TotHrsExt, PorcCom, ValCom, Bonos, Gratificacion, TotImponible;
@@ -606,6 +607,7 @@ $(document).ready(function () {
         var row = $(this).closest("tr");
         RutEmp = row.find("td").eq(0).html();
         FechLiq = row.find("td").eq(3).html();
+        //FechLiq2 = Date.parse(FechLiq);
         type: 'Post';
         var data = { Rut_Empleado: RutEmp, Fecha_Liquidacion: FechLiq};
         var url = "LiqSueld/BuscLiqSueld";

@@ -780,17 +780,17 @@ namespace CrudMvcSp.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_Sel_liqSueldoXId_Result>("SP_Sel_liqSueldoXId", id_LiqParameter);
         }
     
-        public virtual ObjectResult<SP_Sel_liqSueldoXRutMes_Result> SP_Sel_liqSueldoXRutMes(string fechLiq, string rut_Emp)
+        public virtual ObjectResult<SP_Sel_liqSueldoXRyM_Result> SP_Sel_liqSueldoXRyM(string rut_emp, string mes)
         {
-            var fechLiqParameter = fechLiq != null ?
-                new ObjectParameter("FechLiq", fechLiq) :
-                new ObjectParameter("FechLiq", typeof(string));
+            var rut_empParameter = rut_emp != null ?
+                new ObjectParameter("rut_emp", rut_emp) :
+                new ObjectParameter("rut_emp", typeof(string));
     
-            var rut_EmpParameter = rut_Emp != null ?
-                new ObjectParameter("Rut_Emp", rut_Emp) :
-                new ObjectParameter("Rut_Emp", typeof(string));
+            var mesParameter = mes != null ?
+                new ObjectParameter("mes", mes) :
+                new ObjectParameter("mes", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_Sel_liqSueldoXRutMes_Result>("SP_Sel_liqSueldoXRutMes", fechLiqParameter, rut_EmpParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_Sel_liqSueldoXRyM_Result>("SP_Sel_liqSueldoXRyM", rut_empParameter, mesParameter);
         }
     
         public virtual ObjectResult<Sp_Sel_Nacionalidad_Result> Sp_Sel_Nacionalidad(Nullable<int> id_Nac)

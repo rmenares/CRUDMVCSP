@@ -654,9 +654,9 @@
         <Function Name="SP_Sel_liqSueldoXId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id_Liq" Type="int" Mode="In" />
         </Function>
-        <Function Name="SP_Sel_liqSueldoXRutMes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="FechLiq" Type="varchar" Mode="In" />
-          <Parameter Name="Rut_Emp" Type="varchar" Mode="In" />
+        <Function Name="SP_Sel_liqSueldoXRyM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="rut_emp" Type="varchar" Mode="In" />
+          <Parameter Name="mes" Type="varchar" Mode="In" />
         </Function>
         <Function Name="Sp_Sel_Nacionalidad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id_Nac" Type="int" Mode="In" />
@@ -1641,9 +1641,9 @@
           <FunctionImport Name="SP_Sel_liqSueldoXId" ReturnType="Collection(EmpleadosModel.SP_Sel_liqSueldoXId_Result)">
             <Parameter Name="id_Liq" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="SP_Sel_liqSueldoXRutMes" ReturnType="Collection(EmpleadosModel.SP_Sel_liqSueldoXRutMes_Result)">
-            <Parameter Name="FechLiq" Mode="In" Type="String" />
-            <Parameter Name="Rut_Emp" Mode="In" Type="String" />
+          <FunctionImport Name="SP_Sel_liqSueldoXRyM" ReturnType="Collection(EmpleadosModel.SP_Sel_liqSueldoXRyM_Result)">
+            <Parameter Name="rut_emp" Mode="In" Type="String" />
+            <Parameter Name="mes" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Sp_Sel_Nacionalidad" ReturnType="Collection(EmpleadosModel.Sp_Sel_Nacionalidad_Result)">
             <Parameter Name="id_Nac" Mode="In" Type="Int32" />
@@ -2027,46 +2027,9 @@
           <Property Type="String" Name="emailemp" Nullable="true" MaxLength="50" />
         </ComplexType>
         <ComplexType Name="SP_Sel_liqSueldoXId_Result">
+          <Property Type="Int32" Name="Id_Liq" Nullable="false" />
           <Property Type="String" Name="Rut_Empleado" Nullable="false" MaxLength="10" />
-          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="101" />
-          <Property Type="String" Name="Descr_Tipo" Nullable="false" MaxLength="50" />
-          <Property Type="DateTime" Name="Fecha_Liquidacion" Nullable="false" Precision="23" />
-          <Property Type="String" Name="Sueldo_Base" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="Dias_Trabajados" Nullable="false" MaxLength="2" />
-          <Property Type="String" Name="PorcComision" Nullable="false" MaxLength="2" />
-          <Property Type="String" Name="Valor_Com" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="Cant_Horas_Extras" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="Total_Horas_Extras" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="Bonos" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="Gratificacion" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="TotalImponible" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="Colacion" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="Movilizacion" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="Viaticos" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="TotalHaberes" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="Nom_Afp" Nullable="true" MaxLength="50" />
-          <Property Type="Decimal" Name="Porc_Desc" Nullable="true" Precision="18" Scale="2" />
-          <Property Type="String" Name="Valor_Afp" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="Nombre_Salud" Nullable="true" MaxLength="50" />
-          <Property Type="Decimal" Name="Porc_Cotiz" Nullable="true" Precision="18" Scale="2" />
-          <Property Type="String" Name="Valor_Salud" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="Tipo_Contrato" Nullable="false" MaxLength="50" />
-          <Property Type="Decimal" Name="Monto_Empleador" Nullable="false" Precision="9" Scale="1" />
-          <Property Type="Decimal" Name="Monto_Trabajador" Nullable="false" Precision="9" Scale="1" />
-          <Property Type="String" Name="Valor_Seg_Cesantia" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="TotalDescSegSocial" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="Valor_Impuesto" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="ImpAPagar" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="Prestamos" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="TotalDesctos" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="Otrs_Descuentos" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="Anticipos" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="Total_Pagar" Nullable="false" MaxLength="50" />
-        </ComplexType>
-        <ComplexType Name="SP_Sel_liqSueldoXRutMes_Result">
-          <Property Type="String" Name="Rut_Empleado" Nullable="false" MaxLength="10" />
-          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="101" />
-          <Property Type="String" Name="Descr_Tipo" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Id_Tipo_Renumeracion" Nullable="false" />
           <Property Type="DateTime" Name="Fecha_Liquidacion" Nullable="false" Precision="23" />
           <Property Type="String" Name="Sueldo_Base" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Dias_Trabajados" Nullable="false" MaxLength="2" />
@@ -2082,15 +2045,45 @@
           <Property Type="String" Name="Viaticos" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="TotalHaberes" Nullable="false" MaxLength="50" />
           <Property Type="Int32" Name="CodAfp" Nullable="false" />
-          <Property Type="String" Name="Nom_Afp" Nullable="true" MaxLength="50" />
-          <Property Type="Decimal" Name="Porc_Desc" Nullable="true" Precision="18" Scale="2" />
           <Property Type="String" Name="Valor_Afp" Nullable="false" MaxLength="50" />
           <Property Type="Int32" Name="Cod_Salud" Nullable="false" />
-          <Property Type="String" Name="Nombre_Salud" Nullable="true" MaxLength="50" />
-          <Property Type="Decimal" Name="Porc_Cotiz" Nullable="true" Precision="18" Scale="2" />
           <Property Type="String" Name="Valor_Salud" Nullable="false" MaxLength="50" />
           <Property Type="Int32" Name="Id_Seg_Cesantia" Nullable="false" />
-          <Property Type="String" Name="Tipo_Contrato" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Valor_Seg_Cesantia" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TotalDescSegSocial" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Valor_Impuesto" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="RebaImpto" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ImpAPagar" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="RemNeta" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Prestamos" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TotalDesctos" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Otrs_Descuentos" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Anticipos" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Total_Pagar" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SP_Sel_liqSueldoXRyM_Result">
+          <Property Type="Int32" Name="Id_Liq" Nullable="false" />
+          <Property Type="String" Name="Rut_Empleado" Nullable="false" MaxLength="10" />
+          <Property Type="Int32" Name="Id_Tipo_Renumeracion" Nullable="false" />
+          <Property Type="DateTime" Name="Fecha_Liquidacion" Nullable="false" Precision="23" />
+          <Property Type="String" Name="Sueldo_Base" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Dias_Trabajados" Nullable="false" MaxLength="2" />
+          <Property Type="String" Name="PorcComision" Nullable="false" MaxLength="2" />
+          <Property Type="String" Name="Valor_Com" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Cant_Horas_Extras" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Total_Horas_Extras" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Bonos" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Gratificacion" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TotalImponible" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Colacion" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Movilizacion" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Viaticos" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TotalHaberes" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="CodAfp" Nullable="false" />
+          <Property Type="String" Name="Valor_Afp" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Cod_Salud" Nullable="false" />
+          <Property Type="String" Name="Valor_Salud" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Id_Seg_Cesantia" Nullable="false" />
           <Property Type="String" Name="Valor_Seg_Cesantia" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="TotalDescSegSocial" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Valor_Impuesto" Nullable="false" MaxLength="50" />
@@ -2775,50 +2768,9 @@
           <FunctionImportMapping FunctionImportName="SP_Sel_liqSueldoXId" FunctionName="EmpleadosModel.Store.SP_Sel_liqSueldoXId">
             <ResultMapping>
               <ComplexTypeMapping TypeName="EmpleadosModel.SP_Sel_liqSueldoXId_Result">
+                <ScalarProperty Name="Id_Liq" ColumnName="Id_Liq" />
                 <ScalarProperty Name="Rut_Empleado" ColumnName="Rut_Empleado" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Descr_Tipo" ColumnName="Descr_Tipo" />
-                <ScalarProperty Name="Fecha_Liquidacion" ColumnName="Fecha_Liquidacion" />
-                <ScalarProperty Name="Sueldo_Base" ColumnName="Sueldo_Base" />
-                <ScalarProperty Name="Dias_Trabajados" ColumnName="Dias_Trabajados" />
-                <ScalarProperty Name="PorcComision" ColumnName="PorcComision" />
-                <ScalarProperty Name="Valor_Com" ColumnName="Valor_Com" />
-                <ScalarProperty Name="Cant_Horas_Extras" ColumnName="Cant_Horas_Extras" />
-                <ScalarProperty Name="Total_Horas_Extras" ColumnName="Total_Horas_Extras" />
-                <ScalarProperty Name="Bonos" ColumnName="Bonos" />
-                <ScalarProperty Name="Gratificacion" ColumnName="Gratificacion" />
-                <ScalarProperty Name="TotalImponible" ColumnName="TotalImponible" />
-                <ScalarProperty Name="Colacion" ColumnName="Colacion" />
-                <ScalarProperty Name="Movilizacion" ColumnName="Movilizacion" />
-                <ScalarProperty Name="Viaticos" ColumnName="Viaticos" />
-                <ScalarProperty Name="TotalHaberes" ColumnName="TotalHaberes" />
-                <ScalarProperty Name="Nom_Afp" ColumnName="Nom_Afp" />
-                <ScalarProperty Name="Porc_Desc" ColumnName="Porc_Desc" />
-                <ScalarProperty Name="Valor_Afp" ColumnName="Valor_Afp" />
-                <ScalarProperty Name="Nombre_Salud" ColumnName="Nombre_Salud" />
-                <ScalarProperty Name="Porc_Cotiz" ColumnName="Porc_Cotiz" />
-                <ScalarProperty Name="Valor_Salud" ColumnName="Valor_Salud" />
-                <ScalarProperty Name="Tipo_Contrato" ColumnName="Tipo_Contrato" />
-                <ScalarProperty Name="Monto_Empleador" ColumnName="Monto_Empleador" />
-                <ScalarProperty Name="Monto_Trabajador" ColumnName="Monto_Trabajador" />
-                <ScalarProperty Name="Valor_Seg_Cesantia" ColumnName="Valor_Seg_Cesantia" />
-                <ScalarProperty Name="TotalDescSegSocial" ColumnName="TotalDescSegSocial" />
-                <ScalarProperty Name="Valor_Impuesto" ColumnName="Valor_Impuesto" />
-                <ScalarProperty Name="ImpAPagar" ColumnName="ImpAPagar" />
-                <ScalarProperty Name="Prestamos" ColumnName="Prestamos" />
-                <ScalarProperty Name="TotalDesctos" ColumnName="TotalDesctos" />
-                <ScalarProperty Name="Otrs_Descuentos" ColumnName="Otrs_Descuentos" />
-                <ScalarProperty Name="Anticipos" ColumnName="Anticipos" />
-                <ScalarProperty Name="Total_Pagar" ColumnName="Total_Pagar" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_Sel_liqSueldoXRutMes" FunctionName="EmpleadosModel.Store.SP_Sel_liqSueldoXRutMes">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="EmpleadosModel.SP_Sel_liqSueldoXRutMes_Result">
-                <ScalarProperty Name="Rut_Empleado" ColumnName="Rut_Empleado" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Descr_Tipo" ColumnName="Descr_Tipo" />
+                <ScalarProperty Name="Id_Tipo_Renumeracion" ColumnName="Id_Tipo_Renumeracion" />
                 <ScalarProperty Name="Fecha_Liquidacion" ColumnName="Fecha_Liquidacion" />
                 <ScalarProperty Name="Sueldo_Base" ColumnName="Sueldo_Base" />
                 <ScalarProperty Name="Dias_Trabajados" ColumnName="Dias_Trabajados" />
@@ -2834,15 +2786,49 @@
                 <ScalarProperty Name="Viaticos" ColumnName="Viaticos" />
                 <ScalarProperty Name="TotalHaberes" ColumnName="TotalHaberes" />
                 <ScalarProperty Name="CodAfp" ColumnName="CodAfp" />
-                <ScalarProperty Name="Nom_Afp" ColumnName="Nom_Afp" />
-                <ScalarProperty Name="Porc_Desc" ColumnName="Porc_Desc" />
                 <ScalarProperty Name="Valor_Afp" ColumnName="Valor_Afp" />
                 <ScalarProperty Name="Cod_Salud" ColumnName="Cod_Salud" />
-                <ScalarProperty Name="Nombre_Salud" ColumnName="Nombre_Salud" />
-                <ScalarProperty Name="Porc_Cotiz" ColumnName="Porc_Cotiz" />
                 <ScalarProperty Name="Valor_Salud" ColumnName="Valor_Salud" />
                 <ScalarProperty Name="Id_Seg_Cesantia" ColumnName="Id_Seg_Cesantia" />
-                <ScalarProperty Name="Tipo_Contrato" ColumnName="Tipo_Contrato" />
+                <ScalarProperty Name="Valor_Seg_Cesantia" ColumnName="Valor_Seg_Cesantia" />
+                <ScalarProperty Name="TotalDescSegSocial" ColumnName="TotalDescSegSocial" />
+                <ScalarProperty Name="Valor_Impuesto" ColumnName="Valor_Impuesto" />
+                <ScalarProperty Name="RebaImpto" ColumnName="RebaImpto" />
+                <ScalarProperty Name="ImpAPagar" ColumnName="ImpAPagar" />
+                <ScalarProperty Name="RemNeta" ColumnName="RemNeta" />
+                <ScalarProperty Name="Prestamos" ColumnName="Prestamos" />
+                <ScalarProperty Name="TotalDesctos" ColumnName="TotalDesctos" />
+                <ScalarProperty Name="Otrs_Descuentos" ColumnName="Otrs_Descuentos" />
+                <ScalarProperty Name="Anticipos" ColumnName="Anticipos" />
+                <ScalarProperty Name="Total_Pagar" ColumnName="Total_Pagar" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_Sel_liqSueldoXRyM" FunctionName="EmpleadosModel.Store.SP_Sel_liqSueldoXRyM">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EmpleadosModel.SP_Sel_liqSueldoXRyM_Result">
+                <ScalarProperty Name="Id_Liq" ColumnName="Id_Liq" />
+                <ScalarProperty Name="Rut_Empleado" ColumnName="Rut_Empleado" />
+                <ScalarProperty Name="Id_Tipo_Renumeracion" ColumnName="Id_Tipo_Renumeracion" />
+                <ScalarProperty Name="Fecha_Liquidacion" ColumnName="Fecha_Liquidacion" />
+                <ScalarProperty Name="Sueldo_Base" ColumnName="Sueldo_Base" />
+                <ScalarProperty Name="Dias_Trabajados" ColumnName="Dias_Trabajados" />
+                <ScalarProperty Name="PorcComision" ColumnName="PorcComision" />
+                <ScalarProperty Name="Valor_Com" ColumnName="Valor_Com" />
+                <ScalarProperty Name="Cant_Horas_Extras" ColumnName="Cant_Horas_Extras" />
+                <ScalarProperty Name="Total_Horas_Extras" ColumnName="Total_Horas_Extras" />
+                <ScalarProperty Name="Bonos" ColumnName="Bonos" />
+                <ScalarProperty Name="Gratificacion" ColumnName="Gratificacion" />
+                <ScalarProperty Name="TotalImponible" ColumnName="TotalImponible" />
+                <ScalarProperty Name="Colacion" ColumnName="Colacion" />
+                <ScalarProperty Name="Movilizacion" ColumnName="Movilizacion" />
+                <ScalarProperty Name="Viaticos" ColumnName="Viaticos" />
+                <ScalarProperty Name="TotalHaberes" ColumnName="TotalHaberes" />
+                <ScalarProperty Name="CodAfp" ColumnName="CodAfp" />
+                <ScalarProperty Name="Valor_Afp" ColumnName="Valor_Afp" />
+                <ScalarProperty Name="Cod_Salud" ColumnName="Cod_Salud" />
+                <ScalarProperty Name="Valor_Salud" ColumnName="Valor_Salud" />
+                <ScalarProperty Name="Id_Seg_Cesantia" ColumnName="Id_Seg_Cesantia" />
                 <ScalarProperty Name="Valor_Seg_Cesantia" ColumnName="Valor_Seg_Cesantia" />
                 <ScalarProperty Name="TotalDescSegSocial" ColumnName="TotalDescSegSocial" />
                 <ScalarProperty Name="Valor_Impuesto" ColumnName="Valor_Impuesto" />

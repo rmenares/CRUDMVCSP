@@ -138,5 +138,18 @@ namespace CrudMvcSp.Controllers
             }
         }
         #endregion
+
+
+        #region Busca_Liquidacion 
+        public ActionResult BuscLiqSueld(Liquidacion_Sueldo LiqiSueld)
+        {
+            using (LiqSueld = new EmpleadosEntities())
+            {
+                var BusLiq = LiqSueld.SP_Sel_liqSueldoXRyM(LiqiSueld.Rut_Empleado, Convert.ToString(LiqiSueld.Fecha_Liquidacion)).ToList();
+                return Json(BusLiq);
+            }
+        }
+        #endregion
+
     }
 }

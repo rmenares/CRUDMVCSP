@@ -16,7 +16,7 @@ namespace CrudMvcSp.Models
         public int Id_Liq { get; set; }
         public string Rut_Empleado { get; set; }
         public int Id_Tipo_Renumeracion { get; set; }
-        public System.DateTime Fecha_Liquidacion { get; set; }
+        public string Fecha_Liquidacion { get; set; }
         public string Sueldo_Base { get; set; }
         public string Dias_Trabajados { get; set; }
         public string PorcComision { get; set; }

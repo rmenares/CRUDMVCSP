@@ -128,7 +128,7 @@
                                 <td></td>
                                 <td align="center">Tipo Remuneración</td>
                                 <td></td>
-                                <td>@Html.DropDownList("ListTipRem", ViewBag.ListNacion as SelectList, "Seleccione Tipo Remuneración", new { @class = "form-control", style = "width:175px" })</td>
+                                <td>@Html.DropDownList("ListTipRem", ViewBag.ListTipRem as SelectList, "Seleccione Tipo Remuneración", new { @class = "form-control", style = "width:175px" })</td>
                                 <td></td>
                                 <td align="center">Fecha Liquidación</td>
                                 <td></td>
@@ -343,7 +343,6 @@
                     </button>
                 </div>
                 <!-- Modal body -->
-
                <div class="modal-body">
                         <form id="ModLiqSuel" enctype="multipart/form-data" method="post">
                             <div class="tab-content">
@@ -352,25 +351,25 @@
                                     <tr>
                                         <td align="center">Rut Empleado</td>
                                         <td></td>
-                                        <td align="center"><input type="text" id="RutEmp" style="text-align:right;" required /></td>
+                                        <td align="center"><input type="text" id="ModRutEmp" style="text-align:right;" required /></td>
                                         <td></td>
                                         <td align="center">Tipo Remuneración</td>
                                         <td></td>
-                                        <td>@Html.DropDownList("ListTipRem", ViewBag.ListNacion as SelectList, "Seleccione Tipo Remuneración", new { @class = "form-control", style = "width:175px" })</td>
+                                        <td>@Html.DropDownList("ModListTipRem", ViewBag.ListTipRem as SelectList, "Seleccione Tipo Remuneración", new { @class = "form-control", style = "width:175px" })</td>
                                         <td></td>
                                         <td align="center">Fecha Liquidación</td>
                                         <td></td>
-                                        <td align="center"><input type="text" id="FechLiq" /></td>
+                                        <td align="center"><input type="text" id="ModFechLiq" /></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td align="center">Sueldo Base</td>
                                         <td></td>
-                                        <td align="center"><input type="text" id="SueldBas" style="text-align:right;" /></td>
+                                        <td align="center"><input type="text" id="ModSueldBas" style="text-align:right;" /></td>
                                         <td></td>
                                         <td align="center">Dias Trabajados</td>
                                         <td></td>
-                                        <td align="center"><input type="text" id="DiasTrab" style="text-align:right;" /></td>
+                                        <td align="center"><input type="text" id="ModDiasTrab" style="text-align:right;" /></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
@@ -380,11 +379,11 @@
                                     <tr>
                                         <td align="center">Cantidad Horas Extras</td>
                                         <td></td>
-                                        <td align="center"><input type="text" id="CantHrsExt" style="text-align:right;" /></td>
+                                        <td align="center"><input type="text" id="ModCantHrsExt" style="text-align:right;" /></td>
                                         <td></td>
                                         <td align="center">Total Horas Extras</td>
                                         <td></td>
-                                        <td align="center"><input type="text" id="ValHrsExt" style="text-align:right;" disabled /></td>
+                                        <td align="center"><input type="text" id="ModValHrsExt" style="text-align:right;" disabled /></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
@@ -394,11 +393,11 @@
                                     <tr>
                                         <td align="center">% Comision</td>
                                         <td></td>
-                                        <td align="center"><input type="text" id="PorcCom" style="text-align:right;" /></td>
+                                        <td align="center"><input type="text" id="ModPorcCom" style="text-align:right;" /></td>
                                         <td></td>
                                         <td align="center">Total Comisión</td>
                                         <td></td>
-                                        <td align="center"><input type="text" id="ValorCom" style="text-align:right;" disabled /></td>
+                                        <td align="center"><input type="text" id="ModValorCom" style="text-align:right;" disabled /></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
@@ -408,11 +407,11 @@
                                     <tr>
                                         <td align="center">Bonos</td>
                                         <td></td>
-                                        <td align="center"><input type="text" id="Bonos" style="text-align:right;" /></td>
+                                        <td align="center"><input type="text" id="ModBonos" style="text-align:right;" /></td>
                                         <td></td>
                                         <td align="center">Gratificación</td>
                                         <td></td>
-                                        <td align="center"><input type="text" id="ValGrat" style="text-align:right;" disabled /></td>
+                                        <td align="center"><input type="text" id="ModValGrat" style="text-align:right;" disabled /></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
@@ -421,25 +420,25 @@
                                     </tr>
                                     <tr>
                                         <td align="center" colspan="6" bgcolor="cac5c4">TOTAL REMUNERACION IMPONIBLE</td>
-                                        <td align="center" colspan="6" bgcolor="cac5c4"><input type="text" Id="TotImponible" disabled style="text-align:right;" /> </td>
+                                        <td align="center" colspan="6" bgcolor="cac5c4"><input type="text" Id="ModTotImponible" disabled style="text-align:right;" /> </td>
                                     </tr>
                                     <tr>
                                         <td align="center">Movilización</td>
                                         <td></td>
-                                        <td align="center"><input type="text" id="ValMov" style="text-align:right;" /></td>
+                                        <td align="center"><input type="text" id="ModValMov" style="text-align:right;" /></td>
                                         <td></td>
                                         <td align="center">Colación</td>
                                         <td></td>
-                                        <td align="center"><input type="text" id="ValCola" style="text-align:right;" /></td>
+                                        <td align="center"><input type="text" id="ModValCola" style="text-align:right;" /></td>
                                         <td></td>
                                         <td align="center">Viaticos</td>
                                         <td></td>
-                                        <td align="center"><input type="text" id="ValViatico" style="text-align:right;" /></td>
+                                        <td align="center"><input type="text" id="ModValViatico" style="text-align:right;" /></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td align="center" colspan="6" bgcolor="cac5c4">TOTAL HABER</td>
-                                        <td align="center" colspan="6" bgcolor="cac5c4"><input type="text" Id="TotHaber" style="text-align:right;" disabled /> </td>
+                                        <td align="center" colspan="6" bgcolor="cac5c4"><input type="text" Id="ModTotHaber" style="text-align:right;" disabled /> </td>
                                     </tr>
                                     <tr>
                                         <td align="center" colspan="12" bgcolor="cac5c4">Descuentos Seg Social</td>
@@ -447,11 +446,11 @@
                                     <tr>
                                         <td align="center">Nombre Afp</td>
                                         <td></td>
-                                        <td align="center">@Html.DropDownList("AfpSelec", ViewBag.ListAfps as SelectList, "Seleccione AFP", new { @class = "form-control", style = "width:175px" })</td>
+                                        <td align="center">@Html.DropDownList("ModAfpSelec", ViewBag.ListAfps as SelectList, "Seleccione AFP", new { @class = "form-control", style = "width:175px" })</td>
                                         <td></td>
                                         <td align="center">Monto AFP</td>
                                         <td></td>
-                                        <td align="center"><input type="text" id="MontoAfp" style="text-align:right;" disabled/></td>
+                                        <td align="center"><input type="text" id="ModMontoAfp" style="text-align:right;" disabled/></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
@@ -461,11 +460,11 @@
                                     <tr>
                                         <td align="center">Nombre Salud</td>
                                         <td></td>
-                                        <td align="center">@Html.DropDownList("SalSelec", ViewBag.ListSalud as SelectList, "Seleccione Salud", new { @class = "form-control", style = "width:175px" })</td>
+                                        <td align="center">@Html.DropDownList("ModSalSelec", ViewBag.ListSalud as SelectList, "Seleccione Salud", new { @class = "form-control", style = "width:175px" })</td>
                                         <td></td>
                                         <td align="center">Monto Salud</td>
                                         <td></td>
-                                        <td align="center"><input type="text" id="MontoSalud" style="text-align:right;" disabled /></td>
+                                        <td align="center"><input type="text" id="ModMontoSalud" style="text-align:right;" disabled /></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
@@ -475,7 +474,7 @@
                                     <tr>
                                         <td align="center">Valor Seguro Cesantía</td>
                                         <td></td>
-                                        <td align="center"><input type="text" id="ValCesantia" style="text-align:right;" disabled/></td>
+                                        <td align="center"><input type="text" id="ModValCesantia" style="text-align:right;" disabled/></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
@@ -488,7 +487,7 @@
                                     </tr>
                                     <tr>
                                         <td align="center" colspan="6" bgcolor="cac5c4">Descuentos Previsionales(-)</td>
-                                        <td align="center" colspan="6" bgcolor="cac5c4"><input type="text" Id="TotDescPrev" style="text-align:right;" disabled /> </td>
+                                        <td align="center" colspan="6" bgcolor="cac5c4"><input type="text" Id="ModTotDescPrev" style="text-align:right;" disabled /> </td>
                                     </tr>
                                     <tr>
                                         <td align="center" colspan="12" bgcolor="cac5c4">Cálculo Impuesto A la Renta</td>
@@ -496,53 +495,53 @@
                                     <tr>
                                         <td align="center">Remuneracion Imponible</td>
                                         <td></td>
-                                        <td align="center"><input type="text" Id="CpTotImponible" style="text-align:right;" disabled /></td>
+                                        <td align="center"><input type="text" Id="ModCpTotImponible" style="text-align:right;" disabled /></td>
                                         <td></td>
                                         <td align="center">Descuentos Previsionales(-)</td>
                                         <td></td>
-                                        <td align="center"><input type="text" Id="CPTotDescPrev" style="text-align:right;" disabled /> </td>
+                                        <td align="center"><input type="text" Id="ModCPTotDescPrev" style="text-align:right;" disabled /> </td>
                                         <td></td>
                                         <td align="center">Remuneración Neta(=)</td>
                                         <td></td>
-                                        <td align="center"><input type="text" id="RemNeta" style="text-align:right;" /></td>
+                                        <td align="center"><input type="text" id="ModRemNeta" style="text-align:right;" /></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td align="center">Total Impuesto</td>
                                         <td></td>
-                                        <td align="center"><input type="text" id="TotImp" style="text-align:right;" disabled /></td>
+                                        <td align="center"><input type="text" id="ModTotImp" style="text-align:right;" disabled /></td>
                                         <td></td>
                                         <td align="center">Rebajas Al Impuesto (-)</td>
                                         <td></td>
-                                        <td align="center"><input type="text" id="RebaImpto" style="text-align:right;" disabled /></td>
+                                        <td align="center"><input type="text" id="ModRebaImpto" style="text-align:right;" disabled /></td>
                                         <td></td>
                                         <td align="center">Impuesto A Pagar</td>
                                         <td></td>
-                                        <td align="center"><input type="text" id="ImpAPagar" style="text-align:right;" disabled /></td>
+                                        <td align="center"><input type="text" id="ModImpAPagar" style="text-align:right;" disabled /></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td align="center">Prestamos</td>
                                         <td></td>
-                                        <td align="center"><input type="text" id="ValPrestmos" style="text-align:right;" /></td>
+                                        <td align="center"><input type="text" id="ModValPrestmos" style="text-align:right;" /></td>
                                         <td></td>
                                         <td align="center">Otros Descuentos</td>
                                         <td></td>
-                                        <td align="center"><input type="text" id="OtDesc" style="text-align:right;" /></td>
+                                        <td align="center"><input type="text" id="ModOtDesc" style="text-align:right;" /></td>
                                         <td></td>
                                         <td align="center">Total Descuentos</td>
                                         <td></td>
-                                        <td align="center"><input type="text" id="TotDesc" style="text-align:right;" /></td>
+                                        <td align="center"><input type="text" id="ModTotDesc" style="text-align:right;" /></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td align="center">Anticipos</td>
                                         <td></td>
-                                        <td align="center"><input type="text" id="Anticipos" style="text-align:right;" /></td>
+                                        <td align="center"><input type="text" id="ModAnticipos" style="text-align:right;" /></td>
                                         <td></td>
                                         <td align="center">Total A Pagar</td>
                                         <td></td>
-                                        <td align="center"><input type="text" id="TotPagar" style="text-align:right;" disabled /></td>
+                                        <td align="center"><input type="text" id="ModTotPagar" style="text-align:right;" disabled /></td>
                                         <td></td>
                                     </tr>
                                 </table>
@@ -562,9 +561,9 @@
                                 <td> </td>
                                 <td> @Html.ActionLink(" Export A DOC", "LiqSueldDocx", "LiqSueld", new { @class = "btn btn-success btn-sm" }) </td>
                                 <td></td>
-                                <td><button class="btn btn-success btn-sm" id="BtnGrabLiqSueld" value="Grabar"><i class="fa fa-download"></i> Grabar</button></td>
+                                <td><button class="btn btn-success btn-sm" id="BtnGrabLiqSueld" value="Modificar"><i class="fa fa-download"></i> Modificar</button></td>
                                 <td></td>
-                                <td><button class="btn btn-danger btn-sm" id="Cerrar" data-dismiss="modal"><i class="fa fa-window-close"></i> Cerrar</button></td>
+                                <td><button class="btn btn-danger btn-sm" id="Cerrar" value="Cerrar" data-dismiss="modal"><i class="fa fa-window-close"></i> Cerrar</button></td>
                                 <td></td>
                             </tr>
                         </table>

@@ -51,6 +51,20 @@ $(document).ready(function () {
         });
     });
 
+    $(function () {
+        $("ModFechLiq").datepicker({
+            autoSize: true,
+            dateFormat: "dd/mm/yy",
+            changeMonth: true,
+            changeYear: true,
+            language: "es",
+            firstDay: 1,
+            showOn: "both",
+            buttonText: "<i class='fa fa-calendar'></i>"
+        });
+    });
+
+
     //verifica si el empleado esta en la tabla de empleados
     $("#RutEmp").on('keyup', function (e) {
         //permite capturar el valor de la tecla pulsada
@@ -598,8 +612,7 @@ $(document).ready(function () {
                 window.location.reload(true);
             })
     })
-
-
+    
     //Manipulador del evento Edit(ar)
     $("body").on("click", "#TablaLiqSueld TBODY .Edit", function (event) {
         event.preventDefault();
@@ -612,37 +625,48 @@ $(document).ready(function () {
         var data = { Rut_Empleado: RutEmp, Fecha_Liquidacion: FechLiq};
         var url = "LiqSueld/BuscLiqSueld";
         $.post(url, data)
-        //    .done(function (data) {
-        //        // pasa los datos devueltos a un arreglo
-        //        var DatosEmp = data[0];
-        //        // pasa los datos del arreglo a las cajas
-        //        //$("#user_img").val(DatosEmp.Foto_Usuario)
-        //        $("#EDComuEmp").val(DatosEmp.Comuna_Id);
-        //        ComuPaso = DatosEmp.Comuna_Id;
-        //        $("EDNomCiu").val(BuscaCiudad());
-        //        $("#EDNomEmp").val(DatosEmp.Nombre);
-        //        $("#EDApPatEmp").val(DatosEmp.ApePat)
-        //        $("#EDApMatEmp").val(DatosEmp.ApeMat)
-        //        $("#EDDeptSelec").val(DatosEmp.Id_Depto)
-        //        $("#EDCargSelec").val(DatosEmp.Id_Carg);
-        //        $("#EDAnexoEmp").val(DatosEmp.Anexo)
-        //        $("#EDEmaEmp").val(DatosEmp.EmailEmp)
-        //        $("#EDFechIncEmp").val(DatosEmp.Fecha_Incorporacion)
-        //        $("#EDRutEmpre").val(DatosEmp.Rut_Empresa);
-        //        $("#EDAfpSelec").val(DatosEmp.Cod_Afp);
-        //        $("#EDSalSelec").val(DatosEmp.Cod_Salud);
-        //        $("#EDSexoSelec").val(DatosEmp.Id_Sexo);
-        //        $("#EDNacioSelec").val(DatosEmp.Id_Nac);
-        //        $("#EDCallPjeEmp").val(DatosEmp.Calle_Pje)
-        //        $("#EDNumCasaEmp").val(DatosEmp.NumCasa)
-        //        $("#EDVilla_PoblEmp").val(DatosEmp.Vill_Pobl)
-        //        $("#EDFonoPer").val(DatosEmp.Fono)
-        //        $("#EDEmailPer").val(DatosEmp.Email)
-        //        $("#EDFechNacEmp").val(DatosEmp.Fecha_Nacimiento)
-        //        $("#EDPerEmerEmp").val(DatosEmp.Persona_Emergencia)
-        //        $("#EDFonPerEmerEmp").val(DatosEmp.Fono_Emergencia)
-        //})
+            .done(function (data) {
+                // pasa los datos devueltos a un arreglo
+                var DatosLiqSueld = data[0];
+                // pasa los datos del arreglo a las cajas
+                $("#ModRutEmp").val(DatosLiqSueld.Rut_Empleado);
+                $("#ModListTipRem").val(DatosLiqSueld.Id_Tipo_Renumeracion);
+                $("#ModFechLiq").val(DatosLiqSueld.Fecha_Liquidacion);
+                $("#ModSueldBas").val(DatosLiqSueld.Sueldo_Base);
+                $("#ModDiasTrab").val(DatosLiqSueld.Dias_Trabajados);
+                $("#ModCantHrsExt").val(DatosLiqSueld.Cant_Horas_Extras);
+                $("#ModValHrsExt").val(DatosLiqSueld.Total_Horas_Extras);
+                $("#ModPorcCom").val(DatosLiqSueld.PorcComision );
+                $("#ModValorCom").val(DatosLiqSueld.Valor_Com);
+                $("#ModBonos").val(DatosLiqSueld.Bonos);
+                $("#ModValGrat").val(DatosLiqSueld.Gratificacion);
+                $("#ModTotImponible").val(DatosLiqSueld.TotalImponible);
+                $("#ModValMov").val(DatosLiqSueld.Movilizacion);
+                $("#ModValCola").val(DatosLiqSueld.Colacion);
+                $("#ModValViatico").val(DatosLiqSueld.Viaticos);
+                $("#ModTotHaber").val(DatosLiqSueld.TotalHaberes);
+                $("#ModAfpSelec").val(DatosLiqSueld.CodAfp);
+                $("#ModMontoAfp").val(DatosLiqSueld.Valor_Afp);
+                $("#ModSalSelec").val(DatosLiqSueld.Cod_Salud);
+                $("#ModMontoSalud").val(DatosLiqSueld.Valor_Salud);
+                $("#ModValCesantia").val(DatosLiqSueld.Valor_Seg_Cesantia);
+                $("#ModTotDescPrev").val(DatosLiqSueld.TotalDescSegSocial);
+                $("#ModCpTotImponible").val(DatosLiqSueld.TotalImponible);
+                $("#ModCPTotDescPrev").val(DatosLiqSueld.TotalDescSegSocial);
+                $("#ModRemNeta").val(DatosLiqSueld.RemNeta);
+                $("#ModTotImp").val(DatosLiqSueld.Valor_Impuesto);
+                $("#ModRebaImpto").val(DatosLiqSueld.RebaImpto);
+                $("#ModImpAPagar").val(DatosLiqSueld.ImpAPagar);
+                $("#ModValPrestmos").val(DatosLiqSueld.Prestamos);
+                $("#ModOtDesc").val(DatosLiqSueld.Otrs_Descuentos);
+                $("#ModTotDesc").val(DatosLiqSueld.TotalDesctos);
+                $("#ModAnticipos").val(DatosLiqSueld.Anticipos);
+                $("#ModTotPagar").val(DatosLiqSueld.Total_Pagar);
+             })
     });
+
+
+
 
 });
 
@@ -675,3 +699,54 @@ $(function () {
         row.find(".link").hide();
     }
 });   
+
+
+
+
+//$("ModRutEmp").val();
+//$("ModListTipRem").val();
+//$("ModFechLiq").val();
+//$("ModSueldBas").val();     
+//$("ModDiasTrab").val();    
+//$("ModCantHrsExt").val();   
+//$("ModValHrsExt").val();  
+//$("ModPorcCom").val();      
+//$("ModValorCom").val();
+//$("ModBonos").val();
+//$("ModValGrat").val();
+//$("ModTotImponible").val();
+//$("ModValMov").val();
+//$("ModValCola").val();
+//$("ModValViatico").val();
+//$("ModTotHaber").val();
+//$("ModMontoAfp").val();
+//$("ModSalSelec").val();
+//$("ModMontoSalud").val();    
+//$("ModValCesantia").val();
+//$("ModTotDescPrev").val();
+//$("ModCpTotImponible").val();
+//$("ModCPTotDescPrev").val();
+//$("ModRemNeta").val();
+//$("ModTotImp").val();
+//$("ModRebaImpto").val();
+//$("ModImpAPagar").val();
+//$("ModValPrestmos").val();
+//$("ModOtDesc").val();
+//$("ModTotDesc").val();        
+//$("ModAnticipos").val();
+//$("ModTotPagar").val();
+
+         
+        
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+        
+

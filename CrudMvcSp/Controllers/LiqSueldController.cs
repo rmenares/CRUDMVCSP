@@ -138,8 +138,7 @@ namespace CrudMvcSp.Controllers
             }
         }
         #endregion
-
-
+               
         #region Busca_Liquidacion 
         public ActionResult BuscLiqSueld(Liquidacion_Sueldo LiqiSueld)
         {
@@ -150,6 +149,12 @@ namespace CrudMvcSp.Controllers
             }
         }
         #endregion
+
+
+
+
+
+        //Exportaciones
 
     }
 }

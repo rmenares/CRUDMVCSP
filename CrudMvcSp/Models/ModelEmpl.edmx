@@ -2030,7 +2030,7 @@
           <Property Type="Int32" Name="Id_Liq" Nullable="false" />
           <Property Type="String" Name="Rut_Empleado" Nullable="false" MaxLength="10" />
           <Property Type="Int32" Name="Id_Tipo_Renumeracion" Nullable="false" />
-          <Property Type="DateTime" Name="Fecha_Liquidacion" Nullable="false" Precision="23" />
+          <Property Type="String" Name="Fecha_Liquidacion" Nullable="true" MaxLength="10" />
           <Property Type="String" Name="Sueldo_Base" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Dias_Trabajados" Nullable="false" MaxLength="2" />
           <Property Type="String" Name="PorcComision" Nullable="false" MaxLength="2" />
@@ -2065,7 +2065,7 @@
           <Property Type="Int32" Name="Id_Liq" Nullable="false" />
           <Property Type="String" Name="Rut_Empleado" Nullable="false" MaxLength="10" />
           <Property Type="Int32" Name="Id_Tipo_Renumeracion" Nullable="false" />
-          <Property Type="DateTime" Name="Fecha_Liquidacion" Nullable="false" Precision="23" />
+          <Property Type="String" Name="Fecha_Liquidacion" Nullable="true" MaxLength="10" />
           <Property Type="String" Name="Sueldo_Base" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Dias_Trabajados" Nullable="false" MaxLength="2" />
           <Property Type="String" Name="PorcComision" Nullable="false" MaxLength="2" />

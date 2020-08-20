@@ -468,7 +468,6 @@ namespace CrudMvcSp.Controllers
         }
         #endregion
 
-
         #region Ficha_Empleado_PDF
         public ActionResult FichaEmplPdf(Empleados empleados)
         {
@@ -656,11 +655,10 @@ namespace CrudMvcSp.Controllers
                 ms.Write(byteStream, 0, byteStream.Length);
                 ms.Position = 0;
                 //esto permite que el archivo pdf se muestre por pantalla en el explorador y a su vez sea guardado en el disco
-                return File(ms, "application/pdf", "ListaEmpleados.pdf");
+                return File(ms, "application/pdf", "FichaEmpleados.pdf");
             }
         }
         #endregion
-
 
         #region Inserta_Pie_de_Pagina_al_Pdf
         class HeadFooter : PdfPageEventHelper

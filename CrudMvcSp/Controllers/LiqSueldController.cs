@@ -20,6 +20,7 @@ namespace CrudMvcSp.Controllers
     public class LiqSueldController : Controller
     {
         string url;
+ 
 
         #region LLena_las_Instancias
         EmpleadosEntities LiqSueld = new EmpleadosEntities();
@@ -161,16 +162,22 @@ namespace CrudMvcSp.Controllers
             {
                 var BusLiq = LiqSueld.SP_Sel_LiqSuelRyMPDF(LiqiSueld.Rut_Empleado, Convert.ToString(LiqiSueld.Fecha_Liquidacion)).ToList();
 
+                //MemoryStream ms = new MemoryStream();
+
                 //crea pdf
                 iTextSharp.text.Document document = new iTextSharp.text.Document();
                 document.SetPageSize(PageSize.A4);
                 document.SetMargins(14.2f, 14.2f, 29f, 31f);
 
+                //PdfWriter pdf = PdfWriter.GetInstance(document, ms);
+
                 PdfWriter writer = PdfWriter.GetInstance(document,
-                 new FileStream(@"C:\Users\Rodrigo_Menares\Downloads\Liquidacion_" + BusLiq[0].Nombre + "_" + BusLiq[0].ApePat+".pdf", FileMode.Create));
+                 new FileStream(@"C:\Users\Rodrigo_Menares\Downloads\Liquidacion_" + BusLiq[0].Nombre + "_" + BusLiq[0].ApePat + ".pdf", FileMode.Create));
 
                 //hace la insercion del pie de pagina
                 writer.PageEvent = new HeadFooter();
+                //pdf.PageEvent = new HeadFooter();
+
 
                 document.Open();
                 //insercion de imagenes
@@ -565,11 +572,14 @@ namespace CrudMvcSp.Controllers
 
                 //cierra el documento
                 document.Close();
-                return File("application/pdf", "Liquidación"+BusLiq[0].Nombre + BusLiq[0].ApePat+".pdf");
+                // busca el camino y abre el archivo para su visualizacion
+
+                string Path = "C:/Users/Rodrigo_Menares/Downloads/";
+                Process.Start(Path + "Liquidacion_" + BusLiq[0].Nombre + "_" + BusLiq[0].ApePat + ".pdf");
             }
+            return View();
         }
         #endregion
-
 
         #region Inserta_Pie_de_Pagina_al_Pdf
         class HeadFooter : PdfPageEventHelper

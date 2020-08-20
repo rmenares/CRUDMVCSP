@@ -681,10 +681,30 @@ $(document).ready(function () {
                     "hideMethod": "fadeOut"
                 };
                 $("#ModLiqSueld").modal("hide");
+                window.location.reload(true);
             })
     });
-       
 
+    $("#ImpriXLS").click(function (e) {
+        event.preventDefault();
+        RutEmp = $("#ModRutEmp").val();
+        FechLiq = $("#ModFechLiq").val();
+        type: 'Post';
+        var data = { Rut_Empleado: RutEmp, Fecha_Liquidacion: FechLiq };
+        var url = "LiqSueld/ImpLiqSuelXLS";
+        $.post(url, data)
+            .done(function (data) {
+                toastr["success"](" Liquidación Lista ", "Atención")
+                toastr.options = {
+                    "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false, "positionClass": "toast-top-center", "preventDuplicates": false,
+                    "onclick": null, "showDuration": "400", "hideDuration": "1000", "timeOut": "5000",
+                    "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear", "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                };
+                $("#ModLiqSueld").modal("hide");
+                window.location.reload(true);
+            })
+    });
 });
 
 

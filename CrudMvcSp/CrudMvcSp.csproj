@@ -150,6 +150,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CargFamController.cs" />
     <Compile Include="Controllers\CargosController.cs" />
+    <Compile Include="Controllers\Conversores.cs" />
     <Compile Include="Controllers\DeptosController.cs" />
     <Compile Include="Controllers\EmpleadosController.cs" />
     <Compile Include="Controllers\EmpresasController.cs" />
@@ -307,6 +308,9 @@
       <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SP_Sel_liqSueldoXRyM_Result.cs">
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_Sel_LiqSuelRyMPDF_Result.cs">
       <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sp_Sel_Nacionalidad_Result.cs">

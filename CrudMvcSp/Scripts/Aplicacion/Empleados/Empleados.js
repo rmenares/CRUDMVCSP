@@ -279,6 +279,7 @@ $(document).ready(function () {
                 var DatosEmp = data[0];
                 // pasa los datos del arreglo a las cajas
                 //$("#user_img").val(DatosEmp.Foto_Usuario)
+                $("#EDRutEmp").val(RutEmp);
                 $("#EDComuEmp").val(DatosEmp.Comuna_Id);
                 ComuPaso = DatosEmp.Comuna_Id;
                 $("EDNomCiu").val(BuscaCiudad());
@@ -461,6 +462,17 @@ $(document).ready(function () {
                 window.location.reload(true);
             })
          }
+    });
+
+    $("#BtnImpFich").click(function (event) {
+        event.preventDefault();
+        type: 'Post';
+        var data = { Rut_Empleado: RutEmp };
+        var url = "/Empleados/FichaEmplPdf";
+        $.post(url, data)
+            .done(function (data) {
+                $("#ModEmpleados").modal("hide");
+            })
     });
 
     //captura imagen y toma foto

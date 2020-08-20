@@ -793,6 +793,19 @@ namespace CrudMvcSp.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_Sel_liqSueldoXRyM_Result>("SP_Sel_liqSueldoXRyM", rut_empParameter, mesParameter);
         }
     
+        public virtual ObjectResult<SP_Sel_LiqSuelRyMPDF_Result> SP_Sel_LiqSuelRyMPDF(string rut_emp, string mes)
+        {
+            var rut_empParameter = rut_emp != null ?
+                new ObjectParameter("rut_emp", rut_emp) :
+                new ObjectParameter("rut_emp", typeof(string));
+    
+            var mesParameter = mes != null ?
+                new ObjectParameter("mes", mes) :
+                new ObjectParameter("mes", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_Sel_LiqSuelRyMPDF_Result>("SP_Sel_LiqSuelRyMPDF", rut_empParameter, mesParameter);
+        }
+    
         public virtual ObjectResult<Sp_Sel_Nacionalidad_Result> Sp_Sel_Nacionalidad(Nullable<int> id_Nac)
         {
             var id_NacParameter = id_Nac.HasValue ?

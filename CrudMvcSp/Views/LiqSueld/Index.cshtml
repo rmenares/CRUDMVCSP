@@ -104,6 +104,7 @@
     }
 </form>
 
+
 <!-- Modal Agrega Liquidación de Sueldos -->
 <div class="modal" id="AgrLiqSueld">
     <div class="modal-dialog modal-lg" style="width:70%;">
@@ -259,11 +260,8 @@
                                 <td></td>
                             </tr>
                             <tr>
-                                <td align="center" colspan="6" bgcolor="cac5c4">Descuentos Previsionales(-)</td>
+                                <td align="center" colspan="6" bgcolor="cac5c4">Descuentos Previsionales</td>
                                 <td align="center" colspan="6" bgcolor="cac5c4"><input type="text" Id="TotDescPrev" style="text-align:right;" disabled /> </td>
-                            </tr>
-                            <tr>
-                                <td align="center" colspan="12" bgcolor="cac5c4">Cálculo Impuesto A la Renta</td>
                             </tr>
                             <tr>
                                 <td align="center">Remuneracion Imponible</td>
@@ -280,6 +278,9 @@
                                 <td></td>
                             </tr>
                             <tr>
+                                <td align="center" colspan="12" bgcolor="cac5c4">Cálculo Impuesto A la Renta</td>
+                            </tr>
+                            <tr>
                                 <td align="center">Total Impuesto</td>
                                 <td></td>
                                 <td align="center"><input type="text" id="TotImp" style="text-align:right;" disabled /></td>
@@ -292,6 +293,9 @@
                                 <td></td>
                                 <td align="center"><input type="text" id="ImpAPagar" style="text-align:right;" disabled /></td>
                                 <td></td>
+                            </tr>
+                            <tr>
+                                <td align="center" colspan="12" bgcolor="cac5c4">Descuentos y Alcance Liquido</td>
                             </tr>
                             <tr>
                                 <td align="center">Prestamos</td>
@@ -315,6 +319,10 @@
                                 <td align="center">Total A Pagar</td>
                                 <td></td>
                                 <td align="center"><input type="text" id="TotPagar" style="text-align:right;" disabled /></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                                 <td></td>
                             </tr>
                         </table>
@@ -450,7 +458,7 @@
                                         <td></td>
                                         <td align="center">Monto AFP</td>
                                         <td></td>
-                                        <td align="center"><input type="text" id="ModMontoAfp" style="text-align:right;" disabled/></td>
+                                        <td align="center"><input type="text" id="ModMontoAfp" style="text-align:right;" disabled /></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
@@ -474,7 +482,7 @@
                                     <tr>
                                         <td align="center">Valor Seguro Cesantía</td>
                                         <td></td>
-                                        <td align="center"><input type="text" id="ModValCesantia" style="text-align:right;" disabled/></td>
+                                        <td align="center"><input type="text" id="ModValCesantia" style="text-align:right;" disabled /></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
@@ -486,11 +494,8 @@
                                         <td></td>
                                     </tr>
                                     <tr>
-                                        <td align="center" colspan="6" bgcolor="cac5c4">Descuentos Previsionales(-)</td>
+                                        <td align="center" colspan="6" bgcolor="cac5c4">Descuentos Previsionales</td>
                                         <td align="center" colspan="6" bgcolor="cac5c4"><input type="text" Id="ModTotDescPrev" style="text-align:right;" disabled /> </td>
-                                    </tr>
-                                    <tr>
-                                        <td align="center" colspan="12" bgcolor="cac5c4">Cálculo Impuesto A la Renta</td>
                                     </tr>
                                     <tr>
                                         <td align="center">Remuneracion Imponible</td>
@@ -507,6 +512,9 @@
                                         <td></td>
                                     </tr>
                                     <tr>
+                                        <td align="center" colspan="12" bgcolor="cac5c4">Cálculo Impuesto A la Renta</td>
+                                    </tr>
+                                    <tr>
                                         <td align="center">Total Impuesto</td>
                                         <td></td>
                                         <td align="center"><input type="text" id="ModTotImp" style="text-align:right;" disabled /></td>
@@ -519,6 +527,9 @@
                                         <td></td>
                                         <td align="center"><input type="text" id="ModImpAPagar" style="text-align:right;" disabled /></td>
                                         <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="center" colspan="12" bgcolor="cac5c4">Descuentos y Alcance Liquido</td>
                                     </tr>
                                     <tr>
                                         <td align="center">Prestamos</td>
@@ -543,6 +554,10 @@
                                         <td></td>
                                         <td align="center"><input type="text" id="ModTotPagar" style="text-align:right;" disabled /></td>
                                         <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
                                     </tr>
                                 </table>
                             </div>
@@ -551,19 +566,16 @@
                 <!-- Modal footer -->
                 <div class="modal-footer">
                     <div id="TablExport">
-                        <table align="center" border="1">
+                        <table align="center" border="0">
                             <tr>
-                                <td> @Html.ActionLink(" Export A Pdf", "LiqSueldPDF", "LiqSueld", new { @class = "btn btn-success btn-sm" }) </td>
-                                <td> </td>
-                                <td> @Html.ActionLink(" Export A Excel", "LiqSueldXls", "LiqSueld", new { @class = "btn btn-success btn-sm" }) </td>
-                                <td> </td>
-                                <td> @Html.ActionLink(" Export A CSV", "LiqSueldCsv", "LiqSueld", new { @class = "btn btn-success btn-sm" }) </td>
-                                <td> </td>
-                                <td> @Html.ActionLink(" Export A DOC", "LiqSueldDocx", "LiqSueld", new { @class = "btn btn-success btn-sm" }) </td>
                                 <td></td>
-                                <td><button class="btn btn-success btn-sm" id="BtnGrabLiqSueld" value="Modificar"><i class="fa fa-download"></i> Modificar</button></td>
-                                <td></td>
-                                <td><button class="btn btn-danger btn-sm" id="Cerrar" value="Cerrar" data-dismiss="modal"><i class="fa fa-window-close"></i> Cerrar</button></td>
+                                <td><button class="btn btn-success" id="ImpriLiq" value="Imprimir Liquidación"><i class="fa fa-file-pdf"></i> Imprimir Liquidación</button></td>
+                                <td> | </td>
+                                <td><button class="btn btn-success" id="ImpriXLS" value="Export Excel"><i class="fa fa-file-excel"></i> Export Excel</button></td>
+                                <td> | </td>
+                                <td><button class="btn btn-success" id="BtnGrabLiqSueld" value="Modificar"><i class="fa fa-download"></i> Modificar</button></td>
+                                <td> | </td>
+                                <td><button class="btn btn-danger" id="Cerrar" value="Cerrar" data-dismiss="modal"><i class="fa fa-window-close"></i> Cerrar</button></td>
                                 <td></td>
                             </tr>
                         </table>
@@ -572,9 +584,6 @@
             </div>
         </div>
     </div>
-
-
-
 
 
 @section scripts {

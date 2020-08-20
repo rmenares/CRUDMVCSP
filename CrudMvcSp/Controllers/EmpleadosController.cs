@@ -468,6 +468,200 @@ namespace CrudMvcSp.Controllers
         }
         #endregion
 
+
+        #region Ficha_Empleado_PDF
+        public ActionResult FichaEmplPdf(Empleados empleados)
+        {
+            using (Empleados = new EmpleadosEntities())
+            {
+                var FichEmpleado = Empleados.SP_Mues_Empleado_PDF(empleados.Rut_Empleado).ToList();
+
+                MemoryStream ms = new MemoryStream();
+                iTextSharp.text.Document document = new iTextSharp.text.Document();
+                document.SetPageSize(PageSize.A4.Rotate());
+                document.SetMargins(14.2f, 14.2f, 29f, 31f);
+                PdfWriter pdf = PdfWriter.GetInstance(document, ms);
+
+                //hace la insercion del pie de pagina
+                pdf.PageEvent = new HeadFooter();
+
+                document.Open();
+                //insercion de imagenes
+                url = Server.MapPath("/Imagenes/bg.jpg");
+                iTextSharp.text.Image image = iTextSharp.text.Image.GetInstance(url);
+                image.ScaleToFit(140f, 120f);
+                image.Alignment = Element.ALIGN_LEFT;
+                document.Add(image);
+                // fin de insercion de imagenes
+
+                //fuente, tamaño y color de cabecera
+                BaseFont bf = BaseFont.CreateFont(BaseFont.HELVETICA_BOLD, BaseFont.CP1250, BaseFont.EMBEDDED);
+                iTextSharp.text.Font fontText2 = new iTextSharp.text.Font(bf, 12, 4, BaseColor.BLUE);
+
+                //creacion e insercion de titulos al documento
+                iTextSharp.text.Paragraph titulo = new iTextSharp.text.Paragraph(string.Format("Ficha de Empleado"), fontText2);
+                //titulo.SpacingBefore = 200;
+                //titulo.SpacingAfter = 0;
+                titulo.Alignment = 1; //0-Left, 1 middle,2 Right
+                //inserta al documento
+                document.Add(titulo);
+                //inserta nueva linea al texto
+                document.Add(Chunk.NEWLINE);
+
+                //esto es para estilo de letra de la tabla
+                BaseFont bf2 = BaseFont.CreateFont(BaseFont.TIMES_BOLD, BaseFont.CP1250, BaseFont.EMBEDDED);
+                //tamaño y color
+                iTextSharp.text.Font fontText = new iTextSharp.text.Font(bf2, 8, 0, BaseColor.BLACK);
+                iTextSharp.text.Font fontText3 = new iTextSharp.text.Font(bf2, 8, 0, BaseColor.WHITE);
+
+                // instancia la tabla y le indica la cantidad de columnas
+                PdfPTable table = new PdfPTable(13);
+
+                //indica q ancho de la hoja va a ocupar la tabla
+                table.WidthPercentage = 95;
+
+                // instancia para la generacion de celdas en la tabla                
+                PdfPCell _cell = new PdfPCell();
+
+                //genera la cabecera de la tabla
+                _cell = new PdfPCell(new iTextSharp.text.Paragraph("Rut", fontText3));
+                _cell.BackgroundColor = iTextSharp.text.BaseColor.DARK_GRAY;
+                _cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                table.AddCell(_cell);
+
+                _cell = new PdfPCell(new iTextSharp.text.Paragraph("Nombre", fontText3));
+                _cell.BackgroundColor = iTextSharp.text.BaseColor.DARK_GRAY;
+                _cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                table.AddCell(_cell);
+
+                _cell = new PdfPCell(new iTextSharp.text.Paragraph("Apellido", fontText3));
+                _cell.BackgroundColor = iTextSharp.text.BaseColor.DARK_GRAY;
+                _cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                table.AddCell(_cell);
+
+                _cell = new PdfPCell(new iTextSharp.text.Paragraph("Departamento", fontText3));
+                _cell.BackgroundColor = iTextSharp.text.BaseColor.DARK_GRAY;
+                _cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                table.AddCell(_cell);
+
+                _cell = new PdfPCell(new iTextSharp.text.Paragraph("Cargo", fontText3));
+                _cell.BackgroundColor = iTextSharp.text.BaseColor.DARK_GRAY;
+                _cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                table.AddCell(_cell);
+
+                _cell = new PdfPCell(new iTextSharp.text.Paragraph("Direccion", fontText3));
+                _cell.BackgroundColor = iTextSharp.text.BaseColor.DARK_GRAY;
+                _cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                table.AddCell(_cell);
+
+                _cell = new PdfPCell(new iTextSharp.text.Paragraph("Comuna", fontText3));
+                _cell.BackgroundColor = iTextSharp.text.BaseColor.DARK_GRAY;
+                _cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                table.AddCell(_cell);
+
+                _cell = new PdfPCell(new iTextSharp.text.Paragraph("Ciudad", fontText3));
+                _cell.BackgroundColor = iTextSharp.text.BaseColor.DARK_GRAY;
+                _cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                table.AddCell(_cell);
+
+                _cell = new PdfPCell(new iTextSharp.text.Paragraph("Fono", fontText3));
+                _cell.BackgroundColor = iTextSharp.text.BaseColor.DARK_GRAY;
+                _cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                table.AddCell(_cell);
+
+                _cell = new PdfPCell(new iTextSharp.text.Paragraph("Correo", fontText3));
+                _cell.BackgroundColor = iTextSharp.text.BaseColor.DARK_GRAY;
+                _cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                table.AddCell(_cell);
+
+                _cell = new PdfPCell(new iTextSharp.text.Paragraph("Nacionalidad", fontText3));
+                _cell.BackgroundColor = iTextSharp.text.BaseColor.DARK_GRAY;
+                _cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                table.AddCell(_cell);
+
+                _cell = new PdfPCell(new iTextSharp.text.Paragraph("Nombre_AFP", fontText3));
+                _cell.BackgroundColor = iTextSharp.text.BaseColor.DARK_GRAY;
+                _cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                table.AddCell(_cell);
+
+                _cell = new PdfPCell(new iTextSharp.text.Paragraph("SALUD", fontText3));
+                _cell.BackgroundColor = iTextSharp.text.BaseColor.DARK_GRAY;
+                _cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                table.AddCell(_cell);
+
+                foreach (var FichEmp in FichEmpleado)
+                {
+                    PdfPCell _cell2 = new PdfPCell();
+
+                    _cell2 = new PdfPCell(new iTextSharp.text.Paragraph(FichEmp.Rut.ToString(), fontText));
+                    _cell2.HorizontalAlignment = Element.ALIGN_CENTER;
+                    table.AddCell(_cell2);
+
+                    _cell2 = new PdfPCell(new iTextSharp.text.Paragraph(FichEmp.Nombre, fontText));
+                    _cell2.HorizontalAlignment = Element.ALIGN_LEFT;
+                    table.AddCell(_cell2);
+
+                    _cell2 = new PdfPCell(new iTextSharp.text.Paragraph(FichEmp.Apellido.ToString(), fontText));
+                    _cell2.HorizontalAlignment = Element.ALIGN_LEFT;
+                    table.AddCell(_cell2);
+
+                    _cell2 = new PdfPCell(new iTextSharp.text.Paragraph(FichEmp.Departamento, fontText));
+                    _cell2.HorizontalAlignment = Element.ALIGN_LEFT;
+                    table.AddCell(_cell2);
+
+                    _cell2 = new PdfPCell(new iTextSharp.text.Paragraph(FichEmp.Cargo.ToString(), fontText));
+                    _cell2.HorizontalAlignment = Element.ALIGN_LEFT;
+                    table.AddCell(_cell2);
+
+                    _cell2 = new PdfPCell(new iTextSharp.text.Paragraph(FichEmp.Direccion, fontText));
+                    _cell2.HorizontalAlignment = Element.ALIGN_LEFT;
+                    table.AddCell(_cell2);
+
+                    _cell2 = new PdfPCell(new iTextSharp.text.Paragraph(FichEmp.Comuna.ToString(), fontText));
+                    _cell2.HorizontalAlignment = Element.ALIGN_LEFT;
+                    table.AddCell(_cell2);
+
+                    _cell2 = new PdfPCell(new iTextSharp.text.Paragraph(FichEmp.Ciudad, fontText));
+                    _cell2.HorizontalAlignment = Element.ALIGN_LEFT;
+                    table.AddCell(_cell2);
+
+                    _cell2 = new PdfPCell(new iTextSharp.text.Paragraph(FichEmp.Fono.ToString(), fontText));
+                    _cell2.HorizontalAlignment = Element.ALIGN_CENTER;
+                    table.AddCell(_cell2);
+
+                    _cell2 = new PdfPCell(new iTextSharp.text.Paragraph(FichEmp.Correo, fontText));
+                    _cell2.HorizontalAlignment = Element.ALIGN_LEFT;
+                    table.AddCell(_cell2);
+
+                    _cell2 = new PdfPCell(new iTextSharp.text.Paragraph(FichEmp.Nacionalidad.ToString(), fontText));
+                    _cell2.HorizontalAlignment = Element.ALIGN_LEFT;
+                    table.AddCell(_cell2);
+
+                    _cell2 = new PdfPCell(new iTextSharp.text.Paragraph(FichEmp.Nombre_AFP.ToString(), fontText));
+                    _cell2.HorizontalAlignment = Element.ALIGN_LEFT;
+                    table.AddCell(_cell2);
+
+                    _cell2 = new PdfPCell(new iTextSharp.text.Paragraph(FichEmp.SALUD, fontText));
+                    _cell2.HorizontalAlignment = Element.ALIGN_LEFT;
+                    table.AddCell(_cell2);
+                }
+
+                //agrega la tabla al documento
+                document.Add(table);
+                //cierra el documento
+                document.Close();
+                //vacia la memoria(documento) hacia memory stream
+                byte[] byteStream = ms.ToArray();
+                ms = new MemoryStream();
+                ms.Write(byteStream, 0, byteStream.Length);
+                ms.Position = 0;
+                //esto permite que el archivo pdf se muestre por pantalla en el explorador y a su vez sea guardado en el disco
+                return File(ms, "application/pdf", "ListaEmpleados.pdf");
+            }
+        }
+        #endregion
+
+
         #region Inserta_Pie_de_Pagina_al_Pdf
         class HeadFooter : PdfPageEventHelper
         {

@@ -20,7 +20,7 @@ namespace CrudMvcSp.Controllers
     public class LiqSueldController : Controller
     {
         string url;
- 
+
 
         #region LLena_las_Instancias
         EmpleadosEntities LiqSueld = new EmpleadosEntities();
@@ -49,7 +49,7 @@ namespace CrudMvcSp.Controllers
 
                 var LisSal = ManSalud.Sp_Mues_Salud().ToList();
                 ViewBag.ListSalud = new SelectList(LisSal, "Cod_Salud", "Nombre_Salud");
-               
+
                 var LisCesa = Cesantia.Sp_Mues_Seg_Cesantia().ToList();
                 ViewBag.ListSegCes = new SelectList(LisCesa, "Id_Tip_Contrato", "Tipo_Contrato");
 
@@ -57,7 +57,7 @@ namespace CrudMvcSp.Controllers
             }
         }
         #endregion
-        
+
         #region Busca_Empleados
         //busca el rut del empleado y verifica si este esta en la tabla de empleados
         public ActionResult BuscEmp(Empleados emplead)
@@ -126,22 +126,22 @@ namespace CrudMvcSp.Controllers
             using (LiqSueld = new EmpleadosEntities())
             {
                 var GrabLiq = LiqSueld.Sp_Ins_LiqSueldo(
-                     LiqiSueld.Rut_Empleado,           LiqiSueld.Id_Tipo_Renumeracion,             LiqiSueld.Fecha_Liquidacion,
-                     LiqiSueld.Sueldo_Base,            LiqiSueld.Dias_Trabajados,                  LiqiSueld.PorcComision,
-                     LiqiSueld.Valor_Com,              LiqiSueld.Cant_Horas_Extras,                LiqiSueld.Total_Horas_Extras,
-                     LiqiSueld.Bonos,                  LiqiSueld.Gratificacion,                    LiqiSueld.TotalImponible,
-                     LiqiSueld.Colacion,               LiqiSueld.Movilizacion,                     LiqiSueld.Viaticos,
-                     LiqiSueld.TotalHaberes,           LiqiSueld.CodAfp,                           LiqiSueld.Valor_Afp,
-                     LiqiSueld.Cod_Salud,              LiqiSueld.Valor_Salud,                      LiqiSueld.Id_Seg_Cesantia,
-                     LiqiSueld.Valor_Seg_Cesantia,     LiqiSueld.TotalDescSegSocial,               LiqiSueld.Valor_Impuesto,
-                     LiqiSueld.RebaImpto,              LiqiSueld.ImpAPagar,                        LiqiSueld.RemNeta,
-                     LiqiSueld.Prestamos,              LiqiSueld.TotalDesctos,                     LiqiSueld.Otrs_Descuentos,
-                     LiqiSueld.Anticipos,              LiqiSueld.Total_Pagar );
+                     LiqiSueld.Rut_Empleado, LiqiSueld.Id_Tipo_Renumeracion, LiqiSueld.Fecha_Liquidacion,
+                     LiqiSueld.Sueldo_Base, LiqiSueld.Dias_Trabajados, LiqiSueld.PorcComision,
+                     LiqiSueld.Valor_Com, LiqiSueld.Cant_Horas_Extras, LiqiSueld.Total_Horas_Extras,
+                     LiqiSueld.Bonos, LiqiSueld.Gratificacion, LiqiSueld.TotalImponible,
+                     LiqiSueld.Colacion, LiqiSueld.Movilizacion, LiqiSueld.Viaticos,
+                     LiqiSueld.TotalHaberes, LiqiSueld.CodAfp, LiqiSueld.Valor_Afp,
+                     LiqiSueld.Cod_Salud, LiqiSueld.Valor_Salud, LiqiSueld.Id_Seg_Cesantia,
+                     LiqiSueld.Valor_Seg_Cesantia, LiqiSueld.TotalDescSegSocial, LiqiSueld.Valor_Impuesto,
+                     LiqiSueld.RebaImpto, LiqiSueld.ImpAPagar, LiqiSueld.RemNeta,
+                     LiqiSueld.Prestamos, LiqiSueld.TotalDesctos, LiqiSueld.Otrs_Descuentos,
+                     LiqiSueld.Anticipos, LiqiSueld.Total_Pagar);
                 return Json(GrabLiq);
             }
         }
         #endregion
-               
+
         #region Busca_Liquidacion 
         public ActionResult BuscLiqSueld(Liquidacion_Sueldo LiqiSueld)
         {
@@ -162,22 +162,16 @@ namespace CrudMvcSp.Controllers
             {
                 var BusLiq = LiqSueld.SP_Sel_LiqSuelRyMPDF(LiqiSueld.Rut_Empleado, Convert.ToString(LiqiSueld.Fecha_Liquidacion)).ToList();
 
-                //MemoryStream ms = new MemoryStream();
-
                 //crea pdf
                 iTextSharp.text.Document document = new iTextSharp.text.Document();
                 document.SetPageSize(PageSize.A4);
                 document.SetMargins(14.2f, 14.2f, 29f, 31f);
-
-                //PdfWriter pdf = PdfWriter.GetInstance(document, ms);
 
                 PdfWriter writer = PdfWriter.GetInstance(document,
                  new FileStream(@"C:\Users\Rodrigo_Menares\Downloads\Liquidacion_" + BusLiq[0].Nombre + "_" + BusLiq[0].ApePat + ".pdf", FileMode.Create));
 
                 //hace la insercion del pie de pagina
                 writer.PageEvent = new HeadFooter();
-                //pdf.PageEvent = new HeadFooter();
-
 
                 document.Open();
                 //insercion de imagenes
@@ -224,25 +218,25 @@ namespace CrudMvcSp.Controllers
                 PdfPTable table19 = new PdfPTable(6);
 
                 //indica q ancho de la hoja va a ocupar la tabla
-                table1.WidthPercentage = 95;
-                table2.WidthPercentage = 95;
-                table3.WidthPercentage = 95;
-                table4.WidthPercentage = 95;
-                table5.WidthPercentage = 95;
-                table6.WidthPercentage = 95;
-                table7.WidthPercentage = 95;
-                table8.WidthPercentage = 95;
-                table9.WidthPercentage = 95;
-                table10.WidthPercentage = 95;
-                table11.WidthPercentage = 95;
-                table12.WidthPercentage = 95;
-                table13.WidthPercentage = 95;
-                table14.WidthPercentage = 95;
-                table15.WidthPercentage = 95;
-                table16.WidthPercentage = 95;
-                table17.WidthPercentage = 95;
-                table18.WidthPercentage = 95;
-                table19.WidthPercentage = 95;
+                table1.WidthPercentage = 90;
+                table2.WidthPercentage = 90;
+                table3.WidthPercentage = 90;
+                table4.WidthPercentage = 90;
+                table5.WidthPercentage = 90;
+                table6.WidthPercentage = 90;
+                table7.WidthPercentage = 90;
+                table8.WidthPercentage = 90;
+                table9.WidthPercentage = 90;
+                table10.WidthPercentage = 90;
+                table11.WidthPercentage = 90;
+                table12.WidthPercentage = 90;
+                table13.WidthPercentage = 90;
+                table14.WidthPercentage = 90;
+                table15.WidthPercentage = 90;
+                table16.WidthPercentage = 90;
+                table17.WidthPercentage = 90;
+                table18.WidthPercentage = 90;
+                table19.WidthPercentage = 90;
 
                 // celda con espacio en blanco
                 PdfPCell col1 = new PdfPCell();
@@ -430,7 +424,6 @@ namespace CrudMvcSp.Controllers
                 table10.AddCell(col6);
                 document.Add(table10);
 
-
                 col1 = new PdfPCell(new iTextSharp.text.Paragraph("Salud", fontText));
                 col1.BackgroundColor = BaseColor.LIGHT_GRAY;
                 table11.AddCell(col1);
@@ -448,7 +441,6 @@ namespace CrudMvcSp.Controllers
                 col6 = new PdfPCell(new iTextSharp.text.Paragraph(""));
                 table11.AddCell(col6);
                 document.Add(table11);
-
 
                 col1 = new PdfPCell(new iTextSharp.text.Paragraph("Seg Cesantia", fontText));
                 col1.BackgroundColor = BaseColor.LIGHT_GRAY;
@@ -570,10 +562,32 @@ namespace CrudMvcSp.Controllers
                 table19.AddCell(col6);
                 document.Add(table19);
 
+                for (int i = 0; i <= 10; i++)
+                {
+                    Chunk c1 = new Chunk("\n");
+                    document.Add(c1);
+                }
+
+                PdfPTable table20 = new PdfPTable(1);
+                table20.WidthPercentage = 45;
+                PdfPCell col7 = new PdfPCell();
+                col7 = new PdfPCell(new iTextSharp.text.Paragraph(BusLiq[0].Nombre + " " + BusLiq[0].ApePat));
+                col7.HorizontalAlignment = Element.ALIGN_CENTER;
+                table20.AddCell(col7);
+                document.Add(table20);
+
+                PdfPTable table21 = new PdfPTable(1);
+                table21.WidthPercentage = 45;
+                PdfPCell col8 = new PdfPCell();
+                col8 = new PdfPCell(new iTextSharp.text.Paragraph(BusLiq[0].Rut_Empleado));
+                col8.HorizontalAlignment = Element.ALIGN_CENTER;
+                table21.AddCell(col8);
+                document.Add(table21);
+
                 //cierra el documento
                 document.Close();
-                // busca el camino y abre el archivo para su visualizacion
 
+                // busca el camino y abre el archivo para su visualizacion
                 string Path = "C:/Users/Rodrigo_Menares/Downloads/";
                 Process.Start(Path + "Liquidacion_" + BusLiq[0].Nombre + "_" + BusLiq[0].ApePat + ".pdf");
             }
@@ -605,6 +619,17 @@ namespace CrudMvcSp.Controllers
             }
         }
         #endregion
+
+
+
+
+        //public ActionResult ImpLiqSuel(Liquidacion_Sueldo LiqiSueld)
+        //{
+        //    using (LiqSueld = new EmpleadosEntities())
+        //    {
+        //        var BusLiq = LiqSueld.SP_Sel_LiqSuelRyMPDF(LiqiSueld.Rut_Empleado, Convert.ToString(LiqiSueld.Fecha_Liquidacion)).ToList();
+        //    }
+        //}
 
 
     }

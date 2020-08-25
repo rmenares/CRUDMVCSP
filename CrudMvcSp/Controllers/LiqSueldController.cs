@@ -649,10 +649,10 @@ namespace CrudMvcSp.Controllers
                 worksheet.Cells["A2:B2"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
 
                 //fija los bordes de las celdas y el tipo 
-                worksheet.Cells["B4:g22"].Style.Border.Top.Style = ExcelBorderStyle.Thick;
-                worksheet.Cells["B4:g22"].Style.Border.Left.Style = ExcelBorderStyle.Thick;
-                worksheet.Cells["B4:g22"].Style.Border.Right.Style = ExcelBorderStyle.Thick;
-                worksheet.Cells["B4:g22"].Style.Border.Bottom.Style = ExcelBorderStyle.Thick;
+                worksheet.Cells["B4:G22"].Style.Border.Top.Style = ExcelBorderStyle.Thick;
+                worksheet.Cells["B4:G22"].Style.Border.Left.Style = ExcelBorderStyle.Thick;
+                worksheet.Cells["B4:G22"].Style.Border.Right.Style = ExcelBorderStyle.Thick;
+                worksheet.Cells["B4:G22"].Style.Border.Bottom.Style = ExcelBorderStyle.Thick;
 
                 // los titulos 
                 worksheet.Cells["B4"].Value = "Nombre";
@@ -684,87 +684,414 @@ namespace CrudMvcSp.Controllers
                 worksheet.Cells["D5"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
 
                 worksheet.Cells["F5"].Value = "Fecha";
+                worksheet.Cells["F5"].Style.Font.Bold = true;
+                worksheet.Cells["F5"].Style.Font.Size = 12;
+                worksheet.Cells["F5"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                worksheet.Cells["F5"].Style.Fill.BackgroundColor.SetColor(Color.Gray);
+                worksheet.Cells["F5"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+
                 worksheet.Cells["B6"].Value = "Sueldo Base";
+                worksheet.Cells["B6"].Style.Font.Bold = true;
+                worksheet.Cells["B6"].Style.Font.Size = 12;
+                worksheet.Cells["B6"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                worksheet.Cells["B6"].Style.Fill.BackgroundColor.SetColor(Color.Gray);
+                worksheet.Cells["B6"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+
                 worksheet.Cells["D6"].Value = "Dias Trabajados";
+                worksheet.Cells["D6"].Style.Font.Bold = true;
+                worksheet.Cells["D6"].Style.Font.Size = 12;
+                worksheet.Cells["D6"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                worksheet.Cells["D6"].Style.Fill.BackgroundColor.SetColor(Color.Gray);
+                worksheet.Cells["D6"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+
                 worksheet.Cells["B7"].Value = "Horas Extras";
+                worksheet.Cells["B7"].Style.Font.Bold = true;
+                worksheet.Cells["B7"].Style.Font.Size = 12;
+                worksheet.Cells["B7"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                worksheet.Cells["B7"].Style.Fill.BackgroundColor.SetColor(Color.Gray);
+                worksheet.Cells["B7"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+
                 worksheet.Cells["D7"].Value = "Total";
+                worksheet.Cells["D7"].Style.Font.Bold = true;
+                worksheet.Cells["D7"].Style.Font.Size = 12;
+                worksheet.Cells["D7"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                worksheet.Cells["D7"].Style.Fill.BackgroundColor.SetColor(Color.Gray);
+                worksheet.Cells["D7"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+
                 worksheet.Cells["B8"].Value = "% Comision";
+                worksheet.Cells["B8"].Style.Font.Bold = true;
+                worksheet.Cells["B8"].Style.Font.Size = 12;
+                worksheet.Cells["B8"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                worksheet.Cells["B8"].Style.Fill.BackgroundColor.SetColor(Color.Gray);
+                worksheet.Cells["B8"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+
                 worksheet.Cells["D8"].Value = "Total Comision";
+                worksheet.Cells["D8"].Style.Font.Bold = true;
+                worksheet.Cells["D8"].Style.Font.Size = 12;
+                worksheet.Cells["D8"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                worksheet.Cells["D8"].Style.Fill.BackgroundColor.SetColor(Color.Gray);
+                worksheet.Cells["D8"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+
                 worksheet.Cells["B9"].Value = "Bonos";
+                worksheet.Cells["B9"].Style.Font.Bold = true;
+                worksheet.Cells["B9"].Style.Font.Size = 12;
+                worksheet.Cells["B9"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                worksheet.Cells["B9"].Style.Fill.BackgroundColor.SetColor(Color.Gray);
+                worksheet.Cells["B9"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+
                 worksheet.Cells["D9"].Value = "Gratificación";
+                worksheet.Cells["D9"].Style.Font.Bold = true;
+                worksheet.Cells["D9"].Style.Font.Size = 12;
+                worksheet.Cells["D9"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                worksheet.Cells["D9"].Style.Fill.BackgroundColor.SetColor(Color.Gray);
+                worksheet.Cells["D9"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+
                 worksheet.Cells["B10:D10"].Value = "Total Imponible";
                 worksheet.Cells["B10:D10"].Merge = true;
+                worksheet.Cells["B10:D10"].Style.Font.Bold = true;
+                worksheet.Cells["B10:D10"].Style.Font.Size = 14;
+                worksheet.Cells["B10:D10"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                worksheet.Cells["B10:D10"].Style.Fill.BackgroundColor.SetColor(Color.Gray);
+                worksheet.Cells["B10:D10"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+
                 worksheet.Cells["B11"].Value = "Movilización";
+                worksheet.Cells["B11"].Style.Font.Bold = true;
+                worksheet.Cells["B11"].Style.Font.Size = 12;
+                worksheet.Cells["B11"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                worksheet.Cells["B11"].Style.Fill.BackgroundColor.SetColor(Color.Gray);
+                worksheet.Cells["B11"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+
                 worksheet.Cells["D11"].Value = "Colación";
+                worksheet.Cells["D11"].Style.Font.Bold = true;
+                worksheet.Cells["D11"].Style.Font.Size = 12;
+                worksheet.Cells["D11"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                worksheet.Cells["D11"].Style.Fill.BackgroundColor.SetColor(Color.Gray);
+                worksheet.Cells["D11"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+
                 worksheet.Cells["F11"].Value = "Viaticos";
-                worksheet.Cells["B12:D12"].Value = "Total haberes";
+                worksheet.Cells["F11"].Style.Font.Bold = true;
+                worksheet.Cells["F11"].Style.Font.Size = 12;
+                worksheet.Cells["F11"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                worksheet.Cells["F11"].Style.Fill.BackgroundColor.SetColor(Color.Gray);
+                worksheet.Cells["F11"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+
+                worksheet.Cells["B12:D12"].Value = "Total Haberes";
                 worksheet.Cells["B12:D12"].Merge = true;
+                worksheet.Cells["B12:D12"].Style.Font.Bold = true;
+                worksheet.Cells["B12:D12"].Style.Font.Size = 14;
+                worksheet.Cells["B12:D12"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                worksheet.Cells["B12:D12"].Style.Fill.BackgroundColor.SetColor(Color.Gray);
+                worksheet.Cells["B12:D12"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+
                 worksheet.Cells["B13"].Value = "AFP";
+                worksheet.Cells["B13"].Style.Font.Bold = true;
+                worksheet.Cells["B13"].Style.Font.Size = 12;
+                worksheet.Cells["B13"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                worksheet.Cells["B13"].Style.Fill.BackgroundColor.SetColor(Color.Gray);
+                worksheet.Cells["B13"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+
                 worksheet.Cells["D13"].Value = "Monto AFP";
+                worksheet.Cells["D13"].Style.Font.Bold = true;
+                worksheet.Cells["D13"].Style.Font.Size = 12;
+                worksheet.Cells["D13"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                worksheet.Cells["D13"].Style.Fill.BackgroundColor.SetColor(Color.Gray);
+                worksheet.Cells["D13"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+
                 worksheet.Cells["B14"].Value = "Salud";
+                worksheet.Cells["B14"].Style.Font.Bold = true;
+                worksheet.Cells["B14"].Style.Font.Size = 12;
+                worksheet.Cells["B14"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                worksheet.Cells["B14"].Style.Fill.BackgroundColor.SetColor(Color.Gray);
+                worksheet.Cells["B14"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+
                 worksheet.Cells["D14"].Value = "Monto Salud";
+                worksheet.Cells["D14"].Style.Font.Bold = true;
+                worksheet.Cells["D14"].Style.Font.Size = 12;
+                worksheet.Cells["D14"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                worksheet.Cells["D14"].Style.Fill.BackgroundColor.SetColor(Color.Gray);
+                worksheet.Cells["D14"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+
                 worksheet.Cells["B15"].Value = "Seg Cesantia";
+                worksheet.Cells["B15"].Style.Font.Bold = true;
+                worksheet.Cells["B15"].Style.Font.Size = 12;
+                worksheet.Cells["B15"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                worksheet.Cells["B15"].Style.Fill.BackgroundColor.SetColor(Color.Gray);
+                worksheet.Cells["B15"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+
                 worksheet.Cells["B16:D16"].Value = "Total Descuentos Previsionales";
                 worksheet.Cells["B16:D16"].Merge = true;
+                worksheet.Cells["B16:D16"].Style.Font.Bold = true;
+                worksheet.Cells["B16:D16"].Style.Font.Size = 14;
+                worksheet.Cells["B16:D16"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                worksheet.Cells["B16:D16"].Style.Fill.BackgroundColor.SetColor(Color.Gray);
+                worksheet.Cells["B16:D16"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+
                 worksheet.Cells["B17"].Value = "Remuneración Imponible";
+                worksheet.Cells["B17"].Style.Font.Bold = true;
+                worksheet.Cells["B17"].Style.Font.Size = 12;
+                worksheet.Cells["B17"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                worksheet.Cells["B17"].Style.Fill.BackgroundColor.SetColor(Color.Gray);
+                worksheet.Cells["B17"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+
                 worksheet.Cells["D17"].Value = "Descuentos Previsionales";
+                worksheet.Cells["D17"].Style.Font.Bold = true;
+                worksheet.Cells["D17"].Style.Font.Size = 12;
+                worksheet.Cells["D17"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                worksheet.Cells["D17"].Style.Fill.BackgroundColor.SetColor(Color.Gray);
+                worksheet.Cells["D17"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+
                 worksheet.Cells["F17"].Value = "Remuneración Neta";
+                worksheet.Cells["F17"].Style.Font.Bold = true;
+                worksheet.Cells["F17"].Style.Font.Size = 12;
+                worksheet.Cells["F17"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                worksheet.Cells["F17"].Style.Fill.BackgroundColor.SetColor(Color.Gray);
+                worksheet.Cells["F17"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+
                 worksheet.Cells["B18:G18"].Value = "Calculo de Impuesto a La Renta";
                 worksheet.Cells["B18:G18"].Merge = true;
+                worksheet.Cells["B18:G18"].Style.Font.Bold = true;
+                worksheet.Cells["B18:G18"].Style.Font.Size = 14;
+                worksheet.Cells["B18:G18"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                worksheet.Cells["B18:G18"].Style.Fill.BackgroundColor.SetColor(Color.Gray);
+                worksheet.Cells["B18:G18"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+
                 worksheet.Cells["B19"].Value = "Valor Impuesto";
+                worksheet.Cells["B19"].Style.Font.Bold = true;
+                worksheet.Cells["B19"].Style.Font.Size = 12;
+                worksheet.Cells["B19"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                worksheet.Cells["B19"].Style.Fill.BackgroundColor.SetColor(Color.Gray);
+                worksheet.Cells["B19"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+
                 worksheet.Cells["D19"].Value = "Rebaja Al Impuesto";
+                worksheet.Cells["D19"].Style.Font.Bold = true;
+                worksheet.Cells["D19"].Style.Font.Size = 12;
+                worksheet.Cells["D19"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                worksheet.Cells["D19"].Style.Fill.BackgroundColor.SetColor(Color.Gray);
+                worksheet.Cells["D19"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+
                 worksheet.Cells["F19"].Value = "Impuesto A Pagar";
+                worksheet.Cells["F19"].Style.Font.Bold = true;
+                worksheet.Cells["F19"].Style.Font.Size = 12;
+                worksheet.Cells["F19"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                worksheet.Cells["F19"].Style.Fill.BackgroundColor.SetColor(Color.Gray);
+                worksheet.Cells["F19"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+
                 worksheet.Cells["B20:G20"].Value = "Descuentos y Alcance Liquido";
                 worksheet.Cells["B20:G20"].Merge = true;
+                worksheet.Cells["B20:G20"].Style.Font.Bold = true;
+                worksheet.Cells["B20:G20"].Style.Font.Size = 14;
+                worksheet.Cells["B20:G20"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                worksheet.Cells["B20:G20"].Style.Fill.BackgroundColor.SetColor(Color.Gray);
+                worksheet.Cells["B20:G20"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+
                 worksheet.Cells["B21"].Value = "Prestamos";
+                worksheet.Cells["B21"].Style.Font.Bold = true;
+                worksheet.Cells["B21"].Style.Font.Size = 12;
+                worksheet.Cells["B21"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                worksheet.Cells["B21"].Style.Fill.BackgroundColor.SetColor(Color.Gray);
+                worksheet.Cells["B21"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+
                 worksheet.Cells["D21"].Value = "Otros Descuentos";
+                worksheet.Cells["D21"].Style.Font.Bold = true;
+                worksheet.Cells["D21"].Style.Font.Size = 12;
+                worksheet.Cells["D21"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                worksheet.Cells["D21"].Style.Fill.BackgroundColor.SetColor(Color.Gray);
+                worksheet.Cells["D21"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+
                 worksheet.Cells["F21"].Value = "Total Descuentos";
+                worksheet.Cells["F21"].Style.Font.Bold = true;
+                worksheet.Cells["F21"].Style.Font.Size = 12;
+                worksheet.Cells["F21"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                worksheet.Cells["F21"].Style.Fill.BackgroundColor.SetColor(Color.Gray);
+                worksheet.Cells["F21"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+
                 worksheet.Cells["B22"].Value = "Anticipos";
+                worksheet.Cells["B22"].Style.Font.Bold = true;
+                worksheet.Cells["B22"].Style.Font.Size = 12;
+                worksheet.Cells["B22"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                worksheet.Cells["B22"].Style.Fill.BackgroundColor.SetColor(Color.Gray);
+                worksheet.Cells["B22"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+
                 worksheet.Cells["D22"].Value = "Total A Pagar";
+                worksheet.Cells["D22"].Style.Font.Bold = true;
+                worksheet.Cells["D22"].Style.Font.Size = 14;
+                worksheet.Cells["D22"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                worksheet.Cells["D22"].Style.Fill.BackgroundColor.SetColor(Color.Gray);
+                worksheet.Cells["D22"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
 
+                // Fin de Titulos
+                
 
+                // Datos
                 worksheet.Cells["C4"].Value = BusLiq[0].Nombre;
                 worksheet.Cells["C4"].Style.Font.Size = 10;
                 worksheet.Cells["C4"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
 
-
                 worksheet.Cells["E4"].Value = BusLiq[0].ApePat;
+                worksheet.Cells["E4"].Style.Font.Size = 10;
+                worksheet.Cells["E4"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+
                 worksheet.Cells["C5"].Value = BusLiq[0].Rut_Empleado;
+                worksheet.Cells["C5"].Style.Font.Size = 10;
+                worksheet.Cells["C5"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+
                 worksheet.Cells["E5"].Value = BusLiq[0].Descr_Tipo;
+                worksheet.Cells["E5"].Style.Font.Size = 10;
+                worksheet.Cells["E5"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+
                 worksheet.Cells["G5"].Value = BusLiq[0].Fecha_Liquidacion;
+                worksheet.Cells["G5"].Style.Font.Size = 10;
+                worksheet.Cells["G5"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+
                 worksheet.Cells["C6"].Value = BusLiq[0].Sueldo_Base;
+                worksheet.Cells["C6"].Style.Font.Size = 10;
+                worksheet.Cells["C6"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+
                 worksheet.Cells["E6"].Value = BusLiq[0].Dias_Trabajados;
+                worksheet.Cells["E6"].Style.Font.Size = 10;
+                worksheet.Cells["E6"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+
                 worksheet.Cells["C7"].Value = BusLiq[0].Cant_Horas_Extras;
+                worksheet.Cells["C7"].Style.Font.Size = 10;
+                worksheet.Cells["C7"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+
                 worksheet.Cells["E7"].Value = BusLiq[0].Total_Horas_Extras;
+                worksheet.Cells["E7"].Style.Font.Size = 10;
+                worksheet.Cells["E7"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+
                 worksheet.Cells["C8"].Value = BusLiq[0].PorcComision;
+                worksheet.Cells["C8"].Style.Font.Size = 10;
+                worksheet.Cells["C8"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+
                 worksheet.Cells["E8"].Value = BusLiq[0].Valor_Com;
+                worksheet.Cells["E8"].Style.Font.Size = 10;
+                worksheet.Cells["E8"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+
                 worksheet.Cells["C9"].Value = BusLiq[0].Bonos;
+                worksheet.Cells["C9"].Style.Font.Size = 10;
+                worksheet.Cells["C9"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+
                 worksheet.Cells["E9"].Value = BusLiq[0].Gratificacion;
-                worksheet.Cells["e10:G10"].Value = BusLiq[0].TotalImponible;
-                worksheet.Cells["e10:G10"].Merge = true;
+                worksheet.Cells["E9"].Style.Font.Size = 10;
+                worksheet.Cells["E9"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+
+                worksheet.Cells["E10:G10"].Value = BusLiq[0].TotalImponible;
+                worksheet.Cells["E10:G10"].Merge = true;
+                worksheet.Cells["E10:G10"].Style.Font.Size = 12;
+                worksheet.Cells["E10:G10"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                worksheet.Cells["E10:G10"].Style.Fill.BackgroundColor.SetColor(Color.GreenYellow);
+                worksheet.Cells["E10:G10"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+
                 worksheet.Cells["C11"].Value = BusLiq[0].Movilizacion;
+                worksheet.Cells["C11"].Style.Font.Size = 10;
+                worksheet.Cells["C11"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+
                 worksheet.Cells["E11"].Value = BusLiq[0].Colacion;
+                worksheet.Cells["E11"].Style.Font.Size = 10;
+                worksheet.Cells["E11"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+
                 worksheet.Cells["G11"].Value = BusLiq[0].Viaticos;
+                worksheet.Cells["G11"].Style.Font.Size = 10;
+                worksheet.Cells["G11"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+
                 worksheet.Cells["E12:G12"].Value = BusLiq[0].TotalHaberes;
                 worksheet.Cells["E12:G12"].Merge = true;
+                worksheet.Cells["E12:G12"].Style.Font.Size = 12;
+                worksheet.Cells["E12:G12"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                worksheet.Cells["E12:G12"].Style.Fill.BackgroundColor.SetColor(Color.GreenYellow);
+                worksheet.Cells["E12:G12"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+
                 worksheet.Cells["C13"].Value = BusLiq[0].Nom_Afp;
+                worksheet.Cells["C13"].Style.Font.Size = 10;
+                worksheet.Cells["C13"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+
                 worksheet.Cells["E13"].Value = BusLiq[0].Valor_Afp;
+                worksheet.Cells["E13"].Style.Font.Size = 10;
+                worksheet.Cells["E13"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+
                 worksheet.Cells["C14"].Value = BusLiq[0].Nombre_Salud;
+                worksheet.Cells["C14"].Style.Font.Size = 10;
+                worksheet.Cells["C14"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+
                 worksheet.Cells["E14"].Value = BusLiq[0].Valor_Salud;
-                worksheet.Cells["C15"].Value = BusLiq[0].Valor_Seg_Cesantia;
+                worksheet.Cells["E14"].Style.Font.Size = 10;
+                worksheet.Cells["E14"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+
+                worksheet.Cells["E15"].Value = BusLiq[0].Valor_Seg_Cesantia;
+                worksheet.Cells["E15"].Style.Font.Size = 10;
+                worksheet.Cells["E15"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+
                 worksheet.Cells["E16:G16"].Value = BusLiq[0].TotalDescSegSocial;
                 worksheet.Cells["E16:G16"].Merge = true;
+                worksheet.Cells["E16:G16"].Style.Font.Size = 12;
+                worksheet.Cells["E16:G16"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                worksheet.Cells["E16:G16"].Style.Fill.BackgroundColor.SetColor(Color.GreenYellow);
+                worksheet.Cells["E16:G16"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+
                 worksheet.Cells["C17"].Value = BusLiq[0].TotalImponible;
+                worksheet.Cells["C17"].Style.Font.Size = 10;
+                worksheet.Cells["C17"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+
                 worksheet.Cells["E17"].Value = BusLiq[0].TotalDescSegSocial;
+                worksheet.Cells["E17"].Style.Font.Size = 10;
+                worksheet.Cells["E17"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+
                 worksheet.Cells["G17"].Value = BusLiq[0].RemNeta;
+                worksheet.Cells["G17"].Style.Font.Size = 10;
+                worksheet.Cells["G17"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+
                 worksheet.Cells["C19"].Value = BusLiq[0].Valor_Impuesto;
+                worksheet.Cells["C19"].Style.Font.Size = 10;
+                worksheet.Cells["C19"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+
                 worksheet.Cells["E19"].Value = BusLiq[0].RebaImpto;
+                worksheet.Cells["E19"].Style.Font.Size = 10;
+                worksheet.Cells["E19"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+
                 worksheet.Cells["G19"].Value = BusLiq[0].ImpAPagar;
+                worksheet.Cells["G19"].Style.Font.Size = 10;
+                worksheet.Cells["G19"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+
                 worksheet.Cells["C21"].Value = BusLiq[0].Prestamos;
+                worksheet.Cells["C21"].Style.Font.Size = 10;
+                worksheet.Cells["C21"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+
                 worksheet.Cells["E21"].Value = BusLiq[0].Otrs_Descuentos;
+                worksheet.Cells["E21"].Style.Font.Size = 10;
+                worksheet.Cells["E21"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+
                 worksheet.Cells["G21"].Value = BusLiq[0].TotalDesctos;
+                worksheet.Cells["G21"].Style.Font.Size = 10;
+                worksheet.Cells["G21"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+
                 worksheet.Cells["C22"].Value = BusLiq[0].Anticipos;
+                worksheet.Cells["C22"].Style.Font.Size = 10;
+                worksheet.Cells["C22"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+
                 worksheet.Cells["E22"].Value = BusLiq[0].Total_Pagar;
+                worksheet.Cells["E22"].Style.Font.Size = 12;
+                worksheet.Cells["E22"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                worksheet.Cells["E22"].Style.Fill.BackgroundColor.SetColor(Color.GreenYellow);
+                worksheet.Cells["E22"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+                //Fin de Datos
+                //firmas
+                worksheet.Cells["B26:G27"].Style.Border.Top.Style = ExcelBorderStyle.Thick;
+                worksheet.Cells["B26:G27"].Style.Border.Left.Style = ExcelBorderStyle.Thick;
+                worksheet.Cells["B26:G27"].Style.Border.Right.Style = ExcelBorderStyle.Thick;
+                worksheet.Cells["B26:G27"].Style.Border.Bottom.Style = ExcelBorderStyle.Thick;
+
+                worksheet.Cells["B26:G26"].Value = BusLiq[0].Nombre + " " + BusLiq[0].ApePat;
+                worksheet.Cells["B26:G26"].Merge = true;
+                worksheet.Cells["B26:G26"].Style.Font.Bold = true;
+                worksheet.Cells["B26:G26"].Style.Font.Size = 14;
+                worksheet.Cells["B26:G26"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+
+                worksheet.Cells["B27:G27"].Value = BusLiq[0].Rut_Empleado;
+                worksheet.Cells["B27:G27"].Merge = true;
+                worksheet.Cells["B27:G27"].Style.Font.Bold = true;
+                worksheet.Cells["B27:G27"].Style.Font.Size = 14;
+                worksheet.Cells["B27:G27"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+                // fin de firmas
 
                 // agrega pie de Pagina
                 //worksheet.HeaderFooter.OddFooter.RightAlignedText = string.Format("Footer: Page {0} of {1}", ExcelHeaderFooter.PageNumber, ExcelHeaderFooter.NumberOfPages); // add the page number to the footer plus the total number of pages
@@ -773,20 +1100,16 @@ namespace CrudMvcSp.Controllers
                 worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
 
                 // Graba la planilla
-
                 FileInfo fi = new FileInfo(@"C:\Users\Rodrigo_Menares\Downloads\Liquidacion_" + BusLiq[0].Nombre + "_" + BusLiq[0].ApePat + ".xlsx");
                 excel.SaveAs(fi);
-             
 
-                Response.AddHeader("content-disposition", "inline;filename=" + fi + ".xls");
-                Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-                Response.BinaryWrite(excel.GetAsByteArray());
-
-
-
+                //abre excel y el documento
+                Process.Start("Excel", Convert.ToString(fi));
             }
             return View();
         }
         #endregion
     }
+
+
 }

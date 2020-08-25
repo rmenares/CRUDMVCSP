@@ -4,6 +4,7 @@ using System.Web;
 using System.Text;
 using System.Linq;
 using OfficeOpenXml;
+using System.Drawing;
 using System.Web.Mvc;
 using iTextSharp.text;
 using Xceed.Words.NET;
@@ -12,6 +13,7 @@ using System.Diagnostics;
 using Xceed.Document.NET;
 using iTextSharp.text.pdf;
 using System.Web.WebPages;
+using OfficeOpenXml.Style;
 using System.Collections.Generic;
 using Paragraph = Xceed.Document.NET.Paragraph;
 
@@ -20,8 +22,7 @@ namespace CrudMvcSp.Controllers
     public class LiqSueldController : Controller
     {
         string url;
-
-
+        
         #region LLena_las_Instancias
         EmpleadosEntities LiqSueld = new EmpleadosEntities();
         EmpleadosEntities Empl = new EmpleadosEntities();
@@ -296,7 +297,7 @@ namespace CrudMvcSp.Controllers
                 col2 = new PdfPCell(new iTextSharp.text.Paragraph(BusLiq[0].Sueldo_Base, fontText3));
                 col2.HorizontalAlignment = Element.ALIGN_CENTER;
                 table3.AddCell(col2);
-                col3 = new PdfPCell(new iTextSharp.text.Paragraph("Dias", fontText));
+                col3 = new PdfPCell(new iTextSharp.text.Paragraph("Dias Trabajados", fontText));
                 col3.BackgroundColor = BaseColor.LIGHT_GRAY;
                 table3.AddCell(col3);
                 col4 = new PdfPCell(new iTextSharp.text.Paragraph(BusLiq[0].Dias_Trabajados, fontText3));
@@ -329,13 +330,13 @@ namespace CrudMvcSp.Controllers
                 col1 = new PdfPCell(new iTextSharp.text.Paragraph("% Comision", fontText));
                 col1.BackgroundColor = BaseColor.LIGHT_GRAY;
                 table5.AddCell(col1);
-                col2 = new PdfPCell(new iTextSharp.text.Paragraph(BusLiq[0].Cant_Horas_Extras, fontText3));
+                col2 = new PdfPCell(new iTextSharp.text.Paragraph(BusLiq[0].PorcComision, fontText3));
                 col2.HorizontalAlignment = Element.ALIGN_CENTER;
                 table5.AddCell(col2);
                 col3 = new PdfPCell(new iTextSharp.text.Paragraph("Total Comision", fontText));
                 col3.BackgroundColor = BaseColor.LIGHT_GRAY;
                 table5.AddCell(col3);
-                col4 = new PdfPCell(new iTextSharp.text.Paragraph(BusLiq[0].Total_Horas_Extras, fontText3));
+                col4 = new PdfPCell(new iTextSharp.text.Paragraph(BusLiq[0].Valor_Com, fontText3));
                 col4.HorizontalAlignment = Element.ALIGN_CENTER;
                 table5.AddCell(col4);
                 col5 = new PdfPCell(new iTextSharp.text.Paragraph(""));
@@ -577,7 +578,7 @@ namespace CrudMvcSp.Controllers
                 document.Add(table20);
 
                 PdfPTable table21 = new PdfPTable(1);
-                table21.WidthPercentage = 45;
+              table21.WidthPercentage = 45;
                 PdfPCell col8 = new PdfPCell();
                 col8 = new PdfPCell(new iTextSharp.text.Paragraph(BusLiq[0].Rut_Empleado));
                 col8.HorizontalAlignment = Element.ALIGN_CENTER;
@@ -620,17 +621,172 @@ namespace CrudMvcSp.Controllers
         }
         #endregion
 
+        #region Imprime_Liq_Sueld_XLS
+        public ActionResult ImpLiqSuelXLS(Liquidacion_Sueldo LiqiSueld)
+        {
+            using (LiqSueld = new EmpleadosEntities())
+            {
+                var BusLiq = LiqSueld.SP_Sel_LiqSuelRyMPDF(LiqiSueld.Rut_Empleado, Convert.ToString(LiqiSueld.Fecha_Liquidacion)).ToList();
+
+                ExcelPackage excel = new ExcelPackage();
+
+                //agrega 1 hoja al libro y le da un nombre
+                ExcelWorksheet worksheet = excel.Workbook.Worksheets.Add("Liquidación_Sueldo_"+BusLiq[0].Nombre+"_"+BusLiq[0].ApePat);
+
+                //get the image from disk
+                //System.Drawing.Image image = System.Drawing.Image.FromFile(Server.MapPath("/Imagenes/bg.jpg"));
+                // var excelImage = worksheet.Drawings.AddPicture("My Logo", image);
+                //add the image to row 0, column A
+                //excelImage.SetPosition(0, 0, 0, 0);
+
+                // asigna el rango de despliegue de la cabecera
+                worksheet.Cells["A2:B2"].Value = "Liquidación De Sueldos";
+                worksheet.Cells["A2:B2"].Merge = true;
+                //le da estilo a la cabecera
+                worksheet.Cells["A2:B2"].Style.Font.Bold = true;
+                worksheet.Cells["A2:B2"].Style.Font.Size = 14;
+                worksheet.Cells["A2:B2"].Style.Font.Color.SetColor(Color.Black);
+                worksheet.Cells["A2:B2"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+
+                //fija los bordes de las celdas y el tipo 
+                worksheet.Cells["B4:g22"].Style.Border.Top.Style = ExcelBorderStyle.Thick;
+                worksheet.Cells["B4:g22"].Style.Border.Left.Style = ExcelBorderStyle.Thick;
+                worksheet.Cells["B4:g22"].Style.Border.Right.Style = ExcelBorderStyle.Thick;
+                worksheet.Cells["B4:g22"].Style.Border.Bottom.Style = ExcelBorderStyle.Thick;
+
+                // los titulos 
+                worksheet.Cells["B4"].Value = "Nombre";
+                worksheet.Cells["B4"].Style.Font.Bold = true;
+                worksheet.Cells["B4"].Style.Font.Size = 12;
+                worksheet.Cells["B4"].Style.Fill.PatternType =  ExcelFillStyle.Solid;
+                worksheet.Cells["B4"].Style.Fill.BackgroundColor.SetColor(Color.Gray);
+                worksheet.Cells["B4"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+
+                worksheet.Cells["D4"].Value = "Apellido Paterno";
+                worksheet.Cells["D4"].Style.Font.Bold = true;
+                worksheet.Cells["D4"].Style.Font.Size = 12;
+                worksheet.Cells["D4"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                worksheet.Cells["D4"].Style.Fill.BackgroundColor.SetColor(Color.Gray);
+                worksheet.Cells["D4"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+
+                worksheet.Cells["B5"].Value = "Rut_Empleado";
+                worksheet.Cells["B5"].Style.Font.Bold = true;
+                worksheet.Cells["B5"].Style.Font.Size = 12;
+                worksheet.Cells["B5"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                worksheet.Cells["B5"].Style.Fill.BackgroundColor.SetColor(Color.Gray);
+                worksheet.Cells["B5"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+
+                worksheet.Cells["D5"].Value = "Tipo Contrato";
+                worksheet.Cells["D5"].Style.Font.Bold = true;
+                worksheet.Cells["D5"].Style.Font.Size = 12;
+                worksheet.Cells["D5"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                worksheet.Cells["D5"].Style.Fill.BackgroundColor.SetColor(Color.Gray);
+                worksheet.Cells["D5"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+
+                worksheet.Cells["F5"].Value = "Fecha";
+                worksheet.Cells["B6"].Value = "Sueldo Base";
+                worksheet.Cells["D6"].Value = "Dias Trabajados";
+                worksheet.Cells["B7"].Value = "Horas Extras";
+                worksheet.Cells["D7"].Value = "Total";
+                worksheet.Cells["B8"].Value = "% Comision";
+                worksheet.Cells["D8"].Value = "Total Comision";
+                worksheet.Cells["B9"].Value = "Bonos";
+                worksheet.Cells["D9"].Value = "Gratificación";
+                worksheet.Cells["B10:D10"].Value = "Total Imponible";
+                worksheet.Cells["B10:D10"].Merge = true;
+                worksheet.Cells["B11"].Value = "Movilización";
+                worksheet.Cells["D11"].Value = "Colación";
+                worksheet.Cells["F11"].Value = "Viaticos";
+                worksheet.Cells["B12:D12"].Value = "Total haberes";
+                worksheet.Cells["B12:D12"].Merge = true;
+                worksheet.Cells["B13"].Value = "AFP";
+                worksheet.Cells["D13"].Value = "Monto AFP";
+                worksheet.Cells["B14"].Value = "Salud";
+                worksheet.Cells["D14"].Value = "Monto Salud";
+                worksheet.Cells["B15"].Value = "Seg Cesantia";
+                worksheet.Cells["B16:D16"].Value = "Total Descuentos Previsionales";
+                worksheet.Cells["B16:D16"].Merge = true;
+                worksheet.Cells["B17"].Value = "Remuneración Imponible";
+                worksheet.Cells["D17"].Value = "Descuentos Previsionales";
+                worksheet.Cells["F17"].Value = "Remuneración Neta";
+                worksheet.Cells["B18:G18"].Value = "Calculo de Impuesto a La Renta";
+                worksheet.Cells["B18:G18"].Merge = true;
+                worksheet.Cells["B19"].Value = "Valor Impuesto";
+                worksheet.Cells["D19"].Value = "Rebaja Al Impuesto";
+                worksheet.Cells["F19"].Value = "Impuesto A Pagar";
+                worksheet.Cells["B20:G20"].Value = "Descuentos y Alcance Liquido";
+                worksheet.Cells["B20:G20"].Merge = true;
+                worksheet.Cells["B21"].Value = "Prestamos";
+                worksheet.Cells["D21"].Value = "Otros Descuentos";
+                worksheet.Cells["F21"].Value = "Total Descuentos";
+                worksheet.Cells["B22"].Value = "Anticipos";
+                worksheet.Cells["D22"].Value = "Total A Pagar";
+
+
+                worksheet.Cells["C4"].Value = BusLiq[0].Nombre;
+                worksheet.Cells["C4"].Style.Font.Size = 10;
+                worksheet.Cells["C4"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+
+
+                worksheet.Cells["E4"].Value = BusLiq[0].ApePat;
+                worksheet.Cells["C5"].Value = BusLiq[0].Rut_Empleado;
+                worksheet.Cells["E5"].Value = BusLiq[0].Descr_Tipo;
+                worksheet.Cells["G5"].Value = BusLiq[0].Fecha_Liquidacion;
+                worksheet.Cells["C6"].Value = BusLiq[0].Sueldo_Base;
+                worksheet.Cells["E6"].Value = BusLiq[0].Dias_Trabajados;
+                worksheet.Cells["C7"].Value = BusLiq[0].Cant_Horas_Extras;
+                worksheet.Cells["E7"].Value = BusLiq[0].Total_Horas_Extras;
+                worksheet.Cells["C8"].Value = BusLiq[0].PorcComision;
+                worksheet.Cells["E8"].Value = BusLiq[0].Valor_Com;
+                worksheet.Cells["C9"].Value = BusLiq[0].Bonos;
+                worksheet.Cells["E9"].Value = BusLiq[0].Gratificacion;
+                worksheet.Cells["e10:G10"].Value = BusLiq[0].TotalImponible;
+                worksheet.Cells["e10:G10"].Merge = true;
+                worksheet.Cells["C11"].Value = BusLiq[0].Movilizacion;
+                worksheet.Cells["E11"].Value = BusLiq[0].Colacion;
+                worksheet.Cells["G11"].Value = BusLiq[0].Viaticos;
+                worksheet.Cells["E12:G12"].Value = BusLiq[0].TotalHaberes;
+                worksheet.Cells["E12:G12"].Merge = true;
+                worksheet.Cells["C13"].Value = BusLiq[0].Nom_Afp;
+                worksheet.Cells["E13"].Value = BusLiq[0].Valor_Afp;
+                worksheet.Cells["C14"].Value = BusLiq[0].Nombre_Salud;
+                worksheet.Cells["E14"].Value = BusLiq[0].Valor_Salud;
+                worksheet.Cells["C15"].Value = BusLiq[0].Valor_Seg_Cesantia;
+                worksheet.Cells["E16:G16"].Value = BusLiq[0].TotalDescSegSocial;
+                worksheet.Cells["E16:G16"].Merge = true;
+                worksheet.Cells["C17"].Value = BusLiq[0].TotalImponible;
+                worksheet.Cells["E17"].Value = BusLiq[0].TotalDescSegSocial;
+                worksheet.Cells["G17"].Value = BusLiq[0].RemNeta;
+                worksheet.Cells["C19"].Value = BusLiq[0].Valor_Impuesto;
+                worksheet.Cells["E19"].Value = BusLiq[0].RebaImpto;
+                worksheet.Cells["G19"].Value = BusLiq[0].ImpAPagar;
+                worksheet.Cells["C21"].Value = BusLiq[0].Prestamos;
+                worksheet.Cells["E21"].Value = BusLiq[0].Otrs_Descuentos;
+                worksheet.Cells["G21"].Value = BusLiq[0].TotalDesctos;
+                worksheet.Cells["C22"].Value = BusLiq[0].Anticipos;
+                worksheet.Cells["E22"].Value = BusLiq[0].Total_Pagar;
+
+                // agrega pie de Pagina
+                //worksheet.HeaderFooter.OddFooter.RightAlignedText = string.Format("Footer: Page {0} of {1}", ExcelHeaderFooter.PageNumber, ExcelHeaderFooter.NumberOfPages); // add the page number to the footer plus the total number of pages
+
+                // Auto Ajusta el tamaño de Las Columnas
+                worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
+
+                // Graba la planilla
+
+                FileInfo fi = new FileInfo(@"C:\Users\Rodrigo_Menares\Downloads\Liquidacion_" + BusLiq[0].Nombre + "_" + BusLiq[0].ApePat + ".xlsx");
+                excel.SaveAs(fi);
+             
+
+                Response.AddHeader("content-disposition", "inline;filename=" + fi + ".xls");
+                Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                Response.BinaryWrite(excel.GetAsByteArray());
 
 
 
-        //public ActionResult ImpLiqSuel(Liquidacion_Sueldo LiqiSueld)
-        //{
-        //    using (LiqSueld = new EmpleadosEntities())
-        //    {
-        //        var BusLiq = LiqSueld.SP_Sel_LiqSuelRyMPDF(LiqiSueld.Rut_Empleado, Convert.ToString(LiqiSueld.Fecha_Liquidacion)).ToList();
-        //    }
-        //}
-
-
+            }
+            return View();
+        }
+        #endregion
     }
 }

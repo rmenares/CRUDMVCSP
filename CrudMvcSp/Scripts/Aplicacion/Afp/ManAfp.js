@@ -1,4 +1,5 @@
 ﻿var cod_afp;
+var nomafp, cotiAfp;
 
 $(document).ready(function () {
 
@@ -8,24 +9,56 @@ $(document).ready(function () {
         $("#ModAgrAFP").modal("show");
     });
    //fin de carga Modal
-    
+
+
+    $("#NomAfp").on('keyup', function (e) {
+        var keycode = e.keyCode || e.which;
+        //verifica si el codigo de la tecla es ENTER
+        if ((keycode == 13)) {
+            nomafp = $("#NomAfp").val();
+            if (nomafp == "") {
+                toastr["error"]("Nombre AFP NO Puede Estar Vacío!!!!", "Atención")
+                toastr.options = {
+                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
+                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null,
+                    "showDuration": "300", "hideDuration": "1000", "timeOut": "5000",
+                    "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear",
+                    "showMethod": "fadeIn", "hideMethod": "fadeOut"
+                };
+                $("#NomAfp").focus();
+            }
+            else {
+                $("#PorcCotiz").focus();
+            }
+        }
+    })
+
+    $("#PorcCotiz").on('keyup', function (e) {
+        var keycode = e.keyCode || e.which;
+        //verifica si el codigo de la tecla es ENTER
+        if ((keycode == 13)) {
+            cotiAfp = $("#PorcCotiz").val();
+            if (cotiAfp == "") {
+                toastr["error"]("% COTIZACION NO Puede Estar Vacío!!!!", "Atención")
+                toastr.options = {
+                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
+                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null,
+                    "showDuration": "300", "hideDuration": "1000", "timeOut": "5000",
+                    "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear",
+                    "showMethod": "fadeIn", "hideMethod": "fadeOut"
+                };
+                $("#PorcCotiz").focus();
+            }
+            else {
+                $("#BtnGrab").focus();
+            }
+        }
+    })
+
+
     //graba AFP
     $("#BtnGrab").click(function (event) {
-        var nomafp = $("#NomAfp").val();
-        var cotiAfp = $("#PorcCotiz").val();
-        event.preventDefault();
-        if (nomafp == "") {
-            toastr["error"]("Nombre AFP NO Puede Estar Vacío!!!!", "Atención")
-            toastr.options = {
-                "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null,
-                "showDuration": "300", "hideDuration": "1000", "timeOut": "5000",
-                "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear",
-                "showMethod": "fadeIn", "hideMethod": "fadeOut"
-            };
-            return false;
-        }
-        else {
+            event.preventDefault();
             $("#BtnGrab").attr('value', 'Grabando....');
             var data = { Nom_Afp: nomafp, Porc_Desc: cotiAfp };
             var url = "/ManAfp/Grab_AFP";
@@ -56,7 +89,6 @@ $(document).ready(function () {
                     $("#ModAgrAFP").modal("hide");                  
                     window.location.reload(true);
                 })
-        }
     })
 
     // Modificación de datos
@@ -74,50 +106,83 @@ $(document).ready(function () {
         $("#ModModAFP").modal("show");
     })
 
+
+    $("#ModNomAFP").on('keyup', function (e) {
+        var keycode = e.keyCode || e.which;
+        //verifica si el codigo de la tecla es ENTER
+        if ((keycode == 13)) {
+            nomafp = $("#ModNomAFP").val();
+            if (nomafp == "") {
+                toastr["error"]("Nombre AFP NO Puede Estar Vacío!!!!", "Atención")
+                toastr.options = {
+                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
+                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null,
+                    "showDuration": "300", "hideDuration": "1000", "timeOut": "5000",
+                    "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear",
+                    "showMethod": "fadeIn", "hideMethod": "fadeOut"
+                };
+                $("#ModNomAFP").focus();
+            }
+            else {
+                $("#ModPorcAfp").focus();
+            }
+        }
+    })
+
+    $("#ModPorcAfp").on('keyup', function (e) {
+        var keycode = e.keyCode || e.which;
+        //verifica si el codigo de la tecla es ENTER
+        if ((keycode == 13)) {
+            cotiAfp = $("#ModPorcAfp").val();
+            if (cotiAfp == "") {
+                toastr["error"]("% AFP NO Puede Estar Vacío!!!!", "Atención")
+                toastr.options = {
+                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
+                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null,
+                    "showDuration": "300", "hideDuration": "1000", "timeOut": "5000",
+                    "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear",
+                    "showMethod": "fadeIn", "hideMethod": "fadeOut"
+                };
+                $("#ModPorcAfp").focus();
+            }
+            else {
+                $("#BtnModAFP").focus();
+            }
+        }
+    })
+
+
     //toma los datos y envia las modificaciones
     $("#BtnModAFP").click(function (event) {
         event.preventDefault();
-        var nomafp = $("#ModNomAFP").val();
-        if (nomafp == "") {
-            toastr["error"]("Nombre AFP NO Puede Estar Vacío!!!!", "Atención")
-            toastr.options = {
-                "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null,
-                "showDuration": "300", "hideDuration": "1000", "timeOut": "5000",
-                "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear",
-                "showMethod": "fadeIn", "hideMethod": "fadeOut"
-            };
-            return false;
-        }
-        else {
-            var cotiAfp = $("#ModPorcAfp").val();
-            var data = { Cod_Afp: cod_afp, Nom_Afp: nomafp, Porc_Desc: cotiAfp }
-            var url = "/ManAfp/ModAFP"
-            $.post(url, data)
-                .done(function (data) {
-                    toastr["success"]("Datos Modificados", "Atención")
-                    toastr.options = {
-                        "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false, "positionClass": "toast-top-center", "preventDuplicates": false,
-                        "onclick": null, "showDuration": "400", "hideDuration": "1000", "timeOut": "5000",
-                        "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear", "showMethod": "fadeIn",
-                        "hideMethod": "fadeOut"
-                    };
-                })
-                .fail(function (data) {
-                    toastr["error"]("Error De Modificación", "Error")
-                    toastr.options = {
-                        "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false,
-                        "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "400",
-                        "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                        "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-                    }
-                })
-                .always(function (data) {
-                    $("#NomAfp").val("");
-                    $("#PorcCotiz").val("");
-                    $("#ModModAFP").modal("hide");
-                    window.location.reload(true);
-                })
-        }
+        nomafp = $("#ModNomAFP").val();
+        cotiAfp = $("#ModPorcAfp").val();
+        var data = { Cod_Afp: cod_afp, Nom_Afp: nomafp, Porc_Desc: cotiAfp }
+        var url = "/ManAfp/ModAFP"
+        $.post(url, data)
+            .done(function (data) {
+                toastr["success"]("Datos Modificados", "Atención")
+                toastr.options = {
+                    "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false, "positionClass":"toasttopcenter","preventDuplicates": false,
+                    "onclick": null, "showDuration": "400", "hideDuration": "1000", "timeOut": "5000",
+                    "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear", "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                };
+            })
+            .fail(function (data) {
+                toastr["error"]("Error De Modificación", "Error")
+                toastr.options = {
+                    "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false,
+                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "400",
+                    "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
+                    "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
+                }
+            })
+            .always(function (data) {
+                $("#NomAfp").val("");
+                $("#PorcCotiz").val("");
+                $("#ModModAFP").modal("hide");
+                window.location.reload(true);
+            })
      })
 })

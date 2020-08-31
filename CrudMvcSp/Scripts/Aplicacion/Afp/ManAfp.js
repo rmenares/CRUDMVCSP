@@ -9,8 +9,7 @@ $(document).ready(function () {
         $("#ModAgrAFP").modal("show");
     });
    //fin de carga Modal
-
-
+    
     $("#NomAfp").on('keyup', function (e) {
         var keycode = e.keyCode || e.which;
         //verifica si el codigo de la tecla es ENTER
@@ -38,8 +37,8 @@ $(document).ready(function () {
         //verifica si el codigo de la tecla es ENTER
         if ((keycode == 13)) {
             cotiAfp = $("#PorcCotiz").val();
-            if (cotiAfp == "") {
-                toastr["error"]("% COTIZACION NO Puede Estar Vacío!!!!", "Atención")
+            if ((cotiAfp == "") || (cotiAfp == "0"))  {
+                toastr["error"]("% Cotización NO Puede Estar Vacío o Ser Cero!!!!", "Atención")
                 toastr.options = {
                     "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
                     "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null,
@@ -54,8 +53,7 @@ $(document).ready(function () {
             }
         }
     })
-
-
+    
     //graba AFP
     $("#BtnGrab").click(function (event) {
             event.preventDefault();
@@ -105,8 +103,7 @@ $(document).ready(function () {
         //muestra el modal de modificacion
         $("#ModModAFP").modal("show");
     })
-
-
+    
     $("#ModNomAFP").on('keyup', function (e) {
         var keycode = e.keyCode || e.which;
         //verifica si el codigo de la tecla es ENTER
@@ -150,7 +147,6 @@ $(document).ready(function () {
             }
         }
     })
-
 
     //toma los datos y envia las modificaciones
     $("#BtnModAFP").click(function (event) {

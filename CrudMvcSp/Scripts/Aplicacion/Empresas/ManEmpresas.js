@@ -1,5 +1,7 @@
 ﻿var RutEmp, CiudEmp, ComuEmp;
 var CiudEmp2, ComuEmp2;
+var NomEmp, CallPjeAvdaEmp, NumEmp, VilPobEmp;
+var FonoEmp, CorreoEmp; 
 
 $(document).ready(function () {
     //Carga Modal Empresas
@@ -8,29 +10,151 @@ $(document).ready(function () {
         $("#AgrEmp").modal("show");
     });
     // fin modal cargos   
+    
+    $("#RutEmp").on('keyup', function (e) {
+        var keycode = e.keyCode || e.which;
+        if (keycode == 13) {
+            RutEmp = $("#RutEmp").val();
+            if (RutEmp == "") {
+                toastr["error"]("El Rut NO Puede Estar Vacio!", "Verifique");
+                toastr.options = {
+                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
+                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
+                    "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
+                    "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
+                };
+                $("#RutEmp").focus();
+            }
+            else {
+                $("##NomEmp").focus();
+            }
+        }
+    })
+
+    $("#NomEmp").on('keyup', function (e) {
+        var keycode = e.keyCode || e.which;
+        if (keycode == 13) {
+            NomEmp = $("#NomEmp").val();
+            if (NomEmp == "") {
+                toastr["error"]("El Nonbre Empresa No Puede Estar Vacio!", "Verifique");
+                toastr.options = {
+                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
+                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
+                    "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
+                    "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
+                };
+                $("#NomEmp").focus();
+            }
+            else {
+                $("#CallPjeEmp").focus();
+            }
+        }
+    })
+
+    $("#CallPjeEmp").on('keyup', function (e) {
+        var keycode = e.keyCode || e.which;
+        if (keycode == 13) {
+            CallPjeAvdaEmp = $("#CallPjeEmp").val();
+            if (CallPjeAvdaEmp == "") {
+                toastr["error"]("El Nonbre Calle No Puede Estar Vacio!", "Verifique");
+                toastr.options = {
+                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
+                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
+                    "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
+                    "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
+                };
+                $("#CallPjeEmp").focus();
+            }
+            else {
+                $("#NumEmp").focus();
+            }
+        }
+    });
+
+    $("#NumEmp").on('keyup', function (e) {
+        var keycode = e.keyCode || e.which;
+        if (keycode == 13) {
+            NumEmp = $("#NumEmp").val();
+            if (NumEmp == "") {
+                toastr["error"]("El Número Calle No Puede Estar Vacio!", "Verifique");
+                toastr.options = {
+                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
+                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
+                    "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
+                    "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
+                };
+                $("#NumEmp").focus();
+            }
+            else {
+                $("#VilpobEmp").focus();
+            }
+        }
+    })
+    
+    $("#VilpobEmp").on('keyup', function (e) {
+        var keycode = e.keyCode || e.which;
+        if (keycode == 13) {
+            VilPobEmp = $("#VilpobEmp").val();
+            if (VilPobEmp == "") {
+                toastr["error"]("La Villa/Población No Puede Estar Vacio!", "Verifique");
+                toastr.options = {
+                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
+                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
+                    "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
+                    "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
+                };
+                $("#VilpobEmp").focus();
+            }
+            else {
+                $("#FonoEmp").focus();
+            }
+        }
+    })
+
+    $("#FonoEmp").on('keyup', function (e) {
+        var keycode = e.keyCode || e.which;
+        if (keycode == 13) {
+            FonoEmp = $("#FonoEmp").val();
+            if (FonoEmp == "") {
+                toastr["error"]("El Fono Empleado No Puede Estar Vacio!", "Verifique");
+                toastr.options = {
+                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
+                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
+                    "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
+                    "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
+                };
+                $("#FonoEmp").focus();
+            }
+            else {
+                $("#EmaEmp").focus();
+            }
+        }
+    })
+
+    $("#EmaEmp").on('keyup', function (e) {
+        var keycode = e.keyCode || e.which;
+        if (keycode == 13) {
+            CorreoEmp = $("#EmaEmp").val();
+            if (CorreoEmp == "") {
+                toastr["error"]("El Email Empleado No Puede Estar Vacio!", "Verifique");
+                toastr.options = {
+                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
+                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
+                    "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
+                    "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
+                };
+                $("#EmaEmp").focus();
+            }
+            else {
+                $("#BtnGrabEmp").focus();
+            }
+        }
+    })
 
     //Graba Empresas
     $("#BtnGrabEmp").click(function (event) {
         event.preventDefault();
-        var RutEmp = $("#RutEmp").val();
-        if (RutEmp == "") {
-            toastr["error"]("El Rut NO Puede Estar Vacio!", "Verifique");
-            toastr.options = {
-                "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-            };
-            return false;
-        }
-        else {         
-            var NomEmp = $("#NomEmp").val();
-            var CallPjeAvdaEmp = $("#CallPjeEmp").val();
-            var NumEmp = $("#NumEmp").val();
-            var VilPobEmp = $("#VilpobEmp").val();
-            var FonoEmp = $("#FonoEmp").val();
-            var CorreoEmp = $("#EmaEmp").val();
-            var data = {
+        var data = {
                 Rut_Empresa: RutEmp,
                 Nombre_Empresa: NomEmp,
                 Calle_Pje_Avda: CallPjeAvdaEmp,
@@ -40,10 +164,10 @@ $(document).ready(function () {
                 Provincia_Id: CiudEmp,
                 fono: FonoEmp,
                 emailemp: CorreoEmp
-            }
-            var url = "/Empresas/GrabaEmp";
-            event.preventDefault();
-            $.post(url, data)
+        }
+        var url = "/Empresas/GrabaEmp";
+        event.preventDefault();
+        $.post(url, data)
                 .done(function (data) {
                     toastr["success"]("Datos De Empresa Grabados", "Atención")
                     toastr.options = {
@@ -75,7 +199,6 @@ $(document).ready(function () {
                     $("#AgrEmp").modal("hide");
                     window.location.reload(true);
                 })
-        }
     })
     // fin graba empresas  
 
@@ -181,9 +304,7 @@ $(document).ready(function () {
                 $("#NomCiu").val(DatosDev["Provincia_Nombre"])
             })
     })
-
-
-
+       
     $("#ComuSelec2").change('click', function (event) {    
         event.preventDefault();
         type: 'Post';

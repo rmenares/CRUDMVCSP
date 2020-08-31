@@ -1,5 +1,4 @@
-﻿
-var NomEmp, ApPatEmp, ApMatEmp, AnexoEmp;
+﻿var NomEmp, ApPatEmp, ApMatEmp, AnexoEmp;
 var EmaEmp, FechIncEmp, CallPjeEmp, NumCasaEmp;
 var Villa_PoblEmp, CodCiudad, FonoPer, EmailPer;
 var FechNacEmp, PerEmerEmp, FonPerEmerEmp, Ret;
@@ -81,117 +80,495 @@ $(document).ready(function () {
     });
     // fin modal cargos
 
-    //captura el valor de los dropdownList de Ingreso
-    //captura el Codigo de dropdownList Departamento
-    $("#DeptSelec").change(function (event) {   
+    $("#RutEmp").on('keyup', function (e) {
+        var keycode = e.keyCode || e.which;
+        if (keycode == 13) {
+            RutEmp = $("#RutEmp").val();
+            if (RutEmp == "") {
+                toastr["error"]("El Rut NO Puede Estar Vacio!", "Verifique");
+                toastr.options = {
+                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
+                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
+                    "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
+                    "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
+                };
+                $("#RutEmp").focus();
+            }
+            else {
+                $("#NomEmp").focus();
+            }
+        }
+    })
+
+    $("#NomEmp").on('keyup', function (e) {
+        var keycode = e.keyCode || e.which;
+        if (keycode == 13) {
+            NomEmp = $("#NomEmp").val();
+            if (NomEmp == "") {
+                toastr["error"]("El Nombre NO Puede Estar Vacio!", "Verifique");
+                toastr.options = {
+                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
+                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
+                    "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
+                    "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
+                };
+                $("#NomEmp").focus();
+            }
+            else {
+                $("#ApPatEmp").focus();
+            }
+        }
+    })
+
+    $("#ApPatEmp").on('keyup', function (e) {
+        var keycode = e.keyCode || e.which;
+        if (keycode == 13) {
+            ApPatEmp = $("#ApPatEmp").val();
+            if (ApPatEmp == "") {
+                toastr["error"]("El Apellido Paterno NO Puede Estar Vacio!", "Verifique");
+                toastr.options = {
+                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
+                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
+                    "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
+                    "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
+                };
+                $("#ApPatEmp").focus();
+            }
+            else {
+                $("#ApMatEmp").focus();
+            }
+        }
+    })
+
+    $("#ApMatEmp").on('keyup', function (e) {
+        var keycode = e.keyCode || e.which;
+        if (keycode == 13) {
+            ApMatEmp = $("#ApMatEmp").val();
+            if (ApMatEmp == "") {
+                toastr["error"]("El Apellido Materno NO Puede Estar Vacio!", "Verifique");
+                toastr.options = {
+                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
+                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
+                    "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
+                    "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
+                };
+                $("#ApMatEmp").focus();
+            }
+            else {
+                $("#DeptSelec").focus();
+            }
+        }
+    })
+
+    $("#DeptSelec").change('click', function (event) {
         event.preventDefault();
         DeptSelec = $("#DeptSelec").val();
-    })        
+        if (DeptSelec == "") {
+            toastr["error"]("El Departamento NO Puede Estar Vacio!", "Verifique");
+            toastr.options = {
+                "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
+                "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
+                "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
+                "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
+            };
+            $("#DeptSelec").focus();
+        }
+        else {
+            $("#CargSelec").focus();
+        }
+    })  
 
-    //captura el Codigo de dropdownList Cargo del empleado
-    $("#CargSelec").change(function (event) {
+    $("#CargSelec").change('click', function (event) {
         event.preventDefault();
         CargEmp = $("#CargSelec").val();
+        if (CargEmp == "") {
+            toastr["error"]("El Cargo NO Puede Estar Vacio!", "Verifique");
+            toastr.options = {
+                "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
+                "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
+                "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
+                "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
+            };
+            $("#CargSelec").focus();
+        }
+        else {
+            $("#AnexoEmp").focus();
+        }
     })
 
-    //captura el valor de dropdownList Rut Empresa
-    $("#RutEmpre").change(function (event) {
+    $("#AnexoEmp").on('keyup', function (e) {
+        var keycode = e.keyCode || e.which;
+        if (keycode == 13) {
+            AnexoEmp = $("#AnexoEmp").val();
+            if (AnexoEmp == "") {
+                toastr["error"]("El Anexo NO Puede Estar Vacio!", "Verifique");
+                toastr.options = {
+                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
+                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
+                    "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
+                    "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
+                };
+                $("#AnexoEmp").focus();
+            }
+            else {
+                $("#EmaEmp").focus();
+            }    
+        }
+    })
+
+    $("#EmaEmp").on('keyup', function (e) {
+        var keycode = e.keyCode || e.which;
+        if (keycode == 13) {
+            EmaEmp = $("#EmaEmp").val();
+            if (EmaEmp == "") {
+                toastr["error"]("El Email NO Puede Estar Vacio!", "Verifique");
+                toastr.options = {
+                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
+                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
+                    "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
+                    "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
+                };
+                $("#EmaEmp").focus();
+            }
+            else {
+                $("#FechIncEmp").focus();
+            }
+        }
+    })
+
+    $("#FechIncEmp").on('keyup', function (e) {
+        var keycode = e.keyCode || e.which;
+        if (keycode == 13) {
+            FechIncEmp = $("#FechIncEmp").val();
+            if (FechIncEmp == "") {
+                toastr["error"]("La Fecha de Inicio NO Puede Estar Vacia!", "Verifique");
+                toastr.options = {
+                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
+                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
+                    "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
+                    "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
+                };
+                $("#FechIncEmp").focus();
+            }
+            else {
+                $("#RutEmpre").focus();
+            }
+        }
+    })
+
+    $("#RutEmpre").change('click', function (event) {
         event.preventDefault();
         RutEmpre = $("#RutEmpre").val();
+        if (RutEmpre == "") {
+            toastr["error"]("El Rut Empresa NO Puede Estar Vacia!", "Verifique");
+            toastr.options = {
+                "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
+                "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
+                "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
+                "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
+            };
+            $("#RutEmpre").focus();
+        }
+        else {
+            $("#AfpSelec").focus();
+        }
     })
 
-    //captura el Codigo de dropdownList Afp Seleccionada
-    $("#AfpSelec").change(function (event) {
+    $("#AfpSelec").change('click', function (event) {
         event.preventDefault();
         AfpSelec = $("#AfpSelec").val();
+        if (AfpSelec == "") {
+            toastr["error"]("La Afp NO Puede Estar Vacio!", "Verifique");
+            toastr.options = {
+                "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
+                "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
+                "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
+                "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
+            };
+            $("#AfpSelec").focus();
+        }
+        else {
+            $("#SalSelec").focus();
+        }
     })
-
-    //captura el Codigo de dropdownList Salud Seleccionada
-    $("#SalSelec").change(function (event) {
+    
+    $("#SalSelec").change('click', function (event) {
         event.preventDefault();
         SalSelec = $("#SalSelec").val();
+        if (SalSelec == "") {
+            toastr["error"]("El Sistema De Salud NO Puede Estar Vacio!", "Verifique");
+            toastr.options = {
+                "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
+                "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
+                "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
+                "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
+            };
+            $("#SalSelec").focus();
+        }
+        else {
+            $("#SexoSelec").focus();
+        }
     })
 
-    //captura el Codigo de dropdownList Sexo Seleccionado
-    $("#SexoSelec").change(function (event) {
+    $("#SexoSelec").change('click', function (event) {
         event.preventDefault();
         SexoSelec = $("#SexoSelec").val();
+        if (SexoSelec == "") {
+            toastr["error"]("El Sexo NO Puede Estar Vacio!", "Verifique");
+            toastr.options = {
+                "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
+                "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
+                "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
+                "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
+            };
+            $("#SexoSelec").focus();
+        }
+        else {
+            $("#NacioSelec").focus();
+        }
     })
 
-    //captura el Codigo de dropdownList Nacionalidad Seleccionado
-    $("#NacioSelec").change(function (event) {
+    $("#NacioSelec").change('click', function (event) {
         event.preventDefault();
         NacioSelec = $("#NacioSelec").val();
+        if (NacioSelec == "") {
+            toastr["error"]("La Nacionalidad NO Puede Estar Vacio!", "Verifique");
+            toastr.options = {
+                "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
+                "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
+                "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
+                "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
+            };
+            $("#NacioSelec").focus();
+        }
+        else {
+            $("#CallPjeEmp").focus();
+        }
     })
 
-    //captura el valor de dropdownList Comuna y entrega la ciudad
+    $("#CallPjeEmp").on('keyup', function (e) {
+        var keycode = e.keyCode || e.which;
+        if (keycode == 13) {
+            CallPjeEmp = $("#CallPjeEmp").val();
+            if (CallPjeEmp == "") {
+                toastr["error"]("La Calle/Pasaje NO Puede Estar Vacio!", "Verifique");
+                toastr.options = {
+                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
+                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
+                    "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
+                    "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
+                };
+                $("#CallPjeEmp").focus();
+            }
+            else {
+                $("#NumCasaEmp").focus();
+            }
+        }
+    })
+
+    $("#NumCasaEmp").on('keyup', function (e) {
+        var keycode = e.keyCode || e.which;
+        if (keycode == 13) {
+            NumCasaEmp = $("#NumCasaEmp").val();
+            if (NumCasaEmp == "") {
+                toastr["error"]("El Número De Casa NO Puede Estar Vacio!", "Verifique");
+                toastr.options = {
+                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
+                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
+                    "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
+                    "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
+                };
+                $("#NumCasaEmp").focus();
+            }
+            else {
+                $("#Villa_PoblEmp").focus();
+            }
+        }
+    })
+
+    $("#Villa_PoblEmp").on('keyup', function (e) {
+        var keycode = e.keyCode || e.which;
+        if (keycode == 13) {
+            Villa_PoblEmp = $("#Villa_PoblEmp").val();
+            if (Villa_PoblEmp == "") {
+                toastr["error"]("La Villa/Población NO Puede Estar Vacio!", "Verifique");
+                toastr.options = {
+                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
+                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
+                    "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
+                    "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
+                };
+                $("#Villa_PoblEmp").focus();
+            }
+            else {
+                $("#ComuEmp").focus();
+            }
+        }
+    })
+
     $("#ComuEmp").change('click', function (event) {
         event.preventDefault();
-        type: 'Post';
         ComuEmp = $("#ComuEmp").val();
-        var data = { Comuna_Id: ComuEmp };
-        var url = "/Empleados/CargCiu";
-        $.post(url, data)
-            .done(function (data) {
-                var DatosDev = data[0];
-                CodCiud = DatosDev["Provincia_Id"]
-                $("#NomCiu").val(DatosDev["Provincia_Nombre"])
-            })
-    })
-        
-    //Graba Los Datos Seleccionados
-    $("#BtnGrabEmp").click(function (event) {  
-        RutEmp = $("#RutEmp").val();
-        NomEmp = $("#NomEmp").val();
-        ApPatEmp = $("#ApPatEmp").val();
-        ApMatEmp = $("#ApMatEmp").val();
-        AnexoEmp = $("#AnexoEmp").val();
-        EmaEmp = $("#EmaEmp").val();
-        FechIncEmp = $("#FechIncEmp").val();
-        CallPjeEmp = $("#CallPjeEmp").val();
-        NumCasaEmp = $("#NumCasaEmp").val();
-        Villa_PoblEmp = $("#Villa_PoblEmp").val();
-        CodCiudad = CodCiud;
-        FonoPer = $("#FonoPer").val();
-        EmailPer = $("#EmailPer").val();
-        FechNacEmp = $("#FechNacEmp").val();
-        PerEmerEmp = $("#PerEmerEmp").val();
-        FonPerEmerEmp = $("#FonPerEmerEmp").val();
-        Ret = 'N';
-        if (Verifica() != false) {
-            var data = {
-                Rut_Empleado: RutEmp,
-                Nombre: NomEmp,
-                ApePat: ApPatEmp,
-                ApeMat: ApMatEmp,
-                Id_Depto: DeptSelec,
-                Id_Carg: CargEmp,
-                Anexo: AnexoEmp,
-                EmailEmp: EmaEmp,
-                Fecha_Incorporacion: FechIncEmp,
-                Rut_Empresa: RutEmpre,
-                Id_Sexo: SexoSelec,
-                Id_Nac: NacioSelec,
-                Foto_Usuario: file,
-                Fecha_Despido: '',
-                Retirado: Ret,
-                Cod_Afp: AfpSelec,
-                Cod_Salud: SalSelec,
-                Calle_Pje: CallPjeEmp,
-                NumCasa: NumCasaEmp,
-                Vill_Pobl: Villa_PoblEmp,
-                Comuna_Id: ComuEmp,
-                Provincia_Id: CodCiudad,
-                Fono: FonoPer,
-                Persona_Emergencia: PerEmerEmp,
-                Fono_Emergencia: FonPerEmerEmp,
-                Email: EmailPer,
-                Fecha_Nacimiento: FechNacEmp        
+        if (ComuEmp == "") {
+            toastr["error"]("La Comuna NO Puede Estar Vacio!", "Verifique");
+            toastr.options = {
+                "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
+                "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
+                "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
+                "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
             };
-            var url = "/Empleados/GrabEmpl";
-            event.preventDefault();
+            $("#ComuEmp").focus();
+        }
+        else {
+            var data = { Comuna_Id: ComuEmp };
+            var url = "/Empleados/CargCiu";
             $.post(url, data)
                 .done(function (data) {
+                    var DatosDev = data[0];
+                    CodCiud = DatosDev["Provincia_Id"]
+                    $("#NomCiu").val(DatosDev["Provincia_Nombre"])
+                })
+            CodCiudad = CodCiud;
+            $("#FonoPer").focus();
+        }
+    })
+    
+    $("#FonoPer").on('keyup', function (e) {
+        var keycode = e.keyCode || e.which;
+        if (keycode == 13) {
+            FonoPer = $("#FonoPer").val();
+            if (FonoPer == "") {
+                toastr["error"]("El Fono Personal NO Puede Estar Vacio!", "Verifique");
+                toastr.options = {
+                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
+                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
+                    "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
+                    "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
+                };
+                return false;
+            }
+            else {
+                $("#EmailPer").focus();
+            }
+        }
+    })
+
+    $("#EmailPer").on('keyup', function (e) {
+        var keycode = e.keyCode || e.which;
+        if (keycode == 13) {
+            EmailPer = $("#EmailPer").val();
+            if (EmailPer == "") {
+                toastr["error"]("El Email Personal NO Puede Estar Vacio!", "Verifique");
+                toastr.options = {
+                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
+                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
+                    "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
+                    "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
+                };
+                $("#EmailPer").focus();
+            }
+            else {
+                $("#FechNacEmp").focus();
+            }
+        }
+    })
+
+    $("#FechNacEmp").on('keyup', function (e) {
+        var keycode = e.keyCode || e.which;
+        if (keycode == 13) {
+            FechNacEmp = $("#FechNacEmp").val();
+            if (FechNacEmp == "") {
+                toastr["error"]("La Fecha de Nacimiento NO Puede Estar Vacio!", "Verifique");
+                toastr.options = {
+                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
+                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
+                    "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
+                    "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
+                };
+                $("#FechNacEmp").focus();
+            }
+            else {
+                $("#PerEmerEmp").focus();
+            }
+        }
+    })
+
+    $("#PerEmerEmp").on('keyup', function (e) {
+        var keycode = e.keyCode || e.which;
+        if (keycode == 13) {
+            PerEmerEmp = $("#PerEmerEmp").val();
+            if (PerEmerEmp == "") {
+                toastr["error"]("La Persona De Emergencia NO Puede Estar Vacio!", "Verifique");
+                toastr.options = {
+                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
+                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
+                    "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
+                    "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
+                };
+                $("#PerEmerEmp").focus();
+            }
+            else {
+                $("#FonPerEmerEmp").focus();
+            }
+        }
+    })
+
+    $("#FonPerEmerEmp").on('keyup', function (e) {
+        var keycode = e.keyCode || e.which;
+        if (keycode == 13) {
+            FonPerEmerEmp = $("#FonPerEmerEmp").val();
+            if (FonPerEmerEmp == "") {
+                toastr["error"]("El Fono Persona de Emergencia NO Puede Estar Vacio!", "Verifique");
+                toastr.options = {
+                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
+                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
+                    "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
+                    "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
+                };
+                $("#FonPerEmerEmp").focus();
+            }
+            else {
+                $("#BtnGrabEmp").focus();
+            }
+        }
+    })
+    
+    //Graba Los Datos Seleccionados
+    $("#BtnGrabEmp").click(function (event) {  
+        Ret = 'N';
+        var data = {
+            Rut_Empleado: RutEmp,
+            Nombre: NomEmp,
+            ApePat: ApPatEmp,
+            ApeMat: ApMatEmp,
+            Id_Depto: DeptSelec,
+            Id_Carg: CargEmp,
+            Anexo: AnexoEmp,
+            EmailEmp: EmaEmp,
+            Fecha_Incorporacion: FechIncEmp,
+            Rut_Empresa: RutEmpre,
+            Id_Sexo: SexoSelec,
+            Id_Nac: NacioSelec,
+            Foto_Usuario: file,
+            Fecha_Despido: '',
+            Retirado: Ret,
+            Cod_Afp: AfpSelec,
+            Cod_Salud: SalSelec,
+            Calle_Pje: CallPjeEmp,
+            NumCasa: NumCasaEmp,
+            Vill_Pobl: Villa_PoblEmp,
+            Comuna_Id: ComuEmp,
+            Provincia_Id: CodCiudad,
+            Fono: FonoPer,
+            Persona_Emergencia: PerEmerEmp,
+            Fono_Emergencia: FonPerEmerEmp,
+            Email: EmailPer,
+            Fecha_Nacimiento: FechNacEmp                
+        };
+        var url = "/Empleados/GrabEmpl";
+        event.preventDefault();
+        $.post(url, data)
+            .done(function (data) {
                     toastr["success"](" Datos Grabados ", "Atención")
                     toastr.options = {
                         "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false, "positionClass": "toast-top-center", "preventDuplicates": false,
@@ -200,7 +577,7 @@ $(document).ready(function () {
                         "hideMethod": "fadeOut"
                     };
                 })
-                .fail(function (data) {
+            .fail(function (data) {
                     toastr["error"](" Error De Grabación, Verifique!!! ", "Error")
                     toastr.options = {
                         "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false,
@@ -209,7 +586,7 @@ $(document).ready(function () {
                         "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
                     }
                 })
-                .always(function (data) {
+            .always(function (data) {
                     $("#RutEmp").val("");
                     $("#NomEmp").val("");
                     $("#ApPatEmp").val("");
@@ -238,16 +615,6 @@ $(document).ready(function () {
                     $("#AgrEmpleados").modal("hide");
                     window.location.reload(true);
                 })
-        }
-        else {
-            toastr["error"]("Hay Datos Que Faltan, Verifique", "Error")
-            toastr.options = {
-                "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false,
-                "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "400",
-                "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-            }
-        }
     });    
 
     $("#EDComuEmp").change('click', function (event) {
@@ -536,270 +903,4 @@ function BuscaCiudad() {
               //return nomcity;
            })           
 }   
-
-// verifica que los campos ingresados no esten vacios
-    function Verifica() {
-        if (RutEmp == "") {
-            toastr["error"]("El Rut NO Puede Estar Vacio!", "Verifique");
-            toastr.options = {
-                "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-            };
-            return false;
-        }
-
-        if (NomEmp == "") {
-            toastr["error"]("El Nombre NO Puede Estar Vacio!", "Verifique");
-            toastr.options = {
-                "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-            };
-            return false;
-        }
-
-        if (ApPatEmp == "") {
-            toastr["error"]("El Apellido Paterno NO Puede Estar Vacio!", "Verifique");
-            toastr.options = {
-                "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-            };
-            return false;
-        }
-
-        if (ApMatEmp == "") {
-            toastr["error"]("El Apellido Materno NO Puede Estar Vacio!", "Verifique");
-            toastr.options = {
-                "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-            };
-            return false;
-        }
-
-        if (DeptSelec == "") {
-            toastr["error"]("El Departamento NO Puede Estar Vacio!", "Verifique");
-            toastr.options = {
-                "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-            };
-            return false;
-        }
-
-        if (CargEmp == "") {
-            toastr["error"]("El Cargo NO Puede Estar Vacio!", "Verifique");
-            toastr.options = {
-                "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-            };
-            return false;
-        }
-
-        if (AnexoEmp == "") {
-            toastr["error"]("El Anexo NO Puede Estar Vacio!", "Verifique");
-            toastr.options = {
-                "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-            };
-            return false;
-        }
-
-        if (EmaEmp == "") {
-            toastr["error"]("El Email NO Puede Estar Vacio!", "Verifique");
-            toastr.options = {
-                "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-            };
-            return false;
-        }
-
-        if (FechIncEmp == "") {
-            toastr["error"]("La Fecha de Inicio NO Puede Estar Vacia!", "Verifique");
-            toastr.options = {
-                "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-            };
-            return false;
-        }
-
-        if (RutEmpre == "") {
-            toastr["error"]("El Rut Empresa NO Puede Estar Vacia!", "Verifique");
-            toastr.options = {
-                "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-            };
-            return false;
-        }
-
-        if (AfpSelec == "") {
-            toastr["error"]("La Afp NO Puede Estar Vacio!", "Verifique");
-            toastr.options = {
-                "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-            };
-            return false;
-        }
-
-        if (SalSelec == "") {
-            toastr["error"]("El Sistema De Salud NO Puede Estar Vacio!", "Verifique");
-            toastr.options = {
-                "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-            };
-            return false;
-        }
-
-        if (SexoSelec == "") {
-            toastr["error"]("El Sexo NO Puede Estar Vacio!", "Verifique");
-            toastr.options = {
-                "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-            };
-            return false;
-        }
-
-        if (NacioSelec == "") {
-            toastr["error"]("La Nacionalidad NO Puede Estar Vacio!", "Verifique");
-            toastr.options = {
-                "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-            };
-            return false;
-        }
-
-        if (CallPjeEmp == "") {
-            toastr["error"]("La Calle/Pasaje NO Puede Estar Vacio!", "Verifique");
-            toastr.options = {
-                "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-            };
-            return false;
-        }
-
-        if (NumCasaEmp == "") {
-            toastr["error"]("El Número De Casa NO Puede Estar Vacio!", "Verifique");
-            toastr.options = {
-                "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-            };
-            return false;
-        }
-
-        if (Villa_PoblEmp == "") {
-            toastr["error"]("La Villa/Población NO Puede Estar Vacio!", "Verifique");
-            toastr.options = {
-                "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-            };
-            return false;
-        }
-
-        if (ComuEmp == "") {
-            toastr["error"]("La Comuna NO Puede Estar Vacio!", "Verifique");
-            toastr.options = {
-                "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-            };
-            return false;
-        }
-
-        if (NomCiu == "") {
-            toastr["error"]("La Ciudad NO Puede Estar Vacio!", "Verifique");
-            toastr.options = {
-                "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-            };
-            return false;
-        }
-
-        if (FonoPer == "") {
-            toastr["error"]("El Fono Personal NO Puede Estar Vacio!", "Verifique");
-            toastr.options = {
-                "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-            };
-            return false;
-        }
-
-        if (EmailPer == "") {
-            toastr["error"]("El Email Personal NO Puede Estar Vacio!", "Verifique");
-            toastr.options = {
-                "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-            };
-            return false;
-        }
-
-        if (FechNacEmp == "") {
-            toastr["error"]("La Fecha de Nacimiento NO Puede Estar Vacio!", "Verifique");
-            toastr.options = {
-                "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-            };
-            return false;
-        }
-
-        if (PerEmerEmp == "") {
-            toastr["error"]("La Persona De Emergencia NO Puede Estar Vacio!", "Verifique");
-            toastr.options = {
-                "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-            };
-            return false;
-        }
-
-        if (FonPerEmerEmp == "") {
-            toastr["error"]("El Fono Persona de Emergencia NO Puede Estar Vacio!", "Verifique");
-            toastr.options = {
-                "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-            };
-            return false;
-        }
-    }
+   

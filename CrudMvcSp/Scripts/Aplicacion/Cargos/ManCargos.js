@@ -1,4 +1,4 @@
-﻿var idCargo;
+﻿var idCargo, NomCarg;
 
 $(document).ready(function () {
     //Carga Modal Cargos    
@@ -7,21 +7,29 @@ $(document).ready(function () {
         $("#AgrCarg").modal("show");
     });
     // fin modal cargos
+    
+    $("#NomCarg").on('keyup', function (e) {
+        var keycode = e.keyCode || e.which;
+        if (keycode == 13) {
+            NomCarg = $("#NomCarg").val();
+            if (NomCarg == "") {
+                toastr["error"]("Cargo NO Puede Estar Vacío!!!!", "Atención")
+                toastr.options = {
+                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false, "positionClass": "toast-top-center",
+                    "preventDuplicates": false, "onclick": null, "showDuration": "300", "hideDuration": "1000",
+                    "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear",
+                    "showMethod": "fadeIn", "hideMethod": "fadeOut"
+                };
+                $("#NomCarg").focus();
+            }
+            else {
+                $("#BtnGrabCarg").focus();
+            }
+        }
+    })
 
     //Graba Cargos
     $("#BtnGrabCarg").click(function (event) {
-        var NomCarg = $("#NomCarg").val();
-        if (NomCarg == "") {
-            toastr["error"]("Cargo NO Puede Estar Vacío!!!!", "Atención")
-            toastr.options = {
-                "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false, "positionClass": "toast-top-center",
-                "preventDuplicates": false, "onclick": null, "showDuration": "300", "hideDuration": "1000",
-                "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear",
-                "showMethod": "fadeIn", "hideMethod": "fadeOut"
-            };
-            return false;
-        }
-        else {
             $("#BtnGrabCarg").attr('value', 'Grabando....');
             var data = { Descr_Cargo: NomCarg }
             var url = "/Cargos/GrabaCargos";
@@ -51,7 +59,6 @@ $(document).ready(function () {
                     $("#NomCarg").val("");
                     window.location.reload(true);
                 })
-        }
     });
 
     //Modifica Cargos
@@ -60,7 +67,6 @@ $(document).ready(function () {
         var row = $(this).closest("tr");
         idCargo = row.find("td").eq(0).html();
         var nomCargo = row.find("td").eq(1).html();
-
         //Carga Modal de Modificacion
         $("#ModNomCarg").val(nomCargo);
         $("#ModCarg").modal("show");
@@ -104,4 +110,5 @@ $(document).ready(function () {
                 window.location.reload(true);
             })
     })
+
 })

@@ -1,61 +1,66 @@
-﻿var iddepto;
+﻿var iddepto, Nomdepto;
 
 $(document).ready(function () {
                     //Carga Modal
-                    $("#BtnNueDep").click(function (event) {
-                        event.preventDefault();
-                        $("#AgrDep").modal("show");
-                    });
-                    //fin de carga Modal
+    $("#BtnNueDep").click(function (event) {
+        event.preventDefault();
+        $("#AgrDep").modal("show");
+    });
+    //fin de carga Modal
 
-                    $("#BtnGrab").click(function (event) {
-                        var Nomdepto = $("#NomDep").val();
-                        if (Nomdepto == "") {
-                            toastr["error"]("Nombre Departamento NO Puede Estar Vacío!!!!", "Atención")
-                            toastr.options = {
-                                "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                                "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null,
-                                "showDuration": "300", "hideDuration": "1000", "timeOut": "5000",
-                                "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear",
-                                "showMethod": "fadeIn", "hideMethod": "fadeOut"
-                            };
-                            return false;
-                        }
-                        else {
-                            $("#BtnGrab").attr('value', 'Grabando....');
-                            var data = { NomDepto: Nomdepto }
-                            var url = "/Deptos/GrabaDepto";
-                            event.preventDefault();
-                            $.post(url, data)
-                                .done(function (data) {
-                                    toastr["success"]("Datos Grabados", "Atención")
-                                    toastr.options = {
-                                        "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false,
-                                        "positionClass": "toast-top-center", "preventDuplicates": false,
-                                        "onclick": null, "showDuration": "400", "hideDuration": "1000", "timeOut": "5000",
-                                        "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear", "showMethod": "fadeIn",
-                                        "hideMethod": "fadeOut"
-                                    };
-                                })
-                                .fail(function (data) {
-                                    toastr["error"]("Error De Grabación", "Error")
-                                    toastr.options = {
-                                        "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false,
-                                        "positionClass": "toast-top-center", "preventDuplicates": false,
-                                        "onclick": null, "showDuration": "400", "hideDuration": "1000", "timeOut": "5000",
-                                        "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear", "showMethod": "fadeIn",
-                                        "hideMethod": "fadeOut"
-                                    }
-                                })
-                                .always(function (data) {
-                                    $("#NomDep").val("");
-                                    $("#AgrDep").modal("hide");
-                                    window.location.reload(true);
-                                })
-                        }
-                    });
+    $("#NomDep").on('keyup', function (e) {
+        var keycode = e.keyCode || e.which;
+        if (keycode == 13) {
+            var Nomdepto = $("#NomDep").val();
+            if (Nomdepto == "") {
+                toastr["error"]("Nombre Departamento NO Puede Estar Vacío!!!!", "Atención")
+                toastr.options = {
+                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
+                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null,
+                    "showDuration": "300", "hideDuration": "1000", "timeOut": "5000",
+                    "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear",
+                    "showMethod": "fadeIn", "hideMethod": "fadeOut"
+                };
+                $("#NomDep").focus();
+            }
+            else {
+                $("#BtnGrab").focus();
+            }
+        }
+    })
 
-    // Modificación de datos
+    $("#BtnGrab").click(function (event) {
+       $("#BtnGrab").attr('value', 'Grabando....');
+       var data = { NomDepto: Nomdepto }
+       var url = "/Deptos/GrabaDepto";
+       event.preventDefault();
+       $.post(url, data)
+        .done(function (data) {
+            toastr["success"]("Datos Grabados", "Atención")
+            toastr.options = {
+                "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false,
+                "positionClass": "toast-top-center", "preventDuplicates": false,
+                "onclick": null, "showDuration": "400", "hideDuration": "1000", "timeOut": "5000",
+                "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear", "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+        })
+        .fail(function (data) {
+            toastr["error"]("Error De Grabación", "Error")
+            toastr.options = {
+                "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false,
+                "positionClass": "toast-top-center", "preventDuplicates": false,
+                "onclick": null, "showDuration": "400", "hideDuration": "1000", "timeOut": "5000",
+                "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear", "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
+        })
+        .always(function (data) {
+            $("#NomDep").val("");
+            $("#AgrDep").modal("hide");
+            window.location.reload(true);
+        })
+    });
 
     //detecta la fila seleccionada en en webgrid 
     $("body").on("click", "#Tabldepto td", function () {
@@ -66,6 +71,7 @@ $(document).ready(function () {
         $("#ModDep").modal("show");
     })
 
+    // Modificación de datos
     $("#BtnMod").click(function (event) {
         event.preventDefault();
         nombdep = $("#ModNomDep").val();
@@ -97,4 +103,5 @@ $(document).ready(function () {
                 window.location.reload(true);
             })
     })
+    //Fin Modificacion de Datos
 })

@@ -1,4 +1,4 @@
-﻿var idNac;
+﻿var idNac, NomNac;
 
 $(document).ready(function () {
 
@@ -9,52 +9,59 @@ $(document).ready(function () {
     });
     // fin modal cargos
 
+    $("#NomNacion").on('keyup', function (event) {
+        event.preventDefault();
+        var keycode = e.keyCode || e.which;
+        if (keycode == 13) {
+            NomNac = $("#NomNacion").val();
+            if (NomNac == "") {
+                toastr["error"]("Nacionalidad NO Puede Estar Vacío!!!!", "Atención")
+                toastr.options = {
+                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false, "positionClass": "toast-top-center",
+                    "preventDuplicates": false, "onclick": null, "showDuration": "300", "hideDuration": "1000",
+                    "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear",
+                    "showMethod": "fadeIn", "hideMethod": "fadeOut"
+                };
+                $("#NomNacion").focus();
+            }
+            else {
+                $("#BtnGrabNac").focus();
+            }
+        }
+    })
+
     //Graba Nacionalidad
     $("#BtnGrabNac").click(function (event) {
-        var NomNac = $("#NomNacion").val();
-        if (NomNac == "") {
-            toastr["error"]("Nacionalidad NO Puede Estar Vacío!!!!", "Atención")
-            toastr.options = {
-                "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false, "positionClass": "toast-top-center",
-                "preventDuplicates": false, "onclick": null, "showDuration": "300", "hideDuration": "1000",
-                "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear",
-                "showMethod": "fadeIn", "hideMethod": "fadeOut"
-            };
-            return false;
-        }
-        else {
-
-            $("#BtnGrabNac").attr('value', 'Grabando....');
-            var data = { Descripcion: NomNac }
-            var url = "/Nacionalidad/GrabaNacionalidad";
-            event.preventDefault();
-            $.post(url, data)
-                .done(function (data) {
-                    toastr["success"]("Datos Grabados", "Atención")
-                    toastr.options = {
-                        "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false,
-                        "positionClass": "toast-top-center", "preventDuplicates": false,
-                        "onclick": null, "showDuration": "400", "hideDuration": "1000", "timeOut": "5000",
-                        "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear", "showMethod": "fadeIn",
-                        "hideMethod": "fadeOut"
-                    };
-                })
-                .fail(function (data) {
-                    toastr["error"]("Error De Grabación", "Error")
-                    toastr.options = {
-                        "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false,
-                        "positionClass": "toast-top-center", "preventDuplicates": false,
-                        "onclick": null, "showDuration": "400", "hideDuration": "1000", "timeOut": "5000",
-                        "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear", "showMethod": "fadeIn",
-                        "hideMethod": "fadeOut"
-                    }
-                })
-                .always(function (data) {
-                    $("#NomNacion").val("");
-                    $("#AgrNac").modal("hide"); 
-                    window.location.reload(true);
-                })
-        }
+      $("#BtnGrabNac").attr('value', 'Grabando....');
+      var data = { Descripcion: NomNac }
+      var url = "/Nacionalidad/GrabaNacionalidad";
+      event.preventDefault();
+      $.post(url, data)
+          .done(function (data) {
+              toastr["success"]("Datos Grabados", "Atención")
+              toastr.options = {
+                  "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false,
+                  "positionClass": "toast-top-center", "preventDuplicates": false,
+                  "onclick": null, "showDuration": "400", "hideDuration": "1000", "timeOut": "5000",
+                  "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear", "showMethod": "fadeIn",
+                  "hideMethod": "fadeOut"
+              };
+          })
+          .fail(function (data) {
+              toastr["error"]("Error De Grabación", "Error")
+              toastr.options = {
+                  "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false,
+                  "positionClass": "toast-top-center", "preventDuplicates": false,
+                  "onclick": null, "showDuration": "400", "hideDuration": "1000", "timeOut": "5000",
+                  "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear", "showMethod": "fadeIn",
+                  "hideMethod": "fadeOut"
+              }
+          })
+          .always(function (data) {
+              $("#NomNacion").val("");
+              $("#AgrNac").modal("hide"); 
+              window.location.reload(true);
+          })
     });
 
     //Modifica Nacionalidad
@@ -63,7 +70,6 @@ $(document).ready(function () {
         var row = $(this).closest("tr");
         idNac = row.find("td").eq(0).html();
         var NomNac = row.find("td").eq(1).html();
-
         //Carga Modal de Modificacion
         $("#ModNomNac").val(NomNac);
         $("#ModNac").modal("show");
@@ -108,4 +114,5 @@ $(document).ready(function () {
                 window.location.reload(true);
             })
     })
+
 })

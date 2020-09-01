@@ -216,8 +216,8 @@ $(document).ready(function () {
     })
 
     //captura el Codigo de dropdownList Sexo Seleccionado
-    $("#SexoSelec").change('click', function (event) {
-        event.preventDefault();
+    $("#SexoSelec").change('click', function (e) {
+        e.preventDefault();
         SexoSelec = $("#SexoSelec").val();
         if (SexoSelec == "") {
             toastr["error"]("El Sexo NO Puede Estar Vacio!", "Verifique");
@@ -236,10 +236,10 @@ $(document).ready(function () {
 
     $("#EmaiCarFam").on('keyup', function (e) {
         var keycode = e.keyCode || e.which;
-        if (keycode == 13) {
+        if ((keycode == 13)) {
             EmailCgFm = $("#EmaiCarFam").val();
-            if (EmailCgFm == "") {
-                toastr["error"]("El Email NO Puede Estar Vacio!", "Verifique");
+            if (EmailCgFm == " ") {
+                toastr["error"]("El Email NO Puede Estar Vacio o es Incorrecto!", "Verifique");
                 toastr.options = {
                     "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
                     "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
@@ -249,7 +249,7 @@ $(document).ready(function () {
                 $("#EmaiCarFam").focus();
             }
             else {
-                $("#CallPjeCargFam").focus();
+                 $("#CallPjeCargFam").focus();
             }
         }
     })

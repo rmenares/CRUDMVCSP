@@ -1,8 +1,6 @@
 ﻿$(document).ready(function () {
     $("#formLogin").submit(function (event) {
-
         $("#Enviar").attr('value', 'Verificando.....');
-
         var User = $("#User_Id").val();
         var Pass = $("#PassWord").val();
         var data = { User_Id: User, PassWord: Pass }

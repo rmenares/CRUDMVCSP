@@ -618,7 +618,7 @@ $(document).ready(function () {
         $("#ModLiqSueld").modal("show");
         var row = $(this).closest("tr");
         RutEmp = row.find("td").eq(0).html();
-        FechLiq = row.find("td").eq(3).html();
+        FechLiq = row.find("td").eq(2).html();
         type: 'Post';
         var data = { Rut_Empleado: RutEmp, Fecha_Liquidacion: FechLiq};
         var url = "LiqSueld/BuscLiqSueld";

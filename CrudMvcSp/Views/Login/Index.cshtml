@@ -35,7 +35,7 @@
                     </tr>*@
                     <tr>
                         <td>@*@Html.LabelFor(Model => Model.PassWord, new { @class = "form-group" })*@</td>
-                        <td><i class="fa fa-unlock-alt"></i>@Html.EditorFor(Model => Model.PassWord, new { @class = "form-input", htmlAttributes = new { placeholder = "PassWord" } })</td>
+                        <td><i class="fa fa-unlock-alt"></i>@Html.EditorFor(Model => Model.PassWord, new { @class = "form-input", htmlAttributes = new { placeholder = "Password" } })</td>
                     </tr>
                     @*<tr>
                         <td>@Html.ValidationMessageFor(Model => Model.PassWord, null, new { @class = "form-group" })</td>
@@ -43,7 +43,7 @@
                     <tr></tr>
                     <tr></tr>
                     <tr>
-                        <td colspan="2" align="center">
+                        <td colspan="2" align="center" class="success">
                             <input class="login-button btn btn-lg" type="submit" value="Enviar" id="Enviar" />
                         </td>
                     </tr>

@@ -31,6 +31,7 @@ namespace CrudMvcSp.Controllers
             return View();
         }
 
+        [OutputCache(Location = OutputCacheLocation.None, NoStore = true)]
         [HttpPost]
         public ActionResult Index(Login login)
         {

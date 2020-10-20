@@ -2,8 +2,8 @@
 using System.IO;
 using System.Linq;
 using OfficeOpenXml;
-using System.Web.Mvc;
 using System.Drawing;
+using System.Web.Mvc;
 using iTextSharp.text;
 using CrudMvcSp.Models;
 using System.Diagnostics;
@@ -14,20 +14,24 @@ namespace CrudMvcSp.Controllers
 {
     public class LiqSueldController : Controller
     {
-        string url;
-        
+        private string url;
+
         #region LLena_las_Instancias
-        EmpleadosEntities LiqSueld = new EmpleadosEntities();
-        EmpleadosEntities Empl = new EmpleadosEntities();
-        EmpleadosEntities TipRemu = new EmpleadosEntities();
-        EmpleadosEntities ManAfp = new EmpleadosEntities();
-        EmpleadosEntities ManSalud = new EmpleadosEntities();
-        EmpleadosEntities Cesantia = new EmpleadosEntities();
-        EmpleadosEntities Imptos = new EmpleadosEntities();
-        #endregion
+
+        private EmpleadosEntities LiqSueld = new EmpleadosEntities();
+        private EmpleadosEntities Empl = new EmpleadosEntities();
+        private EmpleadosEntities TipRemu = new EmpleadosEntities();
+        private EmpleadosEntities ManAfp = new EmpleadosEntities();
+        private EmpleadosEntities ManSalud = new EmpleadosEntities();
+        private EmpleadosEntities Cesantia = new EmpleadosEntities();
+        private EmpleadosEntities Imptos = new EmpleadosEntities();
+
+        #endregion LLena_las_Instancias
 
         // GET: LiqSueld
+
         #region Muest_Liq_suel
+
         public ActionResult Index()
         {
             using (LiqSueld = new EmpleadosEntities())
@@ -50,9 +54,11 @@ namespace CrudMvcSp.Controllers
                 return View(ListLiqSueld);
             }
         }
-        #endregion
+
+        #endregion Muest_Liq_suel
 
         #region Busca_Empleados
+
         //busca el rut del empleado y verifica si este esta en la tabla de empleados
         public ActionResult BuscEmp(Empleados emplead)
         {
@@ -67,9 +73,11 @@ namespace CrudMvcSp.Controllers
                 return Json(Verifica);
             }
         }
-        #endregion
+
+        #endregion Busca_Empleados
 
         #region Busca_Valor_AFP
+
         public ActionResult BuscaValAfp(Afp afp)
         {
             using (ManAfp = new EmpleadosEntities())
@@ -78,9 +86,11 @@ namespace CrudMvcSp.Controllers
                 return Json(BuscAfp);
             }
         }
-        #endregion
+
+        #endregion Busca_Valor_AFP
 
         #region Busca_Valor_Salud
+
         public ActionResult BuscaValSal(Salud salud)
         {
             using (ManSalud = new EmpleadosEntities())
@@ -89,9 +99,11 @@ namespace CrudMvcSp.Controllers
                 return Json(BuscSalud);
             }
         }
-        #endregion
+
+        #endregion Busca_Valor_Salud
 
         #region Busca_Val_Seg_Cesantia
+
         public ActionResult BuscaValSegCes(Seg_Cesantia seg_Cesantia)
         {
             using (Cesantia = new EmpleadosEntities())
@@ -100,9 +112,11 @@ namespace CrudMvcSp.Controllers
                 return Json(ValSegCes);
             }
         }
-        #endregion
+
+        #endregion Busca_Val_Seg_Cesantia
 
         #region buscaTablaImpto
+
         public ActionResult BuscImpto(SP_BusRangImpxSueldo_Result ImptoMen)
         {
             using (Imptos = new EmpleadosEntities())
@@ -111,9 +125,11 @@ namespace CrudMvcSp.Controllers
                 return Json(TablImpto);
             }
         }
-        #endregion
+
+        #endregion buscaTablaImpto
 
         #region Graba_Liquidacion
+
         [HttpPost]
         public ActionResult GrabLiqSueld(Liquidacion_Sueldo LiqiSueld)
         {
@@ -134,9 +150,11 @@ namespace CrudMvcSp.Controllers
                 return Json(GrabLiq);
             }
         }
-        #endregion
 
-        #region Busca_Liquidacion 
+        #endregion Graba_Liquidacion
+
+        #region Busca_Liquidacion
+
         public ActionResult BuscLiqSueld(Liquidacion_Sueldo LiqiSueld)
         {
             using (LiqSueld = new EmpleadosEntities())
@@ -145,11 +163,13 @@ namespace CrudMvcSp.Controllers
                 return Json(BusLiq);
             }
         }
-        #endregion
+
+        #endregion Busca_Liquidacion
 
         //Exportaciones
 
         #region Imprime_Liq Sueld_PDF
+
         public ActionResult ImpLiqSuel(Liquidacion_Sueldo LiqiSueld)
         {
             using (LiqSueld = new EmpleadosEntities())
@@ -571,7 +591,7 @@ namespace CrudMvcSp.Controllers
                 document.Add(table20);
 
                 PdfPTable table21 = new PdfPTable(1);
-              table21.WidthPercentage = 45;
+                table21.WidthPercentage = 45;
                 PdfPCell col8 = new PdfPCell();
                 col8 = new PdfPCell(new iTextSharp.text.Paragraph(BusLiq[0].Rut_Empleado));
                 col8.HorizontalAlignment = Element.ALIGN_CENTER;
@@ -587,10 +607,12 @@ namespace CrudMvcSp.Controllers
             }
             return View();
         }
-        #endregion
+
+        #endregion Imprime_Liq Sueld_PDF
 
         #region Inserta_Pie_de_Pagina_al_Pdf
-        class HeadFooter : PdfPageEventHelper
+
+        private class HeadFooter : PdfPageEventHelper
         {
             public override void OnEndPage(PdfWriter writer, iTextSharp.text.Document document)
             {
@@ -612,9 +634,11 @@ namespace CrudMvcSp.Controllers
                 tblFooter.WriteSelectedRows(0, -1, document.LeftMargin, writer.PageSize.GetBottom(document.BottomMargin) - 5, writer.DirectContent);
             }
         }
-        #endregion
+
+        #endregion Inserta_Pie_de_Pagina_al_Pdf
 
         #region Imprime_Liq_Sueld_XLS
+
         public ActionResult ImpLiqSuelXLS(Liquidacion_Sueldo LiqiSueld)
         {
             using (LiqSueld = new EmpleadosEntities())
@@ -624,7 +648,7 @@ namespace CrudMvcSp.Controllers
                 ExcelPackage excel = new ExcelPackage();
 
                 //agrega 1 hoja al libro y le da un nombre
-                ExcelWorksheet worksheet = excel.Workbook.Worksheets.Add("Liquidación_Sueldo_"+BusLiq[0].Nombre+"_"+BusLiq[0].ApePat);
+                ExcelWorksheet worksheet = excel.Workbook.Worksheets.Add("Liquidación_Sueldo_" + BusLiq[0].Nombre + "_" + BusLiq[0].ApePat);
 
                 //get the image from disk
                 //System.Drawing.Image image = System.Drawing.Image.FromFile(Server.MapPath("/Imagenes/bg.jpg"));
@@ -641,17 +665,17 @@ namespace CrudMvcSp.Controllers
                 worksheet.Cells["A2:B2"].Style.Font.Color.SetColor(Color.Black);
                 worksheet.Cells["A2:B2"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
 
-                //fija los bordes de las celdas y el tipo 
+                //fija los bordes de las celdas y el tipo
                 worksheet.Cells["B4:G22"].Style.Border.Top.Style = ExcelBorderStyle.Thick;
                 worksheet.Cells["B4:G22"].Style.Border.Left.Style = ExcelBorderStyle.Thick;
                 worksheet.Cells["B4:G22"].Style.Border.Right.Style = ExcelBorderStyle.Thick;
                 worksheet.Cells["B4:G22"].Style.Border.Bottom.Style = ExcelBorderStyle.Thick;
 
-                // los titulos 
+                // los titulos
                 worksheet.Cells["B4"].Value = "Nombre";
                 worksheet.Cells["B4"].Style.Font.Bold = true;
                 worksheet.Cells["B4"].Style.Font.Size = 12;
-                worksheet.Cells["B4"].Style.Fill.PatternType =  ExcelFillStyle.Solid;
+                worksheet.Cells["B4"].Style.Fill.PatternType = ExcelFillStyle.Solid;
                 worksheet.Cells["B4"].Style.Fill.BackgroundColor.SetColor(Color.Gray);
                 worksheet.Cells["B4"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
 
@@ -913,7 +937,6 @@ namespace CrudMvcSp.Controllers
                 worksheet.Cells["D22"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
 
                 // Fin de Titulos
-                
 
                 // Datos
                 worksheet.Cells["C4"].Value = BusLiq[0].Nombre;
@@ -1101,7 +1124,7 @@ namespace CrudMvcSp.Controllers
             }
             return View();
         }
-        #endregion
-    }
 
+        #endregion Imprime_Liq_Sueld_XLS
+    }
 }

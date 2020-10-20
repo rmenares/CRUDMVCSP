@@ -1,42 +1,44 @@
 ﻿using System;
 using System.IO;
-using System.Web;
-using System.Text;
 using System.Linq;
+using System.Text;
 using OfficeOpenXml;
 using System.Web.Mvc;
-using iTextSharp.text;
 using Xceed.Words.NET;
+using iTextSharp.text;
 using CrudMvcSp.Models;
-using System.Diagnostics;
 using Xceed.Document.NET;
+using System.Diagnostics;
 using iTextSharp.text.pdf;
-using System.Web.WebPages;
 using System.Collections.Generic;
-using Paragraph = Xceed.Document.NET.Paragraph;
 using Table = Xceed.Document.NET.Table;
+using Paragraph = Xceed.Document.NET.Paragraph;
 
 namespace CrudMvcSp.Controllers
 {
     public class EmpleadosController : Controller
     {
-        string url;
-        EmpleadosEntities Empleados = new EmpleadosEntities();
+        private string url;
+        private EmpleadosEntities Empleados = new EmpleadosEntities();
 
         #region LLena los DropdownList
-        EmpleadosEntities Cargos = new EmpleadosEntities();
-        EmpleadosEntities Deptos = new EmpleadosEntities();
-        EmpleadosEntities ManEmp = new EmpleadosEntities();
-        EmpleadosEntities Comun = new EmpleadosEntities();
-        EmpleadosEntities Ciud = new EmpleadosEntities();
-        EmpleadosEntities Nacion = new EmpleadosEntities();
-        EmpleadosEntities Sexo = new EmpleadosEntities();
-        EmpleadosEntities ManAfp = new EmpleadosEntities();
-        EmpleadosEntities ManSalud = new EmpleadosEntities();
-        #endregion
+
+        private EmpleadosEntities Cargos = new EmpleadosEntities();
+        private EmpleadosEntities Deptos = new EmpleadosEntities();
+        private EmpleadosEntities ManEmp = new EmpleadosEntities();
+        private EmpleadosEntities Comun = new EmpleadosEntities();
+        private EmpleadosEntities Ciud = new EmpleadosEntities();
+        private EmpleadosEntities Nacion = new EmpleadosEntities();
+        private EmpleadosEntities Sexo = new EmpleadosEntities();
+        private EmpleadosEntities ManAfp = new EmpleadosEntities();
+        private EmpleadosEntities ManSalud = new EmpleadosEntities();
+
+        #endregion LLena los DropdownList
 
         // GET: Empleados
+
         #region Carga_Empleados
+
         public ActionResult Index()
         {
             using (Empleados = new EmpleadosEntities())
@@ -67,41 +69,47 @@ namespace CrudMvcSp.Controllers
                 var ListCom = Comun.Sp_Mues_Comunas().ToList();
                 ViewBag.ListComu = new SelectList(ListCom, "Comuna_Id", "Comuna");
 
-                return View(ListEmpleados);               
+                return View(ListEmpleados);
             }
         }
-        #endregion
-        
+
+        #endregion Carga_Empleados
+
         #region Busca_Ciudad
+
         //Toma El Valor de la Comuna y lo Verifica en la Base de Datos
         [HttpPost]
         public ActionResult CargCiu(int Comuna_Id)
         {
-                var ListCiu = Ciud.Sp_Sel_CiudadesxComu(Comuna_Id).ToList();
-                return Json(ListCiu);
+            var ListCiu = Ciud.Sp_Sel_CiudadesxComu(Comuna_Id).ToList();
+            return Json(ListCiu);
         }
-        #endregion
+
+        #endregion Busca_Ciudad
 
         #region Graba_Empleados
+
         [HttpPost]
         public ActionResult GrabEmpl(Empleados emplead)
-        { 
+        {
             using (Empleados = new EmpleadosEntities())
             {
                 var GrabEmple = Empleados.Sp_Ins_Empleados(
-                     emplead.Rut_Empleado,        emplead.Nombre,        emplead.ApePat,   emplead.ApeMat,
-                     emplead.Id_Depto,            emplead.Id_Carg,       emplead.Anexo,    emplead.EmailEmp,
-                     emplead.Fecha_Incorporacion, emplead.Rut_Empresa,   emplead.Id_Sexo,  emplead.Id_Nac, 
-                     emplead.Foto_Usuario,        emplead.Fecha_Despido, emplead.Retirado, emplead.Cod_Afp,
-                     emplead.Cod_Salud,           emplead.Calle_Pje,     emplead.NumCasa,  emplead.Vill_Pobl,
-                     emplead.Comuna_Id,           emplead.Provincia_Id,  emplead.Fono,     emplead.Persona_Emergencia,
-                     emplead.Fono_Emergencia,     emplead.Email,         emplead.Fecha_Nacimiento);
+                     emplead.Rut_Empleado, emplead.Nombre, emplead.ApePat, emplead.ApeMat,
+                     emplead.Id_Depto, emplead.Id_Carg, emplead.Anexo, emplead.EmailEmp,
+                     emplead.Fecha_Incorporacion, emplead.Rut_Empresa, emplead.Id_Sexo, emplead.Id_Nac,
+                     emplead.Foto_Usuario, emplead.Fecha_Despido, emplead.Retirado, emplead.Cod_Afp,
+                     emplead.Cod_Salud, emplead.Calle_Pje, emplead.NumCasa, emplead.Vill_Pobl,
+                     emplead.Comuna_Id, emplead.Provincia_Id, emplead.Fono, emplead.Persona_Emergencia,
+                     emplead.Fono_Emergencia, emplead.Email, emplead.Fecha_Nacimiento);
                 return Json(GrabEmple);
             }
         }
-        #endregion
+
+        #endregion Graba_Empleados
 
         #region Busca_Empleados
+
         public ActionResult BuscEmp(Empleados emplead)
         {
             using (Empleados = new EmpleadosEntities())
@@ -110,28 +118,32 @@ namespace CrudMvcSp.Controllers
                 return Json(BuscEmp);
             }
         }
-        #endregion
+
+        #endregion Busca_Empleados
 
         #region Modifica_Empleados
+
         [HttpPost]
         public ActionResult ModEmpl(Empleados empleados)
         {
             using (Empleados = new EmpleadosEntities())
             {
                 var ModEmple = Empleados.Sp_UPD_Empleado(
-                     empleados.Rut_Empleado,        empleados.Nombre,             empleados.ApePat,    empleados.ApeMat,
-                     empleados.Id_Depto,            empleados.Id_Carg,            empleados.Anexo,     empleados.EmailEmp,
-                     empleados.Fecha_Incorporacion, empleados.Rut_Empresa,        empleados.Id_Sexo,   empleados.Id_Nac,
-                     empleados.Foto_Usuario,        empleados.Cod_Afp,            empleados.Cod_Salud, empleados.Calle_Pje,
-                     empleados.NumCasa,             empleados.Vill_Pobl,          empleados.Comuna_Id, empleados.Provincia_Id,
-                     empleados.Fono,                empleados.Persona_Emergencia, empleados.Fono_Emergencia,
-                     empleados.Email,               empleados.Fecha_Nacimiento);
+                     empleados.Rut_Empleado, empleados.Nombre, empleados.ApePat, empleados.ApeMat,
+                     empleados.Id_Depto, empleados.Id_Carg, empleados.Anexo, empleados.EmailEmp,
+                     empleados.Fecha_Incorporacion, empleados.Rut_Empresa, empleados.Id_Sexo, empleados.Id_Nac,
+                     empleados.Foto_Usuario, empleados.Cod_Afp, empleados.Cod_Salud, empleados.Calle_Pje,
+                     empleados.NumCasa, empleados.Vill_Pobl, empleados.Comuna_Id, empleados.Provincia_Id,
+                     empleados.Fono, empleados.Persona_Emergencia, empleados.Fono_Emergencia,
+                     empleados.Email, empleados.Fecha_Nacimiento);
                 return Json(ModEmple);
             }
         }
-        #endregion
+
+        #endregion Modifica_Empleados
 
         #region Elimina_Empleado
+
         public ActionResult EliminaEmpleado(Empleados empleados)
         {
             using (Empleados = new EmpleadosEntities())
@@ -140,11 +152,13 @@ namespace CrudMvcSp.Controllers
                 return Json(ElimEmpleado);
             }
         }
-        #endregion
+
+        #endregion Elimina_Empleado
 
         //Exportaciones
 
         #region Ficha_Empleado
+
         public ActionResult FichEmp(Empleados empleados)
         {
             using (Empleados = new EmpleadosEntities())
@@ -152,7 +166,7 @@ namespace CrudMvcSp.Controllers
                 var FichEmpleado = Empleados.SP_Mues_Empleado_PDF(empleados.Rut_Empleado).ToList();
 
                 //Ubicacion de Archivo
-                string filename = @"C:\Users\Rodrigo_Menares\Downloads\Ficha_"+ FichEmpleado[0].Nombre +"_"+ FichEmpleado[0].Apellido+".docx";
+                string filename = @"C:\Users\Rodrigo_Menares\Downloads\Ficha_" + FichEmpleado[0].Nombre + "_" + FichEmpleado[0].Apellido + ".docx";
                 var doc = DocX.Create(filename);
 
                 //cambia la orientacion de la pagina
@@ -175,9 +189,9 @@ namespace CrudMvcSp.Controllers
                 string title = "Ficha De Empleado";
                 //Formato del Titulo
                 Formatting titleFormat = new Formatting();
-                //Specify font family  
+                //Specify font family
                 titleFormat.FontFamily = new Xceed.Document.NET.Font("Arial Black");
-                //Specify font size y color del texto 
+                //Specify font size y color del texto
                 titleFormat.Size = 14D;
                 titleFormat.Position = 40;
                 titleFormat.FontColor = System.Drawing.Color.Orange;
@@ -192,11 +206,11 @@ namespace CrudMvcSp.Controllers
 
                 //define las dimensiones de la tabla (tbl(f,c))
                 Table tbl = doc.AddTable(FichEmpleado.Count + 1, 14);
-    
-                //hace que la tabla este al centro de la pagina           
+
+                //hace que la tabla este al centro de la pagina
                 tbl.Design = TableDesign.ColorfulList;
                 tbl.AutoFit = AutoFit.Contents;
-                
+
                 //agrega los titulos de la tabla
                 tbl.Rows[0].Cells[0].Paragraphs.First().Append("Rut").FontSize(10D).Alignment = Alignment.center;
                 tbl.Rows[0].Cells[1].Paragraphs.First().Append("Nombre").FontSize(10D).Alignment = Alignment.center;
@@ -212,7 +226,7 @@ namespace CrudMvcSp.Controllers
                 tbl.Rows[0].Cells[11].Paragraphs.First().Append("Sexo").FontSize(10D).Alignment = Alignment.center;
                 tbl.Rows[0].Cells[12].Paragraphs.First().Append("Afp").FontSize(10D).Alignment = Alignment.center;
                 tbl.Rows[0].Cells[13].Paragraphs.First().Append("Salud").FontSize(10D).Alignment = Alignment.center;
-                //llena las celdas con los datos 
+                //llena las celdas con los datos
                 int fila = 1;
                 int columna = 0;
                 foreach (var item in FichEmpleado)
@@ -273,9 +287,11 @@ namespace CrudMvcSp.Controllers
             }
             return RedirectToAction("Index");
         }
-        #endregion
-        
+
+        #endregion Ficha_Empleado
+
         #region Crea_PDF
+
         public ActionResult ListEmpleados()
         {
             using (Empleados = new EmpleadosEntities())
@@ -293,7 +309,7 @@ namespace CrudMvcSp.Controllers
 
                 document.Open();
                 //insercion de imagenes
-                url = Server.MapPath("/Imagenes/bg.jpg");        
+                url = Server.MapPath("/Imagenes/bg.jpg");
                 iTextSharp.text.Image image = iTextSharp.text.Image.GetInstance(url);
                 image.ScaleToFit(140f, 120f);
                 image.Alignment = Element.ALIGN_LEFT;
@@ -326,7 +342,7 @@ namespace CrudMvcSp.Controllers
                 //indica q ancho de la hoja va a ocupar la tabla
                 table.WidthPercentage = 95;
 
-                // instancia para la generacion de celdas en la tabla                
+                // instancia para la generacion de celdas en la tabla
                 PdfPCell _cell = new PdfPCell();
 
                 //genera la cabecera de la tabla
@@ -466,9 +482,11 @@ namespace CrudMvcSp.Controllers
                 return File(ms, "application/pdf", "ListaEmpleados.pdf");
             }
         }
-        #endregion
+
+        #endregion Crea_PDF
 
         #region Ficha_Empleado_PDF
+
         public ActionResult FichaEmplPdf(Empleados empleados)
         {
             using (Empleados = new EmpleadosEntities())
@@ -519,7 +537,7 @@ namespace CrudMvcSp.Controllers
                 //indica q ancho de la hoja va a ocupar la tabla
                 table.WidthPercentage = 95;
 
-                // instancia para la generacion de celdas en la tabla                
+                // instancia para la generacion de celdas en la tabla
                 PdfPCell _cell = new PdfPCell();
 
                 //genera la cabecera de la tabla
@@ -658,10 +676,12 @@ namespace CrudMvcSp.Controllers
                 return File(ms, "application/pdf", "FichaEmpleados.pdf");
             }
         }
-        #endregion
+
+        #endregion Ficha_Empleado_PDF
 
         #region Inserta_Pie_de_Pagina_al_Pdf
-        class HeadFooter : PdfPageEventHelper
+
+        private class HeadFooter : PdfPageEventHelper
         {
             public override void OnEndPage(PdfWriter writer, iTextSharp.text.Document document)
             {
@@ -683,9 +703,11 @@ namespace CrudMvcSp.Controllers
                 tblFooter.WriteSelectedRows(0, -1, document.LeftMargin, writer.PageSize.GetBottom(document.BottomMargin) - 5, writer.DirectContent);
             }
         }
-        #endregion
+
+        #endregion Inserta_Pie_de_Pagina_al_Pdf
 
         #region Crea_Excel
+
         public void GetXls()
         {
             using (Empleados = new EmpleadosEntities())
@@ -802,9 +824,11 @@ namespace CrudMvcSp.Controllers
                 Response.End();
             }
         }
-        #endregion
+
+        #endregion Crea_Excel
 
         #region Crea_CSV
+
         public FileResult GetCsv()
         {
             using (Empleados = new EmpleadosEntities())
@@ -812,7 +836,7 @@ namespace CrudMvcSp.Controllers
                 var ListEmpl = Empleados.SP_Mues_Empleado().ToList();
 
                 List<object> customers = (from customer in ListEmpl
-                    select new[] {                                              
+                                          select new[] {
                         customer.Rut,   customer.Nombre,    customer.Apellido,     customer.Departamento,
                         customer.Cargo, customer.Direccion, customer.Comuna,       customer.Ciudad,
                         customer.Fono,  customer.Correo,    customer.Nacionalidad, customer.Sexo,
@@ -837,9 +861,11 @@ namespace CrudMvcSp.Controllers
                 return File(Encoding.UTF8.GetBytes(sb.ToString()), "text/csv", "ListaEmpleados.csv");
             }
         }
-        #endregion
+
+        #endregion Crea_CSV
 
         #region Crea_DOC
+
         public ActionResult GetDocx()
         {
             using (Empleados = new EmpleadosEntities())
@@ -864,9 +890,9 @@ namespace CrudMvcSp.Controllers
                 string title = "Lista De Empleados";
                 //Formato del Titulo
                 Formatting titleFormat = new Formatting();
-                //Specify font family  
+                //Specify font family
                 titleFormat.FontFamily = new Xceed.Document.NET.Font("Arial Black");
-                //Specify font size y color del texto 
+                //Specify font size y color del texto
                 titleFormat.Size = 14D;
                 titleFormat.Position = 40;
                 titleFormat.FontColor = System.Drawing.Color.Orange;
@@ -902,7 +928,7 @@ namespace CrudMvcSp.Controllers
                 tbl.Rows[0].Cells[11].Paragraphs.First().Append("Sexo").FontSize(8D).Alignment = Alignment.center;
                 tbl.Rows[0].Cells[12].Paragraphs.First().Append("Afp").FontSize(8D).Alignment = Alignment.center;
                 tbl.Rows[0].Cells[13].Paragraphs.First().Append("Salud").FontSize(8D).Alignment = Alignment.center;
-                //llena las celdas con los datos 
+                //llena las celdas con los datos
                 int fila = 1;
                 int columna = 0;
                 foreach (var item in ListEmpl)
@@ -942,7 +968,7 @@ namespace CrudMvcSp.Controllers
                 doc.InsertTable(tbl);
 
                 //Genera el Pie de Pagina del Documento
-                doc.AddFooters();                
+                doc.AddFooters();
                 //Indica que que la primera página tendrá pies de página independientes
                 doc.DifferentFirstPage = true;
                 //Indica que que la página par e impar tendrá pies de página separados
@@ -963,6 +989,7 @@ namespace CrudMvcSp.Controllers
                 return RedirectToAction("Index");
             }
         }
-        #endregion
+
+        #endregion Crea_DOC
     }
 }

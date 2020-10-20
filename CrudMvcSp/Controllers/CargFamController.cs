@@ -1,17 +1,15 @@
 ﻿using System;
 using System.IO;
-using System.Web;
-using System.Text;
 using System.Linq;
+using System.Text;
 using OfficeOpenXml;
 using System.Web.Mvc;
-using iTextSharp.text;
 using Xceed.Words.NET;
+using iTextSharp.text;
 using CrudMvcSp.Models;
-using System.Diagnostics;
 using Xceed.Document.NET;
+using System.Diagnostics;
 using iTextSharp.text.pdf;
-using System.Web.WebPages;
 using System.Collections.Generic;
 using Paragraph = Xceed.Document.NET.Paragraph;
 
@@ -19,18 +17,23 @@ namespace CrudMvcSp.Controllers
 {
     public class CargFamController : Controller
     {
-        string url;
+        private string url;
+
         #region Carga_Las_Instamcias
-            EmpleadosEntities CargFam = new EmpleadosEntities();
-            EmpleadosEntities Empleados = new EmpleadosEntities();
-            EmpleadosEntities Comun = new EmpleadosEntities();
-            EmpleadosEntities Ciud = new EmpleadosEntities();
-            EmpleadosEntities Nacion = new EmpleadosEntities();
-            EmpleadosEntities Sexo = new EmpleadosEntities();
-        #endregion
+
+        private EmpleadosEntities CargFam = new EmpleadosEntities();
+        private EmpleadosEntities Empleados = new EmpleadosEntities();
+        private EmpleadosEntities Comun = new EmpleadosEntities();
+        private EmpleadosEntities Ciud = new EmpleadosEntities();
+        private EmpleadosEntities Nacion = new EmpleadosEntities();
+        private EmpleadosEntities Sexo = new EmpleadosEntities();
+
+        #endregion Carga_Las_Instamcias
 
         // GET: CargFam
+
         #region Carg_CargFam
+
         public ActionResult Index()
         {
             using (CargFam = new EmpleadosEntities())
@@ -47,11 +50,13 @@ namespace CrudMvcSp.Controllers
                 ViewBag.ListNacion = new SelectList(LisNac, "Id_Nac", "Descripcion");
 
                 return View(ListCargFam);
-            }                
+            }
         }
-        #endregion
+
+        #endregion Carg_CargFam
 
         #region Busca_Empleados
+
         //busca el rut del empleado y verifica si este esta en la tabla de empleados
         public ActionResult BuscEmp(Empleados emplead)
         {
@@ -59,44 +64,50 @@ namespace CrudMvcSp.Controllers
             using (Empleados = new EmpleadosEntities())
             {
                 var BuscEmp = Empleados.Sp_Sel_Empleado(emplead.Rut_Empleado).ToList();
-                if(BuscEmp.Count != 0)
+                if (BuscEmp.Count != 0)
                 { Verifica = 1; }
                 else
                 { Verifica = 0; }
                 return Json(Verifica);
             }
         }
-        #endregion
+
+        #endregion Busca_Empleados
 
         #region Busca_Ciudad
+
         //Toma El Valor de la Comuna y lo Verifica en la Base de Datos
         [HttpPost]
         public ActionResult CargCiu(int Comuna_Id)
         {
-           var ListCiu = Ciud.Sp_Sel_CiudadesxComu(Comuna_Id).ToList();
-           return Json(ListCiu);
+            var ListCiu = Ciud.Sp_Sel_CiudadesxComu(Comuna_Id).ToList();
+            return Json(ListCiu);
         }
-        #endregion
+
+        #endregion Busca_Ciudad
 
         #region Graba_Carga_Familiar
+
         [HttpPost]
         public ActionResult GrabCargFam(Carg_Familiar Carg_Fam)
         {
             using (CargFam = new EmpleadosEntities())
             {
                 var GrabCargFam = CargFam.Sp_Ins_Carg_Familiar(
-                                    Carg_Fam.Rut_Benef,      Carg_Fam.Nombre,     Carg_Fam.ApPat,
-                                    Carg_Fam.ApMat,          Carg_Fam.Telefono1,  Carg_Fam.Telefono2,
-                                    Carg_Fam.Fecha_Nac,      Carg_Fam.Cod_Sexo,   Carg_Fam.Calle_Pje,
-                                    Carg_Fam.Num_Casa,       Carg_Fam.Villa_Pobl, Carg_Fam.Comuna_Id,
-                                    Carg_Fam.Provincia_Id,   Carg_Fam.email,      Carg_Fam.Rut_Empleado,
-                                    Carg_Fam.Id_Nac,         Carg_Fam.Descripcion);
+                                    Carg_Fam.Rut_Benef, Carg_Fam.Nombre, Carg_Fam.ApPat,
+                                    Carg_Fam.ApMat, Carg_Fam.Telefono1, Carg_Fam.Telefono2,
+                                    Carg_Fam.Fecha_Nac, Carg_Fam.Cod_Sexo, Carg_Fam.Calle_Pje,
+                                    Carg_Fam.Num_Casa, Carg_Fam.Villa_Pobl, Carg_Fam.Comuna_Id,
+                                    Carg_Fam.Provincia_Id, Carg_Fam.email, Carg_Fam.Rut_Empleado,
+                                    Carg_Fam.Id_Nac, Carg_Fam.Descripcion);
                 return Json(GrabCargFam);
             }
         }
-        #endregion
+
+        #endregion Graba_Carga_Familiar
 
         #region Busca_CargaFamiliar
+
         public ActionResult BuscCargFam(Carg_Familiar BuscCargFam)
         {
             using (CargFam = new EmpleadosEntities())
@@ -105,29 +116,32 @@ namespace CrudMvcSp.Controllers
                 return Json(BucaEmpleado);
             }
         }
-        #endregion
+
+        #endregion Busca_CargaFamiliar
 
         #region Modifica_Carga_Fam
+
         [HttpPost]
         public ActionResult ModCargFam(Carg_Familiar CargFami)
         {
             using (CargFam = new EmpleadosEntities())
             {
                 var ModCargFam = CargFam.Sp_UPD_Carg_Familiar(
-                                CargFami.Rut_Benef,     CargFami.Nombre,      CargFami.ApPat,
-                                CargFami.ApMat,         CargFami.Telefono1,   CargFami.Telefono2,
-                                CargFami.Fecha_Nac,     CargFami.Cod_Sexo,    CargFami.Calle_Pje,
-                                CargFami.Num_Casa,      CargFami.Villa_Pobl,  CargFami.Comuna_Id,
-                                CargFami.Provincia_Id,  CargFami.email,       
-                                CargFami.Id_Nac,        CargFami.Descripcion);
+                                CargFami.Rut_Benef, CargFami.Nombre, CargFami.ApPat,
+                                CargFami.ApMat, CargFami.Telefono1, CargFami.Telefono2,
+                                CargFami.Fecha_Nac, CargFami.Cod_Sexo, CargFami.Calle_Pje,
+                                CargFami.Num_Casa, CargFami.Villa_Pobl, CargFami.Comuna_Id,
+                                CargFami.Provincia_Id, CargFami.email,
+                                CargFami.Id_Nac, CargFami.Descripcion);
 
-
-                  return Json(ModCargFam);
+                return Json(ModCargFam);
             }
         }
-        #endregion
+
+        #endregion Modifica_Carga_Fam
 
         #region Elimina_Carga_Familiar
+
         public ActionResult ElimCargFam(Carg_Familiar CargFami)
         {
             using (CargFam = new EmpleadosEntities())
@@ -136,11 +150,13 @@ namespace CrudMvcSp.Controllers
                 return Json(ElimCargFam);
             }
         }
-        #endregion
+
+        #endregion Elimina_Carga_Familiar
 
         //Exportaciones
 
         #region Crea_PDF
+
         public ActionResult CargFamPDF()
         {
             using (CargFam = new EmpleadosEntities())
@@ -192,7 +208,7 @@ namespace CrudMvcSp.Controllers
                 //indica q ancho de la hoja va a ocupar la tabla
                 table.WidthPercentage = 95;
 
-                // instancia para la generacion de celdas en la tabla                
+                // instancia para la generacion de celdas en la tabla
                 PdfPCell _cell = new PdfPCell();
 
                 //genera la cabecera de la tabla
@@ -349,10 +365,12 @@ namespace CrudMvcSp.Controllers
                 return File(ms, "application/pdf", "ListaCargFam.pdf");
             }
         }
-        #endregion
+
+        #endregion Crea_PDF
 
         #region Inserta_Pie_de_Pagina_al_Pdf
-        class HeadFooter : PdfPageEventHelper
+
+        private class HeadFooter : PdfPageEventHelper
         {
             public override void OnEndPage(PdfWriter writer, iTextSharp.text.Document document)
             {
@@ -374,9 +392,11 @@ namespace CrudMvcSp.Controllers
                 tblFooter.WriteSelectedRows(0, -1, document.LeftMargin, writer.PageSize.GetBottom(document.BottomMargin) - 5, writer.DirectContent);
             }
         }
-        #endregion
+
+        #endregion Inserta_Pie_de_Pagina_al_Pdf
 
         #region Crea_Excel
+
         public void CargFamXls()
         {
             using (CargFam = new EmpleadosEntities())
@@ -460,7 +480,7 @@ namespace CrudMvcSp.Controllers
                     worksheet.Cells[string.Format("J{0}", rowStart)].Style.Font.Size = 12;
                     worksheet.Cells[string.Format("J{0}", rowStart)].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
                     worksheet.Cells[string.Format("J{0}", rowStart)].Style.Font.Color.SetColor(System.Drawing.Color.Blue);
-                    
+
                     worksheet.Cells[string.Format("K{0}", rowStart)].Value = item.Comuna;
                     worksheet.Cells[string.Format("K{0}", rowStart)].Style.Font.Size = 12;
                     worksheet.Cells[string.Format("K{0}", rowStart)].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
@@ -499,9 +519,11 @@ namespace CrudMvcSp.Controllers
                 Response.End();
             }
         }
-        #endregion
-       
+
+        #endregion Crea_Excel
+
         #region Crea_CSV
+
         public FileResult CargFamCsv()
         {
             using (CargFam = new EmpleadosEntities())
@@ -532,9 +554,11 @@ namespace CrudMvcSp.Controllers
                 return File(Encoding.UTF8.GetBytes(sb.ToString()), "text/csv", "ListaEmpleados.csv");
             }
         }
-        #endregion
-               
+
+        #endregion Crea_CSV
+
         #region Crea_DOC
+
         public ActionResult CargFamDocx()
         {
             using (CargFam = new EmpleadosEntities())
@@ -559,9 +583,9 @@ namespace CrudMvcSp.Controllers
                 string title = "Lista De Cargas Familiares";
                 //Formato del Titulo
                 Formatting titleFormat = new Formatting();
-                //Specify font family  
+                //Specify font family
                 titleFormat.FontFamily = new Xceed.Document.NET.Font("Arial Black");
-                //Specify font size y color del texto 
+                //Specify font size y color del texto
                 titleFormat.Size = 14D;
                 titleFormat.Position = 40;
                 titleFormat.FontColor = System.Drawing.Color.Orange;
@@ -594,7 +618,7 @@ namespace CrudMvcSp.Controllers
                 tbl.Rows[0].Cells[8].Paragraphs.First().Append("Correo").FontSize(8D).Alignment = Alignment.center;
                 tbl.Rows[0].Cells[9].Paragraphs.First().Append("Nombre Empleado").FontSize(8D).Alignment = Alignment.center;
                 tbl.Rows[0].Cells[10].Paragraphs.First().Append("Comentarios").FontSize(8D).Alignment = Alignment.center;
-                //llena las celdas con los datos 
+                //llena las celdas con los datos
                 int fila = 1;
                 int columna = 0;
                 foreach (var item in ListCargFam)
@@ -648,6 +672,7 @@ namespace CrudMvcSp.Controllers
                 return RedirectToAction("Index");
             }
         }
-        #endregion
+
+        #endregion Crea_DOC
     }
 }

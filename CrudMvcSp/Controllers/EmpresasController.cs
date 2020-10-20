@@ -1,17 +1,15 @@
 ﻿using System;
 using System.IO;
-using System.Web;
-using System.Text;
 using System.Linq;
+using System.Text;
 using OfficeOpenXml;
 using System.Web.Mvc;
-using iTextSharp.text;
 using Xceed.Words.NET;
+using iTextSharp.text;
 using CrudMvcSp.Models;
-using System.Diagnostics;
 using Xceed.Document.NET;
+using System.Diagnostics;
 using iTextSharp.text.pdf;
-using System.Web.WebPages;
 using System.Collections.Generic;
 using Paragraph = Xceed.Document.NET.Paragraph;
 
@@ -21,16 +19,18 @@ namespace CrudMvcSp.Controllers
     {
         // GET: Empresas
 
-        EmpleadosEntities ManEmp = new EmpleadosEntities();
-        EmpleadosEntities Comun = new EmpleadosEntities();
-        EmpleadosEntities Ciud = new EmpleadosEntities();
+        private EmpleadosEntities ManEmp = new EmpleadosEntities();
+        private EmpleadosEntities Comun = new EmpleadosEntities();
+        private EmpleadosEntities Ciud = new EmpleadosEntities();
 
         #region Carga_Empresas
+
         public ActionResult Index()
         {
             using (ManEmp = new EmpleadosEntities())
             {
-                try {
+                try
+                {
                     var ListEmp = ManEmp.Sp_Mues_Empresas().ToList();
 
                     var ListCom = Comun.Sp_Mues_Comunas().ToList();
@@ -38,21 +38,25 @@ namespace CrudMvcSp.Controllers
                     return View(ListEmp);
                 }
                 catch (Exception) { throw; }
-            }               
+            }
         }
-        #endregion
+
+        #endregion Carga_Empresas
 
         #region Busca_Ciudad
+
         //Toma El Valor de la Comuna y lo Verifica en la Base de Datos
         [HttpPost]
         public ActionResult CargCiu(int Comuna_Id)
         {
-          var ListCiu = Ciud.Sp_Sel_CiudadesxComu(Comuna_Id).ToList();
-          return Json(ListCiu);
+            var ListCiu = Ciud.Sp_Sel_CiudadesxComu(Comuna_Id).ToList();
+            return Json(ListCiu);
         }
-        #endregion
+
+        #endregion Busca_Ciudad
 
         #region Graba_Empresas
+
         [HttpPost]
         public ActionResult GrabaEmp(Empresa empresa)
         {
@@ -64,26 +68,30 @@ namespace CrudMvcSp.Controllers
                 return Json(GrabaEmp);
             }
         }
-        #endregion
+
+        #endregion Graba_Empresas
 
         #region Modifica_Datos_Empresa
+
         [HttpPost]
         public ActionResult EditEmp(Empresa empresa)
         {
             using (var ManEmp = new EmpleadosEntities())
             {
-
-              var ModEmp = ManEmp.Sp_UPD_Empresas(empresa.Rut_Empresa, empresa.Nombre_Empresa, empresa.Calle_Pje_Avda,
-                                                  empresa.Numero, empresa.Vill_Pobl, Convert.ToString(empresa.Comuna_Id),
-                                                  Convert.ToString(empresa.Provincia_Id), empresa.fono,
-                                                  empresa.emailemp);
-              return Json(ModEmp);
+                var ModEmp = ManEmp.Sp_UPD_Empresas(empresa.Rut_Empresa, empresa.Nombre_Empresa, empresa.Calle_Pje_Avda,
+                                                    empresa.Numero, empresa.Vill_Pobl, Convert.ToString(empresa.Comuna_Id),
+                                                    Convert.ToString(empresa.Provincia_Id), empresa.fono,
+                                                    empresa.emailemp);
+                return Json(ModEmp);
             }
         }
-        #endregion
+
+        #endregion Modifica_Datos_Empresa
 
         //Exportaciones
-        #region Crea_Pdf                       
+
+        #region Crea_Pdf
+
         public ActionResult GetPdf()
         {
             using (var ManEmp = new EmpleadosEntities())
@@ -93,7 +101,7 @@ namespace CrudMvcSp.Controllers
                 MemoryStream ms = new MemoryStream();
                 iTextSharp.text.Document document = new iTextSharp.text.Document();
                 document.SetPageSize(PageSize.A4.Rotate());
-                document.SetMargins(50, 50, 50, 50);                
+                document.SetMargins(50, 50, 50, 50);
 
                 PdfWriter pdf = PdfWriter.GetInstance(document, ms);
 
@@ -139,7 +147,7 @@ namespace CrudMvcSp.Controllers
                 //indica q ancho de la hoja va a ocupar la tabla
                 table.WidthPercentage = 95;
 
-                // instancia para la generacion de celdas en la tabla                
+                // instancia para la generacion de celdas en la tabla
                 PdfPCell _cell = new PdfPCell();
 
                 //genera la cabecera de la tabla
@@ -246,10 +254,12 @@ namespace CrudMvcSp.Controllers
                 return File(ms, "application/pdf", "Empresas.pdf");
             }
         }
-        #endregion
+
+        #endregion Crea_Pdf
 
         #region Inserta_Pie_de_Pagina_al_Pdf
-        class HeadFooter : PdfPageEventHelper
+
+        private class HeadFooter : PdfPageEventHelper
         {
             public override void OnEndPage(PdfWriter writer, iTextSharp.text.Document document)
             {
@@ -269,12 +279,13 @@ namespace CrudMvcSp.Controllers
                 tblFooter.AddCell(_cell4);
 
                 tblFooter.WriteSelectedRows(0, -1, document.LeftMargin, writer.PageSize.GetBottom(document.BottomMargin) - 5, writer.DirectContent);
-
             }
         }
-        #endregion
+
+        #endregion Inserta_Pie_de_Pagina_al_Pdf
 
         #region Crea_Excel
+
         public void GetXls()
         {
             using (var ManEmp = new EmpleadosEntities())
@@ -369,9 +380,11 @@ namespace CrudMvcSp.Controllers
                 Response.End();
             }
         }
-        #endregion
+
+        #endregion Crea_Excel
 
         #region Crea_CSV
+
         public FileResult GetCsv()
         {
             using (var ManEmp = new EmpleadosEntities())
@@ -402,9 +415,11 @@ namespace CrudMvcSp.Controllers
                 return File(Encoding.UTF8.GetBytes(sb.ToString()), "text/csv", "ListaEmpresas.csv");
             }
         }
-        #endregion
+
+        #endregion Crea_CSV
 
         #region Crea_DOC
+
         public ActionResult GetDocx()
         {
             using (var ManEmp = new EmpleadosEntities())
@@ -430,9 +445,9 @@ namespace CrudMvcSp.Controllers
 
                 //Formato del Titulo
                 Formatting titleFormat = new Formatting();
-                //Specify font family  
+                //Specify font family
                 titleFormat.FontFamily = new Xceed.Document.NET.Font("Arial Black");
-                //Specify font size y color del texto 
+                //Specify font size y color del texto
                 titleFormat.Size = 14D;
                 titleFormat.Position = 40;
                 titleFormat.FontColor = System.Drawing.Color.Orange;
@@ -463,7 +478,7 @@ namespace CrudMvcSp.Controllers
                 tbl.Rows[0].Cells[7].Paragraphs.First().Append("Fono").FontSize(12D).Alignment = Alignment.center;
                 tbl.Rows[0].Cells[8].Paragraphs.First().Append("Email").FontSize(12D).Alignment = Alignment.center;
 
-                //llena las celdas con los datos 
+                //llena las celdas con los datos
                 int fila = 1;
                 int columna = 0;
                 foreach (var item in ListEmp)
@@ -514,6 +529,7 @@ namespace CrudMvcSp.Controllers
                 return RedirectToAction("Index");
             }
         }
-        #endregion
+
+        #endregion Crea_DOC
     }
 }

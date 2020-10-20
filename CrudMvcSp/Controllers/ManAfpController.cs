@@ -1,17 +1,15 @@
 ﻿using System;
 using System.IO;
-using System.Web;
 using System.Text;
 using System.Linq;
 using OfficeOpenXml;
 using System.Web.Mvc;
-using iTextSharp.text;
 using Xceed.Words.NET;
+using iTextSharp.text;
 using CrudMvcSp.Models;
-using System.Diagnostics;
 using Xceed.Document.NET;
+using System.Diagnostics;
 using iTextSharp.text.pdf;
-using System.Web.WebPages;
 using System.Collections.Generic;
 using Paragraph = Xceed.Document.NET.Paragraph;
 
@@ -21,23 +19,27 @@ namespace CrudMvcSp.Controllers
     {
         // GET: ManAfp
 
-        EmpleadosEntities ManAfp = new EmpleadosEntities();
+        private EmpleadosEntities ManAfp = new EmpleadosEntities();
 
         #region CargaAfp
+
         public ActionResult Index()
         {
             using (ManAfp = new EmpleadosEntities())
             {
-                try {
+                try
+                {
                     var ListAfp = ManAfp.Afp.ToList();
                     return View(ListAfp);
                 }
                 catch (Exception) { throw; }
             }
         }
-        #endregion
+
+        #endregion CargaAfp
 
         #region Grab_AFP
+
         [HttpPost]
         public ActionResult Grab_AFP(Afp afp)
         {
@@ -47,9 +49,11 @@ namespace CrudMvcSp.Controllers
                 return Json(GrabaAfp);
             }
         }
-        #endregion
+
+        #endregion Grab_AFP
 
         #region ActualizaAFP
+
         public ActionResult ModAFP(Afp afp)
         {
             using (var ManAfp = new EmpleadosEntities())
@@ -58,10 +62,13 @@ namespace CrudMvcSp.Controllers
             }
             return RedirectToAction("Index");
         }
-        #endregion
+
+        #endregion ActualizaAFP
 
         //Exportaciones
-        #region Crea_Pdf                       
+
+        #region Crea_Pdf
+
         public ActionResult GetPdf()
         {
             using (var ManAfp = new EmpleadosEntities())
@@ -117,7 +124,7 @@ namespace CrudMvcSp.Controllers
                 //indica q ancho de la hoja va a ocupar la tabla
                 table.WidthPercentage = 95;
 
-                // instancia para la generacion de celdas en la tabla                
+                // instancia para la generacion de celdas en la tabla
                 PdfPCell _cell = new PdfPCell();
 
                 //genera la cabecera de la tabla
@@ -130,7 +137,6 @@ namespace CrudMvcSp.Controllers
                 _cell.BackgroundColor = iTextSharp.text.BaseColor.DARK_GRAY;
                 _cell.HorizontalAlignment = Element.ALIGN_CENTER;
                 table.AddCell(_cell);
-
 
                 _cell = new PdfPCell(new iTextSharp.text.Paragraph("% Cotización", fontText3));
                 _cell.BackgroundColor = iTextSharp.text.BaseColor.DARK_GRAY;
@@ -171,10 +177,12 @@ namespace CrudMvcSp.Controllers
                 return File(ms, "application/pdf", "ListaAfp.pdf");
             }
         }
-        #endregion
+
+        #endregion Crea_Pdf
 
         #region Inserta_Pie_de_Pagina_al_Pdf
-        class HeadFooter : PdfPageEventHelper
+
+        private class HeadFooter : PdfPageEventHelper
         {
             public override void OnEndPage(PdfWriter writer, iTextSharp.text.Document document)
             {
@@ -194,12 +202,13 @@ namespace CrudMvcSp.Controllers
                 tblFooter.AddCell(_cell4);
 
                 tblFooter.WriteSelectedRows(0, -1, document.LeftMargin, writer.PageSize.GetBottom(document.BottomMargin) - 5, writer.DirectContent);
-
             }
         }
-        #endregion
+
+        #endregion Inserta_Pie_de_Pagina_al_Pdf
 
         #region Crea_Excel
+
         public void GetXls()
         {
             using (var ManAfp = new EmpleadosEntities())
@@ -213,7 +222,6 @@ namespace CrudMvcSp.Controllers
 
                 // crea la cabecera
                 var headerRow = new System.Collections.Generic.List<string[]>() {
-
                    new string[] { "Código AFP", "Nombre AFP" , "% Cotización"}
                  };
 
@@ -264,9 +272,11 @@ namespace CrudMvcSp.Controllers
                 Response.End();
             }
         }
-        #endregion
+
+        #endregion Crea_Excel
 
         #region Crea_CSV
+
         public FileResult GetCsv()
         {
             using (var ManAfp = new EmpleadosEntities())
@@ -278,7 +288,7 @@ namespace CrudMvcSp.Controllers
                                                customer.Nom_Afp,
                                                customer.Porc_Desc.ToString() }).ToList<object>();
                 //Insert the Column Names.
-                customers.Insert(0, new string[3] {"Codigo Afp", "Nombre Afp", "% Cotización" });
+                customers.Insert(0, new string[3] { "Codigo Afp", "Nombre Afp", "% Cotización" });
                 StringBuilder sb = new StringBuilder();
                 for (int i = 0; i < customers.Count; i++)
                 {
@@ -294,9 +304,11 @@ namespace CrudMvcSp.Controllers
                 return File(Encoding.UTF8.GetBytes(sb.ToString()), "text/csv", "ListaAfp.csv");
             }
         }
-        #endregion
+
+        #endregion Crea_CSV
 
         #region Crea_DOC
+
         public ActionResult GetDocx()
         {
             using (var manAfp = new EmpleadosEntities())
@@ -319,9 +331,9 @@ namespace CrudMvcSp.Controllers
 
                 //Formato del Titulo
                 Formatting titleFormat = new Formatting();
-                //Specify font family  
+                //Specify font family
                 titleFormat.FontFamily = new Xceed.Document.NET.Font("Arial Black");
-                //Specify font size y color del texto 
+                //Specify font size y color del texto
                 titleFormat.Size = 14D;
                 titleFormat.Position = 40;
                 titleFormat.FontColor = System.Drawing.Color.Orange;
@@ -334,7 +346,7 @@ namespace CrudMvcSp.Controllers
                 // alinea el titulo al centro
                 paragraphTitle.Alignment = Alignment.center;
 
-                //Insert text  
+                //Insert text
                 Xceed.Document.NET.Table tbl = doc.AddTable(ListAfp.Count + 1, 3);
 
                 //hace que la tabla este al centro de la pagina
@@ -346,7 +358,7 @@ namespace CrudMvcSp.Controllers
                 tbl.Rows[0].Cells[1].Paragraphs.First().Append("Nombre AFP").FontSize(12D).Alignment = Alignment.center;
                 tbl.Rows[0].Cells[2].Paragraphs.First().Append("% Cotización").FontSize(12D).Alignment = Alignment.center;
 
-                //llena las celdas con los datos 
+                //llena las celdas con los datos
                 int fila = 1;
                 int columna = 0;
                 foreach (var item in ListAfp)
@@ -385,6 +397,7 @@ namespace CrudMvcSp.Controllers
                 return RedirectToAction("Index");
             }
         }
-        #endregion
+
+        #endregion Crea_DOC
     }
 }

@@ -1,17 +1,15 @@
 ﻿using System;
 using System.IO;
-using System.Web;
-using System.Text;
 using System.Linq;
+using System.Text;
 using OfficeOpenXml;
 using System.Web.Mvc;
-using iTextSharp.text;
 using Xceed.Words.NET;
+using iTextSharp.text;
 using CrudMvcSp.Models;
 using System.Diagnostics;
 using Xceed.Document.NET;
 using iTextSharp.text.pdf;
-using System.Web.WebPages;
 using System.Collections.Generic;
 using Paragraph = Xceed.Document.NET.Paragraph;
 
@@ -19,22 +17,25 @@ namespace CrudMvcSp.Controllers
 {
     public class CargosController : Controller
     {
-        EmpleadosEntities Cargos = new EmpleadosEntities();
+        private EmpleadosEntities Cargos = new EmpleadosEntities();
 
         // GET: Cargos
 
         #region Carga_Cargos
+
         public ActionResult Index()
         {
             using (Cargos = new EmpleadosEntities())
             {
-                    var ListCargos = Cargos.Cargos.ToList();
-                    return View(ListCargos);
+                var ListCargos = Cargos.Cargos.ToList();
+                return View(ListCargos);
             }
         }
-        #endregion
+
+        #endregion Carga_Cargos
 
         #region Graba_Cargos
+
         [HttpPost]
         public ActionResult GrabaCargos(Cargos cargos)
         {
@@ -44,9 +45,11 @@ namespace CrudMvcSp.Controllers
                 return Json(GrabaCarg);
             }
         }
-        #endregion
+
+        #endregion Graba_Cargos
 
         #region Actualiza_Cargos
+
         [HttpPost]
         public ActionResult EditCarg(Cargos cargos)
         {
@@ -56,10 +59,13 @@ namespace CrudMvcSp.Controllers
             }
             return RedirectToAction("Index");
         }
-        #endregion
+
+        #endregion Actualiza_Cargos
 
         //Exportaciones
-        #region Crea_Pdf                       
+
+        #region Crea_Pdf
+
         public ActionResult GetPdf()
         {
             using (var Cargos = new EmpleadosEntities())
@@ -99,12 +105,12 @@ namespace CrudMvcSp.Controllers
                 //STRIKETHRU = 8;
                 //BOLDITALIC = 3;
                 //UNDEFINED = -1;
-                //DEFAULTSIZE = 12;      
+                //DEFAULTSIZE = 12;
 
                 //creacion e insercion de titulos al documento
                 iTextSharp.text.Paragraph titulo = new iTextSharp.text.Paragraph(string.Format("Listado de Cargos"), fontText2);
                 titulo.Alignment = 1; //0-Left, 1 middle,2 Right
-                
+
                 //inserta al documento
                 document.Add(titulo);
                 //inserta nueva linea al texto
@@ -123,7 +129,7 @@ namespace CrudMvcSp.Controllers
                 //indica q ancho de la hoja va a ocupar la tabla
                 table.WidthPercentage = 95;
 
-                // instancia para la generacion de celdas en la tabla                
+                // instancia para la generacion de celdas en la tabla
                 PdfPCell _cell = new PdfPCell();
 
                 //genera la cabecera de la tabla
@@ -167,10 +173,12 @@ namespace CrudMvcSp.Controllers
                 return File(ms, "application/pdf", "ListaCargos.pdf");
             }
         }
-        #endregion
+
+        #endregion Crea_Pdf
 
         #region Inserta_Pie_de_Pagina_al_Pdf
-        class HeadFooter : PdfPageEventHelper
+
+        private class HeadFooter : PdfPageEventHelper
         {
             public override void OnEndPage(PdfWriter writer, iTextSharp.text.Document document)
             {
@@ -190,12 +198,13 @@ namespace CrudMvcSp.Controllers
                 tblFooter.AddCell(_cell4);
 
                 tblFooter.WriteSelectedRows(0, -1, document.LeftMargin, writer.PageSize.GetBottom(document.BottomMargin) - 5, writer.DirectContent);
-
             }
         }
-        #endregion
+
+        #endregion Inserta_Pie_de_Pagina_al_Pdf
 
         #region Crea_Excel
+
         public void GetXls()
         {
             using (var Cargos = new EmpleadosEntities())
@@ -209,7 +218,6 @@ namespace CrudMvcSp.Controllers
 
                 // crea la cabecera
                 var headerRow = new System.Collections.Generic.List<string[]>() {
-
                    new string[] { "Código Cargo", "Cargos" }
                  };
 
@@ -255,9 +263,11 @@ namespace CrudMvcSp.Controllers
                 Response.End();
             }
         }
-        #endregion
+
+        #endregion Crea_Excel
 
         #region Crea_CSV
+
         public FileResult GetCsv()
         {
             using (var Deptos = new EmpleadosEntities())
@@ -281,14 +291,15 @@ namespace CrudMvcSp.Controllers
                     }
                     //Append new line character.
                     sb.Append("\r\n");
-
                 }
                 return File(Encoding.UTF8.GetBytes(sb.ToString()), "text/csv", "ListaCargos.csv");
             }
         }
-        #endregion
+
+        #endregion Crea_CSV
 
         #region Crea_DOC
+
         public ActionResult GetDocx()
         {
             using (var Cargos = new EmpleadosEntities())
@@ -311,9 +322,9 @@ namespace CrudMvcSp.Controllers
 
                 //Formato del Titulo
                 Formatting titleFormat = new Formatting();
-                //Specify font family  
+                //Specify font family
                 titleFormat.FontFamily = new Xceed.Document.NET.Font("Arial Black");
-                //Specify font size y color del texto 
+                //Specify font size y color del texto
                 titleFormat.Size = 14D;
                 titleFormat.Position = 40;
                 titleFormat.FontColor = System.Drawing.Color.Orange;
@@ -326,7 +337,7 @@ namespace CrudMvcSp.Controllers
                 // alinea el titulo al centro
                 paragraphTitle.Alignment = Alignment.center;
 
-                //Insert text  
+                //Insert text
                 Xceed.Document.NET.Table tbl = doc.AddTable(ListCargos.Count + 1, 2);
 
                 //hace que la tabla este al centro de la pagina
@@ -334,10 +345,10 @@ namespace CrudMvcSp.Controllers
                 tbl.Design = TableDesign.ColorfulList;
 
                 //agrega los titulos de la tabla
-                tbl.Rows[0].Cells[0].Paragraphs.First().Append("Código Cargo").FontSize(12D).Alignment = Alignment.center; 
+                tbl.Rows[0].Cells[0].Paragraphs.First().Append("Código Cargo").FontSize(12D).Alignment = Alignment.center;
                 tbl.Rows[0].Cells[1].Paragraphs.First().Append("Nombre Cargo").FontSize(12D).Alignment = Alignment.center;
 
-                //llena las celdas con los datos 
+                //llena las celdas con los datos
                 int fila = 1;
                 int columna = 0;
                 foreach (var item in ListCargos)
@@ -374,6 +385,7 @@ namespace CrudMvcSp.Controllers
                 return RedirectToAction("Index");
             }
         }
-        #endregion
+
+        #endregion Crea_DOC
     }
 }

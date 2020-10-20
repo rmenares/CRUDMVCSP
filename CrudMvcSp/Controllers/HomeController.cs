@@ -1,10 +1,5 @@
-﻿using System;
-
-using System.Linq;
-using System.Web;
+﻿using System.Web.UI;
 using System.Web.Mvc;
-using System.Web.UI;
-using System.Collections.Generic;
 
 namespace CrudMvcSp.Controllers
 {

@@ -85,13 +85,7 @@ $(document).ready(function () {
         if (keycode == 13) {
             RutEmp = $("#RutEmp").val();
             if (RutEmp == "") {
-                toastr["error"]("El Rut NO Puede Estar Vacio!", "Verifique");
-                toastr.options = {
-                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                    "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                    "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-                };
+                alertify.error("El Rut NO Puede Estar Vacio!", "Verifique");
                 $("#RutEmp").focus();
             }
             else {
@@ -105,13 +99,7 @@ $(document).ready(function () {
         if (keycode == 13) {
             NomEmp = $("#NomEmp").val();
             if (NomEmp == "") {
-                toastr["error"]("El Nombre NO Puede Estar Vacio!", "Verifique");
-                toastr.options = {
-                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                    "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                    "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-                };
+                alertify.error("El Nombre NO Puede Estar Vacio!", "Verifique");
                 $("#NomEmp").focus();
             }
             else {
@@ -125,13 +113,7 @@ $(document).ready(function () {
         if (keycode == 13) {
             ApPatEmp = $("#ApPatEmp").val();
             if (ApPatEmp == "") {
-                toastr["error"]("El Apellido Paterno NO Puede Estar Vacio!", "Verifique");
-                toastr.options = {
-                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                    "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                    "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-                };
+                alertify.error("El Apellido Paterno NO Puede Estar Vacio!", "Verifique");
                 $("#ApPatEmp").focus();
             }
             else {
@@ -145,13 +127,7 @@ $(document).ready(function () {
         if (keycode == 13) {
             ApMatEmp = $("#ApMatEmp").val();
             if (ApMatEmp == "") {
-                toastr["error"]("El Apellido Materno NO Puede Estar Vacio!", "Verifique");
-                toastr.options = {
-                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                    "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                    "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-                };
+                alertify.error("El Apellido Materno NO Puede Estar Vacio!", "Verifique");
                 $("#ApMatEmp").focus();
             }
             else {
@@ -164,13 +140,7 @@ $(document).ready(function () {
         event.preventDefault();
         DeptSelec = $("#DeptSelec").val();
         if (DeptSelec == "") {
-            toastr["error"]("El Departamento NO Puede Estar Vacio!", "Verifique");
-            toastr.options = {
-                "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-            };
+            alertify.error("El Departamento NO Puede Estar Vacio!", "Verifique");
             $("#DeptSelec").focus();
         }
         else {
@@ -182,13 +152,7 @@ $(document).ready(function () {
         event.preventDefault();
         CargEmp = $("#CargSelec").val();
         if (CargEmp == "") {
-            toastr["error"]("El Cargo NO Puede Estar Vacio!", "Verifique");
-            toastr.options = {
-                "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-            };
+            alertify.error("El Cargo NO Puede Estar Vacio!", "Verifique");
             $("#CargSelec").focus();
         }
         else {
@@ -201,13 +165,7 @@ $(document).ready(function () {
         if (keycode == 13) {
             AnexoEmp = $("#AnexoEmp").val();
             if (AnexoEmp == "") {
-                toastr["error"]("El Anexo NO Puede Estar Vacio!", "Verifique");
-                toastr.options = {
-                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                    "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                    "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-                };
+                alertify.error("El Anexo NO Puede Estar Vacio!", "Verifique");
                 $("#AnexoEmp").focus();
             }
             else {
@@ -221,13 +179,7 @@ $(document).ready(function () {
         if (keycode == 13) {
             EmaEmp = $("#EmaEmp").val();
             if (EmaEmp == "") {
-                toastr["error"]("El Email NO Puede Estar Vacio!", "Verifique");
-                toastr.options = {
-                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                    "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                    "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-                };
+                alertify.error("El Email NO Puede Estar Vacio!", "Verifique");
                 $("#EmaEmp").focus();
             }
             else {
@@ -241,13 +193,7 @@ $(document).ready(function () {
         if (keycode == 13) {
             FechIncEmp = $("#FechIncEmp").val();
             if (FechIncEmp == "") {
-                toastr["error"]("La Fecha de Inicio NO Puede Estar Vacia!", "Verifique");
-                toastr.options = {
-                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                    "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                    "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-                };
+                alertify.error("La Fecha de Inicio NO Puede Estar Vacia!", "Verifique");
                 $("#FechIncEmp").focus();
             }
             else {
@@ -260,13 +206,7 @@ $(document).ready(function () {
         event.preventDefault();
         RutEmpre = $("#RutEmpre").val();
         if (RutEmpre == "") {
-            toastr["error"]("El Rut Empresa NO Puede Estar Vacia!", "Verifique");
-            toastr.options = {
-                "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-            };
+            alertify.error("El Rut Empresa NO Puede Estar Vacia!", "Verifique");
             $("#RutEmpre").focus();
         }
         else {
@@ -278,13 +218,7 @@ $(document).ready(function () {
         event.preventDefault();
         AfpSelec = $("#AfpSelec").val();
         if (AfpSelec == "") {
-            toastr["error"]("La Afp NO Puede Estar Vacio!", "Verifique");
-            toastr.options = {
-                "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-            };
+            alertify.error("La Afp NO Puede Estar Vacio!", "Verifique");
             $("#AfpSelec").focus();
         }
         else {
@@ -296,13 +230,7 @@ $(document).ready(function () {
         event.preventDefault();
         SalSelec = $("#SalSelec").val();
         if (SalSelec == "") {
-            toastr["error"]("El Sistema De Salud NO Puede Estar Vacio!", "Verifique");
-            toastr.options = {
-                "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-            };
+            alertify.error("El Sistema De Salud NO Puede Estar Vacio!", "Verifique");
             $("#SalSelec").focus();
         }
         else {
@@ -314,13 +242,7 @@ $(document).ready(function () {
         event.preventDefault();
         SexoSelec = $("#SexoSelec").val();
         if (SexoSelec == "") {
-            toastr["error"]("El Sexo NO Puede Estar Vacio!", "Verifique");
-            toastr.options = {
-                "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-            };
+            alertify.error("El Sexo NO Puede Estar Vacio!", "Verifique");
             $("#SexoSelec").focus();
         }
         else {
@@ -332,13 +254,7 @@ $(document).ready(function () {
         event.preventDefault();
         NacioSelec = $("#NacioSelec").val();
         if (NacioSelec == "") {
-            toastr["error"]("La Nacionalidad NO Puede Estar Vacio!", "Verifique");
-            toastr.options = {
-                "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-            };
+            alertify.error("La Nacionalidad NO Puede Estar Vacio!", "Verifique");
             $("#NacioSelec").focus();
         }
         else {
@@ -351,13 +267,7 @@ $(document).ready(function () {
         if (keycode == 13) {
             CallPjeEmp = $("#CallPjeEmp").val();
             if (CallPjeEmp == "") {
-                toastr["error"]("La Calle/Pasaje NO Puede Estar Vacio!", "Verifique");
-                toastr.options = {
-                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                    "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                    "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-                };
+                alertify.error("La Calle/Pasaje NO Puede Estar Vacio!", "Verifique");
                 $("#CallPjeEmp").focus();
             }
             else {
@@ -371,13 +281,7 @@ $(document).ready(function () {
         if (keycode == 13) {
             NumCasaEmp = $("#NumCasaEmp").val();
             if (NumCasaEmp == "") {
-                toastr["error"]("El Número De Casa NO Puede Estar Vacio!", "Verifique");
-                toastr.options = {
-                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                    "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                    "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-                };
+                alertify.error("El Número De Casa NO Puede Estar Vacio!", "Verifique");
                 $("#NumCasaEmp").focus();
             }
             else {
@@ -391,13 +295,7 @@ $(document).ready(function () {
         if (keycode == 13) {
             Villa_PoblEmp = $("#Villa_PoblEmp").val();
             if (Villa_PoblEmp == "") {
-                toastr["error"]("La Villa/Población NO Puede Estar Vacio!", "Verifique");
-                toastr.options = {
-                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                    "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                    "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-                };
+                alertify.error("La Villa/Población NO Puede Estar Vacio!", "Verifique");
                 $("#Villa_PoblEmp").focus();
             }
             else {
@@ -410,13 +308,7 @@ $(document).ready(function () {
         event.preventDefault();
         ComuEmp = $("#ComuEmp").val();
         if (ComuEmp == "") {
-            toastr["error"]("La Comuna NO Puede Estar Vacio!", "Verifique");
-            toastr.options = {
-                "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-            };
+            alertify.error("La Comuna NO Puede Estar Vacio!", "Verifique");
             $("#ComuEmp").focus();
         }
         else {
@@ -438,14 +330,8 @@ $(document).ready(function () {
         if (keycode == 13) {
             FonoPer = $("#FonoPer").val();
             if (FonoPer == "") {
-                toastr["error"]("El Fono Personal NO Puede Estar Vacio!", "Verifique");
-                toastr.options = {
-                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                    "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                    "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-                };
-                return false;
+                alertify.error("El Fono Personal NO Puede Estar Vacio!", "Verifique");
+                $("#FonoPer").focus();
             }
             else {
                 $("#EmailPer").focus();
@@ -458,13 +344,7 @@ $(document).ready(function () {
         if (keycode == 13) {
             EmailPer = $("#EmailPer").val();
             if (EmailPer == "") {
-                toastr["error"]("El Email Personal NO Puede Estar Vacio!", "Verifique");
-                toastr.options = {
-                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                    "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                    "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-                };
+                alertify.error("El Email Personal NO Puede Estar Vacio!", "Verifique");
                 $("#EmailPer").focus();
             }
             else {
@@ -478,13 +358,7 @@ $(document).ready(function () {
         if (keycode == 13) {
             FechNacEmp = $("#FechNacEmp").val();
             if (FechNacEmp == "") {
-                toastr["error"]("La Fecha de Nacimiento NO Puede Estar Vacio!", "Verifique");
-                toastr.options = {
-                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                    "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                    "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-                };
+                alertify.error("La Fecha de Nacimiento NO Puede Estar Vacio!", "Verifique");
                 $("#FechNacEmp").focus();
             }
             else {
@@ -498,13 +372,7 @@ $(document).ready(function () {
         if (keycode == 13) {
             PerEmerEmp = $("#PerEmerEmp").val();
             if (PerEmerEmp == "") {
-                toastr["error"]("La Persona De Emergencia NO Puede Estar Vacio!", "Verifique");
-                toastr.options = {
-                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                    "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                    "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-                };
+                alertify.error("La Persona De Emergencia NO Puede Estar Vacio!", "Verifique");
                 $("#PerEmerEmp").focus();
             }
             else {
@@ -518,13 +386,7 @@ $(document).ready(function () {
         if (keycode == 13) {
             FonPerEmerEmp = $("#FonPerEmerEmp").val();
             if (FonPerEmerEmp == "") {
-                toastr["error"]("El Fono Persona de Emergencia NO Puede Estar Vacio!", "Verifique");
-                toastr.options = {
-                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                    "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                    "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-                };
+                alertify.error("El Fono Persona de Emergencia NO Puede Estar Vacio!", "Verifique");
                 $("#FonPerEmerEmp").focus();
             }
             else {
@@ -569,22 +431,10 @@ $(document).ready(function () {
         event.preventDefault();
         $.post(url, data)
             .done(function (data) {
-                    toastr["success"](" Datos Grabados ", "Atención")
-                    toastr.options = {
-                        "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false, "positionClass": "toast-top-center", "preventDuplicates": false,
-                        "onclick": null, "showDuration": "400", "hideDuration": "1000", "timeOut": "5000",
-                        "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear", "showMethod": "fadeIn",
-                        "hideMethod": "fadeOut"
-                    };
+                alertify.success(" Datos Grabados ", "Atención");
                 })
             .fail(function (data) {
-                    toastr["error"](" Error De Grabación, Verifique!!! ", "Error")
-                    toastr.options = {
-                        "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false,
-                        "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "400",
-                        "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                        "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-                    }
+                alertify.error(" Error De Grabación, Verifique!!! ", "Error");
                 })
             .always(function (data) {
                     $("#RutEmp").val("");
@@ -731,22 +581,10 @@ $(document).ready(function () {
         event.preventDefault();
         $.post(url, data)
             .done(function (data) {
-                toastr["success"](" Datos Grabados ", "Atención")
-                toastr.options = {
-                    "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false, "positionClass": "toast-top-center", "preventDuplicates": false,
-                    "onclick": null, "showDuration": "400", "hideDuration": "1000", "timeOut": "5000",
-                    "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear", "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                };
+                alertify.success(" Datos Grabados ", "Atención");
             })
             .fail(function (data) {
-                toastr["error"](" Error De Grabación, Verifique!!! ", "Error")
-                toastr.options = {
-                    "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false,
-                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "400",
-                    "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                    "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-                }
+                alertify.error(" Error De Grabación, Verifique!!! ", "Error");
             })
             .always(function (data) {
                 $("#EDRutEmp").val("");
@@ -786,23 +624,11 @@ $(document).ready(function () {
         var data = { Rut_Empleado: RutEmp };
         var url = "/Empleados/FichEmp";
         $.post(url, data)
-         .done(function (data) {
-            toastr["success"](" Informe Terminado ", "Atención")
-            toastr.options = {
-                "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false, "positionClass": "toast-top-center", "preventDuplicates": false,
-                "onclick": null, "showDuration": "400", "hideDuration": "1000", "timeOut": "5000",
-                "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear", "showMethod": "fadeIn",
-                "hideMethod": "fadeOut"
-            }
+            .done(function (data) {
+                alertify.success(" Informe Terminado ", "Atención");
         })
-         .fail(function (data) {
-                toastr["error"](" Error De Lectura, Verifique!!! ", "Error")
-                toastr.options = {
-                    "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false,
-                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "400",
-                    "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                    "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-                }
+            .fail(function (data) {
+                alertify.error(" Error De Lectura, Verifique!!! ", "Error");
          })
     });
 
@@ -815,14 +641,8 @@ $(document).ready(function () {
             var data = { Rut_Empleado: RutEmp };
             var url = "/Empleados/EliminaEmpleado";
             $.post(url, data)
-            .done(function (data) {
-                toastr["success"](" Empleado Despedido ", "Atención")
-                toastr.options = {
-                    "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false, "positionClass": "toast-top-center", "preventDuplicates": false,
-                    "onclick": null, "showDuration": "400", "hideDuration": "1000", "timeOut": "5000",
-                    "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear", "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                }                    
+                .done(function (data) {
+                    alertify.success(" Empleado Despedido ", "Atención");
             })
             .always(function (data) {
                 $("#AgrEmpleados").modal("hide");
@@ -903,4 +723,77 @@ function BuscaCiudad() {
               //return nomcity;
            })           
 }   
-   
+
+alertify.defaults = {
+    // dialogs defaults
+    autoReset: true,
+    basic: false,
+    closable: true,
+    closableByDimmer: true,
+    invokeOnCloseOff: false,
+    frameless: false,
+    defaultFocusOff: false,
+    maintainFocus: true, // <== global default not per instance, applies to all dialogs
+    maximizable: true,
+    modal: true,
+    movable: true,
+    moveBounded: false,
+    overflow: true,
+    padding: true,
+    pinnable: true,
+    pinned: true,
+    preventBodyShift: false, // <== global default not per instance, applies to all dialogs
+    resizable: true,
+    startMaximized: false,
+    transition: 'pulse',
+    transitionOff: false,
+    tabbable: 'button:not(:disabled):not(.ajs-reset),[href]:not(:disabled):not(.ajs-reset),input:not(:disabled):not(.ajs-reset),select:not(:disabled):not(.ajs-reset),textarea:not(:disabled):not(.ajs-reset),[tabindex]:not([tabindex^="-"]):not(:disabled):not(.ajs-reset)',  // <== global default not per instance, applies to all dialogs
+    // notifier defaults
+    notifier: {
+        // auto-dismiss wait time (in seconds)  
+        delay: 5,
+        // default position
+        position: 'top-center',
+        // adds a close button to notifier messages
+        closeButton: true,
+        // provides the ability to rename notifier classes
+        classes: {
+            base: 'alertify-notifier',
+            prefix: 'ajs-',
+            message: 'ajs-message',
+            top: 'ajs-top',
+            right: 'ajs-right',
+            bottom: 'ajs-bottom',
+            left: 'ajs-left',
+            center: 'ajs-center',
+            visible: 'ajs-visible',
+            hidden: 'ajs-hidden',
+            close: 'ajs-close'
+        }
+    },
+    // language resources 
+    glossary: {
+        // dialogs default title
+        title: 'Atención',
+        // ok button text
+        ok: 'OK',
+        // cancel button text
+        cancel: 'Cancel'
+    },
+    // theme settings
+    theme: {
+        // class name attached to prompt dialog input textbox.
+        input: 'ajs-input',
+        // class name attached to ok button
+        ok: 'ajs-ok',
+        // class name attached to cancel button 
+        cancel: 'ajs-cancel'
+    },
+    // global hooks
+    hooks: {
+        // invoked before initializing any dialog
+        preinit: function (instance) { },
+        // invoked after initializing any dialog
+        postinit: function (instance) { },
+    },
+};  

@@ -332,6 +332,22 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\alertifyjs\alertify.css" />
+    <Content Include="Content\alertifyjs\alertify.min.css" />
+    <Content Include="Content\alertifyjs\alertify.rtl.css" />
+    <Content Include="Content\alertifyjs\alertify.rtl.min.css" />
+    <Content Include="Content\alertifyjs\themes\bootstrap.css" />
+    <Content Include="Content\alertifyjs\themes\bootstrap.min.css" />
+    <Content Include="Content\alertifyjs\themes\bootstrap.rtl.css" />
+    <Content Include="Content\alertifyjs\themes\bootstrap.rtl.min.css" />
+    <Content Include="Content\alertifyjs\themes\default.css" />
+    <Content Include="Content\alertifyjs\themes\default.min.css" />
+    <Content Include="Content\alertifyjs\themes\default.rtl.css" />
+    <Content Include="Content\alertifyjs\themes\default.rtl.min.css" />
+    <Content Include="Content\alertifyjs\themes\semantic.css" />
+    <Content Include="Content\alertifyjs\themes\semantic.min.css" />
+    <Content Include="Content\alertifyjs\themes\semantic.rtl.css" />
+    <Content Include="Content\alertifyjs\themes\semantic.rtl.min.css" />
     <Content Include="Content\Aplicacion\Login\Login.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -426,6 +442,8 @@
       <LastGenOutput>ModelEmpl.cs</LastGenOutput>
     </Content>
     <Content Include="Reportes\FichaEmpleado.docx" />
+    <Content Include="Scripts\alertify.js" />
+    <Content Include="Scripts\alertify.min.js" />
     <Content Include="Scripts\Aplicacion\Afp\ManAfp.js" />
     <Content Include="Scripts\Aplicacion\CargFam\CargFam.js" />
     <Content Include="Scripts\Aplicacion\Cargos\ManCargos.js" />
@@ -492,9 +510,6 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\toastr.js" />
     <Content Include="Scripts\toastr.min.js" />
-    <Content Include="Scripts\Tomar_Foto\webcam.js" />
-    <Content Include="Scripts\Tomar_Foto\webcam.min.js" />
-    <Content Include="Scripts\Tomar_Foto\webcam.swf" />
     <Content Include="Scripts\webGrid.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -550,11 +565,6 @@
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.5.1.min.map" />
     <Content Include="Scripts\jquery-3.5.1.slim.min.map" />
-    <Content Include="Scripts\Tomar_Foto\bower.json" />
-    <Content Include="Scripts\Tomar_Foto\build.sh" />
-    <Content Include="Scripts\Tomar_Foto\DOCS.md" />
-    <Content Include="Scripts\Tomar_Foto\LICENSE" />
-    <Content Include="Scripts\Tomar_Foto\package.json" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

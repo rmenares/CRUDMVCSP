@@ -8,14 +8,11 @@
 
 @Scripts.Render("~/bundles/bootstrap")
 
+@Scripts.Render("~/bundles/Alertify")
+
 @Styles.Render("~/Content/fontawesome")
 
-<link href="~/Content/toastr.css" rel="stylesheet" />
-<script src="~/Scripts/toastr.js"></script>
-
-<link href="~/Content/Aplicacion/Login/Login.css" rel="stylesheet" />
-
-<script src="~/Scripts/Aplicacion/Login/Login.js"></script>
+@Styles.Render("~/Content/Alertify")
 
 <!DOCTYPE html>
 
@@ -31,15 +28,15 @@
                         <td><i class="fa fa-user"></i>@Html.EditorFor(Model => Model.User_Id, new { @class = "form-input", htmlAttributes = new { placeholder = "Nombre de Usuario" } })</td>
                     </tr>
                     @*<tr>
-                        <td>@Html.ValidationMessageFor(Model => Model.User_Id, null, new { @class = "form-group" })</td>
-                    </tr>*@
+                            <td>@Html.ValidationMessageFor(Model => Model.User_Id, null, new { @class = "form-group" })</td>
+                        </tr>*@
                     <tr>
                         <td>@*@Html.LabelFor(Model => Model.PassWord, new { @class = "form-group" })*@</td>
                         <td><i class="fa fa-unlock-alt"></i>@Html.EditorFor(Model => Model.PassWord, new { @class = "form-input", htmlAttributes = new { placeholder = "Password" } })</td>
                     </tr>
                     @*<tr>
-                        <td>@Html.ValidationMessageFor(Model => Model.PassWord, null, new { @class = "form-group" })</td>
-                    </tr>*@
+                            <td>@Html.ValidationMessageFor(Model => Model.PassWord, null, new { @class = "form-group" })</td>
+                        </tr>*@
                     <tr></tr>
                     <tr></tr>
                     <tr>
@@ -52,3 +49,8 @@
         </div>
     </div>
 </body>
+
+@section scripts{
+    <link href="~/Content/Aplicacion/Login/Login.css" rel="stylesheet" />
+    <script src="~/Scripts/Aplicacion/Login/Login.js"></script>
+}

@@ -16,14 +16,7 @@ $(document).ready(function () {
         if ((keycode == 13)) {
             nomafp = $("#NomAfp").val();
             if (nomafp == "") {
-                toastr["error"]("Nombre AFP NO Puede Estar Vacío!!!!", "Atención")
-                toastr.options = {
-                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null,
-                    "showDuration": "300", "hideDuration": "1000", "timeOut": "5000",
-                    "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear",
-                    "showMethod": "fadeIn", "hideMethod": "fadeOut"
-                };
+                alertify.error("Nombre AFP NO Puede Estar Vacío!!!!", "Atención");
                 $("#NomAfp").focus();
             }
             else {
@@ -37,15 +30,8 @@ $(document).ready(function () {
         //verifica si el codigo de la tecla es ENTER
         if ((keycode == 13)) {
             cotiAfp = $("#PorcCotiz").val();
-            if ((cotiAfp == "") || (cotiAfp == "0"))  {
-                toastr["error"]("% Cotización NO Puede Estar Vacío o Ser Cero!!!!", "Atención")
-                toastr.options = {
-                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null,
-                    "showDuration": "300", "hideDuration": "1000", "timeOut": "5000",
-                    "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear",
-                    "showMethod": "fadeIn", "hideMethod": "fadeOut"
-                };
+            if ((cotiAfp == "") || (cotiAfp == "0")) {
+                alertify.error("% Cotización NO Puede Estar Vacío o Ser Cero!!!!", "Atención");
                 $("#PorcCotiz").focus();
             }
             else {
@@ -62,24 +48,10 @@ $(document).ready(function () {
             var url = "/ManAfp/Grab_AFP";
             $.post(url, data)
                 .done(function (data) {
-                    toastr["success"]("Datos Grabados", "Atención")
-                    toastr.options = {
-                        "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false,
-                        "positionClass": "toast-top-center", "preventDuplicates": false,
-                        "onclick": null, "showDuration": "400", "hideDuration": "1000", "timeOut": "5000",
-                        "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear", "showMethod": "fadeIn",
-                        "hideMethod": "fadeOut"
-                    };
+                    alertify.success("Datos Grabados", "Atención");
                 })
                 .fail(function (data) {
-                    toastr["error"]("Error De Grabación", "Error")
-                    toastr.options = {
-                        "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false,
-                        "positionClass": "toast-top-center", "preventDuplicates": false,
-                        "onclick": null, "showDuration": "400", "hideDuration": "1000", "timeOut": "5000",
-                        "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear", "showMethod": "fadeIn",
-                        "hideMethod": "fadeOut"
-                    }
+                    alertify.error("Error De Grabación", "Error");
                 })
                 .always(function (data) {
                     $("#NomAfp").val("");
@@ -110,14 +82,7 @@ $(document).ready(function () {
         if ((keycode == 13)) {
             nomafp = $("#ModNomAFP").val();
             if (nomafp == "") {
-                toastr["error"]("Nombre AFP NO Puede Estar Vacío!!!!", "Atención")
-                toastr.options = {
-                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null,
-                    "showDuration": "300", "hideDuration": "1000", "timeOut": "5000",
-                    "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear",
-                    "showMethod": "fadeIn", "hideMethod": "fadeOut"
-                };
+                alertify.error("Nombre AFP NO Puede Estar Vacío!!!!", "Atención");
                 $("#ModNomAFP").focus();
             }
             else {
@@ -132,14 +97,7 @@ $(document).ready(function () {
         if ((keycode == 13)) {
             cotiAfp = $("#ModPorcAfp").val();
             if (cotiAfp == "") {
-                toastr["error"]("% AFP NO Puede Estar Vacío!!!!", "Atención")
-                toastr.options = {
-                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null,
-                    "showDuration": "300", "hideDuration": "1000", "timeOut": "5000",
-                    "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear",
-                    "showMethod": "fadeIn", "hideMethod": "fadeOut"
-                };
+                alertify.error("% AFP NO Puede Estar Vacío!!!!", "Atención");
                 $("#ModPorcAfp").focus();
             }
             else {
@@ -157,22 +115,10 @@ $(document).ready(function () {
         var url = "/ManAfp/ModAFP"
         $.post(url, data)
             .done(function (data) {
-                toastr["success"]("Datos Modificados", "Atención")
-                toastr.options = {
-                    "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false, "positionClass":"toasttopcenter","preventDuplicates": false,
-                    "onclick": null, "showDuration": "400", "hideDuration": "1000", "timeOut": "5000",
-                    "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear", "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                };
+                alertify.success("Datos Modificados", "Atención");
             })
             .fail(function (data) {
-                toastr["error"]("Error De Modificación", "Error")
-                toastr.options = {
-                    "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false,
-                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "400",
-                    "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                    "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-                }
+                alertify.error("Error De Modificación", "Error");
             })
             .always(function (data) {
                 $("#NomAfp").val("");

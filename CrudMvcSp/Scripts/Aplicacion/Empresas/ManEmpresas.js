@@ -16,13 +16,7 @@ $(document).ready(function () {
         if (keycode == 13) {
             RutEmp = $("#RutEmp").val();
             if (RutEmp == "") {
-                toastr["error"]("El Rut NO Puede Estar Vacio!", "Verifique");
-                toastr.options = {
-                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                    "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                    "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-                };
+                alertify.error("El Rut NO Puede Estar Vacio!", "Verifique");
                 $("#RutEmp").focus();
             }
             else {
@@ -36,13 +30,7 @@ $(document).ready(function () {
         if (keycode == 13) {
             NomEmp = $("#NomEmp").val();
             if (NomEmp == "") {
-                toastr["error"]("El Nonbre Empresa No Puede Estar Vacio!", "Verifique");
-                toastr.options = {
-                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                    "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                    "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-                };
+                alertify.error("El Nonbre Empresa No Puede Estar Vacio!", "Verifique");
                 $("#NomEmp").focus();
             }
             else {
@@ -56,13 +44,7 @@ $(document).ready(function () {
         if (keycode == 13) {
             CallPjeAvdaEmp = $("#CallPjeEmp").val();
             if (CallPjeAvdaEmp == "") {
-                toastr["error"]("El Nonbre Calle No Puede Estar Vacio!", "Verifique");
-                toastr.options = {
-                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                    "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                    "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-                };
+                alertify.error("El Nonbre Calle No Puede Estar Vacio!", "Verifique");
                 $("#CallPjeEmp").focus();
             }
             else {
@@ -76,13 +58,7 @@ $(document).ready(function () {
         if (keycode == 13) {
             NumEmp = $("#NumEmp").val();
             if (NumEmp == "") {
-                toastr["error"]("El Número Calle No Puede Estar Vacio!", "Verifique");
-                toastr.options = {
-                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                    "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                    "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-                };
+                alertify.error("El Número Calle No Puede Estar Vacio!", "Verifique");
                 $("#NumEmp").focus();
             }
             else {
@@ -96,13 +72,7 @@ $(document).ready(function () {
         if (keycode == 13) {
             VilPobEmp = $("#VilpobEmp").val();
             if (VilPobEmp == "") {
-                toastr["error"]("La Villa/Población No Puede Estar Vacio!", "Verifique");
-                toastr.options = {
-                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                    "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                    "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-                };
+                alertify.error("La Villa/Población No Puede Estar Vacio!", "Verifique");
                 $("#VilpobEmp").focus();
             }
             else {
@@ -116,13 +86,7 @@ $(document).ready(function () {
         if (keycode == 13) {
             FonoEmp = $("#FonoEmp").val();
             if (FonoEmp == "") {
-                toastr["error"]("El Fono Empleado No Puede Estar Vacio!", "Verifique");
-                toastr.options = {
-                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                    "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                    "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-                };
+                alertify.error("El Fono Empleado No Puede Estar Vacio!", "Verifique");
                 $("#FonoEmp").focus();
             }
             else {
@@ -136,13 +100,7 @@ $(document).ready(function () {
         if (keycode == 13) {
             CorreoEmp = $("#EmaEmp").val();
             if (CorreoEmp == "") {
-                toastr["error"]("El Email Empleado No Puede Estar Vacio!", "Verifique");
-                toastr.options = {
-                    "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false,
-                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "300",
-                    "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                    "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-                };
+                alertify.error("El Email Empleado No Puede Estar Vacio!", "Verifique");
                 $("#EmaEmp").focus();
             }
             else {
@@ -168,37 +126,25 @@ $(document).ready(function () {
         var url = "/Empresas/GrabaEmp";
         event.preventDefault();
         $.post(url, data)
-                .done(function (data) {
-                    toastr["success"]("Datos De Empresa Grabados", "Atención")
-                    toastr.options = {
-                        "closeButton": true, "debug": false, "newestOnTop": false, "progressBar": false, "positionClass": "toast-top-center",
-                        "preventDuplicates": false, "onclick": null, "showDuration": "350", "hideDuration": "1000", "timeOut": "5000",
-                        "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear", "showMethod": "fadeIn",
-                        "hideMethod": "fadeOut"
-                    }
+            .done(function (data) {
+                alertify.success("Datos De Empresa Grabados", "Atención")
                 })
-                .fail(function (data) {
-                    toastr["error"]("Problemas De Grabación", "Verifique")
-                    toastr.options = {
-                        "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false, "positionClass": "toast-top-center",
-                        "preventDuplicates": false, "onclick": null, "showDuration": "200", "hideDuration": "1000",
-                        "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear",
-                        "showMethod": "fadeIn", "hideMethod": "fadeOut"
-                    }
-                })
-                .always(function (data) {
-                    $("#Rut_Empresa").val("");
-                    $("#Nombre_Empresa").val("");
-                    $("#Calle_Pje_Avda").val("");
-                    $("#Numero").val("");
-                    $("#Vill_Pobl").val("");
-                    $("#ComuSelec").val("--Select_List--");
-                    $("#Ciudad").val("");
-                    $("#fono").val("");
-                    $("#email_emp").val("");
-                    $("#AgrEmp").modal("hide");
-                    window.location.reload(true);
-                })
+            .fail(function (data) {
+                alertify.error("Problemas De Grabación", "Verifique")
+             })
+           .always(function (data) {
+               $("#Rut_Empresa").val("");
+               $("#Nombre_Empresa").val("");
+               $("#Calle_Pje_Avda").val("");
+               $("#Numero").val("");
+               $("#Vill_Pobl").val("");
+               $("#ComuSelec").val("--Select_List--");
+               $("#Ciudad").val("");
+               $("#fono").val("");
+               $("#email_emp").val("");
+               $("#AgrEmp").modal("hide");
+               window.location.reload(true);
+           })
     })
     // fin graba empresas  
 
@@ -251,30 +197,10 @@ $(document).ready(function () {
         var url = "/Empresas/EditEmp"
         $.post(url, data)
             .done(function (data) {
-                toastr["success"]("Datos Modificados", "Atención")
-                toastr.options = {
-                    "closeButton": false, "debug": false,
-                    "newestOnTop": false, "progressBar": false,
-                    "positionClass": "toast-top-center", "preventDuplicates": false,
-                    "onclick": null, "showDuration": "400",
-                    "hideDuration": "1000", "timeOut": "5000",
-                    "extendedTimeOut": "1000", "showEasing": "swing",
-                    "hideEasing": "linear", "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                };
+                alertify.success("Datos Modificados", "Atención");
             })
             .fail(function (data) {
-                toastr["error"]("Error De Modificación", "Error")
-                toastr.options = {
-                    "closeButton": false, "debug": false,
-                    "newestOnTop": false, "progressBar": false,
-                    "positionClass": "toast-top-center", "preventDuplicates": false,
-                    "onclick": null, "showDuration": "400",
-                    "hideDuration": "1000", "timeOut": "5000",
-                    "extendedTimeOut": "1000", "showEasing": "swing",
-                    "hideEasing": "linear", "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                }
+                alertify.error("Error De Modificación", "Error")
             })
             .always(function (data) {
                 $("#MODNomEmp").val("");
@@ -319,3 +245,77 @@ $(document).ready(function () {
             })
     })
 })
+
+alertify.defaults = {
+    // dialogs defaults
+    autoReset: true,
+    basic: false,
+    closable: true,
+    closableByDimmer: true,
+    invokeOnCloseOff: false,
+    frameless: false,
+    defaultFocusOff: false,
+    maintainFocus: true, // <== global default not per instance, applies to all dialogs
+    maximizable: true,
+    modal: true,
+    movable: true,
+    moveBounded: false,
+    overflow: true,
+    padding: true,
+    pinnable: true,
+    pinned: true,
+    preventBodyShift: false, // <== global default not per instance, applies to all dialogs
+    resizable: true,
+    startMaximized: false,
+    transition: 'pulse',
+    transitionOff: false,
+    tabbable: 'button:not(:disabled):not(.ajs-reset),[href]:not(:disabled):not(.ajs-reset),input:not(:disabled):not(.ajs-reset),select:not(:disabled):not(.ajs-reset),textarea:not(:disabled):not(.ajs-reset),[tabindex]:not([tabindex^="-"]):not(:disabled):not(.ajs-reset)',  // <== global default not per instance, applies to all dialogs
+    // notifier defaults
+    notifier: {
+        // auto-dismiss wait time (in seconds)  
+        delay: 5,
+        // default position
+        position: 'top-center',
+        // adds a close button to notifier messages
+        closeButton: true,
+        // provides the ability to rename notifier classes
+        classes: {
+            base: 'alertify-notifier',
+            prefix: 'ajs-',
+            message: 'ajs-message',
+            top: 'ajs-top',
+            right: 'ajs-right',
+            bottom: 'ajs-bottom',
+            left: 'ajs-left',
+            center: 'ajs-center',
+            visible: 'ajs-visible',
+            hidden: 'ajs-hidden',
+            close: 'ajs-close'
+        }
+    },
+    // language resources 
+    glossary: {
+        // dialogs default title
+        title: 'Atención',
+        // ok button text
+        ok: 'OK',
+        // cancel button text
+        cancel: 'Cancel'
+    },
+    // theme settings
+    theme: {
+        // class name attached to prompt dialog input textbox.
+        input: 'ajs-input',
+        // class name attached to ok button
+        ok: 'ajs-ok',
+        // class name attached to cancel button 
+        cancel: 'ajs-cancel'
+    },
+    // global hooks
+    hooks: {
+        // invoked before initializing any dialog
+        preinit: function (instance) { },
+        // invoked after initializing any dialog
+        postinit: function (instance) { },
+    },
+};

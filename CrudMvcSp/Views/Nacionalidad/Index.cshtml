@@ -19,7 +19,12 @@
 
 @Scripts.Render("~/bundles/bootstrap")
 
+@Scripts.Render("~/bundles/Alertify")
+
 @Styles.Render("~/Content/fontawesome")
+
+@Styles.Render("~/Content/Alertify")
+
 
 <table class="table table-responsive table-striped table-condensed" id="NueNac">
     <tr>
@@ -54,7 +59,7 @@
                       grid.Column("Descripcion" , "Descripción"),
                       grid.Column(header: "Acciones", style: "col-sm-2", format:@<text>
     <a href='#' class="btn btn-warning glyphicon glyphicon-pencil display edit-btn"> Editar</a> </text> )
-                                                                                                                                                                  })
+                                                                                                                                                                                                                                                                                                                   })
         </div>
 
         <div id="TablExport">
@@ -140,8 +145,6 @@
 </div>
 
 @section scripts {
-    <link href="~/Content/toastr.css" rel="stylesheet" />
-    <script src="~/Scripts/toastr.js"></script>
     <link href="~/Content/WebGrid/WebGrid.css" rel="stylesheet" />
     <link href="~/Content/EstilosGenerales/style.css" rel="stylesheet" />
     <script src="~/Scripts/Aplicacion/Nacionalidad/Nacionalidad.js"></script>

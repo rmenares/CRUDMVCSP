@@ -19,7 +19,13 @@
 
 @Scripts.Render("~/bundles/bootstrap")
 
+@Scripts.Render("~/bundles/Alertify")
+
 @Styles.Render("~/Content/fontawesome")
+
+@Styles.Render("~/Content/Alertify")
+
+
 
 <table class="table table-responsive table-striped table-condensed" id="NueCargFam">
     <tr>
@@ -67,12 +73,12 @@
                     //grid.Column("Nacionalidad","Nacionalidad"),
                     grid.Column("Comentarios","Comentarios"),
                     grid.Column(header: "Acciones", style: "col-sm-2", format:
-                    @<span class="link">
-                        <a class="btn btn-success btn-xs glyphicon glyphicon-pencil Edit" href="javascript:;"> Edit</a>
-                        @*<a class="btn btn-warning btn-xs glyphicon glyphicon-print  Info" href="javascript:;"> Info</a>*@
-                        <a class="btn btn-danger  btn-xs glyphicon glyphicon-trash  Delete" href="javascript:;"> Delete</a>
-                    </span> )
-               })
+@<span class="link">
+    <a class="btn btn-success btn-xs glyphicon glyphicon-pencil Edit" href="javascript:;"> Edit</a>
+    @*<a class="btn btn-warning btn-xs glyphicon glyphicon-print  Info" href="javascript:;"> Info</a>*@
+    <a class="btn btn-danger  btn-xs glyphicon glyphicon-trash  Delete" href="javascript:;"> Delete</a>
+</span> )
+                        })
         </div>
         <div id="TablExport">
             <table align="center">
@@ -117,109 +123,109 @@
             <div class="modal-body">
                 <form id="IngEmpl" enctype="multipart/form-data" method="post">
                     <div class="tab-content">
-                            <br />
-                            <table align="center">
-                                <tr>
-                                    <td align="center">Rut Empleado</td>
-                                    <td></td>
-                                    <td align="center"><input type="text" id="RutEmp" required /></td>
-                                    <td></td>
-                                    <td align="center">Rut Carga Familiar</td>
-                                    <td></td>
-                                    <td align="center"><input type="text" id="RutCargFam" /></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td align="center">Nombre</td>
-                                    <td></td>
-                                    <td align="center"><input type="text" id="NomCargFam" /></td>
-                                    <td></td>
-                                    <td align="center" style="margin-top:15px;">Apellido Paterno</td>
-                                    <td></td>
-                                    <td align="center"><input type="text" id="ApPatCargFam" /></td>
-                                    <td></td>
-                                    <td align="center" style="margin-top:15px;">Apellido Materno</td>
-                                    <td></td>
-                                    <td align="center"><input type="text" id="ApMatCargFam" /></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td align="center">Fono Movil</td>
-                                    <td></td>
-                                    <td align="center"><input type="text" id="FonoMovCargFam" /> </td>
-                                    <td></td>
-                                    <td align="center">Fono Fijo</td>
-                                    <td></td>
-                                    <td align="center"><input type="text" id="FonoFijoCargFam" /></td>
-                                    <td></td>
-                                    <td align="center">Fecha de Nacimiento</td>
-                                    <td></td>
-                                    <td align="center"><input type="text" id="FechNacGarFam" /></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td align="center">Sexo</td>
-                                    <td></td>
-                                    <td>
-                                        @Html.DropDownList("SexoSelec", ViewBag.ListSexos as SelectList, "Seleccione Sexo", new { @class = "form-control", style = "width:175px" })
-                                    </td>
-                                    <td></td>
-                                    <td align="center">Email</td>
-                                    <td></td>
-                                    <td align="center"><input type="text" id="EmaiCarFam" /></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td align="center">Calle/Pje</td>
-                                    <td></td>
-                                    <td><input type="text" id="CallPjeCargFam" /></td>
-                                    <td></td>
-                                    <td align="center">Número</td>
-                                    <td></td>
-                                    <td><input type="text" id="NumCasaCargFam" /></td>
-                                    <td></td>
-                                    <td align="center">Villa_Población</td>
-                                    <td></td>
-                                    <td><input type="text" id="Villa_PoblCargFam" /></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td align="center">Comuna</td>
-                                    <td></td>
-                                    <td> @Html.DropDownList("ComuCargFam", ViewBag.ListComu as SelectList, "Seleccione Comuna", new { @class = "form-control", style = "width:175px" })</td>
-                                    <td></td>
-                                    <td align="center">Ciudad</td>
-                                    <td></td>
-                                    <td><input type="text" id="NomCiuCargFam" /></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td align="center">Nacionalidad</td>
-                                    <td></td>
-                                    <td>
-                                        @Html.DropDownList("NacioSelec", ViewBag.ListNacion as SelectList, "Seleccione Nacionalidad", new { @class = "form-control", style = "width:175px" })
-                                    </td>
-                                    <td></td>
-                                    <td align="center">Descripción</td>
-                                    <td></td>
-                                    <td colspan="5"><input type="text" id="DescrCargFam" /></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                            </table>
+                        <br />
+                        <table align="center">
+                            <tr>
+                                <td align="center">Rut Empleado</td>
+                                <td></td>
+                                <td align="center"><input type="text" id="RutEmp" required /></td>
+                                <td></td>
+                                <td align="center">Rut Carga Familiar</td>
+                                <td></td>
+                                <td align="center"><input type="text" id="RutCargFam" /></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td align="center">Nombre</td>
+                                <td></td>
+                                <td align="center"><input type="text" id="NomCargFam" /></td>
+                                <td></td>
+                                <td align="center" style="margin-top:15px;">Apellido Paterno</td>
+                                <td></td>
+                                <td align="center"><input type="text" id="ApPatCargFam" /></td>
+                                <td></td>
+                                <td align="center" style="margin-top:15px;">Apellido Materno</td>
+                                <td></td>
+                                <td align="center"><input type="text" id="ApMatCargFam" /></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td align="center">Fono Movil</td>
+                                <td></td>
+                                <td align="center"><input type="text" id="FonoMovCargFam" /> </td>
+                                <td></td>
+                                <td align="center">Fono Fijo</td>
+                                <td></td>
+                                <td align="center"><input type="text" id="FonoFijoCargFam" /></td>
+                                <td></td>
+                                <td align="center">Fecha de Nacimiento</td>
+                                <td></td>
+                                <td align="center"><input type="text" id="FechNacGarFam" /></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td align="center">Sexo</td>
+                                <td></td>
+                                <td>
+                                    @Html.DropDownList("SexoSelec", ViewBag.ListSexos as SelectList, "Seleccione Sexo", new { @class = "form-control", style = "width:175px" })
+                                </td>
+                                <td></td>
+                                <td align="center">Email</td>
+                                <td></td>
+                                <td align="center"><input type="text" id="EmaiCarFam" /></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td align="center">Calle/Pje</td>
+                                <td></td>
+                                <td><input type="text" id="CallPjeCargFam" /></td>
+                                <td></td>
+                                <td align="center">Número</td>
+                                <td></td>
+                                <td><input type="text" id="NumCasaCargFam" /></td>
+                                <td></td>
+                                <td align="center">Villa_Población</td>
+                                <td></td>
+                                <td><input type="text" id="Villa_PoblCargFam" /></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td align="center">Comuna</td>
+                                <td></td>
+                                <td> @Html.DropDownList("ComuCargFam", ViewBag.ListComu as SelectList, "Seleccione Comuna", new { @class = "form-control", style = "width:175px" })</td>
+                                <td></td>
+                                <td align="center">Ciudad</td>
+                                <td></td>
+                                <td><input type="text" id="NomCiuCargFam" /></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td align="center">Nacionalidad</td>
+                                <td></td>
+                                <td>
+                                    @Html.DropDownList("NacioSelec", ViewBag.ListNacion as SelectList, "Seleccione Nacionalidad", new { @class = "form-control", style = "width:175px" })
+                                </td>
+                                <td></td>
+                                <td align="center">Descripción</td>
+                                <td></td>
+                                <td colspan="5"><input type="text" id="DescrCargFam" /></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </table>
                     </div>
                 </form>
             </div>
@@ -247,106 +253,106 @@
             <div class="modal-body">
                 <form id="ModEmpl" enctype="multipart/form-data" method="post">
                     <div class="tab-content">
-                      <br />
-                            <table align="center" border="0">
-                                <tr>
-                                    <td align="center">Rut Carga Familiar</td>
-                                    <td></td>
-                                    <td align="center"><input type="text" id="ModRutCargFam" /></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td><input type="hidden" id="ModRutEmp" /> </td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td align="center">Nombre</td>
-                                    <td></td>
-                                    <td align="center"><input type="text" id="ModNomCargFam" /></td>
-                                    <td></td>
-                                    <td align="center" style="margin-top:15px;">Apellido Paterno</td>
-                                    <td></td>
-                                    <td align="center"><input type="text" id="ModApPatCargFam" /></td>
-                                    <td></td>
-                                    <td align="center" style="margin-top:15px;">Apellido Materno</td>
-                                    <td></td>
-                                    <td align="center"><input type="text" id="ModApMatCargFam" /></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td align="center">Fono Movil</td>
-                                    <td></td>
-                                    <td align="center"><input type="text" id="ModFonoMovCargFam" /> </td>
-                                    <td></td>
-                                    <td align="center">Fono Fijo</td>
-                                    <td></td>
-                                    <td align="center"><input type="text" id="ModFonoFijoCargFam" /></td>
-                                    <td></td>
-                                    <td align="center">Fecha de Nacimiento</td>
-                                    <td></td>
-                                    <td align="center"><input type="text" id="ModFechNacGarFam" /></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td align="center">Sexo</td>
-                                    <td></td>
-                                    <td>@Html.DropDownList("ModSexoSelec", ViewBag.ListSexos as SelectList, "Seleccione Sexo", new { @class = "form-control", style = "width:175px" })</td>
-                                    <td></td>
-                                    <td align="center">Email</td>
-                                    <td></td>
-                                    <td align="center"><input type="text" id="ModEmaiCarFam" /></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td align="center">Calle/Pje</td>
-                                    <td></td>
-                                    <td><input type="text" id="ModCallPjeCargFam" /></td>
-                                    <td></td>
-                                    <td align="center">Número</td>
-                                    <td></td>
-                                    <td><input type="text" id="ModNumCasaCargFam" /></td>
-                                    <td></td>
-                                    <td align="center">Villa_Población</td>
-                                    <td></td>
-                                    <td><input type="text" id="ModVilla_PoblCargFam" /></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td align="center">Comuna</td>
-                                    <td></td>
-                                    <td> @Html.DropDownList("ModComuCargFam", ViewBag.ListComu as SelectList, "Seleccione Comuna", new { @class = "form-control", style = "width:175px" })</td>
-                                    <td></td>
-                                    <td align="center">Ciudad</td>
-                                    <td></td>
-                                    <td><input type="text" id="ModNomCiuCargFam" /></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td align="center">Nacionalidad</td>
-                                    <td></td>
-                                    <td>@Html.DropDownList("ModNacioSelec", ViewBag.ListNacion as SelectList, "Seleccione Nacionalidad", new { @class = "form-control", style = "width:175px" })</td>
-                                    <td></td>
-                                    <td align="center">Descripción</td>
-                                    <td></td>
-                                    <td colspan="5"><textarea id="ModDescrCargFam" cols="70" rows="1"></textarea></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                            </table>
+                        <br />
+                        <table align="center" border="0">
+                            <tr>
+                                <td align="center">Rut Carga Familiar</td>
+                                <td></td>
+                                <td align="center"><input type="text" id="ModRutCargFam" /></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><input type="hidden" id="ModRutEmp" /> </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td align="center">Nombre</td>
+                                <td></td>
+                                <td align="center"><input type="text" id="ModNomCargFam" /></td>
+                                <td></td>
+                                <td align="center" style="margin-top:15px;">Apellido Paterno</td>
+                                <td></td>
+                                <td align="center"><input type="text" id="ModApPatCargFam" /></td>
+                                <td></td>
+                                <td align="center" style="margin-top:15px;">Apellido Materno</td>
+                                <td></td>
+                                <td align="center"><input type="text" id="ModApMatCargFam" /></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td align="center">Fono Movil</td>
+                                <td></td>
+                                <td align="center"><input type="text" id="ModFonoMovCargFam" /> </td>
+                                <td></td>
+                                <td align="center">Fono Fijo</td>
+                                <td></td>
+                                <td align="center"><input type="text" id="ModFonoFijoCargFam" /></td>
+                                <td></td>
+                                <td align="center">Fecha de Nacimiento</td>
+                                <td></td>
+                                <td align="center"><input type="text" id="ModFechNacGarFam" /></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td align="center">Sexo</td>
+                                <td></td>
+                                <td>@Html.DropDownList("ModSexoSelec", ViewBag.ListSexos as SelectList, "Seleccione Sexo", new { @class = "form-control", style = "width:175px" })</td>
+                                <td></td>
+                                <td align="center">Email</td>
+                                <td></td>
+                                <td align="center"><input type="text" id="ModEmaiCarFam" /></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td align="center">Calle/Pje</td>
+                                <td></td>
+                                <td><input type="text" id="ModCallPjeCargFam" /></td>
+                                <td></td>
+                                <td align="center">Número</td>
+                                <td></td>
+                                <td><input type="text" id="ModNumCasaCargFam" /></td>
+                                <td></td>
+                                <td align="center">Villa_Población</td>
+                                <td></td>
+                                <td><input type="text" id="ModVilla_PoblCargFam" /></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td align="center">Comuna</td>
+                                <td></td>
+                                <td> @Html.DropDownList("ModComuCargFam", ViewBag.ListComu as SelectList, "Seleccione Comuna", new { @class = "form-control", style = "width:175px" })</td>
+                                <td></td>
+                                <td align="center">Ciudad</td>
+                                <td></td>
+                                <td><input type="text" id="ModNomCiuCargFam" /></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td align="center">Nacionalidad</td>
+                                <td></td>
+                                <td>@Html.DropDownList("ModNacioSelec", ViewBag.ListNacion as SelectList, "Seleccione Nacionalidad", new { @class = "form-control", style = "width:175px" })</td>
+                                <td></td>
+                                <td align="center">Descripción</td>
+                                <td></td>
+                                <td colspan="5"><textarea id="ModDescrCargFam" cols="70" rows="1"></textarea></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </table>
                     </div>
                 </form>
             </div>
@@ -363,7 +369,5 @@
     <link href="~/Content/WebGrid/WebGrid.css" rel="stylesheet" />
     <link href="~/Content/EstilosGenerales/style.css" rel="stylesheet" />
     <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
-    <link href="~/Content/toastr.css" rel="stylesheet" />
-    <script src="~/Scripts/toastr.js"></script>
     <script src="~/Scripts/Aplicacion/CargFam/CargFam.js"></script>
 }

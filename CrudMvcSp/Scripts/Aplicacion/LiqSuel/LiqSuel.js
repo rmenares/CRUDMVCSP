@@ -72,14 +72,7 @@ $(document).ready(function () {
         if ( (keycode == 13) )  {
             RutEmple = $("#RutEmp").val();
             if (RutEmple == "") {
-                toastr["error"](" Dato Debe Estar VACIO!!!! ", "Atención")
-                toastr.options = {
-                    "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false,
-                    "positionClass": "toast-top-center", "preventDuplicates": false,
-                    "onclick": null, "showDuration": "400", "hideDuration": "1000", "timeOut": "5000",
-                    "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear", "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                };
+                alertify.error(" Dato Debe Estar VACIO!!!! ", "Atención");
                 $("#RutEmp").focus();
                 return false;
             }
@@ -92,13 +85,7 @@ $(document).ready(function () {
                             $("#ListTipRem").focus();
                         }
                         else {
-                            toastr["error"](" Empleado Incorrecto, Verifique ", "Atención")
-                            toastr.options = {
-                                "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false, "positionClass": "toast-top-center", "preventDuplicates": false,
-                                "onclick": null, "showDuration": "400", "hideDuration": "1000", "timeOut": "5000",
-                                "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear", "showMethod": "fadeIn",
-                                "hideMethod": "fadeOut"
-                            };
+                            alertify.error(" Empleado Incorrecto, Verifique ", "Atención");                            
                             $("#RutEmp").val("");
                             $("#RutEmp").focus();
                             return false;
@@ -149,13 +136,7 @@ $(document).ready(function () {
         if (keycode == 13) {
             SuelBase = document.getElementById("SueldBas").value;
             if (isNaN(SuelBase) || (SuelBase == "")) {
-                toastr["error"](" Dato Debe Ser Numérico ", "Atención")
-                toastr.options = {
-                    "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false, "positionClass": "toast-top-center", "preventDuplicates": false,
-                    "onclick": null, "showDuration": "400", "hideDuration": "1000", "timeOut": "5000",
-                    "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear", "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                };
+                alertify.error(" Dato Debe Ser Numérico ", "Atención");
                 $("#SueldBas").val("");
                 $("#SueldBas").focus();
                 return false;
@@ -172,13 +153,7 @@ $(document).ready(function () {
         if (keycode == 13) {
             DiasTrab = $("#DiasTrab").val();
             if (isNaN(DiasTrab) || (DiasTrab == "")) {
-                toastr["error"](" Dato Debe Ser Numérico ", "Atención")
-                toastr.options = {
-                    "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false, "positionClass": "toast-top-center", "preventDuplicates": false,
-                    "onclick": null, "showDuration": "400", "hideDuration": "1000", "timeOut": "5000",
-                    "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear", "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                };
+                alertify.error(" Dato Debe Ser Numérico ", "Atención");
                 $("#DiasTrab").val("");
                 $("#DiasTrab").focus();
                 return false;
@@ -194,13 +169,7 @@ $(document).ready(function () {
             //Cantidad Horas Extras
             CantHrsExt = $("#CantHrsExt").val();
             if (isNaN(CantHrsExt) || (CantHrsExt == "")) {
-                toastr["error"](" Dato Debe Ser Numérico ", "Atención")
-                toastr.options = {
-                    "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false, "positionClass": "toast-top-center", "preventDuplicates": false,
-                    "onclick": null, "showDuration": "400", "hideDuration": "1000", "timeOut": "5000",
-                    "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear", "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                };
+                alertify.error(" Dato Debe Ser Numérico ", "Atención");
                 $("#CantHrsExt").val("");
                 $("#CantHrsExt").focus();
                 return false;
@@ -222,13 +191,7 @@ $(document).ready(function () {
                     $("#PorcCom").focus();
                 }
                 else {
-                    toastr["error"](" No Puede Haber Más de 40 Horas Extras Al Mes ", "Atención")
-                    toastr.options = {
-                        "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false, "positionClass": "toast-top-center", "preventDuplicates": false,
-                        "onclick": null, "showDuration": "400", "hideDuration": "1000", "timeOut": "5000",
-                        "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear", "showMethod": "fadeIn",
-                        "hideMethod": "fadeOut"
-                    };
+                    alertify.error(" No Puede Haber Más de 40 Horas Extras Al Mes ", "Atención");
                     $("#CantHrsExt").val("")
                     $("#CantHrsExt").focus();
                 }
@@ -242,13 +205,7 @@ $(document).ready(function () {
         if (keycode == 13) {
             PorcCom = $("#PorcCom").val();
             if (isNaN(PorcCom) || (PorcCom == "")) {
-                toastr["error"](" Dato Debe Ser Numérico ", "Atención")
-                toastr.options = {
-                    "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false, "positionClass": "toast-top-center", "preventDuplicates": false,
-                    "onclick": null, "showDuration": "400", "hideDuration": "1000", "timeOut": "5000",
-                    "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear", "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                };
+                alertify.error(" Dato Debe Ser Numérico ", "Atención");
                 $("#PorcCom").val("");
                 $("#PorcCom").focus();
                 return false;
@@ -268,13 +225,7 @@ $(document).ready(function () {
         if (keycode == 13) {
             Bonos = $("#Bonos").val();
             if (isNaN(Bonos) || (Bonos == "")) {
-                toastr["error"](" Dato Debe Ser Numérico ", "Atención")
-                toastr.options = {
-                    "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false, "positionClass": "toast-top-center", "preventDuplicates": false,
-                    "onclick": null, "showDuration": "400", "hideDuration": "1000", "timeOut": "5000",
-                    "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear", "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                };
+                alertify.error(" Dato Debe Ser Numérico ", "Atención");
                 $("#Bonos").val("");
                 $("#Bonos").focus();
                 return false;
@@ -333,13 +284,7 @@ $(document).ready(function () {
         if (keycode == 13) {
             ValMovi = $("#ValMov").val();
             if (isNaN(ValMovi) || (ValMovi == "")) {
-                toastr["error"](" Dato Debe Ser Numérico ", "Atención")
-                toastr.options = {
-                    "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false, "positionClass": "toast-top-center", "preventDuplicates": false,
-                    "onclick": null, "showDuration": "400", "hideDuration": "1000", "timeOut": "5000",
-                    "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear", "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                };
+                alertify.error(" Dato Debe Ser Numérico ", "Atención");
                 $("#ValMov").val("");
                 $("#ValMov").focus();
                 return false;
@@ -356,13 +301,7 @@ $(document).ready(function () {
         if (keycode == 13) {
             ValColac = $("#ValCola").val();
             if (isNaN(ValColac) || (ValCola == "")) {
-                toastr["error"](" Dato Debe Ser Numérico ", "Atención")
-                toastr.options = {
-                    "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false, "positionClass": "toast-top-center", "preventDuplicates": false,
-                    "onclick": null, "showDuration": "400", "hideDuration": "1000", "timeOut": "5000",
-                    "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear", "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                };
+                alertify.error(" Dato Debe Ser Numérico ", "Atención");
                 $("#ValCola").val("");
                 $("#ValCola").focus();
                 return false;
@@ -379,13 +318,7 @@ $(document).ready(function () {
         if (keycode == 13) {
             ValViat = $("#ValViatico").val();
             if (isNaN(ValViat) || ValViat == "") {
-                toastr["error"](" Dato Debe Ser Numérico ", "Atención")
-                toastr.options = {
-                    "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false, "positionClass": "toast-top-center", "preventDuplicates": false,
-                    "onclick": null, "showDuration": "400", "hideDuration": "1000", "timeOut": "5000",
-                    "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear", "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                };
+                alertify.error(" Dato Debe Ser Numérico ", "Atención");
                 $("#ValViatico").val("");
                 $("#ValViatico").focus();
                 return false;
@@ -558,22 +491,10 @@ $(document).ready(function () {
         event.preventDefault();
         $.post(url, data)
             .done(function (data) {
-                toastr["success"](" Datos Grabados ", "Atención")
-                toastr.options = {
-                    "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false, "positionClass": "toast-top-center", "preventDuplicates": false,
-                    "onclick": null, "showDuration": "400", "hideDuration": "1000", "timeOut": "5000",
-                    "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear", "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                };
+                alertify.success(" Datos Grabados ", "Atención");
             })
             .fail(function (data) {
-                toastr["error"](" Error De Grabación, Verifique!!! ", "Error")
-                toastr.options = {
-                    "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false,
-                    "positionClass": "toast-top-center", "preventDuplicates": false, "onclick": null, "showDuration": "400",
-                    "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing",
-                    "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"
-                }
+                alertify.error(" Error De Grabación, Verifique!!! ", "Error")
             })
             .always(function (data) {
                 $("#ListTipRem").val("Seleccione Tipo Remuneración");
@@ -673,13 +594,7 @@ $(document).ready(function () {
         var url = "LiqSueld/ImpLiqSuel";
         $.post(url, data)
             .done(function (data) {
-                toastr["success"](" Liquidación Lista ", "Atención")
-                toastr.options = {
-                    "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false, "positionClass": "toast-top-center", "preventDuplicates": false,
-                    "onclick": null, "showDuration": "400", "hideDuration": "1000", "timeOut": "5000",
-                    "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear", "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                };
+                alertify.success(" Liquidación Lista ", "Atención");
                 $("#ModLiqSueld").modal("hide");
                 window.location.reload(true);
             })
@@ -695,13 +610,7 @@ $(document).ready(function () {
         var url = "LiqSueld/ImpLiqSuelXLS";
         $.post(url, data)
             .done(function (data) {
-                toastr["success"](" Liquidación Lista ", "Atención")
-                toastr.options = {
-                    "closeButton": false, "debug": false, "newestOnTop": false, "progressBar": false, "positionClass": "toast-top-center", "preventDuplicates": false,
-                    "onclick": null, "showDuration": "400", "hideDuration": "1000", "timeOut": "5000",
-                    "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear", "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                };
+                alertify.success(" Liquidación Lista ", "Atención");
                 $("#ModLiqSueld").modal("hide");
                 window.location.reload(true);
             })
@@ -737,3 +646,78 @@ $(function () {
         row.find(".link").hide();
     }
 });   
+
+
+alertify.defaults = {
+    // dialogs defaults
+    autoReset: true,
+    basic: false,
+    closable: true,
+    closableByDimmer: true,
+    invokeOnCloseOff: false,
+    frameless: false,
+    defaultFocusOff: false,
+    maintainFocus: true, // <== global default not per instance, applies to all dialogs
+    maximizable: true,
+    modal: true,
+    movable: true,
+    moveBounded: false,
+    overflow: true,
+    padding: true,
+    pinnable: true,
+    pinned: true,
+    preventBodyShift: false, // <== global default not per instance, applies to all dialogs
+    resizable: true,
+    startMaximized: false,
+    transition: 'pulse',
+    transitionOff: false,
+    tabbable: 'button:not(:disabled):not(.ajs-reset),[href]:not(:disabled):not(.ajs-reset),input:not(:disabled):not(.ajs-reset),select:not(:disabled):not(.ajs-reset),textarea:not(:disabled):not(.ajs-reset),[tabindex]:not([tabindex^="-"]):not(:disabled):not(.ajs-reset)',  // <== global default not per instance, applies to all dialogs
+    // notifier defaults
+    notifier: {
+        // auto-dismiss wait time (in seconds)  
+        delay: 5,
+        // default position
+        position: 'top-center',
+        // adds a close button to notifier messages
+        closeButton: true,
+        // provides the ability to rename notifier classes
+        classes: {
+            base: 'alertify-notifier',
+            prefix: 'ajs-',
+            message: 'ajs-message',
+            top: 'ajs-top',
+            right: 'ajs-right',
+            bottom: 'ajs-bottom',
+            left: 'ajs-left',
+            center: 'ajs-center',
+            visible: 'ajs-visible',
+            hidden: 'ajs-hidden',
+            close: 'ajs-close'
+        }
+    },
+    // language resources 
+    glossary: {
+        // dialogs default title
+        title: 'Atención',
+        // ok button text
+        ok: 'OK',
+        // cancel button text
+        cancel: 'Cancel'
+    },
+    // theme settings
+    theme: {
+        // class name attached to prompt dialog input textbox.
+        input: 'ajs-input',
+        // class name attached to ok button
+        ok: 'ajs-ok',
+        // class name attached to cancel button 
+        cancel: 'ajs-cancel'
+    },
+    // global hooks
+    hooks: {
+        // invoked before initializing any dialog
+        preinit: function (instance) { },
+        // invoked after initializing any dialog
+        postinit: function (instance) { },
+    },
+};

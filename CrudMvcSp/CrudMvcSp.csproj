@@ -245,6 +245,9 @@
     <Compile Include="Models\Sp_Mues_Cuidades_Result.cs">
       <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Sp_Mues_Deptos_Result.cs">
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SP_Mues_Empleado_PDF_Result.cs">
       <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
@@ -312,6 +315,9 @@
       <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sp_Sel_Seg_Cesantia_Id_Result.cs">
+      <DependentUpon>ModelEmpl.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>ModelEmpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TablImpDiario.cs">
@@ -475,13 +481,6 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
-    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
-    <None Include="Scripts\jquery-3.5.1.intellisense.js" />
-    <Content Include="Scripts\quicksearch.js" />
-    <Content Include="Scripts\Validaciones\Validaciones.js" />
-    <Content Include="webfonts\fa-brands-400.svg" />
-    <Content Include="webfonts\fa-regular-400.svg" />
-    <Content Include="webfonts\fa-solid-900.svg" />
     <EntityDeploy Include="Models\ModelEmpl.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ModelEmpl.Designer.cs</LastGenOutput>
@@ -489,6 +488,13 @@
     <Content Include="Models\ModelEmpl.edmx.diagram">
       <DependentUpon>ModelEmpl.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <None Include="Scripts\jquery-3.5.1.intellisense.js" />
+    <Content Include="Scripts\quicksearch.js" />
+    <Content Include="Scripts\Validaciones\Validaciones.js" />
+    <Content Include="webfonts\fa-brands-400.svg" />
+    <Content Include="webfonts\fa-regular-400.svg" />
+    <Content Include="webfonts\fa-solid-900.svg" />
     <None Include="Scripts\jquery-1.4.4-vsdoc.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />

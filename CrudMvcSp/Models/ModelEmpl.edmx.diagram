@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b3272d30fd774bb48bddb33736b5b93a" Name="Diagram1">
+      <Diagram DiagramId="2af5473855d144929e4aa193b62bbb15" Name="Diagram1">
         <EntityTypeShape EntityType="EmpleadosModel.Afp" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="EmpleadosModel.Carg_Familiar" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
         <EntityTypeShape EntityType="EmpleadosModel.Cargas_Familiares" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
@@ -14,17 +14,18 @@
         <EntityTypeShape EntityType="EmpleadosModel.Empleados" Width="1.5" PointX="6" PointY="4.375" IsExpanded="true" />
         <EntityTypeShape EntityType="EmpleadosModel.Empresa" Width="1.5" PointX="3.75" PointY="16" IsExpanded="true" />
         <EntityTypeShape EntityType="EmpleadosModel.Liquidacion_Sueldo" Width="1.5" PointX="11" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="EmpleadosModel.Login" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmpleadosModel.Login" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="EmpleadosModel.Nacionalidad" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
         <EntityTypeShape EntityType="EmpleadosModel.Provincia" Width="1.5" PointX="1.5" PointY="14.375" IsExpanded="true" />
         <EntityTypeShape EntityType="EmpleadosModel.Region" Width="1.5" PointX="1.5" PointY="17.625" IsExpanded="true" />
         <EntityTypeShape EntityType="EmpleadosModel.Salud" Width="1.5" PointX="3.75" PointY="19.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="EmpleadosModel.Seg_Cesantia" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmpleadosModel.Seg_Cesantia" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="EmpleadosModel.Sexo" Width="1.5" PointX="3.75" PointY="22.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="EmpleadosModel.TablImpDiario" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EmpleadosModel.TablImpMensual" Width="1.5" PointX="8.75" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EmpleadosModel.TablImpQuincenal" Width="1.5" PointX="10.75" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EmpleadosModel.TablImpSemanal" Width="1.5" PointX="8.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmpleadosModel.sysdiagrams" Width="1.5" PointX="8.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmpleadosModel.TablImpDiario" Width="1.5" PointX="10.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmpleadosModel.TablImpMensual" Width="1.5" PointX="8.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmpleadosModel.TablImpQuincenal" Width="1.5" PointX="12.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmpleadosModel.TablImpSemanal" Width="1.5" PointX="10.75" PointY="12.75" IsExpanded="true" />
         <EntityTypeShape EntityType="EmpleadosModel.Tipo_Remuneracion" Width="1.5" PointX="8.75" PointY="4.125" IsExpanded="true" />
         <AssociationConnector Association="EmpleadosModel.FK_Empleados_Afp" ManuallyRouted="false" />
         <AssociationConnector Association="EmpleadosModel.FK_Carg_Familiar_Comuna" ManuallyRouted="false" />

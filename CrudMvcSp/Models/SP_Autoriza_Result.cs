@@ -13,7 +13,7 @@ namespace CrudMvcSp.Models
     
     public partial class SP_Autoriza_Result
     {
-        public string User_Id { get; set; }
-        public string PassWord { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
     }
 }

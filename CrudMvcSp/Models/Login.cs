@@ -14,7 +14,10 @@ namespace CrudMvcSp.Models
     
     public partial class Login
     {
-        public string User_Id { get; set; }
-        public string PassWord { get; set; }
+        public int Id { get; set; }
+        public string Username { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public string ConfirPassword { get; set; }
     }
 }

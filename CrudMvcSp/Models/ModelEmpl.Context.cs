@@ -43,6 +43,7 @@ namespace CrudMvcSp.Models
         public virtual DbSet<Salud> Salud { get; set; }
         public virtual DbSet<Seg_Cesantia> Seg_Cesantia { get; set; }
         public virtual DbSet<Sexo> Sexo { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TablImpDiario> TablImpDiario { get; set; }
         public virtual DbSet<TablImpMensual> TablImpMensual { get; set; }
         public virtual DbSet<TablImpQuincenal> TablImpQuincenal { get; set; }
@@ -70,17 +71,17 @@ namespace CrudMvcSp.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_alterdiagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
         }
     
-        public virtual ObjectResult<SP_Autoriza_Result> SP_Autoriza(string user_Id, string clave)
+        public virtual ObjectResult<SP_Autoriza_Result> SP_Autoriza(string username, string clave)
         {
-            var user_IdParameter = user_Id != null ?
-                new ObjectParameter("User_Id", user_Id) :
-                new ObjectParameter("User_Id", typeof(string));
+            var usernameParameter = username != null ?
+                new ObjectParameter("Username", username) :
+                new ObjectParameter("Username", typeof(string));
     
             var claveParameter = clave != null ?
                 new ObjectParameter("clave", clave) :
                 new ObjectParameter("clave", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_Autoriza_Result>("SP_Autoriza", user_IdParameter, claveParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_Autoriza_Result>("SP_Autoriza", usernameParameter, claveParameter);
         }
     
         public virtual ObjectResult<SP_BusRangImpxSueldo_Result> SP_BusRangImpxSueldo(Nullable<decimal> sb)
@@ -610,6 +611,11 @@ namespace CrudMvcSp.Models
         public virtual ObjectResult<Sp_Mues_Cuidades_Result> Sp_Mues_Cuidades()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Sp_Mues_Cuidades_Result>("Sp_Mues_Cuidades");
+        }
+    
+        public virtual ObjectResult<Sp_Mues_Deptos_Result> Sp_Mues_Deptos()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Sp_Mues_Deptos_Result>("Sp_Mues_Deptos");
         }
     
         public virtual ObjectResult<SP_Mues_Empleado_Result> SP_Mues_Empleado()

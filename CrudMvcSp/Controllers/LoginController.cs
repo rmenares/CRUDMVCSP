@@ -19,10 +19,10 @@ namespace CrudMvcSp.Controllers
         [HttpPost]
         public ActionResult Index(Login login)
         {
-            var Existe = pass.SP_Autoriza(login.User_Id, login.PassWord).FirstOrDefault();
+            var Existe = pass.SP_Autoriza(login.Username, login.Password).FirstOrDefault();
             if (Existe != null)
             {
-                Session["User"] = login.User_Id;
+                Session["User"] = login.Username;
                 return RedirectToAction("Index", "Home");
             }
             else

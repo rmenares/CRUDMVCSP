@@ -14,6 +14,9 @@
 
 @Styles.Render("~/Content/Alertify")
 
+
+<link href="~/Content/Aplicacion/Login/Login.css" rel="stylesheet" />
+
 <!DOCTYPE html>
 
 <body>
@@ -24,10 +27,10 @@
             <form id="formLogin" method="post">
                 <table align="center" id="Formulario" border="0">
                     <tr>
-                      <td><i class="fa fa-user"></i>@Html.EditorFor(Model => Model.Username, new { @class = "form-input", htmlAttributes = new { placeholder = "Nombre de Usuario" } })</td>
+                        <td><i class="fa fa-user"></i>@Html.EditorFor(Model => Model.Username, new { @class = "form-input", htmlAttributes = new { placeholder = "Nombre de Usuario" } })</td>
                     </tr>
                     <tr>
-                      <td><i class="fa fa-unlock-alt"></i>@Html.EditorFor(Model => Model.Password, new { @class = "form-input", htmlAttributes = new { placeholder = "Password" } })</td>
+                        <td><i class="fa fa-unlock-alt"></i>@Html.EditorFor(Model => Model.Password, new { @class = "form-input", htmlAttributes = new { placeholder = "Password" } })</td>
                     </tr>
                     <tr></tr>
                     <tr></tr>
@@ -43,6 +46,6 @@
 </body>
 
 @section scripts{
-    <link href="~/Content/Aplicacion/Login/Login.css" rel="stylesheet" />
+
     <script src="~/Scripts/Aplicacion/Login/Login.js"></script>
 }

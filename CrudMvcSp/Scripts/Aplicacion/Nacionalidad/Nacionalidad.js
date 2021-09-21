@@ -11,7 +11,7 @@ $(document).ready(function () {
 
     $("#NomNacion").on('keyup', function (event) {
         event.preventDefault();
-        var keycode = e.keyCode || e.which;
+        var keycode = event.keyCode || event.which;
         if (keycode == 13) {
             NomNac = $("#NomNacion").val();
             if (NomNac == "") {

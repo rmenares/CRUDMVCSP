@@ -1,5 +1,6 @@
-﻿body {
-    background-color: #c1c2a8;
+﻿html, body {
+    height: 100%;
+    background-color: #FFB300;
 }
 
 .Titulo {

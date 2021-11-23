@@ -11,7 +11,8 @@ namespace CrudMvcSp.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Afp
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,9 +20,16 @@ namespace CrudMvcSp.Models
         {
             this.Empleados = new HashSet<Empleados>();
         }
-    
+
+        [Key]
         public int Cod_Afp { get; set; }
+
+        [Display(Name="Nombre_AFP")]
+        [Required(ErrorMessage ="Dato Obligatorio")]
         public string Nom_Afp { get; set; }
+
+        [Display(Name = "Porcentaje")]
+        [Required(ErrorMessage = "Dato Obligatorio")]
         public Nullable<decimal> Porc_Desc { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

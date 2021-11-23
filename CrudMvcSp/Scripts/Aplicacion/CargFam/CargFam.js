@@ -36,134 +36,208 @@ $(document).ready(function () {
         });
     });
     
-    //verifica si el empleado esta en la tabla de empleados
-    $("#RutEmp").on('keyup', function (e) {
-        //permite capturar el valor de la tecla pulsada
-        var keycode = e.keyCode || e.which;
-        //verifica si el codigo de la tecla es ENTER
-        if (keycode == 13) {
-            RutEmp = $("#RutEmp").val();
-            if (RutEmp == "") {
-                alertify.error("El Rut Empleado NO Puede Estar Vacio!", "Verifique");
-                $("#RutEmp").focus();
-            }
-            else {
-                var data = { Rut_Empleado: RutEmp };
-                var url = "/CargFam/BuscEmp";
-                $.post(url, data)
-                    .done(function (data) {
-                        if (data == 1) { $("#RutCargFam").focus(); }
-                        else {
-                            alertify.error(" Empleado Incorrecto, Verifique ", "Atención");
-                            $("#RutEmp").val("");
-                            $("#RutEmp").focus();
-                        }
-                    });
-            }
-        }
-    });
+    ////verifica si el empleado esta en la tabla de empleados
+    //$("#RutEmp").on('keyup', function (event) {
+    //    //permite capturar el valor de la tecla pulsada
+    //    var keycode = event.keyCode || event.which;
+    //    //verifica si el codigo de la tecla es ENTER
+    //    if (keycode == 13) {
+    //        RutEmp = $("#RutEmp").val();
+    //        if (RutEmp == "") {
+    //            alertify.error("El Rut Empleado NO Puede Estar Vacio!", "Verifique");
+    //            $("#RutEmp").focus();
+    //        }
+    //        else {
+    //            var data = { Rut_Empleado: RutEmp };
+    //            var url = "/CargFam/BuscEmp";
+    //            $.post(url, data)
+    //                .done(function (data) {
+    //                    if (data == 1) { $("#RutCargFam").focus(); }
+    //                    else {
+    //                        alertify.error(" Empleado Incorrecto, Verifique ", "Atención");
+    //                        $("#RutEmp").val("");
+    //                        $("#RutEmp").focus();
+    //                    }
+    //                });
+    //        }
+    //    }
+    //});
     
-    $("#RutCargFam").on('keyup', function (e) {
-        var keycode = e.keyCode || e.which;
-        if (keycode == 13) {
-            RutCgFm = $("#RutCargFam").val();
-            if (RutCgFm == "") {
-                alertify.error("El Rut NO Puede Estar Vacio!", "Verifique");
-                $("#RutCargFam").focus();
-            }
-            else {  $("#NomCargFam").focus(); }
-        }
-    })
+    //$("#RutCargFam").on('keyup', function (event) {
+    //    var keycode = event.keyCode || event.which;
+    //    if (keycode == 13) {
+    //        RutCgFm = $("#RutCargFam").val();
+    //        if (RutCgFm == "") {
+    //            alertify.error("El Rut NO Puede Estar Vacio!", "Verifique");
+    //            $("#RutCargFam").focus();
+    //        }
+    //        else {  $("#NomCargFam").focus(); }
+    //    }
+    //})
 
-    $("#NomCargFam").on('keyup', function (e) {
-        var keycode = e.keyCode || e.which;
-        if (keycode == 13) {
-            NomCgFm = $("#NomCargFam").val();
-            if (NomCgFm == "") {
-                alertify.error("El Nombre NO Puede Estar Vacio!", "Verifique");
-                $("#NomCargFam").focus();
-            }
-            else {
-                $("#ApPatCargFam").focus();
-            }
-        }
-    })
+    //$("#NomCargFam").on('keyup', function (event) {
+    //    var keycode = event.keyCode || event.which;
+    //    if (keycode == 13) {
+    //        NomCgFm = $("#NomCargFam").val();
+    //        if (NomCgFm == "") {
+    //            alertify.error("El Nombre NO Puede Estar Vacio!", "Verifique");
+    //            $("#NomCargFam").focus();
+    //        }
+    //        else {
+    //            $("#ApPatCargFam").focus();
+    //        }
+    //    }
+    //})
     
-    $("#ApPatCargFam").on('keyup', function (e) {
-        var keycode = e.keyCode || e.which;
-        if (keycode == 13) {
-            ApPatCgFm = $("#ApPatCargFam").val();
-            if (NomCgFm == "") {
-                if (ApPatCgFm == "") {
-                    alertify.error("El Apellido NO Puede Estar Vacio!", "Verifique");
-                    $("#ApPatCargFam").focus();
-                }
-                else {
-                    $("#ApMatCargFam").focus();
-                }
-            }
-        }
-    })
+    //$("#ApPatCargFam").on('keyup', function (event) {
+    //    var keycode = event.keyCode || event.which;
+    //    if (keycode == 13) {
+    //        ApPatCgFm = $("#ApPatCargFam").val();
+    //        if (NomCgFm == "") {
+    //            if (ApPatCgFm == "") {
+    //                alertify.error("El Apellido NO Puede Estar Vacio!", "Verifique");
+    //                $("#ApPatCargFam").focus();
+    //            }
+    //            else {
+    //                $("#ApMatCargFam").focus();
+    //            }
+    //        }
+    //    }
+    //})
     
-    $("#ApMatCargFam").on('keyup', function (e) {
-        var keycode = e.keyCode || e.which;
-        if (keycode == 13) { 
-            ApMatCgFm = $("#ApMatCargFam").val();
-            if (ApMatCgFm == "") {
-                alertify.error("El Apellido Materno NO Puede Estar Vacio!", "Verifique");
-                $("#ApMatCargFam").focus();
-            }
-            else {
-                $("#FonoMovCargFam").focus();
-            }
-        }
-    })
+//$("#ApMatCargFam").on('keyup', function (event) {
+//    var keycode = event.keyCode || event.which;
+//        if (keycode == 13) { 
+//            ApMatCgFm = $("#ApMatCargFam").val();
+//            if (ApMatCgFm == "") {
+//                alertify.error("El Apellido Materno NO Puede Estar Vacio!", "Verifique");
+//                $("#ApMatCargFam").focus();
+//            }
+//            else {
+//                $("#FonoMovCargFam").focus();
+//            }
+//        }
+//    })
 
-    $("#FonoMovCargFam").on('keyup', function (e) {
-        var keycode = e.keyCode || e.which;
-        if (keycode == 13) {
-            FonoMovilCgFm = $("#FonoMovCargFam").val();
-            if (FonoMovilCgFm == "") {
-                alertify.error("El Fono Movil NO Puede Estar Vacio!", "Verifique");
-                $("#FonoMovCargFam").focus();
-            }
-            else {
-                $("#FonoFijoCargFam").focus();
-            }
-        }
-    })
+//$("#FonoMovCargFam").on('keyup', function (event) {
+//    var keycode = event.keyCode || event.which;
+//        if (keycode == 13) {
+//            FonoMovilCgFm = $("#FonoMovCargFam").val();
+//            if (FonoMovilCgFm == "") {
+//                alertify.error("El Fono Movil NO Puede Estar Vacio!", "Verifique");
+//                $("#FonoMovCargFam").focus();
+//            }
+//            else {
+//                $("#FonoFijoCargFam").focus();
+//            }
+//        }
+//    })
 
-    $("#FonoFijoCargFam").on('keyup', function (e) {
-        var keycode = e.keyCode || e.which;
-        if (keycode == 13) {
-            FonoFijCgFm = $("#FonoFijoCargFam").val();
-            if (FonoFijCgFm == "") {
-                alertify.error("El Fono Fijo NO Puede Estar Vacio!", "Verifique");
-                $("#FonoFijoCargFam").focus();
-            }
-            else {
-                $("#FechNacGarFam").focus();
-            }
-        }
-    })
+//   $("#FonoFijoCargFam").on('keyup', function (event) {
+//    var keycode = event.keyCode || event.which;
+//        if (keycode == 13) {
+//            FonoFijCgFm = $("#FonoFijoCargFam").val();
+//            if (FonoFijCgFm == "") {
+//                alertify.error("El Fono Fijo NO Puede Estar Vacio!", "Verifique");
+//                $("#FonoFijoCargFam").focus();
+//            }
+//            else {
+//                $("#FechNacGarFam").focus();
+//            }
+//        }
+//    })
 
-    $("#FechNacGarFam").on('keyup', function (e) {
-        var keycode = e.keyCode || e.which;
-        if (keycode == 13) {
-            FechNacCgFm = $("#FechNacGarFam").val();
-            if (FechNacCgFm == "") {
-                alertify.error("La Fecha de Nacimiento NO Puede Estar Vacia!", "Verifique");
-                $("#FechNacGarFam").focus();
-            }
-            else {
-                $("#SexoSelec").focus();
-            }
-        }
-    })
+//$("#FechNacGarFam").on('keyup', function (event) {
+//    var keycode = event.keyCode || event.which;
+//        if (keycode == 13) {
+//            FechNacCgFm = $("#FechNacGarFam").val();
+//            if (FechNacCgFm == "") {
+//                alertify.error("La Fecha de Nacimiento NO Puede Estar Vacia!", "Verifique");
+//                $("#FechNacGarFam").focus();
+//            }
+//            else {
+//                $("#SexoSelec").focus();
+//            }
+//        }
+//    })
+
+ 
+
+    //$("#EmaiCarFam").on('keyup', function (event) {
+    //    var keycode = event.keyCode || event.which;
+    //    if ((keycode == 13)) {
+    //        EmailCgFm = $("#EmaiCarFam").val();
+    //        if (EmailCgFm == " ") {
+    //            alertify.error("El Email NO Puede Estar Vacio o es Incorrecto!", "Verifique");
+    //            $("#EmaiCarFam").focus();
+    //        }
+    //        else {
+    //             $("#CallPjeCargFam").focus();
+    //        }
+    //    }
+    //})
+
+   //$("#CallPjeCargFam").on('keyup', function (event) {
+   //    var keycode = event.keyCode || event.which;
+   //     if (keycode == 13) {
+   //         CallePjeCgFm = $("#CallPjeCargFam").val();
+   //         if (CallePjeCgFm == "") {
+   //             alertify.error("La Calle/Pje NO Puede Estar Vacio!", "Verifique");
+   //             $("#CallPjeCargFam").focus();
+   //         }
+   //         else {
+   //             $("#NumCasaCargFam").focus();
+   //         }
+   //     }
+   // })
+
+    //$("#NumCasaCargFam").on('keyup', function (event) {
+    //    var keycode = event.keyCode || event.which;
+    //    if (keycode == 13) {
+    //        NumCasaCgFm = $("#NumCasaCargFam").val();
+    //        if (NumCasaCgFm == "") {
+    //            alertify.error("El Número NO Puede Estar Vacio!", "Verifique");
+    //            $("#NumCasaCargFam").focus();
+    //        }
+    //        else{
+    //            $("#Villa_PoblCargFam").focus();          
+    //        }
+    //    }
+    //})
+
+    //$("#Villa_PoblCargFam").on('keyup', function (event) {
+    //    var keycode = event.keyCode || event.which;
+    //    if (keycode == 13) {
+    //        VilPoblCgFm = $("#Villa_PoblCargFam").val();
+    //        if (VilPoblCgFm == "") {
+    //            alertify.error("El Dato NO Puede Estar Vacio!", "Verifique");
+    //            $("#Villa_PoblCargFam").focus();
+    //        }
+    //        else{
+    //            $("#ComuCargFam").focus();
+    //        }
+    //    }
+    //})
+       
+
+
+    //$("#DescrCargFam").on('keyup', function (event) {
+    //    var keycode = event.keyCode || event.which;
+    //    if (keycode == 13) {
+    //        DescrCgFm = $("#DescrCargFam").val();
+    //        if (DescrCgFm == "") {
+    //            alertify.error("La Descripción NO Puede Estar Vacia!", "Verifique");
+    //            $("#DescrCargFam").focus();
+    //        }
+    //        else {
+    //            $("#BtnGrabEmp").focus();
+    //        }
+    //    }
+    //})
 
     //captura el Codigo de dropdownList Sexo Seleccionado
-    $("#SexoSelec").change('click', function (e) {
-        e.preventDefault();
+    $("#SexoSelec").change('click', function (event) {
+        event.preventDefault();
         SexoSelec = $("#SexoSelec").val();
         if (SexoSelec == "") {
             alertify.error("El Sexo NO Puede Estar Vacio!", "Verifique");
@@ -174,85 +248,6 @@ $(document).ready(function () {
         }        
     })
 
-    $("#EmaiCarFam").on('keyup', function (e) {
-        var keycode = e.keyCode || e.which;
-        if ((keycode == 13)) {
-            EmailCgFm = $("#EmaiCarFam").val();
-            if (EmailCgFm == " ") {
-                alertify.error("El Email NO Puede Estar Vacio o es Incorrecto!", "Verifique");
-                $("#EmaiCarFam").focus();
-            }
-            else {
-                 $("#CallPjeCargFam").focus();
-            }
-        }
-    })
-
-    $("#CallPjeCargFam").on('keyup', function (e) {
-        var keycode = e.keyCode || e.which;
-        if (keycode == 13) {
-            CallePjeCgFm = $("#CallPjeCargFam").val();
-            if (CallePjeCgFm == "") {
-                alertify.error("La Calle/Pje NO Puede Estar Vacio!", "Verifique");
-                $("#CallPjeCargFam").focus();
-            }
-            else {
-                $("#NumCasaCargFam").focus();
-            }
-        }
-    })
-
-    $("#NumCasaCargFam").on('keyup', function (e) {
-        var keycode = e.keyCode || e.which;
-        if (keycode == 13) {
-            NumCasaCgFm = $("#NumCasaCargFam").val();
-            if (NumCasaCgFm == "") {
-                alertify.error("El Número NO Puede Estar Vacio!", "Verifique");
-                $("#NumCasaCargFam").focus();
-            }
-            else{
-                $("#Villa_PoblCargFam").focus();          
-            }
-        }
-    })
-
-    $("#Villa_PoblCargFam").on('keyup', function (e) {
-        var keycode = e.keyCode || e.which;
-        if (keycode == 13) {
-            VilPoblCgFm = $("#Villa_PoblCargFam").val();
-            if (VilPoblCgFm == "") {
-                alertify.error("El Dato NO Puede Estar Vacio!", "Verifique");
-                $("#Villa_PoblCargFam").focus();
-            }
-            else{
-                $("#ComuCargFam").focus();
-            }
-        }
-    })
-
-    //captura el valor de dropdownList Comuna y entrega la ciudad
-    $("#ComuCargFam").change('click', function (event) {
-        event.preventDefault();
-        type: 'Post';
-        ComuCgFm = $("#ComuCargFam").val();
-        if (ComuCgFm == "")
-        {
-            alertify.error("La Comuna NO Puede Estar Vacio!", "Verifique");
-            $("#ComuCargFam").focus();
-        }
-        else {
-            var data = { Comuna_Id: ComuCgFm };
-            var url = "/CargFam/CargCiu";
-            $.post(url, data)
-                .done(function (data) {
-                    var DatosDev = data[0];
-                    CodCiud = DatosDev["Provincia_Id"]
-                    $("#NomCiuCargFam").val(DatosDev["Provincia_Nombre"])
-                })
-            CodCiCgFm = CodCiud;       
-            $("#NacioSelec").focus();
-        }        
-    })
 
     //captura el Codigo de dropdownList Nacionalidad Seleccionado
     $("#NacioSelec").change('click', function (event) {
@@ -267,22 +262,48 @@ $(document).ready(function () {
         }
     })
 
-    $("#DescrCargFam").on('keyup', function (e) {
-        var keycode = e.keyCode || e.which;
-        if (keycode == 13) {
-            DescrCgFm = $("#DescrCargFam").val();
-            if (DescrCgFm == "") {
-                alertify.error("La Descripción NO Puede Estar Vacia!", "Verifique");
-                $("#DescrCargFam").focus();
-            }
-            else {
-                $("#BtnGrabEmp").focus();
-            }
+    //captura el valor de dropdownList Comuna y entrega la ciudad
+    $("#ComuCargFam").change('click', function (event) {
+        event.preventDefault();
+        type: 'Post';
+        ComuCgFm = $("#ComuCargFam").val();
+        if (ComuCgFm == "") {
+            alertify.error("La Comuna NO Puede Estar Vacio!", "Verifique");
+            $("#ComuCargFam").focus();
+        }
+        else {
+            var data = { Comuna_Id: ComuCgFm };
+            var url = "/CargFam/CargCiu";
+            $.post(url, data)
+                .done(function (data) {
+                    var DatosDev = data[0];
+                    CodCiud = DatosDev["Provincia_Id"]
+                    $("#NomCiuCargFam").val(DatosDev["Provincia_Nombre"])
+                })
+            CodCiCgFm = CodCiud;
+            $("#NacioSelec").focus();
         }
     })
 
     //Graba Carga Familiar       
     $("#BtnGrabEmp").click(function (event) {
+        RutEmp = $("#RutEmp").val();
+        RutCgFm = $("#RutCargFam").val();
+        NomCgFm = $("#NomCargFam").val();
+        ApPatCgFm = $("#ApPatCargFam").val();
+        ApMatCgFm = $("#ApMatCargFam").val();
+        SexoSelec = $("#SexoSelec").val();
+        NacioSelec = $("#NacioSelec").val();
+        FonoMovilCgFm = $("#FonoMovCargFam").val();
+        ComuCgFm = $("#ComuCargFam").val();
+        FonoFijCgFm = $("#FonoFijoCargFam").val();
+        FechNacCgFm = $("#FechNacGarFam").val();
+        EmailCgFm = $("#EmaiCarFam").val();
+        CallePjeCgFm = $("#CallPjeCargFam").val();
+        NumCasaCgFm = $("#NumCasaCargFam").val();
+        VilPoblCgFm = $("#Villa_PoblCargFam").val();
+        DescrCgFm = $("#DescrCargFam").val();
+
            var data = {
                 Rut_Benef: RutCgFm,
                 Nombre: NomCgFm,

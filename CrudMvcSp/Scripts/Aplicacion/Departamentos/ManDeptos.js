@@ -8,22 +8,20 @@ $(document).ready(function () {
     });
     //fin de carga Modal
 
-    $("#NomDep").on('keyup', function (e) {
-        var keycode = e.keyCode || e.which;
-        if (keycode == 13) {
-            var Nomdepto = $("#NomDep").val();
-            if (Nomdepto == "") {
-                alertify.error("Nombre Departamento NO Puede Estar Vacío!!!!", "Atención");
-                $("#NomDep").focus();
-            }
-            else {
-                $("#BtnGrab").focus();
-            }
-        }
-    })
+    //$("#NomDep").on('keyup', function (e) {
+    //    Nomdepto = $("#NomDep").val();
+    //    if (Nomdepto == "") {
+    //        alertify.error("Nombre Departamento NO Puede Estar Vacío!!!!", "Atención");
+    //        $("#NomDep").focus();
+    //    }
+    //    else {
+    //        $("#BtnGrab").focus();
+    //    }
+    //})
 
-    $("#BtnGrab").click(function (event) {
-       $("#BtnGrab").attr('value', 'Grabando....');
+    $("#BtnGrab").click(function (event) {   
+        $("#BtnGrab").attr('value', 'Grabando....');
+        Nomdepto = $("#NomDep").val();
        var data = { NomDepto: Nomdepto }
        var url = "/Deptos/GrabaDepto";
        event.preventDefault();

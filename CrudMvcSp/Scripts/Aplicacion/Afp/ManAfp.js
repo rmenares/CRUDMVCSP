@@ -9,40 +9,35 @@ $(document).ready(function () {
         $("#ModAgrAFP").modal("show");
     });
    //fin de carga Modal
-    
-    $("#NomAfp").on('keyup', function (e) {
-        var keycode = e.keyCode || e.which;
-        //verifica si el codigo de la tecla es ENTER
-        if ((keycode == 13)) {
-            nomafp = $("#NomAfp").val();
-            if (nomafp == "") {
-                alertify.error("Nombre AFP NO Puede Estar Vacío!!!!", "Atención");
-                $("#NomAfp").focus();
-            }
-            else {
-                $("#PorcCotiz").focus();
-            }
-        }
-    })
 
-    $("#PorcCotiz").on('keyup', function (e) {
-        var keycode = e.keyCode || e.which;
-        //verifica si el codigo de la tecla es ENTER
-        if ((keycode == 13)) {
-            cotiAfp = $("#PorcCotiz").val();
-            if ((cotiAfp == "") || (cotiAfp == "0")) {
-                alertify.error("% Cotización NO Puede Estar Vacío o Ser Cero!!!!", "Atención");
-                $("#PorcCotiz").focus();
-            }
-            else {
-                $("#BtnGrab").focus();
-            }
-        }
-    })
-    
+
+    //$("#NomAfp").on('keyup', function () {
+    //    nomafp = $("#NomAfp").val();
+    //    if (nomafp == "") {
+    //        alertify.error("Nombre AFP NO Puede Estar Vacío!!!!", "Atención");
+    //        $("#NomAfp").focus();
+    //    }
+    //    else {
+    //        $("#PorcCotiz").focus();
+    //    }
+    //})
+
+    //$("#PorcCotiz").on('keyup', function () {
+    //    cotiAfp = $("#PorcCotiz").val();
+    //    if ((cotiAfp == "") || (cotiAfp == "0")) {
+    //        alertify.error("% Cotización NO Puede Estar Vacío o Ser Cero!!!!", "Atención");
+    //        $("#PorcCotiz").focus();
+    //    }
+    //    else {
+    //        $("#BtnGrab").focus();
+    //    }
+    //})
+
     //graba AFP
     $("#BtnGrab").click(function (event) {
-            event.preventDefault();
+        event.preventDefault();  
+        nomafp = $("#NomAfp").val();
+        cotiAfp = $("#PorcCotiz").val();
             $("#BtnGrab").attr('value', 'Grabando....');
             var data = { Nom_Afp: nomafp, Porc_Desc: cotiAfp };
             var url = "/ManAfp/Grab_AFP";
@@ -76,8 +71,8 @@ $(document).ready(function () {
         $("#ModModAFP").modal("show");
     })
     
-    $("#ModNomAFP").on('keyup', function (e) {
-        var keycode = e.keyCode || e.which;
+    $("#ModNomAFP").on('keyup', function (event) {
+        var keycode = event.keyCode || event.which;
         //verifica si el codigo de la tecla es ENTER
         if ((keycode == 13)) {
             nomafp = $("#ModNomAFP").val();
@@ -91,8 +86,8 @@ $(document).ready(function () {
         }
     })
 
-    $("#ModPorcAfp").on('keyup', function (e) {
-        var keycode = e.keyCode || e.which;
+    $("#ModPorcAfp").on('keyup', function (event) {
+        var keycode = event.keyCode || event.which;
         //verifica si el codigo de la tecla es ENTER
         if ((keycode == 13)) {
             cotiAfp = $("#ModPorcAfp").val();

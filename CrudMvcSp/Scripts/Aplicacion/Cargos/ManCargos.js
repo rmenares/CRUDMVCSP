@@ -6,11 +6,12 @@ $(document).ready(function () {
         event.preventDefault();
         $("#AgrCarg").modal("show");
     });
-    // fin modal cargos
-    
-    $("#NomCarg").on('keyup', function (e) {
-        var keycode = e.keyCode || e.which;
-        if (keycode == 13) {
+    // fin modal cargos   
+   
+
+    //Graba Cargos
+    $("#BtnGrabCarg").click(function (event) {
+  
             NomCarg = $("#NomCarg").val();
             if (NomCarg == "") {
                 alertify.error("Cargo NO Puede Estar Vacío!!!!", "Atención");
@@ -19,11 +20,7 @@ $(document).ready(function () {
             else {
                 $("#BtnGrabCarg").focus();
             }
-        }
-    })
 
-    //Graba Cargos
-    $("#BtnGrabCarg").click(function (event) {
             $("#BtnGrabCarg").attr('value', 'Grabando....');
             var data = { Descr_Cargo: NomCarg }
             var url = "/Cargos/GrabaCargos";

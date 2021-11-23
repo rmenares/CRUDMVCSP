@@ -70,13 +70,15 @@
                      //grid.Column("Nombre_AFP" , "AFP"),
                      //grid.Column("SALUD" , "Salud"),
                      grid.Column(header: "Acciones", style: "col-sm-2", format:
-@<span class="link">
-    <a class="btn btn-success btn-xs glyphicon glyphicon-pencil Edit" href="javascript:;"> Edit</a>
-    <a class="btn btn-warning btn-xs glyphicon glyphicon-print  Info" href="javascript:;"> Info</a>
-    <a class="btn btn-danger  btn-xs glyphicon glyphicon-trash  Delete" href="javascript:;"> Delete</a>
-</span>
-                          )
-                       })
+                      @<span class="link">
+                        <a class="btn btn-success btn-xs glyphicon glyphicon-pencil Edit" href="javascript:;"> Edit</a>
+                        <a class="btn btn-warning btn-xs glyphicon glyphicon-print  Info" href="javascript:;"> Info</a>
+                        <a class="btn btn-danger  btn-xs glyphicon glyphicon-trash  Delete" href="javascript:;"> Delete</a>
+                        </span>
+                    
+                    )
+              }
+           )
         </div>
         <div id="TablExport">
             <table align="center">
@@ -128,14 +130,14 @@
                             <a class="nav-link" id="DatosPer-tab" data-toggle="tab" href="#DatosPer" role="tab" aria-controls="profile" aria-selected="false">Datos Personales</a>
                         </li>
                     </ul>
-                    <div class="tab-content">
+                    <div class="tab-content container-fluid" >
                         <div class="tab-pane active" id="DatosLab" role="tabpanel" aria-labelledby="home-tab">
                             <br />
-                            <table>
+                            <table border="1">
                                 <tr>
-                                    <td align="center">Rut Empleado</td>
+                                    <td align="center" style="vertical-align:middle;">Rut Empleado</td>
                                     <td></td>
-                                    <td align="center"><input type="text" id="RutEmp" required /></td>
+                                    <td align="center"><input type="text" id="RutEmp" style="text-align:right;" required/></td>
                                     <td></td>
                                     <td align="center">@*Fotografia*@ </td>
                                     <td></td>
@@ -149,11 +151,11 @@
                                     <td></td>
                                 </tr>
                                 <tr>
-                                    <td align="center">Nombre Empleado</td>
+                                    <td align="center" style="vertical-align:middle;">Nombre Empleado</td>
                                     <td></td>
-                                    <td align="center"><input type="text" id="NomEmp" /></td>
+                                    <td align="center" style="vertical-align:middle;"><input type="text" id="NomEmp"/></td>
                                     <td></td>
-                                    <td align="center" style="margin-top:15px;">Apellido Paterno</td>
+                                    <td align="center">Apellido Paterno</td>
                                     <td></td>
                                     <td align="center"><input type="text" id="ApPatEmp" /></td>
                                     <td></td>
@@ -165,7 +167,7 @@
                                 <tr>
                                     <td align="center">Departamento</td>
                                     <td></td>
-                                    <td>
+                                    <td align="center">
                                         @Html.DropDownList("DeptSelec", ViewBag.ListDeptos as SelectList, "Seleccione Depto", new { @class = "form-control", style = "width:175px" })
                                     </td>
                                     <td></td>
@@ -191,7 +193,7 @@
                                     <td></td>
                                     <td align="center">Rut Empresa</td>
                                     <td></td>
-                                    <td>
+                                    <td align="center">
                                         @Html.DropDownList("RutEmpre", ViewBag.ListaEmpr as SelectList, "Seleccione Empresa", new { @class = "form-control", style = "width:175px" })
                                     </td>
                                     <td></td>
@@ -211,7 +213,7 @@
                                     <td></td>
                                     <td align="center">Sexo</td>
                                     <td></td>
-                                    <td>
+                                    <td align="center">
                                         @Html.DropDownList("SexoSelec", ViewBag.ListSexos as SelectList, "Seleccione Sexo", new { @class = "form-control", style = "width:175px" })
                                     </td>
                                     <td></td>
@@ -219,13 +221,13 @@
                                 <tr>
                                     <td align="center">Nacionalidad</td>
                                     <td></td>
-                                    <td>
+                                    <td align="center">
                                         @Html.DropDownList("NacioSelec", ViewBag.ListNacion as SelectList, "Seleccione Nacionalidad", new { @class = "form-control", style = "width:175px" })
                                     </td>
                                     <td></td>
-                                    <td align="center">  @*Fecha de Despido*@ </td>
+                                    <td align="center">  Fecha de Despido </td>
                                     <td></td>
-                                    <td>  @*<input type="text" id="FechDespEmp" />*@ </td>
+                                    <td align="center">  <input type="text" id="FechDespEmp" /> </td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -235,7 +237,7 @@
                         </div>
                         <div class="tab-pane" id="DatosPer" role="tabpanel" aria-labelledby="profile-tab">
                             <br />
-                            <table>
+                            <table border="1">
                                 <tr>
                                     <td align="center">Calle/Pje</td>
                                     <td></td>
@@ -243,23 +245,23 @@
                                     <td></td>
                                     <td align="center">Número</td>
                                     <td></td>
-                                    <td><input type="text" id="NumCasaEmp" /></td>
+                                    <td align="center"><input type="text" id="NumCasaEmp" /></td>
                                     <td></td>
                                     <td align="center">Villa_Población</td>
                                     <td></td>
-                                    <td><input type="text" id="Villa_PoblEmp" /></td>
+                                    <td align="center"><input type="text" id="Villa_PoblEmp" /></td>
                                     <td></td>
                                 </tr>
                                 <tr>
                                     <td align="center">Comuna</td>
                                     <td></td>
-                                    <td>
+                                    <td align="center">
                                         @Html.DropDownList("ComuEmp", ViewBag.ListComu as SelectList, "Seleccione Comuna", new { @class = "form-control", style = "width:175px" })
                                     </td>
                                     <td></td>
                                     <td align="center">Ciudad</td>
                                     <td></td>
-                                    <td><input type="text" id="NomCiu" /></td>
+                                    <td align="center"><input type="text" id="NomCiu" /></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -268,25 +270,25 @@
                                 <tr>
                                     <td align="center">Telefono</td>
                                     <td></td>
-                                    <td><input type="text" id="FonoPer" /></td>
+                                    <td align="center"><input type="text" id="FonoPer" /></td>
                                     <td></td>
                                     <td align="center">Email Personal</td>
                                     <td></td>
-                                    <td><input type="text" id="EmailPer" /></td>
+                                    <td align="center"><input type="text" id="EmailPer" /></td>
                                     <td></td>
                                     <td align="center">Fecha de Nacimiento</td>
                                     <td></td>
-                                    <td><input type="text" id="FechNacEmp" /></td>
+                                    <td align="center"><input type="text" id="FechNacEmp" /></td>
                                     <td></td>
                                 </tr>
                                 <tr>
                                     <td align="center">Nombre Persona Emergencia</td>
                                     <td></td>
-                                    <td><input type="text" id="PerEmerEmp" /></td>
+                                    <td align="center"><input type="text" id="PerEmerEmp" /></td>
                                     <td></td>
                                     <td align="center">Fono Persona Emergencia</td>
                                     <td></td>
-                                    <td><input type="text" id="FonPerEmerEmp" /></td>
+                                    <td align="center"><input type="text" id="FonPerEmerEmp" /></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>

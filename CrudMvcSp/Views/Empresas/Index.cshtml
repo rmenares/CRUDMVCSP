@@ -131,10 +131,11 @@
                             <td>Villa/Población</td>
                             <td><input type="text" id="VilpobEmp" /></td>
                         </tr>
+                        <tr><td></td></tr>
                         <tr>
                             <td>Comuna</td>
                             <td>
-                                @Html.DropDownList("ComuSelec", ViewBag.ListComu as SelectList, "Seleccione Comuna", new { @class = "form-control", style = "width:175px" })
+                                @Html.DropDownList("ComuSelec", ViewBag.ListComu as SelectList, "Seleccione Comuna", new { @class = "form-control" })
                             </td>
                         </tr>
                         <tr>

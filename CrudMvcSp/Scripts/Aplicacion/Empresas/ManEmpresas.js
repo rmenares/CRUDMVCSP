@@ -9,25 +9,21 @@ $(document).ready(function () {
         event.preventDefault();
         $("#AgrEmp").modal("show");
     });
-    // fin modal cargos   
-    
-    $("#RutEmp").on('keyup', function (e) {
-        var keycode = e.keyCode || e.which;
-        if (keycode == 13) {
+    // fin modal cargos     
+
+    //Graba Empresas
+    $("#BtnGrabEmp").click(function (event) {
+        //event.preventDefault();
+
             RutEmp = $("#RutEmp").val();
             if (RutEmp == "") {
                 alertify.error("El Rut NO Puede Estar Vacio!", "Verifique");
                 $("#RutEmp").focus();
             }
             else {
-                $("##NomEmp").focus();
-            }
-        }
-    })
+                $("#NomEmp").focus();
+            };
 
-    $("#NomEmp").on('keyup', function (e) {
-        var keycode = e.keyCode || e.which;
-        if (keycode == 13) {
             NomEmp = $("#NomEmp").val();
             if (NomEmp == "") {
                 alertify.error("El Nonbre Empresa No Puede Estar Vacio!", "Verifique");
@@ -35,13 +31,8 @@ $(document).ready(function () {
             }
             else {
                 $("#CallPjeEmp").focus();
-            }
-        }
-    })
+            };
 
-    $("#CallPjeEmp").on('keyup', function (e) {
-        var keycode = e.keyCode || e.which;
-        if (keycode == 13) {
             CallPjeAvdaEmp = $("#CallPjeEmp").val();
             if (CallPjeAvdaEmp == "") {
                 alertify.error("El Nonbre Calle No Puede Estar Vacio!", "Verifique");
@@ -50,12 +41,7 @@ $(document).ready(function () {
             else {
                 $("#NumEmp").focus();
             }
-        }
-    });
 
-    $("#NumEmp").on('keyup', function (e) {
-        var keycode = e.keyCode || e.which;
-        if (keycode == 13) {
             NumEmp = $("#NumEmp").val();
             if (NumEmp == "") {
                 alertify.error("El Número Calle No Puede Estar Vacio!", "Verifique");
@@ -63,13 +49,8 @@ $(document).ready(function () {
             }
             else {
                 $("#VilpobEmp").focus();
-            }
-        }
-    })
-    
-    $("#VilpobEmp").on('keyup', function (e) {
-        var keycode = e.keyCode || e.which;
-        if (keycode == 13) {
+            };
+
             VilPobEmp = $("#VilpobEmp").val();
             if (VilPobEmp == "") {
                 alertify.error("La Villa/Población No Puede Estar Vacio!", "Verifique");
@@ -78,12 +59,7 @@ $(document).ready(function () {
             else {
                 $("#FonoEmp").focus();
             }
-        }
-    })
 
-    $("#FonoEmp").on('keyup', function (e) {
-        var keycode = e.keyCode || e.which;
-        if (keycode == 13) {
             FonoEmp = $("#FonoEmp").val();
             if (FonoEmp == "") {
                 alertify.error("El Fono Empleado No Puede Estar Vacio!", "Verifique");
@@ -92,12 +68,7 @@ $(document).ready(function () {
             else {
                 $("#EmaEmp").focus();
             }
-        }
-    })
 
-    $("#EmaEmp").on('keyup', function (e) {
-        var keycode = e.keyCode || e.which;
-        if (keycode == 13) {
             CorreoEmp = $("#EmaEmp").val();
             if (CorreoEmp == "") {
                 alertify.error("El Email Empleado No Puede Estar Vacio!", "Verifique");
@@ -106,12 +77,7 @@ $(document).ready(function () {
             else {
                 $("#BtnGrabEmp").focus();
             }
-        }
-    })
 
-    //Graba Empresas
-    $("#BtnGrabEmp").click(function (event) {
-        event.preventDefault();
         var data = {
                 Rut_Empresa: RutEmp,
                 Nombre_Empresa: NomEmp,
@@ -319,3 +285,4 @@ alertify.defaults = {
         postinit: function (instance) { },
     },
 };
+

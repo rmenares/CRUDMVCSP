@@ -80,323 +80,304 @@ $(document).ready(function () {
     });
     // fin modal cargos
 
-    $("#RutEmp").on('keyup', function (e) {
-        var keycode = e.keyCode || e.which;
-        if (keycode == 13) {
-            RutEmp = $("#RutEmp").val();
-            if (RutEmp == "") {
-                alertify.error("El Rut NO Puede Estar Vacio!", "Verifique");
-                $("#RutEmp").focus();
-            }
-            else {
-                $("#NomEmp").focus();
-            }
-        }
-    })
+        //$("#RutEmp").on('keyup', function (e) {
+            //RutEmp = $("#RutEmp").val();
+        //    if (RutEmp == "") {
+        //        alertify.error("El Rut NO Puede Estar Vacio!", "Verifique");
+        //        $("#RutEmp").focus();
+        //    }
+        //    else {
+        //        $("#NomEmp").focus();
+        //    }
+        //})
 
-    $("#NomEmp").on('keyup', function (e) {
-        var keycode = e.keyCode || e.which;
-        if (keycode == 13) {
-            NomEmp = $("#NomEmp").val();
-            if (NomEmp == "") {
-                alertify.error("El Nombre NO Puede Estar Vacio!", "Verifique");
-                $("#NomEmp").focus();
-            }
-            else {
-                $("#ApPatEmp").focus();
-            }
-        }
-    })
+        //$("#NomEmp").on('keyup', function (e) {
+        //    NomEmp = $("#NomEmp").val();
+        //    if (NomEmp == "") {
+        //        alertify.error("El Nombre NO Puede Estar Vacio!", "Verifique");
+        //        $("#NomEmp").focus();
+        //    }
+        //    else {
+        //        $("#ApPatEmp").focus();
+        //    }
+        //})
+        
+        //$("#ApPatEmp").on('keyup', function (e) {
+        //    ApPatEmp = $("#ApPatEmp").val();
+        //    if (ApPatEmp == "") {
+        //        alertify.error("El Apellido Paterno NO Puede Estar Vacio!", "Verifique");
+        //        $("#ApPatEmp").focus();
+        //    }
+        //    else {
+        //        $("#ApMatEmp").focus();
+        //    }
+        //})
 
-    $("#ApPatEmp").on('keyup', function (e) {
-        var keycode = e.keyCode || e.which;
-        if (keycode == 13) {
-            ApPatEmp = $("#ApPatEmp").val();
-            if (ApPatEmp == "") {
-                alertify.error("El Apellido Paterno NO Puede Estar Vacio!", "Verifique");
-                $("#ApPatEmp").focus();
-            }
-            else {
-                $("#ApMatEmp").focus();
-            }
-        }
-    })
+        //$("#ApMatEmp").on('keyup', function (e) {
+        //    ApMatEmp = $("#ApMatEmp").val();
+        //    if (ApMatEmp == "") {
+        //        alertify.error("El Apellido Materno NO Puede Estar Vacio!", "Verifique");
+        //        $("#ApMatEmp").focus();
+        //    }
+        //    else {
+        //        $("#DeptSelec").focus();
+        //    }
+        //})
 
-    $("#ApMatEmp").on('keyup', function (e) {
-        var keycode = e.keyCode || e.which;
-        if (keycode == 13) {
-            ApMatEmp = $("#ApMatEmp").val();
-            if (ApMatEmp == "") {
-                alertify.error("El Apellido Materno NO Puede Estar Vacio!", "Verifique");
-                $("#ApMatEmp").focus();
-            }
-            else {
-                $("#DeptSelec").focus();
-            }
-        }
-    })
+        //$("#DeptSelec").change('click', function (event) {
+        //    event.preventDefault();
+       //     DeptSelec = $("#DeptSelec").val();
+        //    if (DeptSelec == "") {
+        //        alertify.error("El Departamento NO Puede Estar Vacio!", "Verifique");
+        //        $("#DeptSelec").focus();
+        //    }
+        //    else {
+        //        $("#CargSelec").focus();
+        //    }
+        //})
 
-    $("#DeptSelec").change('click', function (event) {
-        event.preventDefault();
-        DeptSelec = $("#DeptSelec").val();
-        if (DeptSelec == "") {
-            alertify.error("El Departamento NO Puede Estar Vacio!", "Verifique");
-            $("#DeptSelec").focus();
-        }
-        else {
-            $("#CargSelec").focus();
-        }
-    })  
+        //$("#CargSelec").change('click', function (event) {
+        //    event.preventDefault();
+        //    CargEmp = $("#CargSelec").val();
+        //    if (CargEmp == "") {
+        //        alertify.error("El Cargo NO Puede Estar Vacio!", "Verifique");
+        //        $("#CargSelec").focus();
+        //    }
+        //    else {
+        //        $("#AnexoEmp").focus();
+        //    }
+        //})
 
-    $("#CargSelec").change('click', function (event) {
-        event.preventDefault();
-        CargEmp = $("#CargSelec").val();
-        if (CargEmp == "") {
-            alertify.error("El Cargo NO Puede Estar Vacio!", "Verifique");
-            $("#CargSelec").focus();
-        }
-        else {
-            $("#AnexoEmp").focus();
-        }
-    })
+        //$("#AnexoEmp").on('keyup', function (e) {
+        //    AnexoEmp = $("#AnexoEmp").val();
+        //    if (AnexoEmp == "") {
+        //        alertify.error("El Anexo NO Puede Estar Vacio!", "Verifique");
+        //        $("#AnexoEmp").focus();
+        //    }
+        //    else {
+        //        $("#EmaEmp").focus();
+        //    }
+        //})
 
-    $("#AnexoEmp").on('keyup', function (e) {
-        var keycode = e.keyCode || e.which;
-        if (keycode == 13) {
-            AnexoEmp = $("#AnexoEmp").val();
-            if (AnexoEmp == "") {
-                alertify.error("El Anexo NO Puede Estar Vacio!", "Verifique");
-                $("#AnexoEmp").focus();
-            }
-            else {
-                $("#EmaEmp").focus();
-            }    
-        }
-    })
+        //$("#EmaEmp").on('keyup', function (e) {
+       //    EmaEmp = $("#EmaEmp").val();
+        //    if (EmaEmp == "") {
+        //        alertify.error("El Email NO Puede Estar Vacio!", "Verifique");
+        //        $("#EmaEmp").focus();
+        //    }
+        //    else {
+        //        $("#FechIncEmp").focus();
+        //    }
+        //})
 
-    $("#EmaEmp").on('keyup', function (e) {
-        var keycode = e.keyCode || e.which;
-        if (keycode == 13) {
-            EmaEmp = $("#EmaEmp").val();
-            if (EmaEmp == "") {
-                alertify.error("El Email NO Puede Estar Vacio!", "Verifique");
-                $("#EmaEmp").focus();
-            }
-            else {
-                $("#FechIncEmp").focus();
-            }
-        }
-    })
+        //$("#FechIncEmp").on('keyup', function (e) {
+        //       FechIncEmp = $("#FechIncEmp").val();
+        //        if (FechIncEmp == "") {
+        //            alertify.error("La Fecha de Inicio NO Puede Estar Vacia!", "Verifique");
+        //            $("#FechIncEmp").focus();
+        //        }
+        //        else {
+        //            $("#RutEmpre").focus();
+        //        }
+        //})
 
-    $("#FechIncEmp").on('keyup', function (e) {
-        var keycode = e.keyCode || e.which;
-        if (keycode == 13) {
-            FechIncEmp = $("#FechIncEmp").val();
-            if (FechIncEmp == "") {
-                alertify.error("La Fecha de Inicio NO Puede Estar Vacia!", "Verifique");
-                $("#FechIncEmp").focus();
-            }
-            else {
-                $("#RutEmpre").focus();
-            }
-        }
-    })
+        //$("#RutEmpre").change('click', function (event) {
+        //    event.preventDefault();
+        //    RutEmpre = $("#RutEmpre").val();
+        //    if (RutEmpre == "") {
+        //        alertify.error("El Rut Empresa NO Puede Estar Vacia!", "Verifique");
+        //        $("#RutEmpre").focus();
+        //    }
+        //    else {
+        //        $("#AfpSelec").focus();
+        //    }
+        //})
 
-    $("#RutEmpre").change('click', function (event) {
-        event.preventDefault();
-        RutEmpre = $("#RutEmpre").val();
-        if (RutEmpre == "") {
-            alertify.error("El Rut Empresa NO Puede Estar Vacia!", "Verifique");
-            $("#RutEmpre").focus();
-        }
-        else {
-            $("#AfpSelec").focus();
-        }
-    })
+        $("#AfpSelec").change('click', function (event) {
+            event.preventDefault();
+            AfpSelec = $("#AfpSelec").val();
+            //if (AfpSelec == "") {
+            //    alertify.error("La Afp NO Puede Estar Vacio!", "Verifique");
+            //    $("#AfpSelec").focus();
+            //}
+            //else {
+            //    $("#SalSelec").focus();
+            //}
+        })
 
-    $("#AfpSelec").change('click', function (event) {
-        event.preventDefault();
-        AfpSelec = $("#AfpSelec").val();
-        if (AfpSelec == "") {
-            alertify.error("La Afp NO Puede Estar Vacio!", "Verifique");
-            $("#AfpSelec").focus();
-        }
-        else {
-            $("#SalSelec").focus();
-        }
-    })
-    
-    $("#SalSelec").change('click', function (event) {
-        event.preventDefault();
-        SalSelec = $("#SalSelec").val();
-        if (SalSelec == "") {
-            alertify.error("El Sistema De Salud NO Puede Estar Vacio!", "Verifique");
-            $("#SalSelec").focus();
-        }
-        else {
-            $("#SexoSelec").focus();
-        }
-    })
+        $("#SalSelec").change('click', function (event) {
+            event.preventDefault();
+            SalSelec = $("#SalSelec").val();
+            //if (SalSelec == "") {
+            //    alertify.error("El Sistema De Salud NO Puede Estar Vacio!", "Verifique");
+            //    $("#SalSelec").focus();
+            //}
+            //else {
+            //    $("#SexoSelec").focus();
+            //}
+        })
 
-    $("#SexoSelec").change('click', function (event) {
-        event.preventDefault();
-        SexoSelec = $("#SexoSelec").val();
-        if (SexoSelec == "") {
-            alertify.error("El Sexo NO Puede Estar Vacio!", "Verifique");
-            $("#SexoSelec").focus();
-        }
-        else {
-            $("#NacioSelec").focus();
-        }
-    })
+        $("#SexoSelec").change('click', function (event) {
+            event.preventDefault();
+            SexoSelec = $("#SexoSelec").val();
+            //if (SexoSelec == "") {
+            //    alertify.error("El Sexo NO Puede Estar Vacio!", "Verifique");
+            //    $("#SexoSelec").focus();
+            //}
+            //else {
+            //    $("#NacioSelec").focus();
+            //}
+        })
 
-    $("#NacioSelec").change('click', function (event) {
-        event.preventDefault();
-        NacioSelec = $("#NacioSelec").val();
-        if (NacioSelec == "") {
-            alertify.error("La Nacionalidad NO Puede Estar Vacio!", "Verifique");
-            $("#NacioSelec").focus();
-        }
-        else {
-            $("#CallPjeEmp").focus();
-        }
-    })
+        $("#NacioSelec").change('click', function (event) {
+            event.preventDefault();
+            NacioSelec = $("#NacioSelec").val();
+            //if (NacioSelec == "") {
+            //    alertify.error("La Nacionalidad NO Puede Estar Vacio!", "Verifique");
+            //    $("#NacioSelec").focus();
+            //}
+            //else {
+            //    $("#CallPjeEmp").focus();
+            //}
+        })
 
-    $("#CallPjeEmp").on('keyup', function (e) {
-        var keycode = e.keyCode || e.which;
-        if (keycode == 13) {
-            CallPjeEmp = $("#CallPjeEmp").val();
-            if (CallPjeEmp == "") {
-                alertify.error("La Calle/Pasaje NO Puede Estar Vacio!", "Verifique");
-                $("#CallPjeEmp").focus();
-            }
-            else {
-                $("#NumCasaEmp").focus();
-            }
-        }
-    })
+        //$("#CallPjeEmp").on('keyup', function (e) {
+       //     CallPjeEmp = $("#CallPjeEmp").val();
+        //    if (CallPjeEmp == "") {
+        //        alertify.error("La Calle/Pasaje NO Puede Estar Vacio!", "Verifique");
+        //        $("#CallPjeEmp").focus();
+        //    }
+        //    else {
+        //        $("#NumCasaEmp").focus();
+        //    }
+        //})
 
-    $("#NumCasaEmp").on('keyup', function (e) {
-        var keycode = e.keyCode || e.which;
-        if (keycode == 13) {
-            NumCasaEmp = $("#NumCasaEmp").val();
-            if (NumCasaEmp == "") {
-                alertify.error("El Número De Casa NO Puede Estar Vacio!", "Verifique");
-                $("#NumCasaEmp").focus();
-            }
-            else {
-                $("#Villa_PoblEmp").focus();
-            }
-        }
-    })
+        //$("#NumCasaEmp").on('keyup', function (e) {
+        //    NumCasaEmp = $("#NumCasaEmp").val();
+        //    if (NumCasaEmp == "") {
+        //        alertify.error("El Número De Casa NO Puede Estar Vacio!", "Verifique");
+        //        $("#NumCasaEmp").focus();
+        //    }
+        //    else {
+        //        $("#Villa_PoblEmp").focus();
+        //    }
+        //})
 
-    $("#Villa_PoblEmp").on('keyup', function (e) {
-        var keycode = e.keyCode || e.which;
-        if (keycode == 13) {
-            Villa_PoblEmp = $("#Villa_PoblEmp").val();
-            if (Villa_PoblEmp == "") {
-                alertify.error("La Villa/Población NO Puede Estar Vacio!", "Verifique");
-                $("#Villa_PoblEmp").focus();
-            }
-            else {
+        //$("#Villa_PoblEmp").on('keyup', function (e) {
+       //     Villa_PoblEmp = $("#Villa_PoblEmp").val();
+        //    if (Villa_PoblEmp == "") {
+        //        alertify.error("La Villa/Población NO Puede Estar Vacio!", "Verifique");
+        //        $("#Villa_PoblEmp").focus();
+        //    }
+        //    else {
+        //        $("#ComuEmp").focus();
+        //    }
+        //})
+
+        $("#ComuEmp").change('click', function (event) {
+            event.preventDefault();
+            ComuEmp = $("#ComuEmp").val();
+            if (ComuEmp == "") {
+                alertify.error("La Comuna NO Puede Estar Vacio!", "Verifique");
                 $("#ComuEmp").focus();
             }
-        }
-    })
+            else {
+                var data = { Comuna_Id: ComuEmp };
+                var url = "/Empleados/CargCiu";
+                $.post(url, data)
+                    .done(function (data) {
+                        var DatosDev = data[0];
+                        CodCiud = DatosDev["Provincia_Id"]
+                        $("#NomCiu").val(DatosDev["Provincia_Nombre"])
+                    })
+                //CodCiudad = CodCiud;
+                //$("#FonoPer").focus();
+            }
+        })
 
-    $("#ComuEmp").change('click', function (event) {
-        event.preventDefault();
+        //$("#FonoPer").on('keyup', function (e) {
+        //    FonoPer = $("#FonoPer").val();
+        //    if (FonoPer == "") {
+        //        alertify.error("El Fono Personal NO Puede Estar Vacio!", "Verifique");
+        //        $("#FonoPer").focus();
+        //    }
+        //    else {
+        //        $("#EmailPer").focus();
+        //    }
+        //})
+
+        //$("#EmailPer").on('keyup', function (e) {
+        //    EmailPer = $("#EmailPer").val();
+        //    if (EmailPer == "") {
+        //        alertify.error("El Email Personal NO Puede Estar Vacio!", "Verifique");
+        //        $("#EmailPer").focus();
+        //    }
+        //    else {
+        //        $("#FechNacEmp").focus();
+        //    }
+        //})
+
+        //$("#FechNacEmp").on('keyup', function (e) {
+        //    FechNacEmp = $("#FechNacEmp").val();
+        //    if (FechNacEmp == "") {
+        //        alertify.error("La Fecha de Nacimiento NO Puede Estar Vacio!", "Verifique");
+        //        $("#FechNacEmp").focus();
+        //    }
+        //    else {
+        //        $("#PerEmerEmp").focus();
+        //    }
+        //})
+
+        //$("#PerEmerEmp").on('keyup', function (e) {
+        //    PerEmerEmp = $("#PerEmerEmp").val();
+        //    if (PerEmerEmp == "") {
+        //        alertify.error("La Persona De Emergencia NO Puede Estar Vacio!", "Verifique");
+        //        $("#PerEmerEmp").focus();
+        //    }
+        //    else {
+        //        $("#FonPerEmerEmp").focus();
+        //    }
+        //})
+
+        //$("#FonPerEmerEmp").on('keyup', function (e) {
+         //   FonPerEmerEmp = $("#FonPerEmerEmp").val();
+        //    if (FonPerEmerEmp == "") {
+        //        alertify.error("El Fono Persona de Emergencia NO Puede Estar Vacio!", "Verifique");
+        //        $("#FonPerEmerEmp").focus();
+        //    }
+        //    else {
+        //        $("#BtnGrabEmp").focus();
+        //    }
+        //})
+
+
+       //Graba Los Datos Seleccionados
+    $("#BtnGrabEmp").click(function (event) {
+
+        RutEmp = $("#RutEmp").val();
+        NomEmp = $("#NomEmp").val();
+        ApPatEmp = $("#ApPatEmp").val();
+        ApMatEmp = $("#ApMatEmp").val();
+        DeptSelec = $("#DeptSelec").val();
+        CargEmp = $("#CargSelec").val();
+        AnexoEmp = $("#AnexoEmp").val();
+        EmaEmp = $("#EmaEmp").val();
+        FechIncEmp = $("#FechIncEmp").val();
+        RutEmpre = $("#RutEmpre").val();
+        AfpSelec = $("#AfpSelec").val();
+        SalSelec = $("#SalSelec").val();
+        SexoSelec = $("#SexoSelec").val();
+        NacioSelec = $("#NacioSelec").val();
+        CallPjeEmp = $("#CallPjeEmp").val();
+        NumCasaEmp = $("#NumCasaEmp").val();
+        Villa_PoblEmp = $("#Villa_PoblEmp").val();
         ComuEmp = $("#ComuEmp").val();
-        if (ComuEmp == "") {
-            alertify.error("La Comuna NO Puede Estar Vacio!", "Verifique");
-            $("#ComuEmp").focus();
-        }
-        else {
-            var data = { Comuna_Id: ComuEmp };
-            var url = "/Empleados/CargCiu";
-            $.post(url, data)
-                .done(function (data) {
-                    var DatosDev = data[0];
-                    CodCiud = DatosDev["Provincia_Id"]
-                    $("#NomCiu").val(DatosDev["Provincia_Nombre"])
-                })
-            CodCiudad = CodCiud;
-            $("#FonoPer").focus();
-        }
-    })
-    
-    $("#FonoPer").on('keyup', function (e) {
-        var keycode = e.keyCode || e.which;
-        if (keycode == 13) {
-            FonoPer = $("#FonoPer").val();
-            if (FonoPer == "") {
-                alertify.error("El Fono Personal NO Puede Estar Vacio!", "Verifique");
-                $("#FonoPer").focus();
-            }
-            else {
-                $("#EmailPer").focus();
-            }
-        }
-    })
+        FonoPer = $("#FonoPer").val();
+        EmailPer = $("#EmailPer").val();
+        FechNacEmp = $("#FechNacEmp").val();
+        PerEmerEmp = $("#PerEmerEmp").val();
+        FonPerEmerEmp = $("#FonPerEmerEmp").val();
 
-    $("#EmailPer").on('keyup', function (e) {
-        var keycode = e.keyCode || e.which;
-        if (keycode == 13) {
-            EmailPer = $("#EmailPer").val();
-            if (EmailPer == "") {
-                alertify.error("El Email Personal NO Puede Estar Vacio!", "Verifique");
-                $("#EmailPer").focus();
-            }
-            else {
-                $("#FechNacEmp").focus();
-            }
-        }
-    })
-
-    $("#FechNacEmp").on('keyup', function (e) {
-        var keycode = e.keyCode || e.which;
-        if (keycode == 13) {
-            FechNacEmp = $("#FechNacEmp").val();
-            if (FechNacEmp == "") {
-                alertify.error("La Fecha de Nacimiento NO Puede Estar Vacio!", "Verifique");
-                $("#FechNacEmp").focus();
-            }
-            else {
-                $("#PerEmerEmp").focus();
-            }
-        }
-    })
-
-    $("#PerEmerEmp").on('keyup', function (e) {
-        var keycode = e.keyCode || e.which;
-        if (keycode == 13) {
-            PerEmerEmp = $("#PerEmerEmp").val();
-            if (PerEmerEmp == "") {
-                alertify.error("La Persona De Emergencia NO Puede Estar Vacio!", "Verifique");
-                $("#PerEmerEmp").focus();
-            }
-            else {
-                $("#FonPerEmerEmp").focus();
-            }
-        }
-    })
-
-    $("#FonPerEmerEmp").on('keyup', function (e) {
-        var keycode = e.keyCode || e.which;
-        if (keycode == 13) {
-            FonPerEmerEmp = $("#FonPerEmerEmp").val();
-            if (FonPerEmerEmp == "") {
-                alertify.error("El Fono Persona de Emergencia NO Puede Estar Vacio!", "Verifique");
-                $("#FonPerEmerEmp").focus();
-            }
-            else {
-                $("#BtnGrabEmp").focus();
-            }
-        }
-    })
-    
-    //Graba Los Datos Seleccionados
-    $("#BtnGrabEmp").click(function (event) {  
         Ret = 'N';
         var data = {
             Rut_Empleado: RutEmp,
@@ -411,7 +392,7 @@ $(document).ready(function () {
             Rut_Empresa: RutEmpre,
             Id_Sexo: SexoSelec,
             Id_Nac: NacioSelec,
-            Foto_Usuario: file,
+            //Foto_Usuario: file,
             Fecha_Despido: '',
             Retirado: Ret,
             Cod_Afp: AfpSelec,
@@ -420,7 +401,7 @@ $(document).ready(function () {
             NumCasa: NumCasaEmp,
             Vill_Pobl: Villa_PoblEmp,
             Comuna_Id: ComuEmp,
-            Provincia_Id: CodCiudad,
+            Provincia_Id: CodCiud,
             Fono: FonoPer,
             Persona_Emergencia: PerEmerEmp,
             Fono_Emergencia: FonPerEmerEmp,

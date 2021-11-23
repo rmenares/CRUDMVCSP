@@ -11,7 +11,8 @@ namespace CrudMvcSp.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Empresa
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,16 +20,34 @@ namespace CrudMvcSp.Models
         {
             this.Empleados = new HashSet<Empleados>();
         }
-    
+
+        [Key]
         public int Id_Empresa { get; set; }
+
+        [Required(ErrorMessage = "Dato Obligatorio")]
         public string Rut_Empresa { get; set; }
+
+        [Required(ErrorMessage = "Dato Obligatorio")]
         public string Nombre_Empresa { get; set; }
+
+        [Required(ErrorMessage = "Dato Obligatorio")]
         public string Calle_Pje_Avda { get; set; }
+
+        [Required(ErrorMessage = "Dato Obligatorio")]
         public string Numero { get; set; }
+
+        [Required(ErrorMessage = "Dato Obligatorio")]
         public string Vill_Pobl { get; set; }
+
+        [Required(ErrorMessage = "Dato Obligatorio")]
         public int Comuna_Id { get; set; }
         public int Provincia_Id { get; set; }
+
+        [Display(Name = "Fono Empresa")]
+        [Required(ErrorMessage = "Dato Obligatorio")]
         public string fono { get; set; }
+
+        [Required(ErrorMessage = "Dato Obligatorio")]
         public string emailemp { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

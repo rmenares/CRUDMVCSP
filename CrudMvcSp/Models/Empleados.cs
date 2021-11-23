@@ -11,7 +11,8 @@ namespace CrudMvcSp.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Empleados
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,34 +21,108 @@ namespace CrudMvcSp.Models
             this.Carg_Familiar = new HashSet<Carg_Familiar>();
         }
     
+        [Key]
+        [Display(Name = "Rut Empleado")]
         public string Rut_Empleado { get; set; }
+
+        [Display(Name = "Nombre Empleado")]
+        [Required(ErrorMessage = "Dato Obligatorio")]
         public string Nombre { get; set; }
+
+        [Display(Name = "Apellido Paterno")]
+        [Required(ErrorMessage = "Dato Obligatorio")]
         public string ApePat { get; set; }
+
+        [Display(Name = "Apellido Materno")]
+        [Required(ErrorMessage = "Dato Obligatorio")]
         public string ApeMat { get; set; }
+
+        [Display(Name = "Codigo Departamento")]
+        [Required(ErrorMessage = "Dato Obligatorio")]
         public int Id_Depto { get; set; }
+
+        [Display(Name = "Codigo Cargo")]
+        [Required(ErrorMessage = "Dato Obligatorio")]
         public int Id_Carg { get; set; }
+
+        [Display(Name = "Anexo Empleado")]
+        [Required(ErrorMessage = "Dato Obligatorio")]
         public string Anexo { get; set; }
+
+        [Display(Name = "Email Empresa")]
+        [Required(ErrorMessage = "Dato Obligatorio")]
         public string EmailEmp { get; set; }
+
+        [Display(Name = "Fecha Ingreso")]
+        [Required(ErrorMessage = "Dato Obligatorio")]
         public string Fecha_Incorporacion { get; set; }
+
+        [Required(ErrorMessage = "Dato Obligatorio")]
         public string Rut_Empresa { get; set; }
+
+        [Display(Name = "Sexo")]
+        [Required(ErrorMessage = "Dato Obligatorio")]
         public int Id_Sexo { get; set; }
+
+        [Display(Name = "Nacionalidad")]
+        [Required(ErrorMessage = "Dato Obligatorio")]
         public int Id_Nac { get; set; }
+
+        [Display(Name = "AFp")]
+        [Required(ErrorMessage = "Dato Obligatorio")]
         public int Cod_Afp { get; set; }
+
+        [Display(Name = "Sistema Salud")]
+        [Required(ErrorMessage = "Dato Obligatorio")]
         public int Cod_Salud { get; set; }
+
+        [Display(Name = "Calle")]
+        [Required(ErrorMessage = "Dato Obligatorio")]
         public string Calle_Pje { get; set; }
+
+        [Display(Name = "Calle")]
+        [Required(ErrorMessage = "Dato Obligatorio")]
         public string NumCasa { get; set; }
+
+        [Required(ErrorMessage = "Dato Obligatorio")]
         public string Vill_Pobl { get; set; }
+
+        [Display(Name = "Comuna")]
+        [Required(ErrorMessage = "Dato Obligatorio")]
         public int Comuna_Id { get; set; }
+
+        [Display(Name = "Ciudad")]
         public int Provincia_Id { get; set; }
+
+        [Display(Name = "Telefono Personal")]
+        [Required(ErrorMessage = "Dato Obligatorio")]
         public string Fono { get; set; }
+
+        [Required(ErrorMessage = "Dato Obligatorio")]
         public string Persona_Emergencia { get; set; }
+
+        [Display(Name = "Telefono Emergencia")]
+        [Required(ErrorMessage = "Dato Obligatorio")]
         public string Fono_Emergencia { get; set; }
+
+        [Display(Name = "Correo Personal")]
+        [Required(ErrorMessage = "Dato Obligatorio")]
         public string Email { get; set; }
+
+        [Required(ErrorMessage = "Dato Obligatorio")]
         public Nullable<System.DateTime> Fecha_Nacimiento { get; set; }
+
+
         public byte[] Foto_Usuario { get; set; }
+
+
         public string Fecha_Despido { get; set; }
+
+
         public string Retirado { get; set; }
     
+
+
         public virtual Afp Afp { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Carg_Familiar> Carg_Familiar { get; set; }

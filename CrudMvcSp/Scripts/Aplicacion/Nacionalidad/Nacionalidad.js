@@ -9,10 +9,10 @@ $(document).ready(function () {
     });
     // fin modal cargos
 
-    $("#NomNacion").on('keyup', function (event) {
-        event.preventDefault();
-        var keycode = event.keyCode || event.which;
-        if (keycode == 13) {
+
+    //Graba Nacionalidad
+    $("#BtnGrabNac").click(function (event) {
+        $("#NomNacion").on('keyup', function (event) {
             NomNac = $("#NomNacion").val();
             if (NomNac == "") {
                 alertify.error("Nacionalidad NO Puede Estar Vacío!!!!", "Atención")
@@ -21,11 +21,8 @@ $(document).ready(function () {
             else {
                 $("#BtnGrabNac").focus();
             }
-        }
-    })
+        })
 
-    //Graba Nacionalidad
-    $("#BtnGrabNac").click(function (event) {
       $("#BtnGrabNac").attr('value', 'Grabando....');
       var data = { Descripcion: NomNac }
       var url = "/Nacionalidad/GrabaNacionalidad";

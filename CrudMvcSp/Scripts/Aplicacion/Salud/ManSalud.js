@@ -10,10 +10,12 @@ $(document).ready(function () {
     });
    //fin de carga Modal
 
-    $("#NomIsap").on('keyup', function (event) {
-        event.preventDefault();
-        var keycode = e.keyCode || e.which;
-        if (keycode == 13) {
+   
+    //graba Sistema De Salud
+    $("#BtnGrab").click(function (event) {
+
+        $("#NomIsap").on('keyup', function (event) {
+            event.preventDefault();
             noisa = $("#NomIsap").val();
             if (noisa == "") {
                 alertify.error("Nombre Sistema NO Puede Estar Vacio!");
@@ -22,13 +24,10 @@ $(document).ready(function () {
             else {
                 $("#PorcCotiz").focus();
             }
-        }
-    })
+        })
 
-    $("#PorcCotiz").on('keyup', function (event) {
-        event.preventDefault();
-        var keycode = e.keyCode || e.which;
-        if (keycode == 13) {
+        $("#PorcCotiz").on('keyup', function (event) {
+            event.preventDefault();
             cotisa = $("#PorcCotiz").val();
             if (cotisa == "") {
                 alertify.error("% Cotización es Obligatorio!!!!");
@@ -37,10 +36,9 @@ $(document).ready(function () {
             else {
                 $("#BtnGrab").focus();
             }
-        }
-    })
-    //graba Sistema De Salud
-    $("#BtnGrab").click(function (event) {
+        })
+
+
          $("#BtnGrab").attr('value', 'Grabando....');
          var data = { Nombre_Salud: noisa, Porc_Cotiz: cotisa };
          var url = "/Salud/GrabSalud";

@@ -11,7 +11,8 @@ namespace CrudMvcSp.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Cargos
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,7 +21,12 @@ namespace CrudMvcSp.Models
             this.Empleados = new HashSet<Empleados>();
         }
     
+        [Key]
+        [Display(Name = "Codigo Cargo")]
         public int Id_Carg { get; set; }
+
+        [Display(Name = "Descripcion Cargo")]
+        [StringLength(15, ErrorMessage = "EL {0}, Debe ser al Menos {2} y Màximo de {1} Caracteres", MinimumLength = 10)]
         public string Descr_Cargo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

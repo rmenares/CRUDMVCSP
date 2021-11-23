@@ -11,13 +11,24 @@ namespace CrudMvcSp.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Cargas_Familiares
     {
+
+        [Key]
         public int Id_Tram_Carg { get; set; }
+
+        [Display(Name = "Codigo_Tramo")]
         public string Tramo { get; set; }
+
+        [Display(Name = "Valor Inicial")]
         public string Desde { get; set; }
+
+        [Display(Name = "Linite Superior")]
         public string Hasta { get; set; }
+
+        [Display(Name = "Valor A Pagar")]
         public string ValorPagarCarg { get; set; }
     }
 }

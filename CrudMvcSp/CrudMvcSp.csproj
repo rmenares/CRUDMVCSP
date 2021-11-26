@@ -437,6 +437,7 @@
     <Content Include="Imagenes\ok.gif" />
     <Content Include="Content\toastr.less" />
     <Content Include="Content\toastr.scss" />
+    <Content Include="Imagenes\Searching.gif" />
     <Content Include="Models\ModelEmpl.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelEmpl.edmx</DependentUpon>
@@ -462,6 +463,7 @@
     <Content Include="Scripts\Aplicacion\Salud\ManSalud.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\custom-loader.js" />
     <Content Include="Scripts\fontawesome\all.js" />
     <Content Include="Scripts\fontawesome\all.min.js" />
     <Content Include="Scripts\fontawesome\brands.js" />

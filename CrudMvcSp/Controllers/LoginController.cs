@@ -23,6 +23,7 @@ namespace CrudMvcSp.Controllers
             if (Existe != null)
             {
                 Session["User"] = login.Username;
+          
                 return RedirectToAction("Index", "Home");
             }
             else

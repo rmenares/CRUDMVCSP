@@ -6,20 +6,23 @@
 
 @Scripts.Render("~/bundles/jquery")
 
-@Scripts.Render("~/bundles/bootstrap")
-
 @Scripts.Render("~/bundles/Alertify")
 
-@Styles.Render("~/Content/fontawesome")
+@Scripts.Render("~/bundles/bootstrap")
 
 @Styles.Render("~/Content/Alertify")
 
+@Styles.Render("~/Content/fontawesome")
 
 <link href="~/Content/Aplicacion/Login/Login.css" rel="stylesheet" />
 
 <!DOCTYPE html>
 
 <body>
+    <div id="divLoader" style="display:none;">
+        <img src="~/Imagenes/Searching.gif" alt="Loader" height="100" width="200" />
+    </div>
+
     <div class="container">
         <div class="form-container container-fluid">
             <h2 class="Titulo">Login Usuario</h2>
@@ -46,6 +49,5 @@
 </body>
 
 @section scripts{
-
     <script src="~/Scripts/Aplicacion/Login/Login.js"></script>
 }

@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
     $("#formLogin").submit(function (event) {
-        $("#Enviar").attr('value', 'Verificando.....');
+        $('#Enviar').attr('value', 'Buscando');
         var User = $("#User_Id").val();
         var Pass = $("#PassWord").val();
         var data = { User_Id: User, PassWord: Pass }
@@ -8,18 +8,20 @@
         event.preventDefault();
         $.post(url, data)
             .done(function (data) {
-                alertify.success
                 alertify.success("Usuario Correcto", "Atención")
                 window.location.reload(true);
                 window.location.href = "Home/Index/";
             })
             .fail(function (data) {
+                $('#Enviar').attr('value', 'Buscando');
                 alertify.error("Usuario Invalido", "Error")
+                $("#User_Id").val("");
+                $("#PassWord").val("");
+                window.location.reload(true);
             })
             .always(function (data) {
                 $("#User_Id").val("");
                 $("#PassWord").val("");
-                $("#Enviar").attr('value', 'Enviar');
                 //window.location.reload(true);
             })
     })

@@ -35,7 +35,7 @@ $(document).ready(function () {
 
     //graba AFP
     $("#BtnGrab").click(function (event) {
-        event.preventDefault();  
+        event.preventDefault();
         nomafp = $("#NomAfp").val();
         cotiAfp = $("#PorcCotiz").val();
             $("#BtnGrab").attr('value', 'Grabando....');

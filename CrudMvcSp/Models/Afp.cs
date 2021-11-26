@@ -34,5 +34,12 @@ namespace CrudMvcSp.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Empleados> Empleados { get; set; }
+       
+
+        //public Afp()
+        //{
+        //    this.Cod_Afp = Int_NullValue;
+        //    this.Nom_Afp = String_NullValue;
+        //}
     }
 }

@@ -51,6 +51,7 @@ namespace CrudMvcSp.Models
 
         [Display(Name = "Email Empresa")]
         [Required(ErrorMessage = "Dato Obligatorio")]
+        [RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessage = "E-mail Empleado No Es Valido")]
         public string EmailEmp { get; set; }
 
         [Display(Name = "Fecha Ingreso")]
@@ -107,6 +108,7 @@ namespace CrudMvcSp.Models
 
         [Display(Name = "Correo Personal")]
         [Required(ErrorMessage = "Dato Obligatorio")]
+        [RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessage = "E-mail Personal No Es Valido")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Dato Obligatorio")]

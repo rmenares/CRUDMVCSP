@@ -48,6 +48,7 @@ namespace CrudMvcSp.Models
         public string fono { get; set; }
 
         [Required(ErrorMessage = "Dato Obligatorio")]
+        [RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessage = "E-mail Empresa No Es Valido")]
         public string emailemp { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -1,0 +1,27 @@
+﻿
+.contenedor {
+    position: absolute;
+    top: 0;
+    background: #222;
+    color: #fff;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+}
+
+.preloader {
+    margin: auto;
+    width: 350px;
+    height: 30px;
+    background: rgba(255,255,255,0.1);
+    position: relative;
+}
+
+    .preloader:before {
+        content: "";
+        position: absolute;
+        background: green;
+        width: 0;
+        height: 30px;
+        animation: preloader 10s infinite;
+    }

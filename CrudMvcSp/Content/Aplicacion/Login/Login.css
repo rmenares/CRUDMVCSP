@@ -1,4 +1,15 @@
-﻿html, body {
+﻿body {
+ 
+    overflow-Y: hidden; /*quitar el scroll*/
+}
+
+.Imagen {
+    width: 20px;
+    height: 20px;
+}
+
+
+html, body {
     height: 100%;
     background-color: #FFB300;
 }
@@ -32,16 +43,16 @@
 
 input[type="password"], input[type="text"] {
     /*background: url('http://i.minus.com/ibhqW9Buanohx2.png') center left no-repeat, linear-gradient(top, #d6d7d7, #dee0e0);*/
-    border: 1px solid #a1a3a3;
-    border-radius: 4px;
-    box-shadow: 0 1px #fff;
-    box-sizing: border-box;
-    color: #696969;
-    height: 39px;
-    margin: 31px 0 0 29px;
-    padding-left: 37px;
-    transition: box-shadow 0.3s;
-    width: 240px;
+border: 1px solid #a1a3a3;
+border-radius: 4px;
+box-shadow: 0 1px #fff;
+box-sizing: border-box;
+color: #696969;
+height: 39px;
+margin: 31px 0 0 29px;
+padding-left: 37px;
+transition: box-shadow 0.3s;
+width: 240px;
 }
 
     input[type="password"]:focus, input[type="text"]:focus {

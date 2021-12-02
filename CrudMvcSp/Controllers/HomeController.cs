@@ -5,9 +5,11 @@ namespace CrudMvcSp.Controllers
 {
     public class HomeController : Controller
     {
+       
         [OutputCache(Location = OutputCacheLocation.None, NoStore = true)]
         public ActionResult Index()
         {
+
             return View();
         }
 

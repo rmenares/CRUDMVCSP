@@ -1,31 +1,45 @@
 ﻿$(document).ready(function () {
-    $("#formLogin").submit(function (event) {
-        $('#Enviar').attr('value', 'Buscando');
-        var User = $("#User_Id").val();
-        var Pass = $("#PassWord").val();
-        var data = { User_Id: User, PassWord: Pass }
+    $("#Enviar").click(function (event) {
+        $("#Enviar").attr('value', 'Buscando');
+        //$("#loading").html('<div class="loading"><img src ="~/Imagenes/Fading_Lines.gif" alt ="loading"/> <br/> Un momento, por favor...</div>');
+        var User = $("#Username").val();
+        var Pass = $("#Password").val();
+        var data = { Username: User, PassWord: Pass }
         var url = "/Login/Index";
         event.preventDefault();
         $.post(url, data)
             .done(function (data) {
-                alertify.success("Usuario Correcto", "Atención")
+                //CargaLoader();
+                alertify.success("Usuario Correcto", "Atención");
                 window.location.reload(true);
-                window.location.href = "Home/Index/";
+                window.location.href = "/Home/Index/";
             })
             .fail(function (data) {
-                $('#Enviar').attr('value', 'Buscando');
-                alertify.error("Usuario Invalido", "Error")
-                $("#User_Id").val("");
-                $("#PassWord").val("");
+                //$('#Enviar').attr('value', 'Buscando');
+                alertify.error("Usuario Invalido", "Error");
+                //$("#Username").val("");
+                //$("#PassWord").val("");
                 window.location.reload(true);
             })
             .always(function (data) {
-                $("#User_Id").val("");
+                $("#Username").val("");
                 $("#PassWord").val("");
                 //window.location.reload(true);
             })
+        
     })
 })
+
+
+//function CargaLoader() {
+
+//    var container = document.getElementById('contenedor');
+//    setTimeout(function () {
+//        container.classList.add('cerrar');
+//        document.body.style.overflowY = "visible";// despueés de cargar le devolvemos el scroll
+//    }, 20000);
+//}
+
 
 
 alertify.defaults = {

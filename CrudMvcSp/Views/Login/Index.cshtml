@@ -12,18 +12,26 @@
 
 @Styles.Render("~/Content/Alertify")
 
+<script src="~/Scripts/Aplicacion/Login/Login.js"></script>
+
 @Styles.Render("~/Content/fontawesome")
 
 <link href="~/Content/Aplicacion/Login/Login.css" rel="stylesheet" />
 
+@*<link href="~/Content/Aplicacion/Login/Probando.css" rel="stylesheet" />*@
+
+
 <!DOCTYPE html>
 
 <body>
-    <div id="divLoader" style="display:none;">
-        <img src="~/Imagenes/Searching.gif" alt="Loader" height="100" width="200" />
-    </div>
+
 
     <div class="container">
+
+        @*<div class="Imagen">
+                <img src="~/Imagenes/office-g5675b4731_640.png" />
+            </div>*@
+
         <div class="form-container container-fluid">
             <h2 class="Titulo">Login Usuario</h2>
             <br />
@@ -48,6 +56,6 @@
     </div>
 </body>
 
-@section scripts{
+@*@section scripts{
     <script src="~/Scripts/Aplicacion/Login/Login.js"></script>
-}
+}*@

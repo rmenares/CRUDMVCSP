@@ -1,4 +1,5 @@
 ﻿using System;
+using Dapper;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -31,11 +32,10 @@ namespace CrudMvcSp.Controllers
             {
                 try
                 {
-                    var ListEmp = ManEmp.Sp_Mues_Empresas().ToList();
-
-                    var ListCom = Comun.Sp_Mues_Comunas().ToList();
-                    ViewBag.ListComu = new SelectList(ListCom, "Comuna_Id", "Comuna");
-                    return View(ListEmp);
+                   var ListEmp = ManEmp.Sp_Mues_Empresas().ToList();
+                   var ListCom = Comun.Sp_Mues_Comunas().ToList();
+                   ViewBag.ListComu = new SelectList(ListCom, "Comuna_Id", "Comuna");
+                 return View(ListEmp);
                 }
                 catch (Exception) { throw; }
             }
@@ -60,7 +60,7 @@ namespace CrudMvcSp.Controllers
         [HttpPost]
         public ActionResult GrabaEmp(Empresa empresa)
         {
-            using (var ManEmp = new EmpleadosEntities())
+            using (ManEmp = new EmpleadosEntities())
             {
                 var GrabaEmp = ManEmp.Sp_Ins_Empresas(empresa.Rut_Empresa, empresa.Nombre_Empresa, empresa.Calle_Pje_Avda,
                                                       empresa.Numero, empresa.Vill_Pobl, Convert.ToString(empresa.Comuna_Id),

@@ -1,8 +1,4 @@
-﻿body {
- 
-    overflow-Y: hidden; /*quitar el scroll*/
-}
-
+﻿
 .Imagen {
     width: 20px;
     height: 20px;

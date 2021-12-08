@@ -19,6 +19,7 @@ namespace CrudMvcSp.Controllers
     public class EmpleadosController : Controller
     {
         private string url;
+
         private EmpleadosEntities Empleados = new EmpleadosEntities();
 
         #region LLena los DropdownList
@@ -41,8 +42,8 @@ namespace CrudMvcSp.Controllers
 
         public ActionResult Index()
         {
-            using (Empleados = new EmpleadosEntities())
-            {
+             using (Empleados = new EmpleadosEntities())
+             {
                 var ListEmpleados = Empleados.SP_Mues_Empleado().ToList();
 
                 var LisDep = Deptos.Departamento.ToList();
@@ -69,8 +70,8 @@ namespace CrudMvcSp.Controllers
                 var ListCom = Comun.Sp_Mues_Comunas().ToList();
                 ViewBag.ListComu = new SelectList(ListCom, "Comuna_Id", "Comuna");
 
-                return View(ListEmpleados);
-            }
+                return View(ListEmpleados);            
+             }
         }
 
         #endregion Carga_Empleados
@@ -94,7 +95,7 @@ namespace CrudMvcSp.Controllers
         {
             using (Empleados = new EmpleadosEntities())
             {
-                var GrabEmple = Empleados.Sp_Ins_Empleados(
+               var GrabEmple = Empleados.Sp_Ins_Empleados(
                      emplead.Rut_Empleado, emplead.Nombre, emplead.ApePat, emplead.ApeMat,
                      emplead.Id_Depto, emplead.Id_Carg, emplead.Anexo, emplead.EmailEmp,
                      emplead.Fecha_Incorporacion, emplead.Rut_Empresa, emplead.Id_Sexo, emplead.Id_Nac,
@@ -114,8 +115,8 @@ namespace CrudMvcSp.Controllers
         {
             using (Empleados = new EmpleadosEntities())
             {
-                var BuscEmp = Empleados.Sp_Sel_Empleado(emplead.Rut_Empleado).ToList();
-                return Json(BuscEmp);
+              var BuscEmp = Empleados.Sp_Sel_Empleado(emplead.Rut_Empleado).ToList();
+            return Json(BuscEmp);
             }
         }
 
@@ -129,7 +130,7 @@ namespace CrudMvcSp.Controllers
             using (Empleados = new EmpleadosEntities())
             {
                 var ModEmple = Empleados.Sp_UPD_Empleado(
-                     empleados.Rut_Empleado, empleados.Nombre, empleados.ApePat, empleados.ApeMat,
+                    empleados.Rut_Empleado, empleados.Nombre, empleados.ApePat, empleados.ApeMat,
                      empleados.Id_Depto, empleados.Id_Carg, empleados.Anexo, empleados.EmailEmp,
                      empleados.Fecha_Incorporacion, empleados.Rut_Empresa, empleados.Id_Sexo, empleados.Id_Nac,
                      empleados.Foto_Usuario, empleados.Cod_Afp, empleados.Cod_Salud, empleados.Calle_Pje,
@@ -149,7 +150,7 @@ namespace CrudMvcSp.Controllers
             using (Empleados = new EmpleadosEntities())
             {
                 var ElimEmpleado = Empleados.Sp_Del_Empleados(empleados.Rut_Empleado);
-                return Json(ElimEmpleado);
+            return Json(ElimEmpleado);
             }
         }
 
@@ -166,6 +167,7 @@ namespace CrudMvcSp.Controllers
                 var FichEmpleado = Empleados.SP_Mues_Empleado_PDF(empleados.Rut_Empleado).ToList();
 
                 //Ubicacion de Archivo
+                //string filename = @"/Downloads/Ficha_" + FichEmpleado[0].Nombre + "_" + FichEmpleado[0].Apellido + ".docx";
                 string filename = @"C:\Users\Rodrigo_Menares\Downloads\Ficha_" + FichEmpleado[0].Nombre + "_" + FichEmpleado[0].Apellido + ".docx";
                 var doc = DocX.Create(filename);
 
@@ -303,7 +305,6 @@ namespace CrudMvcSp.Controllers
                 document.SetMargins(14.2f, 14.2f, 29f, 31f);
 
                 PdfWriter pdf = PdfWriter.GetInstance(document, ms);
-
                 //hace la insercion del pie de pagina
                 pdf.PageEvent = new HeadFooter();
 
@@ -478,8 +479,14 @@ namespace CrudMvcSp.Controllers
                 ms = new MemoryStream();
                 ms.Write(byteStream, 0, byteStream.Length);
                 ms.Position = 0;
+
+                //string Resultado = "~/DownLoads/ListaEmpleados.pdf";
+
                 //esto permite que el archivo pdf se muestre por pantalla en el explorador y a su vez sea guardado en el disco
                 return File(ms, "application/pdf", "ListaEmpleados.pdf");
+
+                //return File(ms, "application/pdf", createPdf(Resultado));
+
             }
         }
 
@@ -492,7 +499,6 @@ namespace CrudMvcSp.Controllers
             using (Empleados = new EmpleadosEntities())
             {
                 var FichEmpleado = Empleados.SP_Mues_Empleado_PDF(empleados.Rut_Empleado).ToList();
-
                 MemoryStream ms = new MemoryStream();
                 iTextSharp.text.Document document = new iTextSharp.text.Document();
                 document.SetPageSize(PageSize.A4.Rotate());
@@ -714,6 +720,7 @@ namespace CrudMvcSp.Controllers
             {
                 var ListEmpl = Empleados.SP_Mues_Empleado().ToList();
                 ExcelPackage excel = new ExcelPackage();
+
                 //agrega 1 hoja al libro y le da un nombre
                 excel.Workbook.Worksheets.Add("Lista_Empleados");
                 // crea la cabecera
@@ -834,14 +841,12 @@ namespace CrudMvcSp.Controllers
             using (Empleados = new EmpleadosEntities())
             {
                 var ListEmpl = Empleados.SP_Mues_Empleado().ToList();
-
                 List<object> customers = (from customer in ListEmpl
                                           select new[] {
                         customer.Rut,   customer.Nombre,    customer.Apellido,     customer.Departamento,
                         customer.Cargo, customer.Direccion, customer.Comuna,       customer.Ciudad,
                         customer.Fono,  customer.Correo,    customer.Nacionalidad, customer.Sexo,
                         customer.Nombre_AFP, customer.SALUD }).ToList<object>();
-
                 //Insert the Column Names.
                 customers.Insert(0, new string[14] {"Rut", "Nombre", "Apellido", "Departamento", "Cargo",
                                                     "Dirección", "Comuna", "Ciudad", "Fono", "Correo",
@@ -989,7 +994,15 @@ namespace CrudMvcSp.Controllers
                 return RedirectToAction("Index");
             }
         }
-
+        
         #endregion Crea_DOC
     }
+
+
+
+    //private void CreatePDF()
+    //{
+
+
+    //}
 }

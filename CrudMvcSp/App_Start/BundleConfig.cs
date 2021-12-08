@@ -11,6 +11,7 @@ namespace CrudMvcSp
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                          "~/Scripts/jquery-{version}.js",
                          "~/Scripts/jquery-ui-1.12.1.min.js",
+                         "~/Scripts/jquery-3.6.0.min.js",
                          "~/Scripts/jquery.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(

@@ -96,3 +96,27 @@ input[type="submit"]:active {
     top: 3px;
     box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #31524d, 0px 5px 3px #999;
 }
+
+/*esto es para el loading*/
+.centrado {
+    height: 100vh;
+    background-color: #FFB300;
+    display: block;
+    margin: auto;
+    background-image: url("../../../Imagenes/Fading_lines.gif");
+ /* background-image: url("../../../Imagenes/load1.gif");
+    background-image: url("../../../Imagenes/load2.gif");
+    background-image: url("../../../Imagenes/Searching.gif");*/
+    justify-content: center;
+    align-items: center;
+    position: center;
+    opacity: 1.0;
+
+    /*background: rgba(255,222,0, 0.1);*/
+    /*position: relative;*/
+    /*top: 0;*/
+    /*left: 0;*/
+    /*right: 0;*/
+    /*bottom: 0;*/
+} 
+.hidden { overflow: hidden; }

@@ -12,29 +12,30 @@
 
 @Styles.Render("~/Content/Alertify")
 
+<script src="~/Scripts/Aplicacion/Login/Codigo.js"></script>
+
 <script src="~/Scripts/Aplicacion/Login/Login.js"></script>
 
 @Styles.Render("~/Content/fontawesome")
 
 <link href="~/Content/Aplicacion/Login/Login.css" rel="stylesheet" />
 
-@*<link href="~/Content/Aplicacion/Login/Probando.css" rel="stylesheet" />*@
-
-
 <!DOCTYPE html>
 
-<body>
+<body class="hidden">
 
+        <div class="centrado" id="OnLoad">
+        </div>
 
     <div class="container">
-
         @*<div class="Imagen">
-                <img src="~/Imagenes/office-g5675b4731_640.png" />
-            </div>*@
-
+            <img src="~/Imagenes/office-g5675b4731_640.png" />
+        </div>*@
+        <br />
+        <br />
+        <br />
         <div class="form-container container-fluid">
             <h2 class="Titulo">Login Usuario</h2>
-            <br />
             <form id="formLogin" method="post">
                 <table align="center" id="Formulario" border="0">
                     <tr>

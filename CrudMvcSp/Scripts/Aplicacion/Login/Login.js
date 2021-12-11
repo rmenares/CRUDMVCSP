@@ -10,7 +10,6 @@ $(document).ready(function () {
         event.preventDefault();
         $.post(url, data)
             .done(function (data) {
-                CargaLoader();
                 alertify.success("Usuario Correcto", "Atención");
                 window.location.reload(true);
                 window.location.href = "/Home/Index/";
@@ -18,8 +17,8 @@ $(document).ready(function () {
             .fail(function (data) {
                 //$('#Enviar').attr('value', 'Buscando');
                 alertify.error("Usuario Invalido", "Error");
-                //$("#Username").val("");
-                //$("#PassWord").val("");
+                $("#Username").val("");
+                $("#PassWord").val("");
                 window.location.reload(true);
             })
             .always(function (data) {
@@ -30,41 +29,6 @@ $(document).ready(function () {
         
     })
 })
-
-
-function CargaLoader() {
-
-    //$('#OnLoad').fadeOut();
-    //$('body').removeClass('hidden');
-
-
-
-    /*$('body').append('<div style="" id="loadingDiv"><div class="loader">Loading...</div></div>');*/
-    $(window).on('OnLoad', function () {
-        setTimeout(removeLoader, 2000); //wait for page load PLUS two seconds.
-    });
-    function removeLoader() {
-        $("#OnLoad").fadeOut(500, function () {
-            // fadeOut complete. Remove the loading div
-            $("#OnLoad").remove(); //makes page more lightweight
-
-            /*recupera la barra vertical*/
-            $('body').removeClass('hidden');
-        });
-    }
-
-
-
-
-
-//    var container = document.getElementById('#OnLoad');
-//    setTimeout(function () {
-//        container.classList.add('OnLoad');
-//        document.body.style.overflowY = "visible";// despueés de cargar le devolvemos el scroll
-//    }, 20000);
-}
-
-
 
 alertify.defaults = {
     // dialogs defaults

@@ -11,41 +11,119 @@ namespace CrudMvcSp.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Liquidacion_Sueldo
     {
+
+        [Key]
+        [Display(Name = "Id Liquidacion")]
         public int Id_Liq { get; set; }
+
+        [Display(Name = "Rut Empleado")]
+        [Required(ErrorMessage = "Dato Obligatorio")]
         public string Rut_Empleado { get; set; }
+
+        [Display(Name = "Tipo Remuneracion")]
+        [Required(ErrorMessage = "Dato Obligatorio")]
         public int Id_Tipo_Renumeracion { get; set; }
+
+        [Display(Name = "Fecha Liquidacion")]
+        [Required(ErrorMessage = "Dato Obligatorio")]
         public System.DateTime Fecha_Liquidacion { get; set; }
+
+        [Display(Name = "Sueldo Base")]
+        [Required(ErrorMessage = "Dato Obligatorio")]
         public string Sueldo_Base { get; set; }
+
+        [Display(Name = "Dias Trabajados")]
+        [Required(ErrorMessage = "Dato Obligatorio")]
         public string Dias_Trabajados { get; set; }
+
+        [Display(Name = "% Comision")]
+        [Required(ErrorMessage = "Dato Obligatorio")]
         public string PorcComision { get; set; }
+
+        [Display(Name = "Valor Comision")]
+        [Required(ErrorMessage = "Dato Obligatorio")]
         public string Valor_Com { get; set; }
+
+        [Display(Name = "Cant Horas Extras")]
         public string Cant_Horas_Extras { get; set; }
+
+        [Display(Name = "Pago Horas Extras")]
         public string Total_Horas_Extras { get; set; }
+
+        
         public string Bonos { get; set; }
+
+        
         public string Gratificacion { get; set; }
+
+        [Display(Name = "Total Imponible")]
         public string TotalImponible { get; set; }
+
+        [Required(ErrorMessage = "Dato Obligatorio")]
         public string Colacion { get; set; }
+
+
+        [Required(ErrorMessage = "Dato Obligatorio")]
         public string Movilizacion { get; set; }
+
+
         public string Viaticos { get; set; }
+
+        [Display(Name = "Total Haberes")]
         public string TotalHaberes { get; set; }
+
+        [Display(Name = "Nombre Afp")]
+        [Required(ErrorMessage = "Dato Obligatorio")]
         public int CodAfp { get; set; }
+
+        [Display(Name = "Valor Afp")]
+        [Required(ErrorMessage = "Dato Obligatorio")]
         public string Valor_Afp { get; set; }
+
+        [Display(Name = "Tipo de Salud")]
+        [Required(ErrorMessage = "Dato Obligatorio")]
         public int Cod_Salud { get; set; }
+
+        [Display(Name = "Valor Salud")]
+        [Required(ErrorMessage = "Dato Obligatorio")]
         public string Valor_Salud { get; set; }
+
+        [Display(Name = "Tipo Seg Cesantia")]
         public int Id_Seg_Cesantia { get; set; }
+
+        [Display(Name = "Valor_Seg_Cesantia")]
         public string Valor_Seg_Cesantia { get; set; }
+
+        [Display(Name = "Total Descuentos Seg Social")]
         public string TotalDescSegSocial { get; set; }
+
+        [Display(Name = "Valor Impuesto")]
         public string Valor_Impuesto { get; set; }
+
+        [Display(Name = "Rebaja Impuesto")]
         public string RebaImpto { get; set; }
+
+        [Display(Name = "Impuesto A Pagar")]
         public string ImpAPagar { get; set; }
+
+        [Display(Name = "Remuneracion Neta")]
         public string RemNeta { get; set; }
+
         public string Prestamos { get; set; }
+
+        [Display(Name = "Total Descuentos")]
         public string TotalDesctos { get; set; }
+
+        [Display(Name = "Otros Descuentos")]
         public string Otrs_Descuentos { get; set; }
+
         public string Anticipos { get; set; }
+
+        [Display(Name = "Total a Pagar")]
         public string Total_Pagar { get; set; }
     
         public virtual Tipo_Remuneracion Tipo_Remuneracion { get; set; }

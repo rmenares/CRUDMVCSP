@@ -1,5 +1,4 @@
 ﻿
-
 $(document).ready(function () {
     $("#Enviar").click(function (event) {
         $("#Enviar").attr('value', 'Buscando');
@@ -21,10 +20,13 @@ $(document).ready(function () {
                 $("#PassWord").val("");
                 window.location.reload(true);
             })
+            .error(function (error) {
+                window.location.href = "/Error/ErrorGeneral/";
+            })
             .always(function (data) {
                 $("#Username").val("");
                 $("#PassWord").val("");
-                //window.location.reload(true);
+               /* window.location.reload(true);*/
             })
         
     })

@@ -9,30 +9,6 @@ $(document).ready(function () {
         $("#ModAgrAFP").modal("show");
     });
    //fin de carga Modal
-
-
-    //$("#NomAfp").on('keyup', function () {
-    //    nomafp = $("#NomAfp").val();
-    //    if (nomafp == "") {
-    //        alertify.error("Nombre AFP NO Puede Estar Vacío!!!!", "Atención");
-    //        $("#NomAfp").focus();
-    //    }
-    //    else {
-    //        $("#PorcCotiz").focus();
-    //    }
-    //})
-
-    //$("#PorcCotiz").on('keyup', function () {
-    //    cotiAfp = $("#PorcCotiz").val();
-    //    if ((cotiAfp == "") || (cotiAfp == "0")) {
-    //        alertify.error("% Cotización NO Puede Estar Vacío o Ser Cero!!!!", "Atención");
-    //        $("#PorcCotiz").focus();
-    //    }
-    //    else {
-    //        $("#BtnGrab").focus();
-    //    }
-    //})
-
     //graba AFP
     $("#BtnGrab").click(function (event) {
         event.preventDefault();
@@ -47,6 +23,9 @@ $(document).ready(function () {
                 })
                 .fail(function (data) {
                     alertify.error("Error De Grabación", "Error");
+                })
+                .error(function (error) {
+                    window.location.href = "/Error/ErrorGeneral/";
                 })
                 .always(function (data) {
                     $("#NomAfp").val("");
@@ -114,6 +93,9 @@ $(document).ready(function () {
             })
             .fail(function (data) {
                 alertify.error("Error De Modificación", "Error");
+            })
+            .error(function (error) {
+                window.location.href = "/Error/ErrorGeneral/";
             })
             .always(function (data) {
                 $("#NomAfp").val("");

@@ -22,7 +22,6 @@ namespace CrudMvcSp.Controllers
         private EmpleadosEntities Deptos = new EmpleadosEntities();
 
         #region Carga_Deptos
-
         public ActionResult Index()
         {
             using (Deptos = new EmpleadosEntities())
@@ -33,41 +32,57 @@ namespace CrudMvcSp.Controllers
 
                     return View(ListDeptos);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    throw;
+                    Logger.Error("Error On:", ex);
+                    Response.StatusCode = 500;
+                    Response.StatusDescription = ex.Message;
+                    return Json(Response);
                 }
             }
         }
-
         #endregion Carga_Deptos
 
         #region Graba_Departamentos
-
         [HttpPost]
         public ActionResult GrabaDepto(Departamento departamento)
         {
-            using (var Deptos = new EmpleadosEntities())
+            try
             {
-                var Graba = Deptos.Sp_Ins_Depto(departamento.NomDepto);
-                return Json(Graba);
+                using (var Deptos = new EmpleadosEntities())
+                {
+                    var Graba = Deptos.Sp_Ins_Depto(departamento.NomDepto);
+                    return Json(Graba);
+                }
+            } catch (Exception ex){
+                Logger.Error("Error On:", ex);
+                Response.StatusCode = 500;
+                Response.StatusDescription = ex.Message;
+                return Json(Response);
             }
         }
-
         #endregion Graba_Departamentos
 
         #region Actualiza_Departamento
-
         [HttpPost]
         public ActionResult EditDept(Departamento departamento)
         {
-            using (var Deptos = new EmpleadosEntities())
+            try
             {
-                var ActDep = Deptos.Sp_UPD_Depto(departamento.Id_Depto, departamento.NomDepto);
+                using (var Deptos = new EmpleadosEntities())
+                {
+                    var ActDep = Deptos.Sp_UPD_Depto(departamento.Id_Depto, departamento.NomDepto);
+                }
+                return RedirectToAction("Index");
             }
-            return RedirectToAction("Index");
+            catch (Exception ex)
+            {
+                Logger.Error("Error On:", ex);
+                Response.StatusCode = 500;
+                Response.StatusDescription = ex.Message;
+                return Json(Response);
+            }
         }
-
         #endregion Actualiza_Departamento
 
         //Exportaciones
@@ -76,97 +91,106 @@ namespace CrudMvcSp.Controllers
 
         public ActionResult GetPdf()
         {
-            using (var Deptos = new EmpleadosEntities())
+            try
             {
-                var ListDep = Deptos.Departamento.ToList();
-
-                MemoryStream ms = new MemoryStream();
-
-                iTextSharp.text.Document document = new iTextSharp.text.Document(iTextSharp.text.PageSize.A4, 50, 50, 50, 50);
-                PdfWriter pdf = PdfWriter.GetInstance(document, ms);
-
-                //hace la insercion del pie de pagina
-                pdf.PageEvent = new HeadFooter();
-
-                document.Open();
-
-                //insercion de imagenes
-                string url = Server.MapPath("/Imagenes/bg.jpg");
-                iTextSharp.text.Image image = iTextSharp.text.Image.GetInstance(url);
-                image.ScaleToFit(140f, 120f);
-                image.Alignment = Element.ALIGN_LEFT;
-                document.Add(image);
-                // fin de insercion de imagenes
-
-                //tamaño y color de cabecera
-                BaseFont bf = BaseFont.CreateFont(BaseFont.HELVETICA_BOLD, BaseFont.CP1250, BaseFont.EMBEDDED);
-                iTextSharp.text.Font fontText2 = new iTextSharp.text.Font(bf, 16, 4, BaseColor.BLUE);
-
-                //creacion e insercion de titulos al documento
-                iTextSharp.text.Paragraph titulo = new iTextSharp.text.Paragraph(string.Format("Listado de Departamentos"), fontText2);
-
-                titulo.Alignment = 1; //0-Left, 1 middle,2 Right
-                //inserta al documento
-                document.Add(titulo);
-                //inserta nueva linea al texto
-                document.Add(Chunk.NEWLINE);
-
-                //esto es para estilo de letra de la tabla
-                BaseFont bf2 = BaseFont.CreateFont(BaseFont.TIMES_BOLD, BaseFont.CP1250, BaseFont.EMBEDDED);
-                //tamaño y color
-                iTextSharp.text.Font fontText = new iTextSharp.text.Font(bf2, 10, 0, BaseColor.BLACK);
-                iTextSharp.text.Font fontText3 = new iTextSharp.text.Font(bf2, 10, 0, BaseColor.WHITE);
-
-                // instancia la tabla y le indica la cantidad de columnas
-                PdfPTable table = new PdfPTable(2);
-                //indica q ancho de la hoja va a ocupar la tabla
-                table.WidthPercentage = 95;
-
-                // instancia para la generacion de celdas en la tabla
-                PdfPCell _cell = new PdfPCell();
-
-                //genera la cabecera de la tabla
-                _cell = new PdfPCell(new iTextSharp.text.Paragraph("Código Departamento", fontText3));
-                _cell.BackgroundColor = iTextSharp.text.BaseColor.DARK_GRAY;
-                _cell.HorizontalAlignment = Element.ALIGN_CENTER;
-                table.AddCell(_cell);
-
-                _cell = new PdfPCell(new iTextSharp.text.Paragraph("Nombre Departamento", fontText3));
-                _cell.BackgroundColor = iTextSharp.text.BaseColor.DARK_GRAY;
-                _cell.HorizontalAlignment = Element.ALIGN_CENTER;
-                table.AddCell(_cell);
-
-                //llena la tabla y ademas le da la alineacion a los datos
-                foreach (var item in ListDep)
+                using (var Deptos = new EmpleadosEntities())
                 {
-                    PdfPCell _cell2 = new PdfPCell();
+                    var ListDep = Deptos.Departamento.ToList();
 
-                    _cell2 = new PdfPCell(new iTextSharp.text.Paragraph(item.Id_Depto.ToString(), fontText));
-                    _cell2.HorizontalAlignment = Element.ALIGN_RIGHT;
-                    table.AddCell(_cell2);
+                    MemoryStream ms = new MemoryStream();
 
-                    _cell2 = new PdfPCell(new iTextSharp.text.Paragraph(item.NomDepto, fontText));
-                    _cell2.HorizontalAlignment = Element.ALIGN_CENTER;
-                    table.AddCell(_cell2);
+                    iTextSharp.text.Document document = new iTextSharp.text.Document(iTextSharp.text.PageSize.A4, 50, 50, 50, 50);
+                    PdfWriter pdf = PdfWriter.GetInstance(document, ms);
+
+                    //hace la insercion del pie de pagina
+                    pdf.PageEvent = new HeadFooter();
+
+                    document.Open();
+
+                    //insercion de imagenes
+                    string url = Server.MapPath("/Imagenes/bg.jpg");
+                    iTextSharp.text.Image image = iTextSharp.text.Image.GetInstance(url);
+                    image.ScaleToFit(140f, 120f);
+                    image.Alignment = Element.ALIGN_LEFT;
+                    document.Add(image);
+                    // fin de insercion de imagenes
+
+                    //tamaño y color de cabecera
+                    BaseFont bf = BaseFont.CreateFont(BaseFont.HELVETICA_BOLD, BaseFont.CP1250, BaseFont.EMBEDDED);
+                    iTextSharp.text.Font fontText2 = new iTextSharp.text.Font(bf, 16, 4, BaseColor.BLUE);
+
+                    //creacion e insercion de titulos al documento
+                    iTextSharp.text.Paragraph titulo = new iTextSharp.text.Paragraph(string.Format("Listado de Departamentos"), fontText2);
+
+                    titulo.Alignment = 1; //0-Left, 1 middle,2 Right
+                                          //inserta al documento
+                    document.Add(titulo);
+                    //inserta nueva linea al texto
+                    document.Add(Chunk.NEWLINE);
+
+                    //esto es para estilo de letra de la tabla
+                    BaseFont bf2 = BaseFont.CreateFont(BaseFont.TIMES_BOLD, BaseFont.CP1250, BaseFont.EMBEDDED);
+                    //tamaño y color
+                    iTextSharp.text.Font fontText = new iTextSharp.text.Font(bf2, 10, 0, BaseColor.BLACK);
+                    iTextSharp.text.Font fontText3 = new iTextSharp.text.Font(bf2, 10, 0, BaseColor.WHITE);
+
+                    // instancia la tabla y le indica la cantidad de columnas
+                    PdfPTable table = new PdfPTable(2);
+                    //indica q ancho de la hoja va a ocupar la tabla
+                    table.WidthPercentage = 95;
+
+                    // instancia para la generacion de celdas en la tabla
+                    PdfPCell _cell = new PdfPCell();
+
+                    //genera la cabecera de la tabla
+                    _cell = new PdfPCell(new iTextSharp.text.Paragraph("Código Departamento", fontText3));
+                    _cell.BackgroundColor = iTextSharp.text.BaseColor.DARK_GRAY;
+                    _cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                    table.AddCell(_cell);
+
+                    _cell = new PdfPCell(new iTextSharp.text.Paragraph("Nombre Departamento", fontText3));
+                    _cell.BackgroundColor = iTextSharp.text.BaseColor.DARK_GRAY;
+                    _cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                    table.AddCell(_cell);
+
+                    //llena la tabla y ademas le da la alineacion a los datos
+                    foreach (var item in ListDep)
+                    {
+                        PdfPCell _cell2 = new PdfPCell();
+
+                        _cell2 = new PdfPCell(new iTextSharp.text.Paragraph(item.Id_Depto.ToString(), fontText));
+                        _cell2.HorizontalAlignment = Element.ALIGN_RIGHT;
+                        table.AddCell(_cell2);
+
+                        _cell2 = new PdfPCell(new iTextSharp.text.Paragraph(item.NomDepto, fontText));
+                        _cell2.HorizontalAlignment = Element.ALIGN_CENTER;
+                        table.AddCell(_cell2);
+                    }
+
+                    //agrega la tabla al documento
+                    document.Add(table);
+
+                    //cierra el documento
+                    document.Close();
+
+                    //vacia la memoria(documento) hacia memory stream
+                    byte[] byteStream = ms.ToArray();
+                    ms = new MemoryStream();
+                    ms.Write(byteStream, 0, byteStream.Length);
+                    ms.Position = 0;
+
+                    //esto permite que el archivo pdf se muestre por pantalla en el explorador y a su vez sea guardado en el disco
+                    return File(ms, "application/pdf", "ListaDeptos.pdf");
                 }
-
-                //agrega la tabla al documento
-                document.Add(table);
-
-                //cierra el documento
-                document.Close();
-
-                //vacia la memoria(documento) hacia memory stream
-                byte[] byteStream = ms.ToArray();
-                ms = new MemoryStream();
-                ms.Write(byteStream, 0, byteStream.Length);
-                ms.Position = 0;
-
-                //esto permite que el archivo pdf se muestre por pantalla en el explorador y a su vez sea guardado en el disco
-                return File(ms, "application/pdf", "ListaDeptos.pdf");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("Error On:", ex);
+                Response.StatusCode = 500;
+                Response.StatusDescription = ex.Message;
+                return Json(Response);
             }
         }
-
         #endregion Crea_Pdf
 
         #region Inserta_Pie_de_Pagina_al_Pdf
@@ -200,64 +224,73 @@ namespace CrudMvcSp.Controllers
 
         public void GetXls()
         {
-            using (var Deptos = new EmpleadosEntities())
+            try
             {
-                var ListDep = Deptos.Departamento.ToList();
+                using (var Deptos = new EmpleadosEntities())
+                {
+                    var ListDep = Deptos.Departamento.ToList();
 
-                ExcelPackage excel = new ExcelPackage();
+                    ExcelPackage excel = new ExcelPackage();
 
-                //agrega 1 hoja al libro y le da un nombre
-                excel.Workbook.Worksheets.Add("Lista_Departamentos");
+                    //agrega 1 hoja al libro y le da un nombre
+                    excel.Workbook.Worksheets.Add("Lista_Departamentos");
 
-                // crea la cabecera
-                var headerRow = new System.Collections.Generic.List<string[]>() {
+                    // crea la cabecera
+                    var headerRow = new System.Collections.Generic.List<string[]>() {
                    new string[] { "Codigo Departamento", "Nombre Departamento" }
                  };
 
-                // Le da un Nombre a la Hoja
-                var worksheet = excel.Workbook.Worksheets["Lista_Departamentos"];
+                    // Le da un Nombre a la Hoja
+                    var worksheet = excel.Workbook.Worksheets["Lista_Departamentos"];
 
-                // asigna el rango de despliegue de la cabecera
-                //string headerRange = "A1:" + Char.ConvertFromUtf32(headerRow[0].Length + 64) + "1";
-                string headerRange = "A2:B2";
+                    // asigna el rango de despliegue de la cabecera
+                    //string headerRange = "A1:" + Char.ConvertFromUtf32(headerRow[0].Length + 64) + "1";
+                    string headerRange = "A2:B2";
 
-                // Agrega la Cabecera a la hoja de trabajo
-                worksheet.Cells[headerRange].LoadFromArrays(headerRow);
+                    // Agrega la Cabecera a la hoja de trabajo
+                    worksheet.Cells[headerRange].LoadFromArrays(headerRow);
 
-                //le da estilo a la cabecera
-                worksheet.Cells[headerRange].Style.Font.Bold = true;
-                worksheet.Cells[headerRange].Style.Font.Size = 14;
-                worksheet.Cells[headerRange].Style.Font.Color.SetColor(System.Drawing.Color.Blue);
-                worksheet.Cells[headerRange].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+                    //le da estilo a la cabecera
+                    worksheet.Cells[headerRange].Style.Font.Bold = true;
+                    worksheet.Cells[headerRange].Style.Font.Size = 14;
+                    worksheet.Cells[headerRange].Style.Font.Color.SetColor(System.Drawing.Color.Blue);
+                    worksheet.Cells[headerRange].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
 
-                int rowStart = 3; //  fila (de inicio) en la que se empiezan a dejar los datos
-                // carga los datos a las filas y les da format
-                foreach (var item in ListDep)
-                {
-                    worksheet.Cells[string.Format("A{0}", rowStart)].Value = item.Id_Depto;
-                    worksheet.Cells[string.Format("A{0}", rowStart)].Style.Font.Size = 12;
-                    worksheet.Cells[string.Format("A{0}", rowStart)].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Right;
-                    worksheet.Cells[string.Format("A{0}", rowStart)].Style.Font.Color.SetColor(System.Drawing.Color.Blue);
+                    int rowStart = 3; //  fila (de inicio) en la que se empiezan a dejar los datos
+                                      // carga los datos a las filas y les da format
+                    foreach (var item in ListDep)
+                    {
+                        worksheet.Cells[string.Format("A{0}", rowStart)].Value = item.Id_Depto;
+                        worksheet.Cells[string.Format("A{0}", rowStart)].Style.Font.Size = 12;
+                        worksheet.Cells[string.Format("A{0}", rowStart)].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Right;
+                        worksheet.Cells[string.Format("A{0}", rowStart)].Style.Font.Color.SetColor(System.Drawing.Color.Blue);
 
-                    worksheet.Cells[string.Format("B{0}", rowStart)].Value = item.NomDepto;
-                    worksheet.Cells[string.Format("B{0}", rowStart)].Style.Font.Size = 12;
-                    worksheet.Cells[string.Format("B{0}", rowStart)].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
-                    worksheet.Cells[string.Format("B{0}", rowStart)].Style.Font.Color.SetColor(System.Drawing.Color.Blue);
+                        worksheet.Cells[string.Format("B{0}", rowStart)].Value = item.NomDepto;
+                        worksheet.Cells[string.Format("B{0}", rowStart)].Style.Font.Size = 12;
+                        worksheet.Cells[string.Format("B{0}", rowStart)].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+                        worksheet.Cells[string.Format("B{0}", rowStart)].Style.Font.Color.SetColor(System.Drawing.Color.Blue);
 
-                    rowStart++;
+                        rowStart++;
+                    }
+                    // Auto Ajusta el tamaño de Las Columnas
+                    worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
+
+                    // Graba la planilla
+                    Response.Clear();
+                    Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                    Response.AddHeader("content-disposition", "attachment;filename=\"ListaDeptos.xlsx\"");
+                    Response.BinaryWrite(excel.GetAsByteArray());
+                    Response.End();
                 }
-                // Auto Ajusta el tamaño de Las Columnas
-                worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
-
-                // Graba la planilla
-                Response.Clear();
-                Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-                Response.AddHeader("content-disposition", "attachment;filename=\"ListaDeptos.xlsx\"");
-                Response.BinaryWrite(excel.GetAsByteArray());
-                Response.End();
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("Error On:", ex);
+                Response.StatusCode = 500;
+                Response.StatusDescription = ex.Message;
+                //return Json(Response);
             }
         }
-
         #endregion Crea_Excel
 
         #region Crea_CSV
@@ -296,90 +329,99 @@ namespace CrudMvcSp.Controllers
 
         public ActionResult GetDocx()
         {
-            using (var Deptos = new EmpleadosEntities())
+            try
             {
-                var ListDep = Deptos.Departamento.ToList();
-
-                //Ubicacion de Archivo
-                string filename = @"C:\Users\Rodrigo_Menares\Downloads\ListaDeptos.docx";
-                var doc = DocX.Create(filename);
-
-                //Carga una imagen en formato JPG
-                var image = doc.AddImage(Server.MapPath("/Imagenes/bg.jpg"));
-                // Set Picture Height and Width.
-                var picture = image.CreatePicture(50, 50);
-                picture.Width = 50;
-                picture.Height = 50;
-
-                //Titulo Del Documento
-                string title = "Lista De Departamentos";
-
-                //Formato del Titulo
-                Formatting titleFormat = new Formatting();
-                //Specify font family
-                titleFormat.FontFamily = new Xceed.Document.NET.Font("Arial Black");
-                //Specify font size y color del texto
-                titleFormat.Size = 14D;
-                titleFormat.Position = 40;
-                titleFormat.FontColor = System.Drawing.Color.Orange;
-                titleFormat.UnderlineColor = System.Drawing.Color.Gray;
-                titleFormat.Italic = true;
-
-                //combina el titulo con el formato definido
-                Xceed.Document.NET.Paragraph paragraphTitle = doc.InsertParagraph(title, false, titleFormat);
-
-                // alinea el titulo al centro
-                paragraphTitle.Alignment = Alignment.center;
-
-                //Insert text
-                Xceed.Document.NET.Table tbl = doc.AddTable(ListDep.Count + 1, 2);
-
-                //hace que la tabla este al centro de la pagina
-                tbl.Alignment = Alignment.center;
-                tbl.Design = TableDesign.ColorfulList;
-
-                //agrega los titulos de la tabla
-                tbl.Rows[0].Cells[0].Paragraphs.First().Append("Código Departamento").FontSize(12D).Alignment = Alignment.center;
-                tbl.Rows[0].Cells[1].Paragraphs.First().Append("Nombre Departamento").FontSize(12D).Alignment = Alignment.center;
-
-                //llena las celdas con los datos
-                int fila = 1;
-                int columna = 0;
-                foreach (var item in ListDep)
+                using (var Deptos = new EmpleadosEntities())
                 {
-                    tbl.Rows[fila].Cells[columna].Paragraphs.First().Append(Convert.ToString(item.Id_Depto)).FontSize(12D).Alignment = Alignment.right;
-                    columna++;
-                    tbl.Rows[fila].Cells[columna].Paragraphs.First().Append(Convert.ToString(item.NomDepto)).FontSize(12D).Alignment = Alignment.center;
-                    fila++;
-                    columna = 0;
+                    var ListDep = Deptos.Departamento.ToList();
+
+                    //Ubicacion de Archivo
+                    string filename = @"C:\Users\Rodrigo_Menares\Downloads\ListaDeptos.docx";
+                    var doc = DocX.Create(filename);
+
+                    //Carga una imagen en formato JPG
+                    var image = doc.AddImage(Server.MapPath("/Imagenes/bg.jpg"));
+                    // Set Picture Height and Width.
+                    var picture = image.CreatePicture(50, 50);
+                    picture.Width = 50;
+                    picture.Height = 50;
+
+                    //Titulo Del Documento
+                    string title = "Lista De Departamentos";
+
+                    //Formato del Titulo
+                    Formatting titleFormat = new Formatting();
+                    //Specify font family
+                    titleFormat.FontFamily = new Xceed.Document.NET.Font("Arial Black");
+                    //Specify font size y color del texto
+                    titleFormat.Size = 14D;
+                    titleFormat.Position = 40;
+                    titleFormat.FontColor = System.Drawing.Color.Orange;
+                    titleFormat.UnderlineColor = System.Drawing.Color.Gray;
+                    titleFormat.Italic = true;
+
+                    //combina el titulo con el formato definido
+                    Xceed.Document.NET.Paragraph paragraphTitle = doc.InsertParagraph(title, false, titleFormat);
+
+                    // alinea el titulo al centro
+                    paragraphTitle.Alignment = Alignment.center;
+
+                    //Insert text
+                    Xceed.Document.NET.Table tbl = doc.AddTable(ListDep.Count + 1, 2);
+
+                    //hace que la tabla este al centro de la pagina
+                    tbl.Alignment = Alignment.center;
+                    tbl.Design = TableDesign.ColorfulList;
+
+                    //agrega los titulos de la tabla
+                    tbl.Rows[0].Cells[0].Paragraphs.First().Append("Código Departamento").FontSize(12D).Alignment = Alignment.center;
+                    tbl.Rows[0].Cells[1].Paragraphs.First().Append("Nombre Departamento").FontSize(12D).Alignment = Alignment.center;
+
+                    //llena las celdas con los datos
+                    int fila = 1;
+                    int columna = 0;
+                    foreach (var item in ListDep)
+                    {
+                        tbl.Rows[fila].Cells[columna].Paragraphs.First().Append(Convert.ToString(item.Id_Depto)).FontSize(12D).Alignment = Alignment.right;
+                        columna++;
+                        tbl.Rows[fila].Cells[columna].Paragraphs.First().Append(Convert.ToString(item.NomDepto)).FontSize(12D).Alignment = Alignment.center;
+                        fila++;
+                        columna = 0;
+                    }
+
+                    //inserta la tabla dentro del documento
+                    doc.InsertTable(tbl);
+
+                    //Genera el Pie de Pagina del Documento
+                    doc.AddFooters();
+                    //Indica que que la primera página tendrá pies de página independientes
+                    doc.DifferentFirstPage = true;
+                    //Indica que que la página par e impar tendrá pies de página separados
+                    doc.DifferentOddAndEvenPages = true;
+                    Footer footer_main = doc.Footers.First;
+                    Paragraph pFooter = footer_main.Paragraphs.First();
+                    pFooter.Alignment = Alignment.center;
+                    pFooter.Append("Página ").Bold();
+                    pFooter.AppendPageNumber(PageNumberFormat.normal).Bold();
+                    pFooter.Append("/").Bold();
+                    pFooter.AppendPageCount(PageNumberFormat.normal).Bold();
+
+                    //graba el documento
+                    doc.Save();
+                    //abre word y el documento
+                    Process.Start("WINWORD", filename);
+
+                    return RedirectToAction("Index");
                 }
-
-                //inserta la tabla dentro del documento
-                doc.InsertTable(tbl);
-
-                //Genera el Pie de Pagina del Documento
-                doc.AddFooters();
-                //Indica que que la primera página tendrá pies de página independientes
-                doc.DifferentFirstPage = true;
-                //Indica que que la página par e impar tendrá pies de página separados
-                doc.DifferentOddAndEvenPages = true;
-                Footer footer_main = doc.Footers.First;
-                Paragraph pFooter = footer_main.Paragraphs.First();
-                pFooter.Alignment = Alignment.center;
-                pFooter.Append("Página ").Bold();
-                pFooter.AppendPageNumber(PageNumberFormat.normal).Bold();
-                pFooter.Append("/").Bold();
-                pFooter.AppendPageCount(PageNumberFormat.normal).Bold();
-
-                //graba el documento
-                doc.Save();
-                //abre word y el documento
-                Process.Start("WINWORD", filename);
-
-                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("Error On:", ex);
+                Response.StatusCode = 500;
+                Response.StatusDescription = ex.Message;
+                return Json(Response);
             }
         }
-
         #endregion Crea_DOC
     }
 }

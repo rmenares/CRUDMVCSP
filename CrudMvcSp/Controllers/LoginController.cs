@@ -23,6 +23,9 @@ namespace CrudMvcSp.Controllers
         {
             try {
                 var Existe = pass.SP_Autoriza(login.Username, login.Password).FirstOrDefault();
+
+                Logger.Info("Information on:" + Existe);
+
                 if (Existe != null)
                 {
                     Session["User"] = login.Username;
@@ -31,8 +34,8 @@ namespace CrudMvcSp.Controllers
                 }
                 else
                 { return Json(Existe); }
-            }
-            catch (Exception ex) {
+            }catch (Exception ex) {
+                Logger.Error("Error On:", ex);
                 Response.StatusCode = 500;
                 Response.StatusDescription = ex.Message;
                 return Json(Response);

@@ -32,6 +32,9 @@ $(document).ready(function () {
                 .fail(function (data) {
                     alertify.error("Error De Grabación", "Error");
                 })
+                .error(function (error) {
+                    window.location.href = "/Error/ErrorGeneral/";
+                })
                 .always(function (data) {
                     $("#NomCarg").val("");
                     window.location.reload(true);
@@ -61,6 +64,9 @@ $(document).ready(function () {
             })
             .fail(function (data) {
                 alertify.error("Error De Modificación", "Error");
+            })
+            .error(function (error) {
+                window.location.href = "/Error/ErrorGeneral/";
             })
             .always(function (data) {
                 $("#ModDep").modal("hide");

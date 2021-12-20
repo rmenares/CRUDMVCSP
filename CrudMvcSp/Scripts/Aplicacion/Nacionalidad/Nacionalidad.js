@@ -34,6 +34,9 @@ $(document).ready(function () {
           .fail(function (data) {
               alertify.error("Error De Grabación", "Error")
           })
+          .error(function (error) {
+              window.location.href = "/Error/ErrorGeneral/";
+          })
           .always(function (data) {
               $("#NomNacion").val("");
               $("#AgrNac").modal("hide"); 
@@ -64,6 +67,9 @@ $(document).ready(function () {
             })
             .fail(function (data) {
                 alertify.error("Error De Modificación", "Error")
+            })
+            .error(function (error) {
+                window.location.href = "/Error/ErrorGeneral/";
             })
             .always(function (data) {
                 $("#ModNomNac").val("");

@@ -45,10 +45,13 @@ $(document).ready(function () {
          $.post(url, data)
           .done(function (data) {
               alertify.success("Datos Grabados", "Atención")
-          })
+              })
              .fail(function (data) {
                  alertify.error("Error De Grabación", "Error")
-          })
+             })
+             .error(function (error) {
+                 window.location.href = "/Error/ErrorGeneral/";
+             })
           .always(function (data) {
               $("#NomIsap").val("");
               $("#PorcCotiz").val("");
@@ -90,6 +93,9 @@ $(document).ready(function () {
                 })
                 .fail(function (data) {
                     alertify.error("Error De Modificación", "Error")
+                })
+                .error(function (error) {
+                    window.location.href = "/Error/ErrorGeneral/";
                 })
                 .always(function (data) {
                     $("#ModNomIsap").val("");

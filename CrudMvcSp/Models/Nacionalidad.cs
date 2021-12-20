@@ -11,7 +11,8 @@ namespace CrudMvcSp.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Nacionalidad
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,8 +21,13 @@ namespace CrudMvcSp.Models
             this.Carg_Familiar = new HashSet<Carg_Familiar>();
             this.Empleados = new HashSet<Empleados>();
         }
-    
+
+        [Key]
+        [Display(Name = "Código Nacionalidad")]
         public int Id_Nac { get; set; }
+
+        [Display(Name = "Descripción Nacionalidad")]
+        [Required(ErrorMessage = "Dato Obligatorio")]
         public string Descripcion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

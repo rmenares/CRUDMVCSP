@@ -13,71 +13,14 @@ $(document).ready(function () {
 
     //Graba Empresas
     $("#BtnGrabEmp").click(function (event) {
-        //event.preventDefault();
-
-            RutEmp = $("#RutEmp").val();
-            if (RutEmp == "") {
-                alertify.error("El Rut NO Puede Estar Vacio!", "Verifique");
-                $("#RutEmp").focus();
-            }
-            else {
-                $("#NomEmp").focus();
-            };
-
-            NomEmp = $("#NomEmp").val();
-            if (NomEmp == "") {
-                alertify.error("El Nonbre Empresa No Puede Estar Vacio!", "Verifique");
-                $("#NomEmp").focus();
-            }
-            else {
-                $("#CallPjeEmp").focus();
-            };
-
-            CallPjeAvdaEmp = $("#CallPjeEmp").val();
-            if (CallPjeAvdaEmp == "") {
-                alertify.error("El Nonbre Calle No Puede Estar Vacio!", "Verifique");
-                $("#CallPjeEmp").focus();
-            }
-            else {
-                $("#NumEmp").focus();
-            }
-
-            NumEmp = $("#NumEmp").val();
-            if (NumEmp == "") {
-                alertify.error("El Número Calle No Puede Estar Vacio!", "Verifique");
-                $("#NumEmp").focus();
-            }
-            else {
-                $("#VilpobEmp").focus();
-            };
-
-            VilPobEmp = $("#VilpobEmp").val();
-            if (VilPobEmp == "") {
-                alertify.error("La Villa/Población No Puede Estar Vacio!", "Verifique");
-                $("#VilpobEmp").focus();
-            }
-            else {
-                $("#FonoEmp").focus();
-            }
-
-            FonoEmp = $("#FonoEmp").val();
-            if (FonoEmp == "") {
-                alertify.error("El Fono Empleado No Puede Estar Vacio!", "Verifique");
-                $("#FonoEmp").focus();
-            }
-            else {
-                $("#EmaEmp").focus();
-            }
-
-            CorreoEmp = $("#EmaEmp").val();
-            if (CorreoEmp == "") {
-                alertify.error("El Email Empleado No Puede Estar Vacio!", "Verifique");
-                $("#EmaEmp").focus();
-            }
-            else {
-                $("#BtnGrabEmp").focus();
-            }
-
+        event.preventDefault();
+        RutEmp = $("#RutEmp").val();
+        NomEmp = $("#NomEmp").val();
+        CallPjeAvdaEmp = $("#CallPjeEmp").val();
+        NumEmp = $("#NumEmp").val();
+        VilPobEmp = $("#VilpobEmp").val();
+        FonoEmp = $("#FonoEmp").val();
+        CorreoEmp = $("#EmaEmp").val();
         var data = {
                 Rut_Empresa: RutEmp,
                 Nombre_Empresa: NomEmp,
@@ -97,7 +40,10 @@ $(document).ready(function () {
                 })
             .fail(function (data) {
                 alertify.error("Problemas De Grabación", "Verifique")
-             })
+            })
+            .error(function (error) {
+                window.location.href = "/Error/ErrorGeneral/";
+            })
            .always(function (data) {
                $("#Rut_Empresa").val("");
                $("#Nombre_Empresa").val("");
@@ -167,6 +113,9 @@ $(document).ready(function () {
             })
             .fail(function (data) {
                 alertify.error("Error De Modificación", "Error")
+            })
+            .error(function (error) {
+                window.location.href = "/Error/ErrorGeneral/";
             })
             .always(function (data) {
                 $("#MODNomEmp").val("");

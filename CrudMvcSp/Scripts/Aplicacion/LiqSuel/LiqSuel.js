@@ -85,12 +85,16 @@ $(document).ready(function () {
                             $("#ListTipRem").focus();
                         }
                         else {
-                            alertify.error(" Empleado Incorrecto, Verifique ", "Atención");                            
+                            alertify.error(" Empleado Incorrecto, Verifique ", "Atención");
                             $("#RutEmp").val("");
                             $("#RutEmp").focus();
                             return false;
                         }
+                    })
+                    .error(function (error) {
+                        window.location.href = "/Error/ErrorGeneral/";
                     });
+
             }
         }
     });
@@ -116,6 +120,9 @@ $(document).ready(function () {
                     Cotizacion = MontTrab
                 }
                 $("#FechLiq").focus();
+            })
+            .error(function (error) {
+                window.location.href = "/Error/ErrorGeneral/";
             });
     });
 
@@ -274,6 +281,9 @@ $(document).ready(function () {
                         $("#RebaImpto").val(new Intl.NumberFormat("de-DE").format(parseInt(ImptoCantAReb)));
                         $("#ImpAPagar").val(new Intl.NumberFormat("de-DE").format(ImptoAPagar));
                     })
+                    .error(function (error) {
+                        window.location.href = "/Error/ErrorGeneral/";
+                    });
                 $("#ValMov").focus();
             }
         }
@@ -496,6 +506,9 @@ $(document).ready(function () {
             .fail(function (data) {
                 alertify.error(" Error De Grabación, Verifique!!! ", "Error")
             })
+            .error(function (error) {
+                window.location.href = "/Error/ErrorGeneral/";
+            })
             .always(function (data) {
                 $("#ListTipRem").val("Seleccione Tipo Remuneración");
                 $("#RutEmp").val("");
@@ -581,7 +594,10 @@ $(document).ready(function () {
                 $("#ModTotDesc").val(DatosLiqSueld.TotalDesctos);
                 $("#ModAnticipos").val(DatosLiqSueld.Anticipos);
                 $("#ModTotPagar").val(DatosLiqSueld.Total_Pagar);
-             })
+            })
+            .error(function (error) {
+                window.location.href = "/Error/ErrorGeneral/";
+            })
     });
 
     //Exportar a Pdf
@@ -597,6 +613,9 @@ $(document).ready(function () {
                 alertify.success(" Liquidación Lista ", "Atención");
                 $("#ModLiqSueld").modal("hide");
                 window.location.reload(true);
+            })
+            .error(function (error) {
+                window.location.href = "/Error/ErrorGeneral/";
             })
     });
 

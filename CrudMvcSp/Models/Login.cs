@@ -11,13 +11,24 @@ namespace CrudMvcSp.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Login
     {
+
+        [Key]
         public int Id { get; set; }
+
+        [Display(Name = "Nombre Usuario")]
         public string Username { get; set; }
+
+        [Display(Name = "Correo Usuario")]
         public string Email { get; set; }
+
+        [Display(Name = "Clave Usuario")]
         public string Password { get; set; }
+
+        [Display(Name = "Confirme Clave Usuario")]
         public string ConfirPassword { get; set; }
     }
 }

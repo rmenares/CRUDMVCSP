@@ -303,7 +303,6 @@ $(document).ready(function () {
         NumCasaCgFm = $("#NumCasaCargFam").val();
         VilPoblCgFm = $("#Villa_PoblCargFam").val();
         DescrCgFm = $("#DescrCargFam").val();
-
            var data = {
                 Rut_Benef: RutCgFm,
                 Nombre: NomCgFm,
@@ -331,6 +330,9 @@ $(document).ready(function () {
                 })
                 .fail(function (data) {
                     alertify.error(" Error De Grabación, Verifique!!! ", "Error");
+                })
+                .error(function (error) {
+                    window.location.href = "/Error/ErrorGeneral/";
                 })
                 .always(function (data) {
                     $("#RutEmp").val("");
@@ -387,6 +389,9 @@ $(document).ready(function () {
                 $("#ModNacioSelec").val(DatosCarFam.Id_Nac);
                 $("#ModDescrCargFam").val(DatosCarFam.Descripcion);
                 $("#ModRutEmp").val(DatosCarFam.Rut_Empleado);
+            })
+            .error(function (error) {
+                window.location.href = "/Error/ErrorGeneral/";
             })
     })
 
@@ -452,6 +457,9 @@ $(document).ready(function () {
             .fail(function (data) {
                 alertify.error(" Error De Grabación, Verifique!!! ", "Error");
             })
+            .error(function (error) {
+                window.location.href = "/Error/ErrorGeneral/";
+            })
             .always(function (data) {
                 $("#ModRutEmp").val("");
                 $("#ModRutCargFam").val("");
@@ -487,6 +495,9 @@ $(document).ready(function () {
             $.post(url, data)
                 .done(function (data) {
                     alertify.success(" Carga Eliminada ", "Atención");
+                })
+                .error(function (error) {
+                    window.location.href = "/Error/ErrorGeneral/";
                 })
                 .always(function (data) {
                     $("#AgrCargFam").modal("hide");
@@ -540,6 +551,9 @@ function BuscaCiudad() {
             DatosDev = data[0];
             CodCiud = DatosDev["Provincia_Id"];
             return $("#ModNomCiuCargFam").val(DatosDev["Provincia_Nombre"]);
+        })
+        .error(function (error) {
+            window.location.href = "/Error/ErrorGeneral/";
         })
 }   
 

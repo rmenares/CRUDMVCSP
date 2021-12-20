@@ -32,11 +32,14 @@ $(document).ready(function () {
             .fail(function (data) {
                 alertify.error("Error De Grabación", "Error");
             })
-        .always(function (data) {
+            .error(function (error) {
+                window.location.href = "/Error/ErrorGeneral/";
+            })
+            .always(function (data) {
             $("#NomDep").val("");
             $("#AgrDep").modal("hide");
             window.location.reload(true);
-        })
+            })
     });
 
     //detecta la fila seleccionada en en webgrid 
@@ -61,6 +64,9 @@ $(document).ready(function () {
             })
             .fail(function (data) {
                 alertify.error("Error De Modificación", "Error");
+            })
+            .error(function (error) {
+                window.location.href = "/Error/ErrorGeneral/";
             })
             .always(function (data) {
                 $("#ModNomDep").val("");

@@ -11,7 +11,8 @@ namespace CrudMvcSp.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Salud
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,9 +20,17 @@ namespace CrudMvcSp.Models
         {
             this.Empleados = new HashSet<Empleados>();
         }
-    
+
+        [Key]
+        [Display(Name = "Código Salud")]
         public int Cod_Salud { get; set; }
+
+        [Display(Name = "Nombre Inst. Salud")]
+        [Required(ErrorMessage = "Dato Obligatorio")]
         public string Nombre_Salud { get; set; }
+
+        [Display(Name = "Porcentaje Salud")]
+        [Required(ErrorMessage = "Dato Obligatorio")]
         public Nullable<decimal> Porc_Cotiz { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

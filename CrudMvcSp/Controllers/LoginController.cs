@@ -8,6 +8,8 @@ namespace CrudMvcSp.Controllers
 {
     public class LoginController : Controller
     {
+
+        
         // GET: Login
         private EmpleadosEntities pass = new EmpleadosEntities();
 

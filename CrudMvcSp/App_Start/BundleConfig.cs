@@ -9,10 +9,13 @@ namespace CrudMvcSp
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                         "~/Scripts/jquery-{version}.js",
-                         "~/Scripts/jquery-ui-1.12.1.min.js",
+                       "~/Scripts/jquery-{version}.js",
+                         "~/Scripts/jquery-3.6.0.js",
                          "~/Scripts/jquery-3.6.0.min.js",
-                         "~/Scripts/jquery.min.js"));
+                        "~/Scripts/jquery-ui-1.12.1.js",
+                        "~/Scripts/jquery-ui-1.12.1.min.js",
+                        "~/Scripts/jquery-ui.js",
+                        "~/Scripts/jquery.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -23,7 +26,8 @@ namespace CrudMvcSp
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js"));
+                      "~/Scripts/bootstrap.js",
+                      "~/Scripts/bootstrap.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/Alertify").Include(
                    "~/Scripts/alertify.js",
@@ -35,6 +39,15 @@ namespace CrudMvcSp
             bundles.Add(new ScriptBundle("~/Scripts/fontawesome/fontawesome").Include(
                         "~/Scripts/fontawesome/fontawesome.js",
                         "~/Scripts/fontawesome/fontawesome.min.js"));
+
+            bundles.Add(new StyleBundle("~/Content/jquery").Include(
+                      "~/Content/jquery-ui.css",
+                      "~/Content/jquery-ui.min.css",
+                      "~/Content/themes/base/jquery-ui.css",
+                      "~/Content/themes/base/jquery-ui.min.css"
+                      //,"~/Content/themes/base/style.css"
+                      
+                      ));
 
             bundles.Add(new StyleBundle("~/Content/fontawesome").Include(
                         "~/Content/fontawesome-all.css",

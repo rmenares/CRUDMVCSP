@@ -19,59 +19,56 @@ $(document).ready(function () {
     //Webcam.attach('#my_camera');
 
     //permite mostrar las cajas de fecha como calendarios DtPicker, y formateados al formato nacional
+
+    //formatea el objeto de fecha
+    $.datepicker.regional['es'] = {
+        closeText: 'Cerrar',
+        prevText: '< Ant',
+        nextText: 'Sig >',
+        currentText: 'Hoy',
+        monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+        monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+        dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+        dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Juv', 'Vie', 'Sáb'],
+        dayNamesMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá'],
+        weekHeader: 'Sm',
+        dateFormat: 'dd/mm/yy',
+        firstDay: 1,
+        isRTL: false,
+        showMonthAfterYear: false,
+        yearSuffix: ''
+    };
+    $.datepicker.setDefaults($.datepicker.regional['es']);
+
+
     // Fecha de Incorporacion
-    $(function () {
         $("#FechIncEmp").datepicker({
             autoSize: true,
-            dateFormat: "dd/mm/yy",
+            buttonText: "<i class='fa fa-calendar'></i>",
+            closeText: 'Cerrar',
             changeMonth: true,
             changeYear: true,
-            language: "es",
+            currentText: 'Hoy',
+            dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+            dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Juv', 'Vie', 'Sáb'],
+            dayNamesMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá'],
+            dateFormat: 'dd/mm/yy',
             firstDay: 1,
+            isRTL: false,
+            language: "es",
+            monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+            monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+            minDate: new Date(),
+            nextText: 'Sig >',
+            prevText: '< Ant',
             showOn: "both",
-            buttonText: "<i class='fa fa-calendar'></i>"
+            showMonthAfterYear: false,
+            weekHeader: 'Sm',
+            yearSuffix: ''
         });
-    });
 
-    //Fecha de Nacimiento
-    $(function () {
-        $("#FechNacEmp").datepicker({
-            autoSize: true,
-            dateFormat: "dd/mm/yy",
-            changeMonth: true,
-            changeYear: true,
-            language: "es",
-            firstDay: 1,
-            showOn: "both",
-            buttonText: "<i class='fa fa-calendar'></i>"
-        });
-    });
-    
-    $(function () {
-        $("#EDFechIncEmp").datepicker({
-            autoSize: true,
-            dateFormat: "dd/mm/yy",
-            changeMonth: true,
-            changeYear: true,
-            language: "es",
-            firstDay: 1,
-            showOn: "both",
-            buttonText: "<i class='fa fa-calendar'></i>"
-        });
-    });
-    
-    $(function () {
-        $("#EDFechNacEmp").datepicker({
-            autoSize: true,
-            dateFormat: "dd/mm/yy",
-            changeMonth: true,
-            changeYear: true,
-            language: "es",
-            firstDay: 1,
-            showOn: "both",
-            buttonText: "<i class='fa fa-calendar'></i>"
-        });
-    });
+
+   
 
     //carga Modal Ingreso de Empleados
     $("#BtnNueEmpl").click(function (event) {
@@ -440,25 +437,11 @@ $(document).ready(function () {
     //});
  });
 
-//formatea el objeto de fecha
-$.datepicker.regional['es'] = {
-    closeText: 'Cerrar',
-    prevText: '< Ant',
-    nextText: 'Sig >',
-    currentText: 'Hoy',
-    monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-    monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
-    dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
-    dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Juv', 'Vie', 'Sáb'],
-    dayNamesMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá'],
-    weekHeader: 'Sm',
-    dateFormat: 'dd/mm/yy',
-    firstDay: 1,
-    isRTL: false,
-    showMonthAfterYear: false,
-    yearSuffix: ''
-};
-$.datepicker.setDefaults($.datepicker.regional['es']);
+
+
+
+
+
 
 //permite identificar la fila seleccionada del WebGrid
 $(function () {

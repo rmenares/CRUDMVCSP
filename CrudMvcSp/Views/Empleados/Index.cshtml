@@ -1,8 +1,6 @@
 ﻿@model  IEnumerable<CrudMvcSp.Models.SP_Mues_Empleado_Result>
-@{
-    /**/
 
-    /**/
+@{
     ViewBag.Title = "Index";
 
     WebGrid grid = new WebGrid(Model, defaultSort: "Nombre",
@@ -19,11 +17,11 @@
 
 @Scripts.Render("~/bundles/jquery")
 
-@Styles.Render("~/Content/jquery")
-
 @Scripts.Render("~/bundles/bootstrap")
 
 @Scripts.Render("~/bundles/Alertify")
+
+@Styles.Render("~/Content/jquery")
 
 @Styles.Render("~/Content/fontawesome")
 
@@ -44,47 +42,44 @@
 </table>
 
 <form id="formMuesEmpleados" method="post">
-    @if (Model.Count() != 0)
-    {
+    @if (Model.Count() != 0){
         <div class="table table-responsive table-striped table-bordered table-condensed" id="gridEmpleados">
             @grid.GetHtml(
-                  alternatingRowStyle: "webgrid-alternating-row",
-                  htmlAttributes: new { @id = "TablaEmpleados", width = "50px", @class = "Grid" },
-                  tableStyle: "webgrid-table table table-responsive table-bordered",
-                  headerStyle: "webgrid-header",
-                  footerStyle: "webgrid-footer",
-                  selectedRowStyle: "webgrid-selected-row",
-                  rowStyle: "webgrid-row-style",
-                  mode: WebGridPagerModes.All,
-                  firstText: "Primera Pagina",
-                  previousText: "Pagina Anterior",
-                  nextText: "Pagina Siguiente",
-                  lastText: "Ultima Pagina",
-                  displayHeader: true,
-                  columns:
-                  new[] {
-                         grid.Column("Rut" , "Rut "),
-                         grid.Column("Nombre" , "Nombre"),
-                         grid.Column("Apellido" , "Apellido"),
-                         //grid.Column("Departamento" , "Depto"),
-                         grid.Column("Cargo" , "Cargo"),
-                         grid.Column("Direccion" , "Dirección"),
-                         grid.Column("Comuna" , "Comuna"),
-                         grid.Column("Ciudad" , "Ciudad"),
-                         grid.Column("Fono" , "Fono"),
-                         grid.Column("Correo" , "Email"),
-                         //grid.Column("Nacionalidad" , "Nacionalidad"),
-                         //grid.Column("Sexo" , "Sexo"),
-                         //grid.Column("Nombre_AFP" , "AFP"),
-                         //grid.Column("SALUD" , "Salud"),
-                         grid.Column(header: "Acciones", style: "col-sm-2", format:
-@<span class="link">
-    <a class="btn btn-success btn-xs glyphicon glyphicon-pencil Edit" href="javascript:;"> Edit</a>
-    <a class="btn btn-danger  btn-xs glyphicon glyphicon-trash  Delete" href="javascript:;"> Delete</a>
-</span>
-)
-}
-)
+             alternatingRowStyle: "webgrid-alternating-row",
+             htmlAttributes: new { @id = "TablaEmpleados", width = "50px", @class = "Grid" },
+             tableStyle: "webgrid-table table table-responsive table-bordered",
+             headerStyle: "webgrid-header",
+             footerStyle: "webgrid-footer",
+             selectedRowStyle: "webgrid-selected-row",
+             rowStyle: "webgrid-row-style",
+             mode: WebGridPagerModes.All,
+             firstText: "Primera Pagina",
+             previousText: "Pagina Anterior",
+             nextText: "Pagina Siguiente",
+             lastText: "Ultima Pagina",
+             displayHeader: true,
+             columns:
+              new[] {
+                 grid.Column("Rut" , "Rut "),
+                 grid.Column("Nombre" , "Nombre"),
+                 grid.Column("Apellido" , "Apellido"),
+                 //grid.Column("Departamento" , "Depto"),
+                 grid.Column("Cargo" , "Cargo"),
+                 grid.Column("Direccion" , "Dirección"),
+                 grid.Column("Comuna" , "Comuna"),
+                 grid.Column("Ciudad" , "Ciudad"),
+                 grid.Column("Fono" , "Fono"),
+                 //grid.Column("Nacionalidad" , "Nacionalidad"),
+                 //grid.Column("Sexo" , "Sexo"),
+                 //grid.Column("Nombre_AFP" , "AFP"),
+                 //grid.Column("SALUD" , "Salud"),
+                 //grid.Column("Correo" , "Email"),
+                 grid.Column(header: "Acciones", style: "col-sm-2", format:
+                  @<span class="link">
+                      <a class="btn btn-success btn-xs glyphicon glyphicon-pencil Edit" href="javascript:;"> Edit</a>
+                      <a class="btn btn-danger  btn-xs glyphicon glyphicon-trash  Delete" href="javascript:;"> Delete</a>
+                  </span> )
+              })
         </div>
         <div id="TablExport">
             <table align="center">
@@ -139,17 +134,17 @@
                     <div class="tab-content container-fluid">
                         <div class="tab-pane active" id="DatosLab" role="tabpanel" aria-labelledby="home-tab">
                             <br />
-                            <table border="1">
+                            <table border="1" class="container-fluid" style="vertical-align:middle">
                                 <tr>
                                     <td align="center" style="vertical-align:middle;">Rut Empleado</td>
                                     <td></td>
-                                    <td align="center"><input type="text" id="RutEmp" style="text-align:right;" required /></td>
+                                    <td align="left"><input type="text" id="RutEmp" style="text-align: right;" required   /></td>
                                     <td></td>
                                     <td align="center">@*Fotografia*@ </td>
                                     <td></td>
                                     <td align="center">
                                         @*<img id="user_img" height="100" width="90" style="border:solid" />
-                                            <input type="file" title="Buscar Imagen" id="file" name="file" accept=".jpg, .png" onchange="show(this)" />*@
+                                          <input type="file" title="Buscar Imagen" id="file" name="file" accept=".jpg, .png" onchange="show(this)" />*@
                                     </td>
                                     <td></td>
                                     <td></td>
@@ -159,15 +154,15 @@
                                 <tr>
                                     <td align="center" style="vertical-align:middle;">Nombre Empleado</td>
                                     <td></td>
-                                    <td align="center" style="vertical-align:middle;"><input type="text" id="NomEmp" /></td>
+                                    <td align="center"><input type="text" id="NomEmp" style="text-align:left; align-items:center"/></td>
                                     <td></td>
                                     <td align="center">Apellido Paterno</td>
                                     <td></td>
-                                    <td align="center"><input type="text" id="ApPatEmp" /></td>
+                                    <td align="center"><input type="text" id="ApPatEmp" style="text-align:left; align-items:center"/></td>
                                     <td></td>
                                     <td align="center" style="margin-top:15px;">Apellido Materno</td>
                                     <td></td>
-                                    <td align="center"><input type="text" id="ApMatEmp" /></td>
+                                    <td align="center"><input type="text" id="ApMatEmp" style="text-align:left; align-items:center"/></td>
                                     <td></td>
                                 </tr>
                                 <tr>
@@ -185,17 +180,17 @@
                                     <td></td>
                                     <td align="center">Anexo Empleado</td>
                                     <td></td>
-                                    <td align="center"><input type="text" id="AnexoEmp" style="text-align:right" /></td>
+                                    <td align="center"><input type="text" id="AnexoEmp" style="text-align:right; align-items:center"    /></td>
                                     <td></td>
                                 </tr>
                                 <tr>
                                     <td align="center">Email</td>
                                     <td></td>
-                                    <td align="center"><input type="text" id="EmaEmp" style="text-align:right" /></td>
+                                    <td align="center"><input type="text" id="EmaEmp" style="text-align:right; align-items: center"/></td>
                                     <td></td>
                                     <td align="center">Fecha de Incorporación</td>
                                     <td></td>
-                                    <td align="center"><input type="text" id="FechIncEmp" style="text-align:right" /></td>
+                                    <td align="left"><input type="text" id="FechIncEmp" style="text-align: right; align-items: center"/></td>
                                     <td></td>
                                     <td align="center">Rut Empresa</td>
                                     <td></td>
@@ -233,7 +228,7 @@
                                     <td></td>
                                     <td align="center">  Fecha de Despido </td>
                                     <td></td>
-                                    <td align="center">  <input type="text" id="FechDespEmp" style="text-align:right" /> </td>
+                                    <td align="left">  <input type="text" id="FechDespEmp" style="text-align: right; align-items: center"> </td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -276,25 +271,25 @@
                                 <tr>
                                     <td align="center">Telefono</td>
                                     <td></td>
-                                    <td align="center"><input type="text" id="FonoPer" /></td>
+                                    <td align="center"><input type="text" id="FonoPer" style="text-align:right; align-items:center" /></td>
                                     <td></td>
                                     <td align="center">Email Personal</td>
                                     <td></td>
-                                    <td align="center"><input type="text" id="EmailPer" /></td>
+                                    <td align="center"><input type="text" id="EmailPer" style="text-align:right; align-items:center" /></td>
                                     <td></td>
                                     <td align="center">Fecha de Nacimiento</td>
                                     <td></td>
-                                    <td align="center"><input type="text" id="FechNacEmp" /></td>
+                                    <td align="left"><input type="text" id="FechNacEmp" style="text-align:right;" /></td>
                                     <td></td>
                                 </tr>
                                 <tr>
                                     <td align="center">Nombre Persona Emergencia</td>
                                     <td></td>
-                                    <td align="center"><input type="text" id="PerEmerEmp" /></td>
+                                    <td align="center"><input type="text" id="PerEmerEmp"  style="text-align:right; align-items:center"/></td>
                                     <td></td>
                                     <td align="center">Fono Persona Emergencia</td>
                                     <td></td>
-                                    <td align="center"><input type="text" id="FonPerEmerEmp" /></td>
+                                    <td align="center"><input type="text" id="FonPerEmerEmp" style="text-align:right; align-items:center" /></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -361,15 +356,15 @@
                                 <tr>
                                     <td align="center">Nombre Empleado</td>
                                     <td></td>
-                                    <td align="center"><input type="text" id="EDNomEmp" /></td>
+                                    <td align="center"><input type="text" id="EDNomEmp" style="text-align:right; align-items:center" /></td>
                                     <td></td>
                                     <td align="center" style="margin-top:15px;">Apellido Paterno</td>
                                     <td></td>
-                                    <td align="center"><input type="text" id="EDApPatEmp" /></td>
+                                    <td align="center"><input type="text" id="EDApPatEmp" style="text-align:right; align-items:center" /></td>
                                     <td></td>
                                     <td align="center" style="margin-top:15px;">Apellido Materno</td>
                                     <td></td>
-                                    <td align="center"><input type="text" id="EDApMatEmp" /></td>
+                                    <td align="center"><input type="text" id="EDApMatEmp" style="text-align:right; align-items:center" /></td>
                                     <td></td>
                                 </tr>
                                 <tr>
@@ -387,17 +382,17 @@
                                     <td></td>
                                     <td align="center">Anexo Empleado</td>
                                     <td></td>
-                                    <td align="center"><input type="text" id="EDAnexoEmp" /></td>
+                                    <td align="center"><input type="text" id="EDAnexoEmp" style="text-align:right; align-items:center" /></td>
                                     <td></td>
                                 </tr>
                                 <tr>
                                     <td align="center">Email</td>
                                     <td></td>
-                                    <td align="center"><input type="text" id="EDEmaEmp" /></td>
+                                    <td align="center"><input type="text" id="EDEmaEmp" style="text-align:right; align-items:center" /></td>
                                     <td></td>
                                     <td align="center">Fecha de Incorporación</td>
                                     <td></td>
-                                    <td align="center"><input type="text" id="EDFechIncEmp" /></td>
+                                    <td align="left"><input type="text" id="EDFechIncEmp" style="text-align:right; align-items:center"  /></td>
                                     <td></td>
                                     <td align="center">Rut Empresa</td>
                                     <td></td>
@@ -435,7 +430,7 @@
                                     <td></td>
                                     <td align="center">Fecha de Despido </td>
                                     <td></td>
-                                    <td>  <input type="text" id="FechDespEmp" /> </td>
+                                    <td align="left"><input type="text" id="FechDespEmp" style="text-align:right; align-items:center" /> </td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -449,15 +444,15 @@
                                 <tr>
                                     <td align="center">Calle/Pje</td>
                                     <td></td>
-                                    <td><input type="text" id="EDCallPjeEmp" /></td>
+                                    <td><input type="text" id="EDCallPjeEmp"  style="text-align:right; align-items:center" /></td>
                                     <td></td>
                                     <td align="center">Número</td>
                                     <td></td>
-                                    <td><input type="text" id="EDNumCasaEmp" /></td>
+                                    <td><input type="text" id="EDNumCasaEmp"  style="text-align:right; align-items:center"/></td>
                                     <td></td>
                                     <td align="center">Villa_Población</td>
                                     <td></td>
-                                    <td><input type="text" id="EDVilla_PoblEmp" /></td>
+                                    <td><input type="text" id="EDVilla_PoblEmp"  style="text-align:right; align-items:center" /></td>
                                     <td></td>
                                 </tr>
                                 <tr>
@@ -469,7 +464,7 @@
                                     <td></td>
                                     <td align="center">Ciudad</td>
                                     <td></td>
-                                    <td><input type="text" id="EDNomCiu" /></td>
+                                    <td><input type="text" id="EDNomCiu"  style="text-align:right; align-items:center"/></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -478,25 +473,25 @@
                                 <tr>
                                     <td align="center">Telefono</td>
                                     <td></td>
-                                    <td><input type="text" id="EDFonoPer" /></td>
+                                    <td><input type="text" id="EDFonoPer"  style="text-align:right; align-items:center" /></td>
                                     <td></td>
                                     <td align="center">Email Personal</td>
                                     <td></td>
-                                    <td><input type="text" id="EDEmailPer" /></td>
+                                    <td><input type="text" id="EDEmailPer"  style="text-align:right; align-items:center"/></td>
                                     <td></td>
                                     <td align="center">Fecha de Nacimiento</td>
                                     <td></td>
-                                    <td><input type="text" id="EDFechNacEmp" /></td>
+                                    <td><input type="text" id="EDFechNacEmp"  style="text-align:right; align-items:center"/></td>
                                     <td></td>
                                 </tr>
                                 <tr>
                                     <td align="center">Nombre Persona Emergencia</td>
                                     <td></td>
-                                    <td><input type="text" id="EDPerEmerEmp" /></td>
+                                    <td><input type="text" id="EDPerEmerEmp"  style="text-align:right; align-items:center"/></td>
                                     <td></td>
                                     <td align="center">Fono Persona Emergencia</td>
                                     <td></td>
-                                    <td><input type="text" id="EDFonPerEmerEmp" /></td>
+                                    <td><input type="text" id="EDFonPerEmerEmp"  style="text-align:right; align-items:center"/></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -520,7 +515,7 @@
 @section scripts {
     <link href="~/Content/WebGrid/WebGrid.css" rel="stylesheet" />
     <link href="~/Content/EstilosGenerales/style.css" rel="stylesheet" />
-    @*<link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />*@
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
     <script src="~/Scripts/Aplicacion/Empleados/Empleados.js"></script>
 
     <script type="text/javascript">

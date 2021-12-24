@@ -26,7 +26,6 @@
 @Styles.Render("~/Content/Alertify")
 
 
-
 <table class="table table-responsive table-striped table-condensed" id="NueCargFam">
     <tr>
         <td>
@@ -36,8 +35,7 @@
 </table>
 
 <form id="formMuesCargFam" method="post">
-    @if (Model.Count() != 0)
-    {
+    @if (Model.Count() != 0)    {
         <div class="table table-responsive table-striped table-bordered table-condensed" id="gridCargFam">
             @grid.GetHtml(
              alternatingRowStyle: "webgrid-alternating-row",
@@ -75,10 +73,9 @@
                     grid.Column(header: "Acciones", style: "col-sm-2", format:
                     @<span class="link">
                         <a class="btn btn-success btn-xs glyphicon glyphicon-pencil Edit" href="javascript:;"> Edit</a>
-                        @*<a class="btn btn-warning btn-xs glyphicon glyphicon-print  Info" href="javascript:;"> Info</a>*@
                         <a class="btn btn-danger  btn-xs glyphicon glyphicon-trash  Delete" href="javascript:;"> Delete</a>
                     </span> )
-                        })
+              })
         </div>
         <div id="TablExport">
             <table align="center">

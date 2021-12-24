@@ -1,4 +1,5 @@
-﻿var NomEmp, ApPatEmp, ApMatEmp, AnexoEmp;
+﻿
+var NomEmp, ApPatEmp, ApMatEmp, AnexoEmp;
 var EmaEmp, FechIncEmp, CallPjeEmp, NumCasaEmp;
 var Villa_PoblEmp, CodCiudad, FonoPer, EmailPer;
 var FechNacEmp, PerEmerEmp, FonPerEmerEmp, Ret;
@@ -18,57 +19,36 @@ $(document).ready(function () {
     //});
     //Webcam.attach('#my_camera');
 
-    //permite mostrar las cajas de fecha como calendarios DtPicker, y formateados al formato nacional
-
-    //formatea el objeto de fecha
-    $.datepicker.regional['es'] = {
-        closeText: 'Cerrar',
-        prevText: '< Ant',
-        nextText: 'Sig >',
-        currentText: 'Hoy',
-        monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-        monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
-        dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
-        dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Juv', 'Vie', 'Sáb'],
-        dayNamesMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá'],
-        weekHeader: 'Sm',
-        dateFormat: 'dd/mm/yy',
-        firstDay: 1,
-        isRTL: false,
-        showMonthAfterYear: false,
-        yearSuffix: ''
-    };
-    $.datepicker.setDefaults($.datepicker.regional['es']);
-
-
-    // Fecha de Incorporacion
+     // Cajas de Fechas
+    $(function () {
         $("#FechIncEmp").datepicker({
-            autoSize: true,
-            buttonText: "<i class='fa fa-calendar'></i>",
-            closeText: 'Cerrar',
-            changeMonth: true,
-            changeYear: true,
-            currentText: 'Hoy',
-            dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
-            dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Juv', 'Vie', 'Sáb'],
-            dayNamesMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá'],
-            dateFormat: 'dd/mm/yy',
-            firstDay: 1,
-            isRTL: false,
-            language: "es",
-            monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-            monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
-            minDate: new Date(),
-            nextText: 'Sig >',
-            prevText: '< Ant',
-            showOn: "both",
-            showMonthAfterYear: false,
-            weekHeader: 'Sm',
-            yearSuffix: ''
         });
+     });
 
+    $(function () {
+        $("#FechDespEmp").datepicker({
+        });
+    });
 
-   
+    $(function () {
+        $("#FechNacEmp").datepicker({
+        });
+    });
+
+    $(function () {
+        $("#EDFechIncEmp").datepicker({
+        });
+    });
+
+    $(function () {
+        $("#FechDespEmp").datepicker({
+        });
+    });
+
+    $(function () {
+        $("#EDFechNacEmp").datepicker({
+        });
+    });
 
     //carga Modal Ingreso de Empleados
     $("#BtnNueEmpl").click(function (event) {
@@ -438,11 +418,6 @@ $(document).ready(function () {
  });
 
 
-
-
-
-
-
 //permite identificar la fila seleccionada del WebGrid
 $(function () {
     var row = $("#TablaEmpleados TBODY tr:eq(0)");
@@ -455,6 +430,36 @@ $(function () {
         row.find(".link").hide();
     }
 });
+
+     //formatea el objeto de fecha
+$.datepicker.regional['es'] = {
+    autoSize: true,
+    buttonText: "<i class='fa fa-calendar'></i>",
+    closeText: 'Cerrar',
+    changeMonth: true,
+    changeYear: true,
+    currentText: 'Hoy',
+    dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+    dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Juv', 'Vie', 'Sáb'],
+    dayNamesMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá'],
+    dateFormat: 'dd/mm/yy',
+    firstDay: 1,
+    isRTL: false,
+    language: "es",
+    monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+    monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+    /*minDate: new Date(),*/
+    nextText: 'Sig >',
+    prevText: '< Ant',
+    showOn: "both",
+    showMonthAfterYear: false,
+    weekHeader: 'Sm',
+    yearSuffix: ''
+};
+$.datepicker.setDefaults($.datepicker.regional['es']);
+
+
+
 
 //funcion Busca Ciudad
 function BuscaCiudad() {

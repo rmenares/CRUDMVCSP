@@ -12,18 +12,8 @@ $(document).ready(function () {
 
     //Graba Nacionalidad
     $("#BtnGrabNac").click(function (event) {
-        $("#NomNacion").on('keyup', function (event) {
-            NomNac = $("#NomNacion").val();
-            if (NomNac == "") {
-                alertify.error("Nacionalidad NO Puede Estar Vacío!!!!", "Atención")
-                $("#NomNacion").focus();
-            }
-            else {
-                $("#BtnGrabNac").focus();
-            }
-        })
-
-      $("#BtnGrabNac").attr('value', 'Grabando....');
+       NomNac = $("#NomNacion").val();
+       $("#BtnGrabNac").attr('value', 'Grabando....');
       var data = { Descripcion: NomNac }
       var url = "/Nacionalidad/GrabaNacionalidad";
       event.preventDefault();
